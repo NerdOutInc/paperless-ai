@@ -1,0 +1,120 @@
+1
+00:00:00,000 --> 00:00:03,620
+ Hey, this is Brian from Fullstack Egg.
+
+2
+00:00:03,620 --> 00:00:07,290
+ Today I want to show you something called Paperless N G X.
+
+3
+00:00:07,290 --> 00:00:08,920
+ Paperless N G X is an open
+
+4
+00:00:08,920 --> 00:00:12,400
+ source digital archive for your documents.
+
+5
+00:00:12,400 --> 00:00:16,030
+ Think of all the paper that piles up around a farm, leases,
+
+6
+00:00:16,030 --> 00:00:17,740
+ crop insurance, equipment
+
+7
+00:00:17,740 --> 00:00:22,370
+ records, notes from the shop, paper list gives all that a
+
+8
+00:00:22,370 --> 00:00:23,680
+ single home.
+
+9
+00:00:23,680 --> 00:00:27,310
+ So I have a little note here that started as a piece of
+
+10
+00:00:27,310 --> 00:00:27,720
+ paper.
+
+11
+00:00:27,720 --> 00:00:32,490
+ I'm just going to drop the photo into Paperless, it uploads
+
+12
+00:00:32,490 --> 00:00:35,280
+ it, files away the original, and
+
+13
+00:00:35,280 --> 00:00:40,660
+ then it tries to read the text on the page with OCR, which
+
+14
+00:00:40,660 --> 00:00:44,080
+ is optical character recognition.
+
+15
+00:00:44,080 --> 00:00:46,360
+ And that's the big first one.
+
+16
+00:00:46,360 --> 00:00:50,520
+ The document is not just a picture and a folder anymore.
+
+17
+00:00:50,520 --> 00:00:53,610
+ Paperless knows the date, it can store tags and the
+
+18
+00:00:53,610 --> 00:00:55,960
+ document type, and most importantly
+
+19
+00:00:55,960 --> 00:00:59,960
+ you can now search the text that it found.
+
+20
+00:00:59,960 --> 00:01:03,600
+ So later on if I remember something about a hydraulic hose,
+
+21
+00:01:03,600 --> 00:01:05,000
+ but not where I put the
+
+22
+00:01:05,000 --> 00:01:10,640
+ note, I can search for that phrase and pull it right back
+
+23
+00:01:10,640 --> 00:01:11,320
+ up.
+
+24
+00:01:11,320 --> 00:01:14,160
+ And that's the basic paperless workflow.
+
+25
+00:01:14,160 --> 00:01:18,620
+ You capture the document once and you can stop hunting for
+
+26
+00:01:18,620 --> 00:01:19,120
+ it.
+
+27
+00:01:19,120 --> 00:01:22,880
+ In another video I'm going to show you what we did with
+
+28
+00:01:22,880 --> 00:01:25,040
+ Paperless Egg that adds AI to
+
+29
+00:01:25,040 --> 00:01:28,320
+ make searching even smarter.
+
+30
+00:01:28,320 --> 00:01:30,360
+ That's it for this one, thanks for watching.
+

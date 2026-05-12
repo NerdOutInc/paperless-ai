@@ -1,0 +1,41 @@
+## videos/paperless-ai-work/review/crops/01-005.00-tab-early.png
+ss Al
+
+## videos/paperless-ai-work/review/crops/01-083.00-tab-late.png
+ss Al
+
+## videos/paperless-ai-work/review/crops/02-002.00-title-card.png
+Paperless Al Semantic search and Claude tools for Paperless NGX
+
+## videos/paperless-ai-work/review/crops/02-005.00-browser-tab.png
+ess Al
+
+## videos/paperless-ai-work/review/crops/02-053.00-page-title.png
+S Al
+
+## videos/paperless-ai-work/review/crops/02-095.00-claude-prompt.png
+ess Al doc
+
+## videos/paperless-ai-work/review/crops/02-118.00-claude-result.png
+ess A| docu! lan for Patti
+
+## videos/paperless-ai-work/review/crops/02-130.00-claude-result-late.png
+anted those Al
+
+## videos/paperless-ai-work/review/crops/05-002.00-title-card.png
+Install Paperless Al on DigitalOcean Paperless-ngx plus semantic search on a cloud server
+
+## videos/paperless-ai-work/review/crops/05-005.00-browser-tab.png
+ess Al
+
+## videos/paperless-ai-work/review/crops/05-005.50-page-title.png
+S Al
+
+## videos/paperless-ai-work/review/crops/05-219.00-nav-late.png
+ss Al
+
+## videos/paperless-ai-work/review/frames/02-002.00-title-card.png
+Ss FULLSTACK AG Paperless Al Semantic search and Claude tools for Paperless NGX
+
+## videos/paperless-ai-work/review/frames/05-002.00-title-card.png
+sS FULLSTACK AG Install Paperless Al on DigitalOcean Paperless-ngx plus semantic search on a cloud server

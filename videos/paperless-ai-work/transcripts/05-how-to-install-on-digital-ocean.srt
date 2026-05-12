@@ -1,0 +1,368 @@
+1
+00:00:00,000 --> 00:00:03,360
+ Hey, this is Brian from Fullstack Egg.
+
+2
+00:00:03,360 --> 00:00:07,680
+ I'm going to show you how to install Papeless NGX and Pap
+
+3
+00:00:07,680 --> 00:00:12,360
+eless Egg to a digital ocean droplet.
+
+4
+00:00:12,360 --> 00:00:14,730
+ And by the end of this video, you'll have a working
+
+5
+00:00:14,730 --> 00:00:15,840
+ document archive.
+
+6
+00:00:15,840 --> 00:00:18,560
+ You can search using AI.
+
+7
+00:00:18,560 --> 00:00:24,060
+ I'm going to start on paperless.fullstack.egg and I'm going
+
+8
+00:00:24,060 --> 00:00:25,680
+ to use the button to deploy to
+
+9
+00:00:25,680 --> 00:00:28,080
+ digital ocean.
+
+10
+00:00:28,080 --> 00:00:31,960
+ You don't have to use our button, you can just create a dro
+
+11
+00:00:31,960 --> 00:00:33,240
+plet manually.
+
+12
+00:00:33,240 --> 00:00:36,960
+ The button just sets a couple of defaults for you.
+
+13
+00:00:36,960 --> 00:00:41,710
+ So I'm going to scroll past the region and you can see that
+
+14
+00:00:41,710 --> 00:00:43,960
+ Ubuntu is selected for us
+
+15
+00:00:43,960 --> 00:00:50,380
+ and we have a basic droplet with a regular CPU and 4GB of
+
+16
+00:00:50,380 --> 00:00:51,720
+ memory.
+
+17
+00:00:51,720 --> 00:00:55,360
+ And for authentication, I'm going to use my SSH key that I
+
+18
+00:00:55,360 --> 00:00:57,360
+ have already added to digital
+
+19
+00:00:57,360 --> 00:01:00,810
+ ocean and this will allow me to securely log into the
+
+20
+00:01:00,810 --> 00:01:03,120
+ server without typing a password
+
+21
+00:01:03,120 --> 00:01:05,440
+ in every time.
+
+22
+00:01:05,440 --> 00:01:08,890
+ You can click add SSH key and digital ocean has
+
+23
+00:01:08,890 --> 00:01:11,420
+ instructions for how to generate the
+
+24
+00:01:11,420 --> 00:01:16,770
+ SSH key on your computer and get the key added to digital
+
+25
+00:01:16,770 --> 00:01:17,760
+ ocean.
+
+26
+00:01:17,760 --> 00:01:22,500
+ And finally, we need to give our droplet a name, I'm going
+
+27
+00:01:22,500 --> 00:01:25,000
+ to call my paperless video.
+
+28
+00:01:25,000 --> 00:01:28,520
+ So now we have a droplet that is going to cost us $24 a
+
+29
+00:01:28,520 --> 00:01:30,520
+ month and we'll go ahead and
+
+30
+00:01:30,520 --> 00:01:32,160
+ hit create.
+
+31
+00:01:32,160 --> 00:01:37,400
+ This will take a minute to spin up, so I'll fast forward.
+
+32
+00:01:37,400 --> 00:01:42,160
+ And here it is ready and we have our IP address.
+
+33
+00:01:42,160 --> 00:01:46,360
+ So to connect to our new server, we will copy the IP
+
+34
+00:01:46,360 --> 00:01:49,400
+ address and open up a terminal.
+
+35
+00:01:49,400 --> 00:01:55,120
+ And we will type SSH root at and paste the IP address.
+
+36
+00:01:55,120 --> 00:02:00,650
+ I'll hit return and if it asks about a fingerprint, I'll
+
+37
+00:02:00,650 --> 00:02:01,920
+ type yes.
+
+38
+00:02:01,920 --> 00:02:04,680
+ And now we're logged into our server.
+
+39
+00:02:04,680 --> 00:02:06,880
+ And now we get to do the fun part.
+
+40
+00:02:06,880 --> 00:02:11,140
+ We're going to go to paperless.fullstack.egg and copy the
+
+41
+00:02:11,140 --> 00:02:12,480
+ install script.
+
+42
+00:02:12,480 --> 00:02:15,360
+ And we'll go back to our terminal where we're logged into
+
+43
+00:02:15,360 --> 00:02:16,440
+ our server.
+
+44
+00:02:16,440 --> 00:02:19,880
+ And we'll paste the script and run it.
+
+45
+00:02:19,880 --> 00:02:23,120
+ The script is going to ask us a few questions.
+
+46
+00:02:23,120 --> 00:02:27,280
+ So the install directory, the default is fine.
+
+47
+00:02:27,280 --> 00:02:31,370
+ We'll choose our username and password to log into paper
+
+48
+00:02:31,370 --> 00:02:32,040
+less.
+
+49
+00:02:32,040 --> 00:02:34,410
+ And if you have a domain name, you're going to point that
+
+50
+00:02:34,410 --> 00:02:35,760
+ your digital ocean droplet,
+
+51
+00:02:35,760 --> 00:02:37,440
+ you can enter it here.
+
+52
+00:02:37,440 --> 00:02:41,510
+ Otherwise you can skip it and just access it by the IP
+
+53
+00:02:41,510 --> 00:02:42,520
+ address.
+
+54
+00:02:42,520 --> 00:02:45,970
+ So now the script is pulling down all the pieces and
+
+55
+00:02:45,970 --> 00:02:47,080
+ starting everything up.
+
+56
+00:02:47,080 --> 00:02:52,200
+ This will take a few minutes and I'll just skip ahead here.
+
+57
+00:02:52,200 --> 00:02:53,640
+ And we're done.
+
+58
+00:02:53,640 --> 00:02:56,000
+ The script tells us everything we need.
+
+59
+00:02:56,000 --> 00:02:58,840
+ Here's the URL to access paperless.
+
+60
+00:02:58,840 --> 00:03:02,290
+ And here are the details we'll need later to connect to
+
+61
+00:03:02,290 --> 00:03:02,880
+ cloud.
+
+62
+00:03:02,880 --> 00:03:05,480
+ And I'll just save these somewhere.
+
+63
+00:03:05,480 --> 00:03:07,320
+ And let me make sure it's working.
+
+64
+00:03:07,320 --> 00:03:12,040
+ I'm going to open my browser, go to my server's IP address.
+
+65
+00:03:12,040 --> 00:03:15,740
+ And I'll log in with the username and password I just set
+
+66
+00:03:15,740 --> 00:03:16,200
+ up.
+
+67
+00:03:16,200 --> 00:03:19,040
+ And there it is, paperless is running.
+
+68
+00:03:19,040 --> 00:03:22,970
+ And to get started, I can just drag and drop a PDF right
+
+69
+00:03:22,970 --> 00:03:24,600
+ into the browser.
+
+70
+00:03:24,600 --> 00:03:28,860
+ And paperless is going to process it, read the text and add
+
+71
+00:03:28,860 --> 00:03:30,360
+ it to my archive.
+
+72
+00:03:30,360 --> 00:03:34,010
+ And our search add-on will automatically pick it up as well
+
+73
+00:03:34,010 --> 00:03:34,280
+.
+
+74
+00:03:34,280 --> 00:03:37,730
+ Be sure to check out our video about what we added to paper
+
+75
+00:03:37,730 --> 00:03:38,000
+less.
+
+76
+00:03:38,000 --> 00:03:40,680
+ Our paperless egg add-on.
+
+77
+00:03:40,680 --> 00:03:44,840
+ And in that video, we show you how to connect paperless to
+
+78
+00:03:44,840 --> 00:03:48,320
+ cloud and make queries using
+
+79
+00:03:48,320 --> 00:03:50,360
+ just plain English.
+
+80
+00:03:50,360 --> 00:03:52,200
+ And that's the whole thing.
+
+81
+00:03:52,200 --> 00:03:55,780
+ Now you've got a searchable document archive that you can
+
+82
+00:03:55,780 --> 00:03:57,720
+ access from anywhere.
+
+83
+00:03:57,720 --> 00:04:00,720
+ And you're in full control of your own data.
+
+84
+00:04:00,720 --> 00:04:04,170
+ So I've shown you how easy this is to get set up on digital
+
+85
+00:04:04,170 --> 00:04:05,400
+ ocean, but you might not
+
+86
+00:04:05,400 --> 00:04:09,120
+ want to pay $24 a month for this.
+
+87
+00:04:09,120 --> 00:04:12,900
+ So in another video, I'm going to show you how to install
+
+88
+00:04:12,900 --> 00:04:14,680
+ this on a Raspberry Pi.
+
+89
+00:04:14,680 --> 00:04:19,000
+ The Raspberry Pi you'll need will cost you around $200.
+
+90
+00:04:19,000 --> 00:04:21,960
+ But it'll save you almost $300 a year.
+
+91
+00:04:21,960 --> 00:04:24,680
+ So go ahead and check that video out as well.
+
+92
+00:04:24,680 --> 00:04:25,560
+ And thanks for watching.
+

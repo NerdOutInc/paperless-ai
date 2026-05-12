@@ -1,0 +1,176 @@
+1
+00:00:00,000 --> 00:00:05,000
+ Hey, this is Brian from Fullstack Egg. In the last video,
+
+2
+00:00:05,000 --> 00:00:07,040
+ we saw Papillis NGX turn
+
+3
+00:00:07,040 --> 00:00:11,230
+ farm paperwork into a searchable archive. And while that's
+
+4
+00:00:11,230 --> 00:00:12,960
+ already useful, the
+
+5
+00:00:12,960 --> 00:00:16,890
+ normal search could still be better. With the built-in
+
+6
+00:00:16,890 --> 00:00:18,400
+ search, you have to know
+
+7
+00:00:18,400 --> 00:00:22,350
+ the words the document actually used. So if I search for
+
+8
+00:00:22,350 --> 00:00:24,040
+ fertilizer recommendations,
+
+9
+00:00:24,040 --> 00:00:29,920
+ Papillis comes back empty. Now I know those records exist.
+
+10
+00:00:29,920 --> 00:00:31,400
+ They are just named
+
+11
+00:00:31,400 --> 00:00:35,580
+ things like Nutrient Management Plan, and they mention
+
+12
+00:00:35,580 --> 00:00:37,300
+ products like ammonia
+
+13
+00:00:37,300 --> 00:00:42,930
+ instead of the words I typed. Papillis Egg fixes that by
+
+14
+00:00:42,930 --> 00:00:44,480
+ adding semantic search.
+
+15
+00:00:44,480 --> 00:00:49,020
+ It doesn't replace Papillis NGX, and it doesn't modify the
+
+16
+00:00:49,020 --> 00:00:51,480
+ install itself. It
+
+17
+00:00:51,480 --> 00:00:55,500
+ runs beside it as a companion Docker container, and it
+
+18
+00:00:55,500 --> 00:00:57,240
+ reads the text Papillis
+
+19
+00:00:57,240 --> 00:01:01,870
+ already extracted. So it builds a local search index based
+
+20
+00:01:01,870 --> 00:01:03,200
+ on meaning rather than
+
+21
+00:01:03,200 --> 00:01:08,160
+ keywords. And what Papillis Egg is going to do is expose
+
+22
+00:01:08,160 --> 00:01:09,920
+ those search tools to
+
+23
+00:01:09,920 --> 00:01:16,940
+ cloud or any AI agent through MCP. MCP stands for Model
+
+24
+00:01:16,940 --> 00:01:18,720
+ Context Protocol, and
+
+25
+00:01:18,720 --> 00:01:23,670
+ it's just the standard way for an AI agent to connect to
+
+26
+00:01:23,670 --> 00:01:26,400
+ external tools. So
+
+27
+00:01:26,400 --> 00:01:29,620
+ now I can ask the question the way I would say it out loud.
+
+28
+00:01:29,620 --> 00:01:31,000
+ What are my
+
+29
+00:01:31,000 --> 00:01:35,660
+ fertilizer recommendations? And Claude calls the Papillis
+
+30
+00:01:35,660 --> 00:01:38,000
+ Egg Search tool, searches
+
+31
+00:01:38,000 --> 00:01:42,120
+ the archive by meaning, and it finds the nutrient plans
+
+32
+00:01:42,120 --> 00:01:43,560
+ that the keyword search
+
+33
+00:01:43,560 --> 00:01:47,500
+ missed. And that's the difference with adding semantic
+
+34
+00:01:47,500 --> 00:01:49,080
+ search. I don't have to
+
+35
+00:01:49,080 --> 00:01:52,150
+ remember the exact title or product name, I can just
+
+36
+00:01:52,150 --> 00:01:54,040
+ describe the thing I need. And
+
+37
+00:01:54,040 --> 00:01:58,600
+ Claude knows how to bring back the right documents. And Pap
+
+38
+00:01:58,600 --> 00:02:00,520
+illis Egg indexes the
+
+39
+00:02:00,520 --> 00:02:04,620
+ documents on your server without modifying your Papillis NG
+
+40
+00:02:04,620 --> 00:02:06,720
+X data. So your
+
+41
+00:02:06,720 --> 00:02:10,870
+ Papillis install stays stock, and Papillis Egg just adds
+
+42
+00:02:10,870 --> 00:02:12,040
+ the smarter layer
+
+43
+00:02:12,040 --> 00:02:17,800
+ right beside it. And that's it today, so thanks for
+
+44
+00:02:17,800 --> 00:02:19,240
+ watching.
+

@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      @font-face {
+        font-family: "Manrope";
+        src: url("file:///Users/brian/github/nerdoutinc/paperless-ag/videos/src/fonts/manrope-latin-variable.woff2") format("woff2");
+        font-style: normal;
+        font-weight: 200 800;
+      }
+
+      @font-face {
+        font-family: "Inter";
+        src: url("file:///Users/brian/github/nerdoutinc/paperless-ag/videos/src/fonts/inter-latin-variable.woff2") format("woff2");
+        font-style: normal;
+        font-weight: 100 900;
+      }
+
+      html,
+      body {
+        margin: 0;
+        width: 3600px;
+        height: 2160px;
+        overflow: hidden;
+      }
+
+      .card {
+        position: relative;
+        width: 3600px;
+        height: 2160px;
+        background-image: url("file:///Users/brian/github/nerdoutinc/paperless-ag/videos/src/fullstack-ag-title-card-background-3600x2160.png");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+
+      .episode-title {
+        position: absolute;
+        left: 1800px;
+        top: 1059px;
+        width: 2400px;
+        transform: translate(-50%, -50%);
+        color: #ffffff;
+        font-family: "Manrope", system-ui, sans-serif;
+        font-size: 168px;
+        font-weight: 700;
+        letter-spacing: 0;
+        line-height: 1.18;
+        text-align: center;
+      }
+
+      .episode-subtitle {
+        position: absolute;
+        left: 1800px;
+        top: 1330px;
+        width: 2500px;
+        transform: translate(-50%, -50%);
+        color: #f4efe7;
+        font-family: "Inter", system-ui, sans-serif;
+        font-size: 72px;
+        font-weight: 400;
+        letter-spacing: 0;
+        line-height: 1.35;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="card">
+      <div class="episode-title">Paperless AI</div>
+      <div class="episode-subtitle">Semantic search and Claude tools for Paperless NGX</div>
+    </main>
+  </body>
+</html>
