@@ -263,11 +263,12 @@ class SetupHandler(BaseHTTPRequestHandler):
 
         threading.Thread(target=finalize, daemon=True).start()
 
+        normalized_paperless_url = paperless_url.rstrip("/")
         self._send_json(200, {
             "status": "started",
             "mcp_token": mcp_token,
             "paperless_url": paperless_url,
-            "search_url": f"{paperless_url}/search",
+            "search_url": f"{normalized_paperless_url}/search",
         })
 
 

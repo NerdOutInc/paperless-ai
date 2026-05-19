@@ -165,8 +165,8 @@ After installation, log in to Paperless and open:
 http://<your-pi-ip>/search/mcp
 ```
 
-That page shows your MCP server URL, auth token, and current setup instructions
-for Claude, Codex, VS Code/Copilot, and llama.cpp.
+That page shows your MCP server URL, the auth token for Paperless admins, and
+current setup instructions for Claude, Codex, VS Code/Copilot, and llama.cpp.
 
 ## 9. Find your MCP token later
 

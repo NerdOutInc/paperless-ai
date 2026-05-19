@@ -1,3 +1,6 @@
+import hashlib
+import threading
+import time
 from pathlib import Path
 from urllib.parse import quote
 
@@ -11,9 +14,14 @@ import search
 
 
 STATIC_DIR = Path(__file__).with_name("static").joinpath("search")
+PAGE_DIR = Path(__file__).with_name("search_pages")
 MAX_SEARCH_LIMIT = 50
 MAX_QUERY_LENGTH = 500
 DEFAULT_SEARCH_LIMIT = 10
+SESSION_CACHE_TTL_SECONDS = 15
+SESSION_VALIDATION_TIMEOUT = 3
+_session_cache = {}
+_session_cache_lock = threading.Lock()
 
 
 def clamp_limit(raw_limit, default=DEFAULT_SEARCH_LIMIT, max_limit=MAX_SEARCH_LIMIT):
@@ -26,6 +34,15 @@ def clamp_limit(raw_limit, default=DEFAULT_SEARCH_LIMIT, max_limit=MAX_SEARCH_LI
 
 def cookie_header_from_request(request):
     return request.headers.get("cookie", "")
+
+
+def clear_session_cache():
+    with _session_cache_lock:
+        _session_cache.clear()
+
+
+def session_cache_key(cookie_header):
+    return hashlib.sha256(cookie_header.encode("utf-8")).hexdigest()
 
 
 def login_redirect_for(request):
@@ -42,22 +59,43 @@ def validate_paperless_session(cookie_header):
     if not cookie_header:
         return None
 
+    now = time.monotonic()
+    cache_key = session_cache_key(cookie_header)
+    with _session_cache_lock:
+        cached = _session_cache.get(cache_key)
+        if cached and cached["expires_at"] > now:
+            return cached["profile"]
+        if cached:
+            _session_cache.pop(cache_key, None)
+
     response = requests.get(
         f"{config.PAPERLESS_API_URL}/api/profile/",
         headers={
             "Accept": "application/json",
             "Cookie": cookie_header,
         },
-        timeout=10,
+        timeout=SESSION_VALIDATION_TIMEOUT,
     )
     if response.status_code in (401, 403):
+        with _session_cache_lock:
+            _session_cache[cache_key] = {
+                "expires_at": now + SESSION_CACHE_TTL_SECONDS,
+                "profile": None,
+            }
         return None
     response.raise_for_status()
 
     try:
-        return response.json()
+        profile = response.json()
     except ValueError:
-        return None
+        profile = None
+
+    with _session_cache_lock:
+        _session_cache[cache_key] = {
+            "expires_at": now + SESSION_CACHE_TTL_SECONDS,
+            "profile": profile,
+        }
+    return profile
 
 
 def api_error_response(error, status_code):
@@ -106,6 +144,10 @@ def public_profile(profile):
     }
 
 
+def profile_can_view_mcp_token(profile):
+    return bool(profile.get("is_superuser") or profile.get("is_staff"))
+
+
 def authenticated_static_page(request, filename):
     try:
         profile = validate_paperless_session(cookie_header_from_request(request))
@@ -115,7 +157,7 @@ def authenticated_static_page(request, filename):
     if profile is None:
         return login_redirect_for(request)
 
-    index_path = STATIC_DIR / filename
+    index_path = PAGE_DIR / filename
     return HTMLResponse(
         index_path.read_text(encoding="utf-8"),
         headers={"Cache-Control": "no-store"},
@@ -153,11 +195,15 @@ def mcp_config_api(request):
     if profile is None:
         return api_error_response("not_authenticated", 401)
 
+    can_view_token = profile_can_view_mcp_token(profile)
+    auth_token = config.MCP_AUTH_TOKEN if can_view_token else None
     return JSONResponse(
         {
             "server_name": "paperless-ag",
             "endpoint_path": "/mcp",
-            "auth_token": config.MCP_AUTH_TOKEN,
+            "auth_token": auth_token,
+            "can_view_token": can_view_token,
+            "token_available": bool(auth_token),
             "token_configured": bool(config.MCP_AUTH_TOKEN),
         },
         headers={"Cache-Control": "no-store"},

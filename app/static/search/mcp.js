@@ -6,6 +6,8 @@
     MCP_TOKEN: "YOUR_MCP_AUTH_TOKEN",
     AUTH_HEADER: "Bearer YOUR_MCP_AUTH_TOKEN",
   };
+  var TOKEN_UNAVAILABLE_MESSAGE =
+    "Ask a Paperless administrator for the MCP token";
 
   function setStatus(message) {
     status.textContent = message || "";
@@ -128,16 +130,23 @@
         values.SERVER_NAME = payload.server_name || values.SERVER_NAME;
         values.MCP_URL =
           window.location.origin + (payload.endpoint_path || "/mcp");
-        values.MCP_TOKEN = payload.auth_token || "YOUR_MCP_AUTH_TOKEN";
-        values.AUTH_HEADER = payload.auth_token
-          ? "Bearer " + payload.auth_token
-          : "Bearer YOUR_MCP_AUTH_TOKEN";
+        if (payload.auth_token) {
+          values.MCP_TOKEN = payload.auth_token;
+          values.AUTH_HEADER = "Bearer " + payload.auth_token;
+        } else {
+          values.MCP_TOKEN = TOKEN_UNAVAILABLE_MESSAGE;
+          values.AUTH_HEADER = "Bearer YOUR_MCP_AUTH_TOKEN";
+        }
         renderTemplates();
-        setStatus(
-          payload.token_configured
-            ? "MCP connection details loaded."
-            : "MCP_AUTH_TOKEN is not configured yet.",
-        );
+        if (!payload.token_configured) {
+          setStatus("MCP_AUTH_TOKEN is not configured yet.");
+        } else if (!payload.can_view_token) {
+          setStatus(
+            "MCP token is configured. Only Paperless admins can view it here.",
+          );
+        } else {
+          setStatus("MCP connection details loaded.");
+        }
       })
       .catch(function (error) {
         renderTemplates();

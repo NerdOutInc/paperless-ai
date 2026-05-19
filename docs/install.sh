@@ -1451,7 +1451,7 @@ setup_backup_cron() {
 
 print_fresh_summary() {
     local install_dir="$1"
-    local paperless_url="$2"
+    local paperless_url="${2%/}"
     local search_url="${paperless_url}/search"
     local mcp_setup_url="${paperless_url}/search/mcp"
 
@@ -1475,8 +1475,9 @@ print_fresh_summary() {
     echo "  Log in to Paperless and open:"
     echo "    ${mcp_setup_url}"
     echo
-    echo "  That page shows your MCP URL, auth token, and setup"
-    echo "  instructions for Claude, Codex, VS Code/Copilot, and llama.cpp."
+    echo "  That page shows your MCP URL, the auth token for"
+    echo "  Paperless admins, and setup instructions for Claude,"
+    echo "  Codex, VS Code/Copilot, and llama.cpp."
     echo
     echo -e "  ${BOLD}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
     echo
@@ -1535,8 +1536,9 @@ print_addon_summary() {
     fi
     echo "    ${mcp_setup_url}"
     echo
-    echo "  That page shows your MCP URL, auth token, and setup"
-    echo "  instructions for Claude, Codex, VS Code/Copilot, and llama.cpp."
+    echo "  That page shows your MCP URL, the auth token for"
+    echo "  Paperless admins, and setup instructions for Claude,"
+    echo "  Codex, VS Code/Copilot, and llama.cpp."
     echo
     echo -e "  ${BOLD}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
     echo

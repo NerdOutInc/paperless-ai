@@ -1,6 +1,8 @@
+import importlib.util
 import json
 import os
 import sys
+import types
 import unittest
 from pathlib import Path
 from types import SimpleNamespace
@@ -9,7 +11,88 @@ from unittest.mock import patch
 import requests
 
 
-APP_DIR = Path(os.environ.get("PAPERLESS_AG_APP_DIR", Path(__file__).resolve().parents[1] / "app"))
+def install_missing_dependency_stubs():
+    if importlib.util.find_spec("sentence_transformers") is None:
+        sentence_transformers = types.ModuleType("sentence_transformers")
+
+        class SentenceTransformer:
+            def __init__(self, *_args, **_kwargs):
+                pass
+
+            def encode(self, value):
+                return value
+
+        sentence_transformers.SentenceTransformer = SentenceTransformer
+        sys.modules["sentence_transformers"] = sentence_transformers
+
+    if importlib.util.find_spec("psycopg2") is None:
+        psycopg2 = types.ModuleType("psycopg2")
+        psycopg2.connect = lambda *_args, **_kwargs: None
+        sys.modules["psycopg2"] = psycopg2
+
+    if importlib.util.find_spec("pgvector") is None:
+        pgvector = types.ModuleType("pgvector")
+        pgvector_psycopg2 = types.ModuleType("pgvector.psycopg2")
+        pgvector_psycopg2.register_vector = lambda *_args, **_kwargs: None
+        sys.modules["pgvector"] = pgvector
+        sys.modules["pgvector.psycopg2"] = pgvector_psycopg2
+
+    if importlib.util.find_spec("starlette") is None:
+        starlette = types.ModuleType("starlette")
+        starlette_responses = types.ModuleType("starlette.responses")
+        starlette_routing = types.ModuleType("starlette.routing")
+        starlette_staticfiles = types.ModuleType("starlette.staticfiles")
+
+        class Response:
+            def __init__(self, content="", status_code=200, headers=None):
+                self.status_code = status_code
+                self.headers = headers or {}
+                self.body = str(content).encode("utf-8")
+
+        class HTMLResponse(Response):
+            pass
+
+        class JSONResponse(Response):
+            def __init__(self, content, status_code=200, headers=None):
+                super().__init__(json.dumps(content), status_code, headers)
+
+        class RedirectResponse(Response):
+            def __init__(self, url, status_code=302, headers=None):
+                response_headers = dict(headers or {})
+                response_headers["location"] = url
+                super().__init__("", status_code, response_headers)
+
+        class Route:
+            def __init__(self, *_args, **_kwargs):
+                pass
+
+        class Mount(Route):
+            pass
+
+        class StaticFiles:
+            def __init__(self, *_args, **_kwargs):
+                pass
+
+        starlette_responses.HTMLResponse = HTMLResponse
+        starlette_responses.JSONResponse = JSONResponse
+        starlette_responses.RedirectResponse = RedirectResponse
+        starlette_routing.Mount = Mount
+        starlette_routing.Route = Route
+        starlette_staticfiles.StaticFiles = StaticFiles
+        sys.modules["starlette"] = starlette
+        sys.modules["starlette.responses"] = starlette_responses
+        sys.modules["starlette.routing"] = starlette_routing
+        sys.modules["starlette.staticfiles"] = starlette_staticfiles
+
+
+install_missing_dependency_stubs()
+
+APP_DIR = Path(
+    os.environ.get(
+        "PAPERLESS_AG_APP_DIR",
+        Path(__file__).resolve().parents[1] / "app",
+    )
+)
 sys.path.insert(0, str(APP_DIR))
 
 import search  # noqa: E402
@@ -35,6 +118,9 @@ class FakeResponse:
 
 
 class WebSearchTests(unittest.TestCase):
+    def setUp(self):
+        web_search.clear_session_cache()
+
     def test_clamp_limit_handles_bad_and_out_of_range_values(self):
         self.assertEqual(web_search.clamp_limit(None), 10)
         self.assertEqual(web_search.clamp_limit("nope"), 10)
@@ -90,6 +176,21 @@ class WebSearchTests(unittest.TestCase):
 
         self.assertIsNone(web_search.validate_paperless_session("sessionid=bad"))
 
+    @patch("web_search.requests.get")
+    def test_validate_session_caches_profile_briefly(self, get):
+        get.return_value = FakeResponse(200, {"username": "admin"})
+
+        first = web_search.validate_paperless_session("sessionid=abc")
+        second = web_search.validate_paperless_session("sessionid=abc")
+
+        self.assertEqual(first, {"username": "admin"})
+        self.assertEqual(second, {"username": "admin"})
+        get.assert_called_once()
+        self.assertEqual(
+            get.call_args.kwargs["timeout"],
+            web_search.SESSION_VALIDATION_TIMEOUT,
+        )
+
     def test_login_redirect_fully_encodes_next_url(self):
         request = SimpleNamespace(
             url=SimpleNamespace(path="/search", query="q=a&foo=b"),
@@ -123,9 +224,16 @@ class WebSearchTests(unittest.TestCase):
         self.assertEqual(response.status_code, 401)
         self.assertEqual(json.loads(response.body), {"error": "not_authenticated"})
 
+    def test_authenticated_html_is_not_in_public_static_directory(self):
+        self.assertFalse((web_search.STATIC_DIR / "index.html").exists())
+        self.assertFalse((web_search.STATIC_DIR / "mcp.html").exists())
+
     @patch("web_search.config.MCP_AUTH_TOKEN", "paperless-ag-token")
-    @patch("web_search.validate_paperless_session", return_value={"username": "admin"})
-    def test_mcp_config_api_returns_token_for_authenticated_session(self, _validate):
+    @patch(
+        "web_search.validate_paperless_session",
+        return_value={"username": "admin", "is_superuser": True},
+    )
+    def test_mcp_config_api_returns_token_for_admin_session(self, _validate):
         request = SimpleNamespace(headers={"cookie": "sessionid=abc"})
 
         response = web_search.mcp_config_api(request)
@@ -134,6 +242,24 @@ class WebSearchTests(unittest.TestCase):
         self.assertEqual(payload["server_name"], "paperless-ag")
         self.assertEqual(payload["endpoint_path"], "/mcp")
         self.assertEqual(payload["auth_token"], "paperless-ag-token")
+        self.assertTrue(payload["can_view_token"])
+        self.assertTrue(payload["token_available"])
+        self.assertTrue(payload["token_configured"])
+
+    @patch("web_search.config.MCP_AUTH_TOKEN", "paperless-ag-token")
+    @patch(
+        "web_search.validate_paperless_session",
+        return_value={"username": "viewer", "is_superuser": False, "is_staff": False},
+    )
+    def test_mcp_config_api_hides_token_for_non_admin_session(self, _validate):
+        request = SimpleNamespace(headers={"cookie": "sessionid=abc"})
+
+        response = web_search.mcp_config_api(request)
+        payload = json.loads(response.body)
+
+        self.assertIsNone(payload["auth_token"])
+        self.assertFalse(payload["can_view_token"])
+        self.assertFalse(payload["token_available"])
         self.assertTrue(payload["token_configured"])
 
     @patch("web_search.validate_paperless_session", return_value=None)
@@ -319,6 +445,34 @@ class SessionSearchTests(unittest.TestCase):
             [call.kwargs["limit"] for call in search_similar.call_args_list],
             [20, 40],
         )
+
+    @patch("search.config.SEMANTIC_MIN_SIMILARITY", -1)
+    @patch("search.embeddings.get_embedding", return_value=[0.1, 0.2])
+    @patch("search.db.search_similar_documents")
+    @patch("search.get_documents_for_session")
+    def test_semantic_search_handles_malformed_similarity(
+        self,
+        get_documents,
+        search_similar,
+        _get_embedding,
+    ):
+        search_similar.return_value = [
+            {
+                "document_id": 1,
+                "chunk_index": 0,
+                "chunk_text": "authorized chunk",
+                "similarity": "not-a-float",
+            },
+        ]
+        get_documents.return_value = {1: {"id": 1, "title": "Authorized"}}
+
+        results = search.semantic_search_for_session(
+            "authorized",
+            limit=1,
+            cookie_header="sessionid=abc",
+        )
+
+        self.assertEqual(results[0]["similarity"], 0.0)
 
     @patch("search.keyword_search_for_session")
     @patch("search.semantic_search_for_session")

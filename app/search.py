@@ -187,7 +187,7 @@ def semantic_search_for_session(query, limit=10, cookie_header=""):
                 _document_payload(
                     doc,
                     matched_chunk=result["chunk_text"],
-                    similarity=float(result["similarity"]),
+                    similarity=_semantic_similarity(result),
                     sources=["semantic"],
                 )
             )
