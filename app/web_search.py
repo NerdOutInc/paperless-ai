@@ -83,11 +83,11 @@ def search_unavailable_response():
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Paperless Ag Search unavailable</title>
+    <title>Paperless-ngx Search unavailable</title>
   </head>
   <body>
     <h1>Search is temporarily unavailable</h1>
-    <p>Paperless Ag could not verify your Paperless session. Try again in a moment.</p>
+    <p>Paperless-ngx could not verify your Paperless session. Try again in a moment.</p>
   </body>
 </html>
 """,

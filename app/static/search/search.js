@@ -2,7 +2,6 @@
   var form = document.getElementById("search-form");
   var input = document.getElementById("search-query");
   var status = document.getElementById("status");
-  var profileStatus = document.getElementById("profile-status");
   var results = document.getElementById("results");
   var latestSearchId = 0;
 
@@ -65,9 +64,16 @@
       return "";
     }
     var dateValue = String(value);
-    var date = new Date(
-      dateValue.length === 10 ? dateValue + "T00:00:00" : dateValue,
-    );
+    var dateParts = dateValue.match(/^(\d{4})-(\d{2})-(\d{2})/);
+    var date = dateParts
+      ? new Date(
+          Date.UTC(
+            Number(dateParts[1]),
+            Number(dateParts[2]) - 1,
+            Number(dateParts[3]),
+          ),
+        )
+      : new Date(dateValue);
     if (Number.isNaN(date.getTime())) {
       return dateValue;
     }
@@ -75,6 +81,7 @@
       year: "numeric",
       month: "short",
       day: "numeric",
+      timeZone: "UTC",
     });
   }
 
@@ -276,39 +283,6 @@
         var message = error.message || "Search failed";
         setStatus(message);
         renderEmpty(message);
-      });
-  }
-
-  if (profileStatus) {
-    fetch("/search/api/me", { headers: { Accept: "application/json" } })
-      .then(function (response) {
-        if (response.status === 401) {
-          loginRedirect();
-          return null;
-        }
-        return parseJsonResponse(response, "Profile unavailable").then(
-          function (body) {
-            if (!response.ok) {
-              throw new Error(errorMessage(body.error, "Profile unavailable"));
-            }
-            return body;
-          },
-        );
-      })
-      .then(function (payload) {
-        if (!payload) {
-          return;
-        }
-        var profile = payload.profile || {};
-        var name =
-          [profile.first_name, profile.last_name].filter(Boolean).join(" ") ||
-          profile.email ||
-          profile.username ||
-          "Paperless";
-        profileStatus.textContent = "Signed in as " + name;
-      })
-      .catch(function () {
-        profileStatus.textContent = "Sign-in status unavailable";
       });
   }
 

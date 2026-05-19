@@ -157,7 +157,8 @@ button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 44px;
+  min-height: 50px;
+  padding: 0 22px;
   border: 1px solid var(--olive-deep);
   border-radius: 8px;
   background: var(--olive-deep);
@@ -171,11 +172,6 @@ button {
     background 0.15s,
     border-color 0.15s,
     transform 0.05s;
-}
-
-button {
-  min-height: 50px;
-  padding: 0 22px;
 }
 
 button:hover {
@@ -409,7 +405,7 @@ input[type="search"]:focus-visible,
 
 @media (max-width: 760px) {
   .app-shell {
-    width: min(100% - 24px, 1100px);
+    width: min(calc(100% - 24px), 1100px);
   }
 
   .topbar {
