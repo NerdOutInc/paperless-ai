@@ -2,7 +2,7 @@
 
 Run Paperless-ngx with semantic search on your home network using a
 Raspberry Pi. This guide walks through the full setup -- from flashing the
-SD card to searching your documents with Claude.
+SD card to searching your documents in the browser.
 
 ## What you need
 
@@ -100,7 +100,7 @@ The installer will:
 
 When it finishes you'll see a summary with your Paperless URL, Search URL,
 and MCP connection details. **Save the MCP auth token** if you plan to
-connect Claude.
+connect AI apps later.
 
 ## 5. Access Paperless on your network
 
@@ -154,71 +154,19 @@ the normal Paperless document viewer.
 For example: `http://192.168.1.42/search` or
 `http://paperless.local/search`
 
-## 8. Connect Claude
+## 8. Connect AI apps with MCP
 
-The MCP server is optional. It lets Claude search your documents using natural
-language. The install summary printed an auth token -- use it in one of these
-methods.
+MCP support is optional. It lets AI apps use Paperless Ag's read-only search
+tools without exposing Postgres or changing Paperless-ngx.
 
-### Claude Code (CLI)
+After installation, log in to Paperless and open:
 
-```bash
-claude mcp add --transport http paperless-ag \
-  http://<your-pi-ip>/mcp \
-  --header "Authorization: Bearer YOUR_MCP_AUTH_TOKEN"
+```text
+http://<your-pi-ip>/search/mcp
 ```
 
-### VS Code / Cursor
-
-Add to your `.mcp.json`:
-
-```json
-{
-  "mcpServers": {
-    "paperless-ag": {
-      "type": "http",
-      "url": "http://<your-pi-ip>/mcp",
-      "headers": {
-        "Authorization": "Bearer YOUR_MCP_AUTH_TOKEN"
-      }
-    }
-  }
-}
-```
-
-### Claude Desktop
-
-Claude Desktop uses `mcp-remote` as a bridge for HTTP MCP servers. On macOS,
-open Claude Desktop and choose **Claude > Settings** from the menu bar, then go
-to **Developer** and click **Edit Config**. Add this to
-`claude_desktop_config.json`:
-
-```json
-{
-  "mcpServers": {
-    "paperless-ag": {
-      "command": "npx",
-      "args": [
-        "-y",
-        "mcp-remote",
-        "http://<your-pi-ip>/mcp",
-        "--allow-http",
-        "--header",
-        "Authorization: Bearer YOUR_MCP_AUTH_TOKEN"
-      ],
-      "env": {
-        "PATH": "YOUR_NODE_BIN_DIR:/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin"
-      }
-    }
-  }
-}
-```
-
-Replace `YOUR_NODE_BIN_DIR` with the directory that contains `node`; on the Pi
-you can usually find it with `dirname "$(which node)"`. Save the file, quit
-Claude Desktop completely, and reopen it before checking the connector.
-
-Then try: *"Search my documents for crop insurance"*
+That page shows your MCP server URL, auth token, and current setup instructions
+for Claude, Codex, VS Code/Copilot, and llama.cpp.
 
 ## 9. Find your MCP token later
 

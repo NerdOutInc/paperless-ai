@@ -1452,8 +1452,8 @@ setup_backup_cron() {
 print_fresh_summary() {
     local install_dir="$1"
     local paperless_url="$2"
-    local mcp_url="${paperless_url}/mcp"
     local search_url="${paperless_url}/search"
+    local mcp_setup_url="${paperless_url}/search/mcp"
 
     echo
     echo -e "${BOLD}════════════════════════════════════════════════════${NC}"
@@ -1470,34 +1470,13 @@ print_fresh_summary() {
     echo
     echo -e "  ${BOLD}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
     echo
-    echo -e "  ${BOLD}OPTIONAL: CONNECT TO CLAUDE:${NC}"
+    echo -e "  ${BOLD}OPTIONAL: CONNECT AI APPS WITH MCP:${NC}"
     echo
-    echo "  In Claude Code, run this command:"
+    echo "  Log in to Paperless and open:"
+    echo "    ${mcp_setup_url}"
     echo
-    echo -e "    ${BOLD}claude mcp add --transport http paperless-ag ${mcp_url} \\\\${NC}"
-    echo -e "    ${BOLD}  --header \"Authorization: Bearer ${MCP_AUTH_TOKEN}\"${NC}"
-    echo
-    echo "  Or add this to your .mcp.json:"
-    echo
-    echo "    {"
-    echo "      \"mcpServers\": {"
-    echo "        \"paperless-ag\": {"
-    echo "          \"type\": \"http\","
-    echo "          \"url\": \"${mcp_url}\","
-    echo "          \"headers\": {"
-    echo "            \"Authorization\": \"Bearer ${MCP_AUTH_TOKEN}\""
-    echo "          }"
-    echo "        }"
-    echo "      }"
-    echo "    }"
-    echo
-    echo "  Claude Desktop uses mcp-remote instead of the .mcp.json HTTP block."
-    echo "  Open Claude > Settings > Developer > Edit Config and use:"
-    echo "    Server URL: ${mcp_url}"
-    echo "    Token:      ${MCP_AUTH_TOKEN}"
-    echo "  Full config example: https://paperless.fullstack.ag"
-    echo
-    echo "  Then ask Claude: \"Search my farm documents for crop insurance\""
+    echo "  That page shows your MCP URL, auth token, and setup"
+    echo "  instructions for Claude, Codex, VS Code/Copilot, and llama.cpp."
     echo
     echo -e "  ${BOLD}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
     echo
@@ -1516,16 +1495,16 @@ print_addon_summary() {
     local ip_addr
     ip_addr=$(hostname -I 2>/dev/null | awk '{print $1}' || echo "YOUR_SERVER_IP")
 
-    local mcp_url
     local search_url
+    local mcp_setup_url
     if [[ "${ADDON_ENABLE_CADDY:-true}" != "true" ]]; then
-        mcp_url="http://${ip_addr}:3001/mcp"
+        mcp_setup_url="http://${ip_addr}/search/mcp"
     elif [[ -n "${DOMAIN:-}" ]]; then
-        mcp_url="https://${DOMAIN}/mcp"
         search_url="https://${DOMAIN}/search"
+        mcp_setup_url="https://${DOMAIN}/search/mcp"
     else
-        mcp_url="http://${ip_addr}/mcp"
         search_url="http://${ip_addr}/search"
+        mcp_setup_url="http://${ip_addr}/search/mcp"
     fi
 
     echo
@@ -1547,34 +1526,17 @@ print_addon_summary() {
     echo
     echo -e "  ${BOLD}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
     echo
-    echo -e "  ${BOLD}OPTIONAL: CONNECT TO CLAUDE:${NC}"
+    echo -e "  ${BOLD}OPTIONAL: CONNECT AI APPS WITH MCP:${NC}"
     echo
-    echo "  In Claude Code, run this command:"
+    if [[ "${ADDON_ENABLE_CADDY:-true}" != "true" ]]; then
+        echo "  After your reverse proxy routes /search, log in and open:"
+    else
+        echo "  Log in to Paperless and open:"
+    fi
+    echo "    ${mcp_setup_url}"
     echo
-    echo -e "    ${BOLD}claude mcp add --transport http paperless-ag ${mcp_url} \\\\${NC}"
-    echo -e "    ${BOLD}  --header \"Authorization: Bearer ${MCP_AUTH_TOKEN}\"${NC}"
-    echo
-    echo "  Or add this to your .mcp.json:"
-    echo
-    echo "    {"
-    echo "      \"mcpServers\": {"
-    echo "        \"paperless-ag\": {"
-    echo "          \"type\": \"http\","
-    echo "          \"url\": \"${mcp_url}\","
-    echo "          \"headers\": {"
-    echo "            \"Authorization\": \"Bearer ${MCP_AUTH_TOKEN}\""
-    echo "          }"
-    echo "        }"
-    echo "      }"
-    echo "    }"
-    echo
-    echo "  Claude Desktop uses mcp-remote instead of the .mcp.json HTTP block."
-    echo "  Open Claude > Settings > Developer > Edit Config and use:"
-    echo "    Server URL: ${mcp_url}"
-    echo "    Token:      ${MCP_AUTH_TOKEN}"
-    echo "  Full config example: https://paperless.fullstack.ag"
-    echo
-    echo "  Then ask Claude: \"Search my farm documents for crop insurance\""
+    echo "  That page shows your MCP URL, auth token, and setup"
+    echo "  instructions for Claude, Codex, VS Code/Copilot, and llama.cpp."
     echo
     echo -e "  ${BOLD}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
     echo

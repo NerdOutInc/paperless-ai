@@ -16,7 +16,7 @@
           -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
         line-height: 1.6;
         color: #1a1a1a;
-        max-width: 680px;
+        max-width: 840px;
         margin: 0 auto;
         padding: 2rem 1.5rem;
       }
@@ -124,6 +124,25 @@
         height: 28px;
       }
 
+      figure {
+        margin: 1rem 0 1.5rem;
+      }
+
+      figure img {
+        display: block;
+        width: 100%;
+        height: auto;
+        border: 1px solid #d9d9d9;
+        border-radius: 8px;
+        box-shadow: 0 16px 36px rgba(0, 0, 0, 0.08);
+      }
+
+      figcaption {
+        color: #666;
+        font-size: 0.9rem;
+        margin-top: 0.5rem;
+      }
+
       footer {
         margin-top: 3rem;
         padding-top: 1rem;
@@ -162,8 +181,8 @@
   <body>
     <h1>Paperless Ag</h1>
     <p class="tagline">
-      Semantic search for Paperless-ngx. Browser search and optional Claude
-      integration, built for farmers.
+      Semantic search for Paperless-ngx, with browser search and optional MCP
+      access for AI apps.
     </p>
 
     <h2>Install</h2>
@@ -253,8 +272,8 @@
         Paperless login
       </li>
       <li>
-        Optionally connects to Claude via MCP so you can search your documents
-        through conversation
+        Optionally exposes read-only MCP tools for AI apps like Claude, Codex,
+        VS Code/Copilot, and llama.cpp
       </li>
       <li>
         Runs locally with no external API calls -- your documents stay on your
@@ -316,370 +335,43 @@
       </button>
     </div>
 
-    <h2>Connect to Claude</h2>
+    <figure>
+      <img
+        src="assets/search-results.png"
+        alt="Paperless Ag search page showing realistic search results"
+        width="1440"
+        height="1180"
+      />
+      <figcaption>
+        The <code>/search</code> page reuses your Paperless login and links each
+        result back to the stock document viewer.
+      </figcaption>
+    </figure>
+
+    <h2>MCP Support</h2>
     <p>
-      Claude integration is optional. The install script prints Claude Code and
-      <code>.mcp.json</code> examples with your server URL and token. Claude
-      Desktop uses those same values in the <code>mcp-remote</code> bridge
-      config below.
-    </p>
-
-    <p><strong>Claude Code:</strong></p>
-    <div class="code-block">
-      <pre><code>claude mcp add --transport http paperless-ag YOUR_SERVER_URL/mcp \
-  --header "Authorization: Bearer YOUR_MCP_TOKEN"</code></pre>
-      <button
-        class="copy-btn"
-        onclick="
-          copyToClipboard(
-            this,
-            this.parentElement.querySelector('code').textContent,
-          )
-        "
-        aria-label="Copy to clipboard"
-        title="Copy to clipboard"
-      >
-        <svg
-          class="copy"
-          stroke="currentColor"
-          fill="none"
-          stroke-width="2"
-          viewBox="0 0 24 24"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          height="16px"
-          width="16px"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
-          <path
-            d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"
-          ></path>
-        </svg>
-
-        <svg
-          class="check"
-          stroke="currentColor"
-          fill="none"
-          stroke-width="2"
-          viewBox="0 0 24 24"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          height="16px"
-          width="16px"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path d="M20 6 9 17l-5-5"></path>
-        </svg>
-      </button>
-    </div>
-
-    <p><strong>VS Code / Cursor (<code>.mcp.json</code>):</strong></p>
-    <div class="code-block">
-      <pre><code>{
-  "mcpServers": {
-    "paperless-ag": {
-      "type": "http",
-      "url": "YOUR_SERVER_URL/mcp",
-      "headers": {
-        "Authorization": "Bearer YOUR_MCP_TOKEN"
-      }
-    }
-  }
-}</code></pre>
-      <button
-        class="copy-btn"
-        onclick="
-          copyToClipboard(
-            this,
-            this.parentElement.querySelector('code').textContent,
-          )
-        "
-        aria-label="Copy to clipboard"
-        title="Copy to clipboard"
-      >
-        <svg
-          class="copy"
-          stroke="currentColor"
-          fill="none"
-          stroke-width="2"
-          viewBox="0 0 24 24"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          height="16px"
-          width="16px"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
-          <path
-            d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"
-          ></path>
-        </svg>
-
-        <svg
-          class="check"
-          stroke="currentColor"
-          fill="none"
-          stroke-width="2"
-          viewBox="0 0 24 24"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          height="16px"
-          width="16px"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path d="M20 6 9 17l-5-5"></path>
-        </svg>
-      </button>
-    </div>
-
-    <p>
-      <strong>Claude Desktop (<code>claude_desktop_config.json</code>):</strong>
+      MCP support is optional. It lets AI apps use Paperless Ag's read-only
+      search tools without exposing Postgres or changing Paperless-ngx.
     </p>
     <p>
-      Claude Desktop doesn't support remote HTTP servers directly. Use
-      <code>mcp-remote</code> as a bridge. On macOS, open Claude Desktop, choose
-      <strong>Claude &gt; Settings</strong> from the menu bar, go to
-      <strong>Developer</strong>, and click <strong>Edit Config</strong>. On
-      Windows, edit <code>%APPDATA%\Claude\claude_desktop_config.json</code>:
-    </p>
-    <div class="code-block">
-      <pre><code>{
-  "mcpServers": {
-    "paperless-ag": {
-      "command": "npx",
-      "args": [
-        "-y",
-        "mcp-remote",
-        "YOUR_SERVER_URL/mcp",
-        "--allow-http",
-        "--header",
-        "Authorization: Bearer YOUR_MCP_TOKEN"
-      ],
-      "env": {
-        "PATH": "YOUR_NODE_BIN_DIR:/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin"
-      }
-    }
-  }
-}</code></pre>
-      <button
-        class="copy-btn"
-        onclick="
-          copyToClipboard(
-            this,
-            this.parentElement.querySelector('code').textContent,
-          )
-        "
-        aria-label="Copy to clipboard"
-        title="Copy to clipboard"
-      >
-        <svg
-          class="copy"
-          stroke="currentColor"
-          fill="none"
-          stroke-width="2"
-          viewBox="0 0 24 24"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          height="16px"
-          width="16px"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
-          <path
-            d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"
-          ></path>
-        </svg>
-
-        <svg
-          class="check"
-          stroke="currentColor"
-          fill="none"
-          stroke-width="2"
-          viewBox="0 0 24 24"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          height="16px"
-          width="16px"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path d="M20 6 9 17l-5-5"></path>
-        </svg>
-      </button>
-    </div>
-
-    <p>
-      Replace <code>YOUR_NODE_BIN_DIR</code> with the directory containing your
-      <code>node</code> binary. Claude Desktop doesn't inherit your shell's
-      PATH, so it needs this to find <code>npx</code> and <code>node</code>.
-      Find it by running:
-    </p>
-    <div class="code-block">
-      <pre><code>dirname "$(which node)"</code></pre>
-      <button
-        class="copy-btn"
-        onclick="
-          copyToClipboard(
-            this,
-            this.parentElement.querySelector('code').textContent,
-          )
-        "
-        aria-label="Copy to clipboard"
-        title="Copy to clipboard"
-      >
-        <svg
-          class="copy"
-          stroke="currentColor"
-          fill="none"
-          stroke-width="2"
-          viewBox="0 0 24 24"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          height="16px"
-          width="16px"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
-          <path
-            d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"
-          ></path>
-        </svg>
-
-        <svg
-          class="check"
-          stroke="currentColor"
-          fill="none"
-          stroke-width="2"
-          viewBox="0 0 24 24"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          height="16px"
-          width="16px"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path d="M20 6 9 17l-5-5"></path>
-        </svg>
-      </button>
-    </div>
-    <p>
-      If you use <code>nvm</code> or <code>fnm</code>, use the real path instead
-      of the ephemeral shell path:
-    </p>
-    <div class="code-block">
-      <pre><code>dirname "$(readlink -f "$(which node)")"</code></pre>
-      <button
-        class="copy-btn"
-        onclick="
-          copyToClipboard(
-            this,
-            this.parentElement.querySelector('code').textContent,
-          )
-        "
-        aria-label="Copy to clipboard"
-        title="Copy to clipboard"
-      >
-        <svg
-          class="copy"
-          stroke="currentColor"
-          fill="none"
-          stroke-width="2"
-          viewBox="0 0 24 24"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          height="16px"
-          width="16px"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
-          <path
-            d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"
-          ></path>
-        </svg>
-
-        <svg
-          class="check"
-          stroke="currentColor"
-          fill="none"
-          stroke-width="2"
-          viewBox="0 0 24 24"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          height="16px"
-          width="16px"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path d="M20 6 9 17l-5-5"></path>
-        </svg>
-      </button>
-    </div>
-    <p>
-      If your server uses HTTPS, you can drop the
-      <code>--allow-http</code> flag and the <code>env</code> block may not be
-      needed if <code>node</code> is in a standard location like
-      <code>/usr/local/bin</code>.
+      After installation, log in to Paperless and open
+      <code>/search/mcp</code>. That page shows your MCP server URL, auth token,
+      and current setup instructions for Claude, Codex, VS Code/Copilot, and
+      llama.cpp.
     </p>
 
-    <p>
-      Save the file, quit Claude Desktop completely, and reopen it. In a new
-      chat, open the connectors/tools menu and confirm
-      <code>paperless-ag</code> is enabled.
-    </p>
-
-    <p>
-      Replace <code>YOUR_SERVER_URL</code> with the URL from your install output
-      (<code>https://yourdomain.com</code> if you configured a domain, or
-      <code>http://YOUR_IP</code> if not) and <code>YOUR_MCP_TOKEN</code> with
-      the token from the install output. Lost your token? Check the
-      <code>.env</code> file in your install directory (defaults to
-      <code>/root/paperless-ag</code>):
-    </p>
-    <div class="code-block">
-      <pre><code>grep MCP_AUTH_TOKEN /root/paperless-ag/.env</code></pre>
-      <button
-        class="copy-btn"
-        onclick="
-          copyToClipboard(
-            this,
-            this.parentElement.querySelector('code').textContent,
-          )
-        "
-        aria-label="Copy to clipboard"
-        title="Copy to clipboard"
-      >
-        <svg
-          class="copy"
-          stroke="currentColor"
-          fill="none"
-          stroke-width="2"
-          viewBox="0 0 24 24"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          height="16px"
-          width="16px"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
-          <path
-            d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"
-          ></path>
-        </svg>
-
-        <svg
-          class="check"
-          stroke="currentColor"
-          fill="none"
-          stroke-width="2"
-          viewBox="0 0 24 24"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          height="16px"
-          width="16px"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path d="M20 6 9 17l-5-5"></path>
-        </svg>
-      </button>
-    </div>
+    <figure>
+      <img
+        src="assets/mcp-setup.png"
+        alt="Paperless Ag MCP setup page with connection details and app instructions"
+        width="1440"
+        height="1280"
+      />
+      <figcaption>
+        The <code>/search/mcp</code> page keeps the app-specific MCP setup
+        instructions behind the same Paperless login.
+      </figcaption>
+    </figure>
 
     <h2>Requirements</h2>
     <ul>
