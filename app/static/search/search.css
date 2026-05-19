@@ -50,12 +50,13 @@ a {
 }
 
 .topbar {
-  width: 100vw;
-  margin: 0 0 32px calc(50% - 50vw);
-  padding: 16px max(32px, calc((100vw - 1100px) / 2));
+  margin: 0 0 32px;
+  padding: 16px 0;
   background: var(--olive-deep);
   border-bottom: 1px solid rgba(31, 26, 19, 0.22);
+  box-shadow: 0 0 0 100vmax var(--olive-deep);
   color: #efe4cc;
+  clip-path: inset(0 -100vmax);
 }
 
 .brand {
@@ -96,12 +97,9 @@ h1 {
   color: var(--muted);
   font-family: var(--font-mono);
   font-size: 11px;
-  letter-spacing: 0.06em;
-}
-
-.status {
   display: flex;
   justify-content: space-between;
+  letter-spacing: 0.06em;
   min-height: 17px;
   margin: 14px 0 0;
   text-transform: uppercase;
@@ -416,8 +414,6 @@ input[type="search"]:focus-visible,
 
   .topbar {
     margin-bottom: 24px;
-    padding-right: 12px;
-    padding-left: 12px;
   }
 
   .search-panel {

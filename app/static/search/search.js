@@ -86,6 +86,9 @@
   }
 
   function scoreWidth(score) {
+    if (score === null || score === undefined || score === "") {
+      return 40;
+    }
     var numeric = Number(score);
     if (!Number.isFinite(numeric)) {
       return 40;
@@ -144,7 +147,11 @@
     var titleText = title.name || rawTitle;
     var resultRank = String(index + 1).padStart(2, "0");
     var pageCount = pageLabel(result.page_count);
-    var score = result.relevance_score || result.similarity || "";
+    var score =
+      result.relevance_score !== null && result.relevance_score !== undefined
+        ? result.relevance_score
+        : result.similarity;
+    var hasScore = score !== null && score !== undefined && score !== "";
 
     return [
       '<article class="result-card">',
@@ -176,7 +183,9 @@
       "</div>",
       '<div class="match-group">',
       '<div class="match-meter" aria-label="' +
-        escapeHtml(score ? "Match score " + score : "Match score unavailable") +
+        escapeHtml(
+          hasScore ? "Match score " + score : "Match score unavailable",
+        ) +
         '">',
       "<span>Match</span>",
       '<b class="scorebar"><i style="--score-width: ' +
@@ -270,41 +279,38 @@
       });
   }
 
-  fetch("/search/api/me", { headers: { Accept: "application/json" } })
-    .then(function (response) {
-      if (response.status === 401) {
-        loginRedirect();
-        return null;
-      }
-      return parseJsonResponse(response, "Profile unavailable").then(
-        function (body) {
-          if (!response.ok) {
-            throw new Error(errorMessage(body.error, "Profile unavailable"));
-          }
-          return body;
-        },
-      );
-    })
-    .then(function (payload) {
-      if (!payload) {
-        return;
-      }
-      if (!profileStatus) {
-        return;
-      }
-      var profile = payload.profile || {};
-      var name =
-        [profile.first_name, profile.last_name].filter(Boolean).join(" ") ||
-        profile.email ||
-        profile.username ||
-        "Paperless";
-      profileStatus.textContent = "Signed in as " + name;
-    })
-    .catch(function () {
-      if (profileStatus) {
+  if (profileStatus) {
+    fetch("/search/api/me", { headers: { Accept: "application/json" } })
+      .then(function (response) {
+        if (response.status === 401) {
+          loginRedirect();
+          return null;
+        }
+        return parseJsonResponse(response, "Profile unavailable").then(
+          function (body) {
+            if (!response.ok) {
+              throw new Error(errorMessage(body.error, "Profile unavailable"));
+            }
+            return body;
+          },
+        );
+      })
+      .then(function (payload) {
+        if (!payload) {
+          return;
+        }
+        var profile = payload.profile || {};
+        var name =
+          [profile.first_name, profile.last_name].filter(Boolean).join(" ") ||
+          profile.email ||
+          profile.username ||
+          "Paperless";
+        profileStatus.textContent = "Signed in as " + name;
+      })
+      .catch(function () {
         profileStatus.textContent = "Sign-in status unavailable";
-      }
-    });
+      });
+  }
 
   form.addEventListener("submit", function (event) {
     event.preventDefault();
