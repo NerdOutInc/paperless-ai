@@ -2,6 +2,7 @@ import importlib.util
 import json
 import os
 import sys
+import time
 import types
 import unittest
 from pathlib import Path
@@ -100,12 +101,15 @@ import web_search  # noqa: E402
 
 
 class FakeResponse:
-    def __init__(self, status_code=200, payload=None):
+    def __init__(self, status_code=200, payload=None, json_error=False):
         self.status_code = status_code
         self._payload = payload or {}
+        self._json_error = json_error
         self.text = json.dumps(self._payload)
 
     def json(self):
+        if self._json_error:
+            raise ValueError("not json")
         return self._payload
 
     def raise_for_status(self):
@@ -190,6 +194,46 @@ class WebSearchTests(unittest.TestCase):
             get.call_args.kwargs["timeout"],
             web_search.SESSION_VALIDATION_TIMEOUT,
         )
+
+    @patch("web_search.requests.get")
+    def test_validate_session_prunes_expired_cache_entries(self, get):
+        with web_search._session_cache_lock:
+            web_search._session_cache["expired"] = {
+                "expires_at": time.monotonic() - 1,
+                "profile": {"username": "old"},
+            }
+        get.return_value = FakeResponse(200, {"username": "admin"})
+
+        web_search.validate_paperless_session("sessionid=abc")
+
+        self.assertNotIn("expired", web_search._session_cache)
+
+    @patch("web_search.requests.get")
+    def test_validate_session_limits_cache_size(self, get):
+        now = time.monotonic()
+        with web_search._session_cache_lock:
+            for index in range(web_search.SESSION_CACHE_MAX_ENTRIES):
+                web_search._session_cache[f"cached-{index}"] = {
+                    "expires_at": now + index + 1,
+                    "profile": {"username": str(index)},
+                }
+        get.return_value = FakeResponse(200, {"username": "admin"})
+
+        web_search.validate_paperless_session("sessionid=abc")
+
+        self.assertLessEqual(
+            len(web_search._session_cache),
+            web_search.SESSION_CACHE_MAX_ENTRIES,
+        )
+
+    @patch("web_search.requests.get")
+    def test_validate_session_rejects_non_json_profile_response(self, get):
+        get.return_value = FakeResponse(200, json_error=True)
+
+        with self.assertRaises(requests.RequestException):
+            web_search.validate_paperless_session("sessionid=abc")
+
+        self.assertEqual(web_search._session_cache, {})
 
     def test_login_redirect_fully_encodes_next_url(self):
         request = SimpleNamespace(

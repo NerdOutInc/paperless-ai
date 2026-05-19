@@ -19,6 +19,7 @@ MAX_SEARCH_LIMIT = 50
 MAX_QUERY_LENGTH = 500
 DEFAULT_SEARCH_LIMIT = 10
 SESSION_CACHE_TTL_SECONDS = 15
+SESSION_CACHE_MAX_ENTRIES = 256
 SESSION_VALIDATION_TIMEOUT = 3
 _session_cache = {}
 _session_cache_lock = threading.Lock()
@@ -45,6 +46,31 @@ def session_cache_key(cookie_header):
     return hashlib.sha256(cookie_header.encode("utf-8")).hexdigest()
 
 
+def prune_expired_session_cache(now):
+    expired_keys = [
+        key
+        for key, cached in _session_cache.items()
+        if cached["expires_at"] <= now
+    ]
+    for key in expired_keys:
+        _session_cache.pop(key, None)
+
+
+def store_session_cache(cache_key, profile, now):
+    with _session_cache_lock:
+        prune_expired_session_cache(now)
+        while len(_session_cache) >= SESSION_CACHE_MAX_ENTRIES:
+            oldest_key = min(
+                _session_cache,
+                key=lambda key: _session_cache[key]["expires_at"],
+            )
+            _session_cache.pop(oldest_key, None)
+        _session_cache[cache_key] = {
+            "expires_at": now + SESSION_CACHE_TTL_SECONDS,
+            "profile": profile,
+        }
+
+
 def login_redirect_for(request):
     target = request.url.path
     if request.url.query:
@@ -62,11 +88,10 @@ def validate_paperless_session(cookie_header):
     now = time.monotonic()
     cache_key = session_cache_key(cookie_header)
     with _session_cache_lock:
+        prune_expired_session_cache(now)
         cached = _session_cache.get(cache_key)
-        if cached and cached["expires_at"] > now:
-            return cached["profile"]
         if cached:
-            _session_cache.pop(cache_key, None)
+            return cached["profile"]
 
     response = requests.get(
         f"{config.PAPERLESS_API_URL}/api/profile/",
@@ -77,24 +102,18 @@ def validate_paperless_session(cookie_header):
         timeout=SESSION_VALIDATION_TIMEOUT,
     )
     if response.status_code in (401, 403):
-        with _session_cache_lock:
-            _session_cache[cache_key] = {
-                "expires_at": now + SESSION_CACHE_TTL_SECONDS,
-                "profile": None,
-            }
+        store_session_cache(cache_key, None, now)
         return None
     response.raise_for_status()
 
     try:
         profile = response.json()
     except ValueError:
-        profile = None
+        raise requests.RequestException("Paperless profile response was not JSON")
+    if not isinstance(profile, dict):
+        raise requests.RequestException("Paperless profile response was not an object")
 
-    with _session_cache_lock:
-        _session_cache[cache_key] = {
-            "expires_at": now + SESSION_CACHE_TTL_SECONDS,
-            "profile": profile,
-        }
+    store_session_cache(cache_key, profile, now)
     return profile
 
 
