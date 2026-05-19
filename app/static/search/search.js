@@ -4,6 +4,8 @@
   var status = document.getElementById("status");
   var results = document.getElementById("results");
   var latestSearchId = 0;
+  // RRF scores are small, so expand top matches into visible meter widths.
+  var MATCH_METER_SCORE_SCALE = 1800;
 
   function escapeHtml(value) {
     return String(value || "")
@@ -112,7 +114,10 @@
     if (!Number.isFinite(numeric)) {
       return 40;
     }
-    return Math.max(12, Math.min(100, Math.round(numeric * 1800)));
+    return Math.max(
+      12,
+      Math.min(100, Math.round(numeric * MATCH_METER_SCORE_SCALE)),
+    );
   }
 
   function loginRedirect() {
