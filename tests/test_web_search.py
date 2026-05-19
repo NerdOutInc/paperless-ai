@@ -114,6 +114,43 @@ class WebSearchTests(unittest.TestCase):
         self.assertEqual(response.status_code, 502)
         self.assertEqual(json.loads(response.body), {"error": "paperless_api_error"})
 
+    @patch("web_search.validate_paperless_session", return_value=None)
+    def test_mcp_config_api_requires_session(self, _validate):
+        request = SimpleNamespace(headers={"cookie": ""})
+
+        response = web_search.mcp_config_api(request)
+
+        self.assertEqual(response.status_code, 401)
+        self.assertEqual(json.loads(response.body), {"error": "not_authenticated"})
+
+    @patch("web_search.config.MCP_AUTH_TOKEN", "paperless-ag-token")
+    @patch("web_search.validate_paperless_session", return_value={"username": "admin"})
+    def test_mcp_config_api_returns_token_for_authenticated_session(self, _validate):
+        request = SimpleNamespace(headers={"cookie": "sessionid=abc"})
+
+        response = web_search.mcp_config_api(request)
+        payload = json.loads(response.body)
+
+        self.assertEqual(payload["server_name"], "paperless-ag")
+        self.assertEqual(payload["endpoint_path"], "/mcp")
+        self.assertEqual(payload["auth_token"], "paperless-ag-token")
+        self.assertTrue(payload["token_configured"])
+
+    @patch("web_search.validate_paperless_session", return_value=None)
+    def test_mcp_page_uses_paperless_login_redirect(self, _validate):
+        request = SimpleNamespace(
+            headers={"cookie": ""},
+            url=SimpleNamespace(path="/search/mcp", query=""),
+        )
+
+        response = web_search.mcp_page(request)
+
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(
+            response.headers["location"],
+            "/accounts/login/?next=%2Fsearch%2Fmcp",
+        )
+
 
 class SessionSearchTests(unittest.TestCase):
     @patch("search.paperless_session_request")

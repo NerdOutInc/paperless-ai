@@ -106,7 +106,7 @@ def public_profile(profile):
     }
 
 
-def search_page(request):
+def authenticated_static_page(request, filename):
     try:
         profile = validate_paperless_session(cookie_header_from_request(request))
     except requests.RequestException as exc:
@@ -115,11 +115,19 @@ def search_page(request):
     if profile is None:
         return login_redirect_for(request)
 
-    index_path = STATIC_DIR / "index.html"
+    index_path = STATIC_DIR / filename
     return HTMLResponse(
         index_path.read_text(encoding="utf-8"),
         headers={"Cache-Control": "no-store"},
     )
+
+
+def search_page(request):
+    return authenticated_static_page(request, "index.html")
+
+
+def mcp_page(request):
+    return authenticated_static_page(request, "mcp.html")
 
 
 def profile_api(request):
@@ -132,6 +140,26 @@ def profile_api(request):
         return api_error_response("not_authenticated", 401)
     return JSONResponse(
         {"profile": public_profile(profile)},
+        headers={"Cache-Control": "no-store"},
+    )
+
+
+def mcp_config_api(request):
+    try:
+        profile = validate_paperless_session(cookie_header_from_request(request))
+    except requests.RequestException as exc:
+        log_paperless_error("Paperless MCP config validation failed", exc)
+        return api_error_response("paperless_api_error", 502)
+    if profile is None:
+        return api_error_response("not_authenticated", 401)
+
+    return JSONResponse(
+        {
+            "server_name": "paperless-ag",
+            "endpoint_path": "/mcp",
+            "auth_token": config.MCP_AUTH_TOKEN,
+            "token_configured": bool(config.MCP_AUTH_TOKEN),
+        },
         headers={"Cache-Control": "no-store"},
     )
 
@@ -191,7 +219,10 @@ def routes():
     return [
         Route("/search", search_page, methods=["GET"]),
         Route("/search/", search_page, methods=["GET"]),
+        Route("/search/mcp", mcp_page, methods=["GET"]),
+        Route("/search/mcp/", mcp_page, methods=["GET"]),
         Route("/search/api/me", profile_api, methods=["GET"]),
+        Route("/search/api/mcp-config", mcp_config_api, methods=["GET"]),
         Route("/search/api/documents", documents_api, methods=["GET"]),
         Mount(
             "/search/static",
