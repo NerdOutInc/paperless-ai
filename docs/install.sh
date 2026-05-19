@@ -1553,7 +1553,11 @@ print_addon_summary() {
     local search_url
     local mcp_setup_url
     if [[ "${ADDON_ENABLE_CADDY:-true}" != "true" ]]; then
-        mcp_setup_url="http://${ip_addr}/search/mcp"
+        if [[ -n "${DOMAIN:-}" ]]; then
+            mcp_setup_url="https://${DOMAIN}/search/mcp"
+        else
+            mcp_setup_url="http://${ip_addr}/search/mcp"
+        fi
     elif [[ -n "${DOMAIN:-}" ]]; then
         search_url="https://${DOMAIN}/search"
         mcp_setup_url="https://${DOMAIN}/search/mcp"
