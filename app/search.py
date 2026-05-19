@@ -44,7 +44,7 @@ def get_document_metadata(doc_id):
 
 def paperless_session_request(method, path, cookie_header, **kwargs):
     """Call Paperless as the browser user identified by the session cookie."""
-    headers = kwargs.pop("headers", {})
+    headers = dict(kwargs.pop("headers", {}) or {})
     headers.setdefault("Accept", "application/json")
     if cookie_header:
         headers["Cookie"] = cookie_header

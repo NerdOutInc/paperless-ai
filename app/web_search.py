@@ -103,7 +103,7 @@ def validate_paperless_session(cookie_header):
         timeout=SESSION_VALIDATION_TIMEOUT,
     )
     if response.status_code in (401, 403):
-        store_session_cache(cache_key, None, now)
+        store_session_cache(cache_key, None, time.monotonic())
         return None
     response.raise_for_status()
 
@@ -114,7 +114,7 @@ def validate_paperless_session(cookie_header):
     if not isinstance(profile, dict):
         raise requests.RequestException("Paperless profile response was not an object")
 
-    store_session_cache(cache_key, profile, now)
+    store_session_cache(cache_key, profile, time.monotonic())
     return profile
 
 

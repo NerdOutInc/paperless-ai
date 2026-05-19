@@ -323,6 +323,23 @@ class WebSearchTests(unittest.TestCase):
 
 
 class SessionSearchTests(unittest.TestCase):
+    @patch("search.requests.request")
+    def test_paperless_session_request_copies_caller_headers(self, request):
+        caller_headers = {"X-Test": "yes"}
+
+        search.paperless_session_request(
+            "GET",
+            "/api/documents/",
+            "sessionid=abc",
+            headers=caller_headers,
+        )
+
+        self.assertEqual(caller_headers, {"X-Test": "yes"})
+        sent_headers = request.call_args.kwargs["headers"]
+        self.assertEqual(sent_headers["X-Test"], "yes")
+        self.assertEqual(sent_headers["Accept"], "application/json")
+        self.assertEqual(sent_headers["Cookie"], "sessionid=abc")
+
     @patch("search.paperless_session_request")
     def test_get_documents_for_session_batches_large_candidate_sets(self, paperless_request):
         def response_for(method, path, cookie_header, **kwargs):
