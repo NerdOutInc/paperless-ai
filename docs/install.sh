@@ -1327,6 +1327,44 @@ write_default_caddyfile() {
 CADDY
 }
 
+ensure_override_volume() {
+    local volume_name="$1"
+    if grep -Eq "^[[:space:]]{2}${volume_name}:" docker-compose.override.yml; then
+        return
+    fi
+    if ! grep -Eq '^volumes:[[:space:]]*$' docker-compose.override.yml; then
+        cat >> docker-compose.override.yml <<YAML
+
+volumes:
+  ${volume_name}:
+YAML
+        return
+    fi
+
+    local tmp
+    tmp=$(mktemp)
+    awk -v volume_name="$volume_name" '
+        BEGIN { inserted = 0; in_volumes = 0 }
+        /^volumes:[[:space:]]*$/ {
+            in_volumes = 1
+            print
+            next
+        }
+        in_volumes && /^[^[:space:]][^:]*:/ && !inserted {
+            print "  " volume_name ":"
+            inserted = 1
+            in_volumes = 0
+        }
+        { print }
+        END {
+            if (in_volumes && !inserted) {
+                print "  " volume_name ":"
+            }
+        }
+    ' docker-compose.override.yml > "$tmp"
+    mv "$tmp" docker-compose.override.yml
+}
+
 ensure_caddy_for_legacy_no_domain_addon() {
     if [[ -f Caddyfile ]]; then
         return
@@ -1377,11 +1415,9 @@ ensure_caddy_for_legacy_no_domain_addon() {
     depends_on:
       - ${paperless_service}
       - companion
-
-volumes:
-  caddy-data:
-  caddy-config:
 YAML
+    ensure_override_volume caddy-data
+    ensure_override_volume caddy-config
     write_default_caddyfile "$paperless_service"
     echo "[✓] Caddy service and /search route added"
     caddyfile_changed=true
