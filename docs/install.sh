@@ -1154,6 +1154,30 @@ cd "$(dirname "$0")"
 mkdir -p backups
 caddyfile_changed=false
 
+add_search_route_to_caddyfile() {
+    local tmp
+    tmp=$(mktemp)
+    if awk '
+        BEGIN { inserted = 0 }
+        /^[[:space:]]*handle[[:space:]]*\{$/ && !inserted {
+            print "    @search path /search /search/*"
+            print "    handle @search {"
+            print "        reverse_proxy companion:3001 {"
+            print "            header_up Host localhost:3001"
+            print "        }"
+            print "    }"
+            inserted = 1
+        }
+        { print }
+        END { if (!inserted) exit 1 }
+    ' Caddyfile > "$tmp"; then
+        mv "$tmp" Caddyfile
+        return 0
+    fi
+    rm -f "$tmp"
+    return 1
+}
+
 if docker compose ps --status running db 2>/dev/null | grep -q db; then
     echo "Backing up database before update..."
     docker compose exec -T db pg_dump --clean -U paperless paperless > "backups/pre-update-$(date +%Y%m%d-%H%M%S).sql"
@@ -1183,9 +1207,12 @@ if [[ -f Caddyfile ]] && grep -q 'handle /\.well-known/oauth\*' Caddyfile; then
 fi
 # Add same-origin search route for existing installs.
 if [[ -f Caddyfile ]] && ! grep -q '@search path' Caddyfile; then
-    sed -i '/^[[:space:]]*handle {$/i\    @search path \/search \/search\/*\n    handle @search {\n        reverse_proxy companion:3001 {\n            header_up Host localhost:3001\n        }\n    }' Caddyfile
-    echo "[✓] Caddyfile search route added"
-    caddyfile_changed=true
+    if add_search_route_to_caddyfile; then
+        echo "[✓] Caddyfile search route added"
+        caddyfile_changed=true
+    else
+        echo "[!] Could not find the fallback handle block in Caddyfile; add /search routing manually."
+    fi
 fi
 
 echo "Pulling latest images..."
@@ -1213,6 +1240,30 @@ generate_addon_update_script() {
 set -euo pipefail
 cd "$(dirname "$0")"
 caddyfile_changed=false
+
+add_search_route_to_caddyfile() {
+    local tmp
+    tmp=$(mktemp)
+    if awk '
+        BEGIN { inserted = 0 }
+        /^[[:space:]]*handle[[:space:]]*\{$/ && !inserted {
+            print "    @search path /search /search/*"
+            print "    handle @search {"
+            print "        reverse_proxy companion:3001 {"
+            print "            header_up Host localhost:3001"
+            print "        }"
+            print "    }"
+            inserted = 1
+        }
+        { print }
+        END { if (!inserted) exit 1 }
+    ' Caddyfile > "$tmp"; then
+        mv "$tmp" Caddyfile
+        return 0
+    fi
+    rm -f "$tmp"
+    return 1
+}
 
 detect_paperless_service() {
     local service=""
@@ -1340,9 +1391,12 @@ ensure_caddy_for_legacy_no_domain_addon
 
 # Add same-origin search route for existing add-on installs.
 if [[ -f Caddyfile ]] && ! grep -q '@search path' Caddyfile; then
-    sed -i '/^[[:space:]]*handle {$/i\    @search path \/search \/search\/*\n    handle @search {\n        reverse_proxy companion:3001 {\n            header_up Host localhost:3001\n        }\n    }' Caddyfile
-    echo "[✓] Caddyfile search route added"
-    caddyfile_changed=true
+    if add_search_route_to_caddyfile; then
+        echo "[✓] Caddyfile search route added"
+        caddyfile_changed=true
+    else
+        echo "[!] Could not find the fallback handle block in Caddyfile; add /search routing manually."
+    fi
 fi
 
 echo "Pulling Paperless Ag companion image..."

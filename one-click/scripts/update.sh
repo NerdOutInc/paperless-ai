@@ -6,6 +6,30 @@ cd /opt/paperless-ag
 mkdir -p backups
 caddyfile_changed=false
 
+add_search_route_to_caddyfile() {
+    local tmp
+    tmp=$(mktemp)
+    if awk '
+        BEGIN { inserted = 0 }
+        /^[[:space:]]*handle[[:space:]]*\{$/ && !inserted {
+            print "    @search path /search /search/*"
+            print "    handle @search {"
+            print "        reverse_proxy companion:3001 {"
+            print "            header_up Host localhost:3001"
+            print "        }"
+            print "    }"
+            inserted = 1
+        }
+        { print }
+        END { if (!inserted) exit 1 }
+    ' Caddyfile > "$tmp"; then
+        mv "$tmp" Caddyfile
+        return 0
+    fi
+    rm -f "$tmp"
+    return 1
+}
+
 if docker compose ps --status running db 2>/dev/null | grep -q db; then
     echo "Backing up database before update..."
     docker compose exec -T db pg_dump --clean -U paperless paperless \
@@ -16,9 +40,12 @@ else
 fi
 
 if [[ -f Caddyfile ]] && ! grep -q '@search path' Caddyfile; then
-    sed -i '/^[[:space:]]*handle {$/i\    @search path \/search \/search\/*\n    handle @search {\n        reverse_proxy companion:3001 {\n            header_up Host localhost:3001\n        }\n    }' Caddyfile
-    echo "[OK] Caddyfile search route added"
-    caddyfile_changed=true
+    if add_search_route_to_caddyfile; then
+        echo "[OK] Caddyfile search route added"
+        caddyfile_changed=true
+    else
+        echo "[!] Could not find the fallback handle block in Caddyfile; add /search routing manually."
+    fi
 fi
 
 echo "Pulling latest images..."

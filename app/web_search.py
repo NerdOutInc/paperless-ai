@@ -1,6 +1,7 @@
 import hashlib
 import threading
 import time
+import traceback
 from pathlib import Path
 from urllib.parse import quote
 
@@ -262,7 +263,8 @@ def documents_api(request):
         log_paperless_error("Search API upstream error", exc)
         return api_error_response("paperless_api_error", 502)
     except Exception as exc:
-        print(f"Search API error: {exc.__class__.__name__}")
+        print(f"Search API error: {exc.__class__.__name__}: {exc}")
+        traceback.print_exc()
         return api_error_response("search_failed", 500)
 
     return JSONResponse(
