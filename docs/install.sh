@@ -134,6 +134,18 @@ run_quiet() {
     fi
 }
 
+run_in_dir() {
+    local dir="$1"
+    shift
+    (
+        if ! cd "$dir" 2>/dev/null; then
+            echo "Could not enter directory: $dir" >&2
+            return 1
+        fi
+        "$@"
+    )
+}
+
 prompt_yn() {
     local prompt_text="$1" default="${2:-y}"
     local yn_hint="[Y/n]"
@@ -856,18 +868,18 @@ ENV
     info "Generated helper scripts (update.sh, backup.sh, restore.sh)"
 
     # Pull images and start
-    step "Pulling container images (this is the slow part)..."
-    (cd "$install_dir" && run_quiet docker compose pull)
+    step "Pulling container images (this may take a few minutes)..."
+    run_in_dir "$install_dir" run_quiet docker compose pull
     info "Images pulled"
 
     step "Starting services..."
-    (cd "$install_dir" && run_quiet docker compose up -d)
+    run_in_dir "$install_dir" run_quiet docker compose up -d
     info "Services started"
 
     step "Waiting for Paperless to be ready (this can take a minute on first run)..."
     local attempts=0
     while (( attempts < 60 )); do
-        if (cd "$install_dir" && docker compose exec -T paperless curl -fs http://localhost:8000 &>/dev/null); then
+        if run_in_dir "$install_dir" docker compose exec -T paperless curl -fs http://localhost:8000 &>/dev/null; then
             break
         fi
         sleep 5
@@ -882,7 +894,7 @@ ENV
 
     # Wait briefly for companion to connect
     sleep 5
-    if (cd "$install_dir" && docker compose ps companion 2>/dev/null | grep -q "running"); then
+    if run_in_dir "$install_dir" sh -c 'docker compose ps companion 2>/dev/null | grep -q "running"'; then
         info "Companion service connected"
     else
         warn "Companion service may still be starting. Check: docker compose logs companion"
@@ -1069,12 +1081,12 @@ volumes:
 
     # Restart the stack (picks up override automatically)
     step "Restarting services..."
-    (cd "$compose_dir" && run_quiet docker compose up -d)
+    run_in_dir "$compose_dir" run_quiet docker compose up -d
     info "Services started"
 
     # Wait for companion
     sleep 10
-    if (cd "$compose_dir" && docker compose ps companion 2>/dev/null | grep -q "running"); then
+    if run_in_dir "$compose_dir" sh -c 'docker compose ps companion 2>/dev/null | grep -q "running"'; then
         info "Companion service is running"
     else
         warn "Companion may still be starting. Check: cd $compose_dir && docker compose logs companion"
@@ -1150,7 +1162,11 @@ generate_update_script() {
     cat > "$install_dir/update.sh" <<'SCRIPT'
 #!/usr/bin/env bash
 set -euo pipefail
-cd "$(dirname "$0")"
+script_dir="$(cd "$(dirname "$0")" 2>/dev/null && pwd -P)" || {
+    echo "Could not enter script directory." >&2
+    exit 1
+}
+cd "$script_dir"
 mkdir -p backups
 caddyfile_changed=false
 
@@ -1238,7 +1254,11 @@ generate_addon_update_script() {
     cat > "$compose_dir/paperless-ag-update.sh" <<'SCRIPT'
 #!/usr/bin/env bash
 set -euo pipefail
-cd "$(dirname "$0")"
+script_dir="$(cd "$(dirname "$0")" 2>/dev/null && pwd -P)" || {
+    echo "Could not enter script directory." >&2
+    exit 1
+}
+cd "$script_dir"
 caddyfile_changed=false
 
 add_search_route_to_caddyfile() {
@@ -1459,7 +1479,11 @@ generate_backup_script() {
     cat > "$install_dir/backup.sh" <<'SCRIPT'
 #!/usr/bin/env bash
 set -euo pipefail
-cd "$(dirname "$0")"
+script_dir="$(cd "$(dirname "$0")" 2>/dev/null && pwd -P)" || {
+    echo "Could not enter script directory." >&2
+    exit 1
+}
+cd "$script_dir"
 
 BACKUP_DIR="backups"
 TIMESTAMP=$(date +%Y%m%d-%H%M%S)
@@ -1482,7 +1506,11 @@ generate_restore_script() {
     cat > "$install_dir/restore.sh" <<'SCRIPT'
 #!/usr/bin/env bash
 set -euo pipefail
-cd "$(dirname "$0")"
+script_dir="$(cd "$(dirname "$0")" 2>/dev/null && pwd -P)" || {
+    echo "Could not enter script directory." >&2
+    exit 1
+}
+cd "$script_dir"
 
 if [[ $# -lt 1 ]]; then
     echo "Usage: bash restore.sh <backup-file.sql>"

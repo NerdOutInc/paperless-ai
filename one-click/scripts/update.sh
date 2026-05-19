@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 set -euo pipefail
 umask 077
-cd /opt/paperless-ag
+if ! cd /opt/paperless-ag 2>/dev/null; then
+    echo "Could not enter /opt/paperless-ag" >&2
+    exit 1
+fi
 
 mkdir -p backups
 caddyfile_changed=false
