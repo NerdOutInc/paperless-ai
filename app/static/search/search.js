@@ -18,45 +18,38 @@
     return String(value).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
   }
 
-  function highlightHtml(value, query) {
+  function createHighlighter(query) {
     var terms = String(query || "")
       .trim()
       .split(/\s+/)
       .filter(Boolean);
     if (!terms.length) {
-      return escapeHtml(value);
+      return escapeHtml;
     }
 
     var pattern = terms.map(escapeRegExp).join("|");
     var splitter = new RegExp("(" + pattern + ")", "gi");
     var matcher = new RegExp("^(" + pattern + ")$", "i");
-    return String(value || "")
-      .split(splitter)
-      .map(function (part) {
-        if (!part) {
-          return "";
-        }
-        if (matcher.test(part)) {
-          return "<mark>" + escapeHtml(part) + "</mark>";
-        }
-        return escapeHtml(part);
-      })
-      .join("");
+    return function (value) {
+      return String(value || "")
+        .split(splitter)
+        .map(function (part) {
+          if (!part) {
+            return "";
+          }
+          if (matcher.test(part)) {
+            return "<mark>" + escapeHtml(part) + "</mark>";
+          }
+          return escapeHtml(part);
+        })
+        .join("");
+    };
   }
 
   function prettyTitle(title) {
     var fallback = String(title || "");
     var match = fallback.match(/^(\d{3})_(.+)$/);
-    if (!match) {
-      return {
-        number: null,
-        name: fallback.replace(/_/g, " "),
-      };
-    }
-    return {
-      number: match[1],
-      name: match[2].replace(/_/g, " "),
-    };
+    return (match ? match[2] : fallback).replace(/_/g, " ");
   }
 
   function formatDate(value) {
@@ -146,12 +139,11 @@
     return "<span>" + escapeHtml(label + ": " + value) + "</span>";
   }
 
-  function resultCard(result, query, index) {
+  function resultCard(result, highlight, index) {
     var rawTitle = result.title || "Document " + result.id;
-    var title = prettyTitle(rawTitle);
     var snippet = result.matched_chunk || "";
     var created = formatDate(result.created);
-    var titleText = title.name || rawTitle;
+    var titleText = prettyTitle(rawTitle);
     var resultRank = String(index + 1).padStart(2, "0");
     var pageCount = pageLabel(result.page_count);
     var score =
@@ -175,11 +167,9 @@
       '<a class="result-title" href="' +
         escapeHtml(result.document_url) +
         '">' +
-        highlightHtml(titleText, query) +
+        highlight(titleText) +
         "</a>",
-      snippet
-        ? '<p class="snippet">' + highlightHtml(snippet, query) + "</p>"
-        : "",
+      snippet ? '<p class="snippet">' + highlight(snippet) + "</p>" : "",
       '<div class="result-footer">',
       '<div class="meta">',
       pageCount ? "<span>" + escapeHtml(pageCount) + "</span>" : "",
@@ -213,9 +203,10 @@
       return;
     }
 
+    var highlight = createHighlighter(payload.query);
     results.innerHTML = payload.results
       .map(function (result, index) {
-        return resultCard(result, payload.query, index);
+        return resultCard(result, highlight, index);
       })
       .join("");
     setStatus(
