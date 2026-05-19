@@ -1125,6 +1125,17 @@ ${DOMAIN} {${tls_block}
             header_up Host localhost:3001
         }
     }
+    @paperless_ui {
+        method GET
+        header Accept *text/html*
+        not path /api/* /static/* /media/* /accounts/* /search /search/* /mcp /mcp/* /.well-known/*
+    }
+    handle @paperless_ui {
+        rewrite * /paperless-ui-proxy{uri}
+        reverse_proxy companion:3001 {
+            header_up Host localhost:3001
+        }
+    }
     handle {
         reverse_proxy ${paperless_service}:8000
     }
@@ -1145,6 +1156,17 @@ CADDY
     }
     @search path /search /search/*
     handle @search {
+        reverse_proxy companion:3001 {
+            header_up Host localhost:3001
+        }
+    }
+    @paperless_ui {
+        method GET
+        header Accept *text/html*
+        not path /api/* /static/* /media/* /accounts/* /search /search/* /mcp /mcp/* /.well-known/*
+    }
+    handle @paperless_ui {
+        rewrite * /paperless-ui-proxy{uri}
         reverse_proxy companion:3001 {
             header_up Host localhost:3001
         }
@@ -1178,6 +1200,35 @@ add_search_route_to_caddyfile() {
         /^[[:space:]]*handle[[:space:]]*\{$/ && !inserted {
             print "    @search path /search /search/*"
             print "    handle @search {"
+            print "        reverse_proxy companion:3001 {"
+            print "            header_up Host localhost:3001"
+            print "        }"
+            print "    }"
+            inserted = 1
+        }
+        { print }
+        END { if (!inserted) exit 1 }
+    ' Caddyfile > "$tmp"; then
+        mv "$tmp" Caddyfile
+        return 0
+    fi
+    rm -f "$tmp"
+    return 1
+}
+
+add_paperless_ui_route_to_caddyfile() {
+    local tmp
+    tmp=$(mktemp)
+    if awk '
+        BEGIN { inserted = 0 }
+        /^[[:space:]]*handle[[:space:]]*\{$/ && !inserted {
+            print "    @paperless_ui {"
+            print "        method GET"
+            print "        header Accept *text/html*"
+            print "        not path /api/* /static/* /media/* /accounts/* /search /search/* /mcp /mcp/* /.well-known/*"
+            print "    }"
+            print "    handle @paperless_ui {"
+            print "        rewrite * /paperless-ui-proxy{uri}"
             print "        reverse_proxy companion:3001 {"
             print "            header_up Host localhost:3001"
             print "        }"
@@ -1230,6 +1281,14 @@ if [[ -f Caddyfile ]] && ! grep -q '@search path' Caddyfile; then
         echo "[!] Could not find the fallback handle block in Caddyfile; add /search routing manually."
     fi
 fi
+if [[ -f Caddyfile ]] && ! grep -q '@paperless_ui' Caddyfile; then
+    if add_paperless_ui_route_to_caddyfile; then
+        echo "[✓] Caddyfile Paperless UI link route added"
+        caddyfile_changed=true
+    else
+        echo "[!] Could not find the fallback handle block in Caddyfile; add the Paperless UI link route manually."
+    fi
+fi
 
 echo "Pulling latest images..."
 docker compose pull
@@ -1269,6 +1328,35 @@ add_search_route_to_caddyfile() {
         /^[[:space:]]*handle[[:space:]]*\{$/ && !inserted {
             print "    @search path /search /search/*"
             print "    handle @search {"
+            print "        reverse_proxy companion:3001 {"
+            print "            header_up Host localhost:3001"
+            print "        }"
+            print "    }"
+            inserted = 1
+        }
+        { print }
+        END { if (!inserted) exit 1 }
+    ' Caddyfile > "$tmp"; then
+        mv "$tmp" Caddyfile
+        return 0
+    fi
+    rm -f "$tmp"
+    return 1
+}
+
+add_paperless_ui_route_to_caddyfile() {
+    local tmp
+    tmp=$(mktemp)
+    if awk '
+        BEGIN { inserted = 0 }
+        /^[[:space:]]*handle[[:space:]]*\{$/ && !inserted {
+            print "    @paperless_ui {"
+            print "        method GET"
+            print "        header Accept *text/html*"
+            print "        not path /api/* /static/* /media/* /accounts/* /search /search/* /mcp /mcp/* /.well-known/*"
+            print "    }"
+            print "    handle @paperless_ui {"
+            print "        rewrite * /paperless-ui-proxy{uri}"
             print "        reverse_proxy companion:3001 {"
             print "            header_up Host localhost:3001"
             print "        }"
@@ -1336,6 +1424,17 @@ write_default_caddyfile() {
     }
     @search path /search /search/*
     handle @search {
+        reverse_proxy companion:3001 {
+            header_up Host localhost:3001
+        }
+    }
+    @paperless_ui {
+        method GET
+        header Accept *text/html*
+        not path /api/* /static/* /media/* /accounts/* /search /search/* /mcp /mcp/* /.well-known/*
+    }
+    handle @paperless_ui {
+        rewrite * /paperless-ui-proxy{uri}
         reverse_proxy companion:3001 {
             header_up Host localhost:3001
         }
@@ -1452,6 +1551,14 @@ if [[ -f Caddyfile ]] && ! grep -q '@search path' Caddyfile; then
         caddyfile_changed=true
     else
         echo "[!] Could not find the fallback handle block in Caddyfile; add /search routing manually."
+    fi
+fi
+if [[ -f Caddyfile ]] && ! grep -q '@paperless_ui' Caddyfile; then
+    if add_paperless_ui_route_to_caddyfile; then
+        echo "[✓] Caddyfile Paperless UI link route added"
+        caddyfile_changed=true
+    else
+        echo "[!] Could not find the fallback handle block in Caddyfile; add the Paperless UI link route manually."
     fi
 fi
 

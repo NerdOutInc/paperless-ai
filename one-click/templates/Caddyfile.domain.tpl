@@ -26,6 +26,18 @@
         }
     }
 
+    @paperless_ui {
+        method GET
+        header Accept *text/html*
+        not path /api/* /static/* /media/* /accounts/* /search /search/* /mcp /mcp/* /.well-known/*
+    }
+    handle @paperless_ui {
+        rewrite * /paperless-ui-proxy{uri}
+        reverse_proxy companion:3001 {
+            header_up Host localhost:3001
+        }
+    }
+
     handle {
         reverse_proxy paperless:8000
     }

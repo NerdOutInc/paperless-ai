@@ -6,7 +6,7 @@ from pathlib import Path
 from urllib.parse import quote
 
 import requests
-from starlette.responses import HTMLResponse, JSONResponse, RedirectResponse
+from starlette.responses import HTMLResponse, JSONResponse, RedirectResponse, Response
 from starlette.routing import Mount, Route
 from starlette.staticfiles import StaticFiles
 
@@ -16,6 +16,23 @@ import search
 
 STATIC_DIR = Path(__file__).with_name("static").joinpath("search")
 PAGE_DIR = Path(__file__).with_name("search_pages")
+PAPERLESS_UI_SCRIPT_PATH = "/search/static/paperless-ui-link.js"
+PAPERLESS_UI_SCRIPT_TAG = (
+    f'<script src="{PAPERLESS_UI_SCRIPT_PATH}" defer></script>'
+)
+PAPERLESS_UI_PROXY_TIMEOUT = 30
+HOP_BY_HOP_HEADERS = {
+    "connection",
+    "content-encoding",
+    "content-length",
+    "keep-alive",
+    "proxy-authenticate",
+    "proxy-authorization",
+    "te",
+    "trailer",
+    "transfer-encoding",
+    "upgrade",
+}
 MAX_SEARCH_LIMIT = 50
 MAX_QUERY_LENGTH = 500
 DEFAULT_SEARCH_LIMIT = 10
@@ -151,6 +168,79 @@ def search_unavailable_response():
 """,
         status_code=503,
         headers={"Cache-Control": "no-store"},
+    )
+
+
+def response_headers_from_upstream(response):
+    headers = {}
+    for key, value in response.headers.items():
+        if key.lower() not in HOP_BY_HOP_HEADERS:
+            headers[key] = value
+    return headers
+
+
+def inject_paperless_ui_script(html):
+    if PAPERLESS_UI_SCRIPT_PATH in html:
+        return html
+
+    lower_html = html.lower()
+    body_close_index = lower_html.rfind("</body>")
+    if body_close_index == -1:
+        return f"{html}\n{PAPERLESS_UI_SCRIPT_TAG}\n"
+    return (
+        f"{html[:body_close_index]}{PAPERLESS_UI_SCRIPT_TAG}\n"
+        f"{html[body_close_index:]}"
+    )
+
+
+def is_html_response(response):
+    content_type = ""
+    for key, value in response.headers.items():
+        if key.lower() == "content-type":
+            content_type = value
+            break
+    return "text/html" in content_type.lower()
+
+
+def paperless_ui_proxy(request):
+    proxied_path = request.path_params.get("path", "")
+    upstream_path = f"/{proxied_path.lstrip('/')}" if proxied_path else "/"
+    upstream_url = f"{config.PAPERLESS_API_URL}{upstream_path}"
+    if request.url.query:
+        upstream_url = f"{upstream_url}?{request.url.query}"
+
+    headers = {
+        "Accept": request.headers.get("accept", "text/html"),
+        "Accept-Language": request.headers.get("accept-language", ""),
+        "Cookie": cookie_header_from_request(request),
+        "User-Agent": request.headers.get("user-agent", ""),
+    }
+    headers = {key: value for key, value in headers.items() if value}
+
+    try:
+        upstream = requests.get(
+            upstream_url,
+            headers=headers,
+            allow_redirects=False,
+            timeout=PAPERLESS_UI_PROXY_TIMEOUT,
+        )
+    except requests.RequestException as exc:
+        log_paperless_error("Paperless UI proxy failed", exc)
+        return search_unavailable_response()
+
+    response_headers = response_headers_from_upstream(upstream)
+    if upstream.status_code != 200 or not is_html_response(upstream):
+        return Response(
+            upstream.content,
+            status_code=upstream.status_code,
+            headers=response_headers,
+        )
+
+    upstream.encoding = upstream.encoding or "utf-8"
+    return HTMLResponse(
+        inject_paperless_ui_script(upstream.text),
+        status_code=upstream.status_code,
+        headers=response_headers,
     )
 
 
@@ -290,6 +380,9 @@ def documents_api(request):
 
 def routes():
     return [
+        Route("/paperless-ui-proxy", paperless_ui_proxy, methods=["GET"]),
+        Route("/paperless-ui-proxy/", paperless_ui_proxy, methods=["GET"]),
+        Route("/paperless-ui-proxy/{path:path}", paperless_ui_proxy, methods=["GET"]),
         Route("/search", search_page, methods=["GET"]),
         Route("/search/", search_page, methods=["GET"]),
         Route("/search/mcp", mcp_page, methods=["GET"]),
