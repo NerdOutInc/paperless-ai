@@ -3,37 +3,34 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Paperless Ag Search</title>
+    <title>Paperless-ngx Search</title>
     <link rel="stylesheet" href="/search/static/search.css" />
   </head>
   <body>
     <main class="app-shell">
       <header class="topbar">
-        <a class="brand" href="/">Paperless Ag</a>
-        <nav aria-label="Primary">
-          <a href="/">Paperless</a>
-        </nav>
+        <a class="brand" href="/">Paperless-ngx</a>
       </header>
 
       <section class="search-panel" aria-labelledby="search-title">
         <div class="heading-row">
           <div>
             <h1 id="search-title">Search documents</h1>
-            <p id="profile-status" class="profile-status">
-              Checking session...
-            </p>
           </div>
         </div>
 
         <form id="search-form" class="search-form">
           <label class="visually-hidden" for="search-query">Search query</label>
-          <input
-            id="search-query"
-            name="q"
-            type="search"
-            autocomplete="off"
-            placeholder="crop insurance, nitrogen plan, equipment warranty"
-          />
+          <div class="input-wrap">
+            <span aria-hidden="true">Search</span>
+            <input
+              id="search-query"
+              name="q"
+              type="search"
+              autocomplete="off"
+              placeholder="crop insurance, nitrogen plan, equipment warranty"
+            />
+          </div>
           <button type="submit">Search</button>
         </form>
 

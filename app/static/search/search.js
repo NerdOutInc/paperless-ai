@@ -2,9 +2,10 @@
   var form = document.getElementById("search-form");
   var input = document.getElementById("search-query");
   var status = document.getElementById("status");
-  var profileStatus = document.getElementById("profile-status");
   var results = document.getElementById("results");
   var latestSearchId = 0;
+  // RRF scores are small, so expand top matches into visible meter widths.
+  var MATCH_METER_SCORE_SCALE = 1800;
 
   function escapeHtml(value) {
     return String(value || "")
@@ -13,6 +14,110 @@
       .replace(/>/g, "&gt;")
       .replace(/"/g, "&quot;")
       .replace(/'/g, "&#39;");
+  }
+
+  function escapeRegExp(value) {
+    return String(value).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  }
+
+  function createHighlighter(query) {
+    var terms = String(query || "")
+      .trim()
+      .split(/\s+/)
+      .filter(Boolean);
+    if (!terms.length) {
+      return escapeHtml;
+    }
+
+    var pattern = terms.map(escapeRegExp).join("|");
+    var splitter = new RegExp("(" + pattern + ")", "gi");
+    var matcher = new RegExp("^(" + pattern + ")$", "i");
+    return function (value) {
+      return String(value || "")
+        .split(splitter)
+        .map(function (part) {
+          if (!part) {
+            return "";
+          }
+          if (matcher.test(part)) {
+            return "<mark>" + escapeHtml(part) + "</mark>";
+          }
+          return escapeHtml(part);
+        })
+        .join("");
+    };
+  }
+
+  function stripExtension(fileName) {
+    return String(fileName || "").replace(/\.[^/.]+$/, "");
+  }
+
+  function isFileDerivedTitle(title, fileName) {
+    if (!fileName) {
+      return false;
+    }
+    var rawTitle = String(title || "");
+    return rawTitle === fileName || rawTitle === stripExtension(fileName);
+  }
+
+  function prettyFileTitle(title) {
+    var fallback = stripExtension(title);
+    var match = fallback.match(/^(\d{3})_(.+)$/);
+    return (match ? match[2] : fallback).replace(/_/g, " ");
+  }
+
+  function displayTitle(result) {
+    var rawTitle = result.title || "Document " + result.id;
+    return isFileDerivedTitle(rawTitle, result.original_file_name)
+      ? prettyFileTitle(rawTitle)
+      : rawTitle;
+  }
+
+  function formatDate(value) {
+    if (!value) {
+      return "";
+    }
+    var dateValue = String(value);
+    var dateParts = dateValue.match(/^(\d{4})-(\d{2})-(\d{2})/);
+    var date = dateParts
+      ? new Date(
+          Date.UTC(
+            Number(dateParts[1]),
+            Number(dateParts[2]) - 1,
+            Number(dateParts[3]),
+          ),
+        )
+      : new Date(dateValue);
+    if (Number.isNaN(date.getTime())) {
+      return dateValue;
+    }
+    return date.toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "short",
+      day: "numeric",
+      timeZone: "UTC",
+    });
+  }
+
+  function pageLabel(pageCount) {
+    if (!pageCount) {
+      return "";
+    }
+    return pageCount + (pageCount === 1 ? " page" : " pages");
+  }
+
+  function scoreWidth(score) {
+    if (score === null || score === undefined || score === "") {
+      return 40;
+    }
+    var numeric = Number(score);
+    if (!Number.isFinite(numeric)) {
+      return 40;
+    }
+    return Math.max(
+      12,
+      Math.min(100, Math.round(numeric * MATCH_METER_SCORE_SCALE)),
+    );
   }
 
   function loginRedirect() {
@@ -58,38 +163,58 @@
     return "<span>" + escapeHtml(label + ": " + value) + "</span>";
   }
 
-  function resultCard(result) {
-    var title = result.title || "Document " + result.id;
-    var source =
-      Array.isArray(result.sources) && result.sources.length
-        ? result.sources.join(" + ")
-        : "search";
+  function resultCard(result, highlight, index) {
     var snippet = result.matched_chunk || "";
-    var pageCount = result.page_count
-      ? result.page_count + (result.page_count === 1 ? " page" : " pages")
-      : "";
+    var created = formatDate(result.created);
+    var titleText = displayTitle(result);
+    var resultRank = String(index + 1).padStart(2, "0");
+    var pageCount = pageLabel(result.page_count);
+    var score =
+      result.relevance_score !== null && result.relevance_score !== undefined
+        ? result.relevance_score
+        : result.similarity;
+    var hasScore = score !== null && score !== undefined && score !== "";
 
     return [
       '<article class="result-card">',
-      "<div>",
+      '<div class="result-rail" aria-hidden="true">',
+      '<span class="rail-number">' + escapeHtml(resultRank) + "</span>",
+      '<span class="rail-label">result</span>',
+      "</div>",
+      '<div class="result-body">',
+      '<div class="result-band">',
+      "<span>",
+      created ? escapeHtml(created) : "Undated",
+      "</span>",
+      "</div>",
       '<a class="result-title" href="' +
         escapeHtml(result.document_url) +
         '">' +
-        escapeHtml(title) +
+        highlight(titleText) +
         "</a>",
-      snippet ? '<p class="snippet">' + escapeHtml(snippet) + "</p>" : "",
+      snippet ? '<p class="snippet">' + highlight(snippet) + "</p>" : "",
+      '<div class="result-footer">',
       '<div class="meta">',
-      meta("Created", result.created),
-      meta("Source", source),
-      meta("Score", result.relevance_score),
       pageCount ? "<span>" + escapeHtml(pageCount) + "</span>" : "",
+      meta("Score", score),
+      result.original_file_name
+        ? meta("File", result.original_file_name)
+        : meta("Document", result.id),
+      "</div>",
+      '<div class="match-group">',
+      '<div class="match-meter" aria-label="' +
+        escapeHtml(
+          hasScore ? "Match score " + score : "Match score unavailable",
+        ) +
+        '">',
+      "<span>Match</span>",
+      '<b class="scorebar"><i style="--score-width: ' +
+        scoreWidth(score) +
+        '%"></i></b>',
       "</div>",
       "</div>",
-      '<a class="open-link" href="' +
-        escapeHtml(result.document_url) +
-        '" aria-label="' +
-        escapeHtml("Open " + title + " in Paperless") +
-        '">Open in Paperless</a>',
+      "</div>",
+      "</div>",
       "</article>",
     ].join("");
   }
@@ -101,7 +226,12 @@
       return;
     }
 
-    results.innerHTML = payload.results.map(resultCard).join("");
+    var highlight = createHighlighter(payload.query);
+    results.innerHTML = payload.results
+      .map(function (result, index) {
+        return resultCard(result, highlight, index);
+      })
+      .join("");
     setStatus(
       payload.count +
         (payload.count === 1 ? " result" : " results") +
@@ -169,37 +299,6 @@
         renderEmpty(message);
       });
   }
-
-  fetch("/search/api/me", { headers: { Accept: "application/json" } })
-    .then(function (response) {
-      if (response.status === 401) {
-        loginRedirect();
-        return null;
-      }
-      return parseJsonResponse(response, "Profile unavailable").then(
-        function (body) {
-          if (!response.ok) {
-            throw new Error(errorMessage(body.error, "Profile unavailable"));
-          }
-          return body;
-        },
-      );
-    })
-    .then(function (payload) {
-      if (!payload) {
-        return;
-      }
-      var profile = payload.profile || {};
-      var name =
-        [profile.first_name, profile.last_name].filter(Boolean).join(" ") ||
-        profile.email ||
-        profile.username ||
-        "Paperless";
-      profileStatus.textContent = "Signed in as " + name;
-    })
-    .catch(function () {
-      profileStatus.textContent = "Sign-in status unavailable";
-    });
 
   form.addEventListener("submit", function (event) {
     event.preventDefault();
