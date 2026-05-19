@@ -165,7 +165,7 @@ def public_profile(profile):
 
 
 def profile_can_view_mcp_token(profile):
-    return bool(profile.get("is_superuser") or profile.get("is_staff"))
+    return bool(profile.get("is_superuser"))
 
 
 def authenticated_static_page(request, filename):

@@ -319,6 +319,22 @@ class WebSearchTests(unittest.TestCase):
         self.assertFalse(payload["token_available"])
         self.assertTrue(payload["token_configured"])
 
+    @patch("web_search.config.MCP_AUTH_TOKEN", "paperless-ag-token")
+    @patch(
+        "web_search.validate_paperless_session",
+        return_value={"username": "staff", "is_superuser": False, "is_staff": True},
+    )
+    def test_mcp_config_api_hides_token_for_staff_session(self, _validate):
+        request = SimpleNamespace(headers={"cookie": "sessionid=abc"})
+
+        response = web_search.mcp_config_api(request)
+        payload = json.loads(response.body)
+
+        self.assertIsNone(payload["auth_token"])
+        self.assertFalse(payload["can_view_token"])
+        self.assertFalse(payload["token_available"])
+        self.assertTrue(payload["token_configured"])
+
     @patch("web_search.validate_paperless_session", return_value=None)
     def test_mcp_page_uses_paperless_login_redirect(self, _validate):
         request = SimpleNamespace(
