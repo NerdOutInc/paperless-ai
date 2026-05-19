@@ -46,10 +46,29 @@
     };
   }
 
-  function prettyTitle(title) {
-    var fallback = String(title || "");
+  function stripExtension(fileName) {
+    return String(fileName || "").replace(/\.[^/.]+$/, "");
+  }
+
+  function isFileDerivedTitle(title, fileName) {
+    if (!fileName) {
+      return false;
+    }
+    var rawTitle = String(title || "");
+    return rawTitle === fileName || rawTitle === stripExtension(fileName);
+  }
+
+  function prettyFileTitle(title) {
+    var fallback = stripExtension(title);
     var match = fallback.match(/^(\d{3})_(.+)$/);
     return (match ? match[2] : fallback).replace(/_/g, " ");
+  }
+
+  function displayTitle(result) {
+    var rawTitle = result.title || "Document " + result.id;
+    return isFileDerivedTitle(rawTitle, result.original_file_name)
+      ? prettyFileTitle(rawTitle)
+      : rawTitle;
   }
 
   function formatDate(value) {
@@ -140,10 +159,9 @@
   }
 
   function resultCard(result, highlight, index) {
-    var rawTitle = result.title || "Document " + result.id;
     var snippet = result.matched_chunk || "";
     var created = formatDate(result.created);
-    var titleText = prettyTitle(rawTitle);
+    var titleText = displayTitle(result);
     var resultRank = String(index + 1).padStart(2, "0");
     var pageCount = pageLabel(result.page_count);
     var score =
