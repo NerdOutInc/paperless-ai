@@ -90,6 +90,48 @@ def search_similar(query_embedding, limit=20):
         ]
 
 
+def search_similar_documents(query_embedding, limit=20, chunk_limit=None):
+    with get_cursor() as cur:
+        vec_str = "[" + ",".join(str(x) for x in query_embedding) + "]"
+        chunk_limit = chunk_limit or max(limit * 8, limit)
+        cur.execute(
+            """WITH nearest_chunks AS (
+                   SELECT id, document_id, chunk_index,
+                          1 - (embedding <=> %s::vector) as similarity,
+                          embedding <=> %s::vector as distance
+                   FROM document_embeddings
+                   ORDER BY embedding <=> %s::vector
+                   LIMIT %s
+               ),
+               best_document_chunks AS (
+                   SELECT DISTINCT ON (document_id)
+                          id, document_id, chunk_index, similarity, distance
+                   FROM nearest_chunks
+                   ORDER BY document_id, distance
+               ),
+               ranked_documents AS (
+                   SELECT id, document_id, chunk_index, similarity, distance
+                   FROM best_document_chunks
+                   ORDER BY distance
+                   LIMIT %s
+               )
+               SELECT ranked_documents.document_id,
+                      ranked_documents.chunk_index,
+                      document_embeddings.chunk_text,
+                      ranked_documents.similarity
+               FROM ranked_documents
+               JOIN document_embeddings
+                 ON document_embeddings.id = ranked_documents.id
+               ORDER BY ranked_documents.distance""",
+            (vec_str, vec_str, vec_str, chunk_limit, limit)
+        )
+        return [
+            {"document_id": row[0], "chunk_index": row[1],
+             "chunk_text": row[2], "similarity": float(row[3])}
+            for row in cur.fetchall()
+        ]
+
+
 def get_embedding_stats():
     with get_cursor() as cur:
         cur.execute("""

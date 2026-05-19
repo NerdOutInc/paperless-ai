@@ -70,6 +70,7 @@ services:
       PAPERLESS_PASSWORD: ${ADMIN_PASSWORD}
       DATABASE_URL: postgresql://paperless:${DB_PASSWORD}@db:5432/paperless
       EMBEDDING_MODEL: all-MiniLM-L6-v2
+      SEMANTIC_MIN_SIMILARITY: "0.25"
       SYNC_INTERVAL_SECONDS: "60"
       MCP_HTTP_PORT: "3001"
       MCP_AUTH_TOKEN: ${MCP_AUTH_TOKEN}

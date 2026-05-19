@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Paperless-ngx Search</title>
+    <link rel="stylesheet" href="/search/static/search.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="/">
+          <img
+            src="/search/static/paperless-leaf.svg"
+            alt=""
+            aria-hidden="true"
+          />
+          <span>Paperless-ngx</span>
+        </a>
+        <nav class="topnav" aria-label="Search navigation">
+          <a class="topnav-link" href="/search/mcp">MCP</a>
+        </nav>
+      </header>
+
+      <section class="search-panel" aria-labelledby="search-title">
+        <div class="heading-row">
+          <div>
+            <h1 id="search-title">Search documents</h1>
+          </div>
+        </div>
+
+        <form id="search-form" class="search-form">
+          <label class="visually-hidden" for="search-query">Search query</label>
+          <div class="input-wrap">
+            <span aria-hidden="true">Search</span>
+            <input
+              id="search-query"
+              name="q"
+              type="search"
+              autocomplete="off"
+              placeholder="invoice, warranty, tax return, meeting notes"
+            />
+          </div>
+          <button type="submit">Search</button>
+        </form>
+
+        <p id="status" class="status" role="status" aria-live="polite"></p>
+      </section>
+
+      <section
+        id="results"
+        class="results"
+        aria-label="Search results"
+      ></section>
+
+      <div id="results-actions" class="results-actions" hidden>
+        <button id="show-more" class="secondary-button" type="button">
+          Show more
+        </button>
+      </div>
+    </main>
+
+    <script src="/search/static/search.js" defer></script>
+  </body>
+</html>

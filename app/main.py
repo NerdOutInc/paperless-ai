@@ -4,6 +4,7 @@ import time
 import uvicorn
 import config
 import db
+import web_search
 from worker import EmbeddingWorker
 from mcp_server import mcp, BearerTokenMiddleware
 
@@ -51,14 +52,14 @@ def main():
     # Build streamable HTTP app with health endpoint, optionally wrap with auth
     from starlette.applications import Starlette
     from starlette.responses import PlainTextResponse, Response
-    from starlette.routing import Route, Mount
+    from starlette.routing import Mount, Route
 
     @asynccontextmanager
     async def lifespan(app):
         async with mcp.session_manager.run():
             yield
 
-    app = Starlette(routes=[
+    routes = [
         Route("/health", lambda r: PlainTextResponse("ok")),
         # Return 404 for OAuth/OIDC discovery so MCP clients skip
         # auth negotiation and use configured Bearer token headers.
@@ -66,10 +67,16 @@ def main():
               lambda r: Response(status_code=404)),
         Route("/.well-known/openid-configuration",
               lambda r: Response(status_code=404)),
+        *web_search.routes(),
         Mount("/", app=mcp.streamable_http_app()),
-    ], lifespan=lifespan)
+    ]
+    app = Starlette(routes=routes, lifespan=lifespan)
     if config.MCP_AUTH_TOKEN:
-        app = BearerTokenMiddleware(app, config.MCP_AUTH_TOKEN)
+        app = BearerTokenMiddleware(
+            app,
+            config.MCP_AUTH_TOKEN,
+            protected_prefixes=("/mcp",),
+        )
         print("MCP authentication enabled (Bearer token).")
 
     # Start MCP server (blocks)

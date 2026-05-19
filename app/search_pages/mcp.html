@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Paperless-ngx MCP Setup</title>
+    <link rel="stylesheet" href="/search/static/search.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="/">
+          <img
+            src="/search/static/paperless-leaf.svg"
+            alt=""
+            aria-hidden="true"
+          />
+          <span>Paperless-ngx</span>
+        </a>
+        <nav class="topnav" aria-label="Search navigation">
+          <a class="topnav-link" href="/search">Search</a>
+        </nav>
+      </header>
+
+      <section class="mcp-panel" aria-labelledby="mcp-title">
+        <div class="heading-row">
+          <div>
+            <h1 id="mcp-title">MCP setup</h1>
+            <p class="lede">
+              Connect AI apps to the same read-only Paperless Ag MCP server.
+              Paperless admins can copy the token here.
+            </p>
+          </div>
+        </div>
+
+        <div class="connection-grid" aria-label="MCP connection details">
+          <div class="connection-item">
+            <span>Server</span>
+            <code id="mcp-server-name" data-server-name>paperless-ag</code>
+          </div>
+          <div class="connection-item">
+            <span>URL</span>
+            <div class="copy-row">
+              <code id="mcp-url" data-mcp-url>Loading...</code>
+              <button
+                class="copy-button"
+                type="button"
+                data-copy-target="#mcp-url"
+              >
+                Copy
+              </button>
+            </div>
+          </div>
+          <div class="connection-item">
+            <span>Auth token</span>
+            <div class="copy-row">
+              <code id="mcp-token" data-mcp-token>Loading...</code>
+              <button
+                class="copy-button"
+                type="button"
+                data-copy-target="#mcp-token"
+              >
+                Copy
+              </button>
+            </div>
+          </div>
+          <div class="connection-item">
+            <span>Header</span>
+            <div class="copy-row">
+              <code id="mcp-auth-header" data-auth-header>Loading...</code>
+              <button
+                class="copy-button"
+                type="button"
+                data-copy-target="#mcp-auth-header"
+              >
+                Copy
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <p id="mcp-status" class="status" role="status" aria-live="polite">
+          Loading connection details...
+        </p>
+      </section>
+
+      <section class="accordion" aria-label="MCP app setup instructions">
+        <details class="accordion-item" open>
+          <summary>Claude Code</summary>
+          <div class="accordion-body">
+            <p>
+              Run this from a terminal. Keep the header exactly as shown for
+              HTTP or HTTPS installs.
+            </p>
+            <div class="code-shell">
+              <button
+                class="copy-button"
+                type="button"
+                data-copy-target="#claude-code-command"
+              >
+                Copy
+              </button>
+              <pre><code id="claude-code-command" data-template="claude-code">claude mcp add --transport http {{SERVER_NAME}} {{MCP_URL}} \
+  --header "Authorization: Bearer {{MCP_TOKEN}}"
+
+claude mcp list</code></pre>
+            </div>
+          </div>
+        </details>
+
+        <details class="accordion-item">
+          <summary>Claude Desktop</summary>
+          <div class="accordion-body">
+            <p>
+              Open Claude Desktop, choose Claude &gt; Settings &gt; Developer
+              &gt; Edit Config, then add this server. Keep
+              <code>--allow-http</code> for local HTTP installs; remove it for
+              HTTPS.
+            </p>
+            <div class="code-shell">
+              <button
+                class="copy-button"
+                type="button"
+                data-copy-target="#claude-desktop-config"
+              >
+                Copy
+              </button>
+              <pre><code id="claude-desktop-config" data-template="claude-desktop">{
+  "mcpServers": {
+    "{{SERVER_NAME}}": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-remote",
+        "{{MCP_URL}}",
+        "--allow-http",
+        "--header",
+        "Authorization: Bearer {{MCP_TOKEN}}"
+      ],
+      "env": {
+        "PATH": "YOUR_NODE_BIN_DIR:/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin"
+      }
+    }
+  }
+}</code></pre>
+            </div>
+          </div>
+        </details>
+
+        <details class="accordion-item">
+          <summary>Codex CLI and Codex Desktop</summary>
+          <div class="accordion-body">
+            <p>
+              Add the HTTP MCP server with the CLI, then restart Codex Desktop
+              or open a fresh Codex CLI session so it reloads the MCP config.
+            </p>
+            <div class="code-shell">
+              <button
+                class="copy-button"
+                type="button"
+                data-copy-target="#codex-command"
+              >
+                Copy
+              </button>
+              <pre><code id="codex-command" data-template="codex">export PAPERLESS_AG_MCP_TOKEN="{{MCP_TOKEN}}"
+codex mcp add {{SERVER_NAME}} \
+  --url {{MCP_URL}} \
+  --bearer-token-env-var PAPERLESS_AG_MCP_TOKEN
+
+codex mcp list</code></pre>
+            </div>
+          </div>
+        </details>
+
+        <details class="accordion-item">
+          <summary>VS Code with GitHub Copilot</summary>
+          <div class="accordion-body">
+            <p>
+              Add this to your workspace's <code>.vscode/mcp.json</code>, then
+              use Copilot Chat's MCP server list or agent mode to enable it.
+            </p>
+            <div class="code-shell">
+              <button
+                class="copy-button"
+                type="button"
+                data-copy-target="#vscode-config"
+              >
+                Copy
+              </button>
+              <pre><code id="vscode-config" data-template="vscode">{
+  "servers": {
+    "{{SERVER_NAME}}": {
+      "type": "http",
+      "url": "{{MCP_URL}}",
+      "headers": {
+        "Authorization": "Bearer {{MCP_TOKEN}}"
+      }
+    }
+  }
+}</code></pre>
+            </div>
+          </div>
+        </details>
+
+        <details class="accordion-item">
+          <summary>llama.cpp built-in web UI</summary>
+          <div class="accordion-body">
+            <p>
+              Use a recent <code>llama-server</code> build and start it with the
+              MCP proxy enabled. New builds use <code>--ui-mcp-proxy</code>;
+              older builds may still accept <code>--webui-mcp-proxy</code>. Keep
+              that proxy on a trusted local network.
+            </p>
+            <div class="code-shell">
+              <button
+                class="copy-button"
+                type="button"
+                data-copy-target="#llama-start-command"
+              >
+                Copy
+              </button>
+              <pre><code id="llama-start-command" data-template="llama-start">llama-server -m /path/to/model.gguf --jinja --ui-mcp-proxy</code></pre>
+            </div>
+            <ol class="instruction-list">
+              <li>Open the llama.cpp web UI in your browser.</li>
+              <li>Open the MCP servers/settings screen and add a server.</li>
+              <li>
+                Set the server name to
+                <code data-server-name>paperless-ag</code>.
+              </li>
+              <li>
+                Set the server URL to <code data-mcp-url>Loading...</code>.
+              </li>
+              <li>
+                Add a custom header named <code>Authorization</code> with the
+                value <code data-auth-header>Loading...</code>.
+              </li>
+              <li>
+                Turn on <strong>Use llama-server proxy</strong>, save the
+                server, and run the health check.
+              </li>
+            </ol>
+            <p>
+              If <code>llama-server</code> runs inside Docker, the URL must be
+              reachable from that container. In the older Paperless Ag local AI
+              branch, this was wired as <code>http://caddy:8088/mcp</code> with
+              proxying enabled and Caddy injecting the token internally.
+            </p>
+          </div>
+        </details>
+      </section>
+    </main>
+
+    <script src="/search/static/mcp.js" defer></script>
+  </body>
+</html>

@@ -10,16 +10,19 @@ import config
 class BearerTokenMiddleware:
     """ASGI middleware that validates a static Bearer token."""
 
-    def __init__(self, app: ASGIApp, token: str):
+    def __init__(self, app: ASGIApp, token: str, protected_prefixes=("/mcp",)):
         self.app = app
         self.token = token
+        self.protected_prefixes = protected_prefixes
 
     async def __call__(self, scope: Scope, receive: Receive, send: Send):
         if scope["type"] in ("http", "websocket"):
-            # Let OAuth discovery paths through so clients get 404 (not 401)
-            # and know OAuth isn't supported. Also exempt /health for Docker.
             path = scope.get("path", "")
-            if not path.startswith("/.well-known/") and path != "/health":
+            protected = any(
+                path == prefix or path.startswith(f"{prefix}/")
+                for prefix in self.protected_prefixes
+            )
+            if protected:
                 headers = dict(scope.get("headers", []))
                 auth = headers.get(b"authorization", b"").decode()
                 if not auth.startswith("Bearer ") or not secrets.compare_digest(

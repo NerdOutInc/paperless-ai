@@ -8,10 +8,12 @@ set -euo pipefail
 # Usage: curl -fsSL https://paperless.fullstack.ag/install.sh | bash
 # ─────────────────────────────────────────────────────────
 
-COMPANION_IMAGE="ghcr.io/nerdoutinc/paperless-ag:latest"
+COMPANION_IMAGE="${COMPANION_IMAGE:-ghcr.io/nerdoutinc/paperless-ag:latest}"
 MIN_DISK_GB=5
-MIN_RAM_MB=1900
-RECOMMENDED_RAM_MB=3900
+MIN_RAM_MB=3500
+RECOMMENDED_RAM_MB=7400
+PORT_80_IN_USE=false
+PORT_443_IN_USE=false
 
 # ── Colors ───────────────────────────────────────────────
 RED='\033[0;31m'
@@ -130,6 +132,18 @@ run_quiet() {
         echo "$output" >&2
         return 1
     fi
+}
+
+run_in_dir() {
+    local dir="$1"
+    shift
+    (
+        if ! cd "$dir" 2>/dev/null; then
+            echo "Could not enter directory: $dir" >&2
+            return 1
+        fi
+        "$@"
+    )
 }
 
 prompt_yn() {
@@ -252,11 +266,11 @@ check_resources() {
     total_ram_mb=$(free -m 2>/dev/null | awk '/Mem:/ {print $2}' || echo "0")
     if (( total_ram_mb > 0 )); then
         if (( total_ram_mb < MIN_RAM_MB )); then
-            fail "Not enough RAM. Need at least 4GB, have ${total_ram_mb}MB."
+            fail "Not enough RAM. Need a 4GB-class machine, have ${total_ram_mb}MB."
             fail "Paperless + the embedding model need at least 4GB to run well."
             exit 1
         elif (( total_ram_mb < RECOMMENDED_RAM_MB )); then
-            warn "${total_ram_mb}MB RAM. 4GB+ recommended for best performance."
+            warn "${total_ram_mb}MB RAM. 8GB recommended for best performance."
         else
             info "${total_ram_mb}MB RAM available"
         fi
@@ -268,12 +282,35 @@ check_ports() {
     for port in 80 443; do
         if ss -tlnp 2>/dev/null | grep -q ":${port} "; then
             blocked="${blocked} ${port}"
+            if [[ "$port" == "80" ]]; then
+                PORT_80_IN_USE=true
+            elif [[ "$port" == "443" ]]; then
+                PORT_443_IN_USE=true
+            fi
         fi
     done
     if [[ -n "$blocked" ]]; then
         warn "Port(s)${blocked} already in use."
         warn "Another web server may be running (nginx, apache, etc.)."
-        warn "Caddy needs ports 80 and 443 for HTTPS."
+        warn "We'll account for this after choosing an install type."
+    fi
+}
+
+confirm_fresh_caddy_ports() {
+    local blocked=""
+    if [[ "$PORT_80_IN_USE" == "true" ]]; then
+        blocked="${blocked} 80"
+    fi
+    if [[ -n "${DOMAIN:-}" && "$PORT_443_IN_USE" == "true" ]]; then
+        blocked="${blocked} 443"
+    fi
+    if [[ -n "$blocked" ]]; then
+        warn "Port(s)${blocked} already in use."
+        if [[ -n "${DOMAIN:-}" ]]; then
+            warn "A fresh HTTPS install needs ports 80 and 443 for Caddy."
+        else
+            warn "A fresh HTTP install needs port 80 for Caddy."
+        fi
         if ! prompt_yn "Continue anyway?" "n"; then
             exit 0
         fi
@@ -655,6 +692,8 @@ do_fresh_install() {
             1)
                 step "Updating existing installation..."
                 if [[ -f "$install_dir/update.sh" ]]; then
+                    generate_update_script "$install_dir"
+                    info "Refreshed update script"
                     bash "$install_dir/update.sh"
                     return
                 else
@@ -664,6 +703,8 @@ do_fresh_install() {
             *) exit 0 ;;
         esac
     fi
+
+    confirm_fresh_caddy_ports
 
     divider
     echo -e "  ${BOLD}Setting things up. This may take a few minutes...${NC}"
@@ -769,6 +810,7 @@ services:
       # DB_PASSWORD is generated from base64 with /+= stripped, so only [A-Za-z0-9] — safe to embed without URL-encoding.
       DATABASE_URL: postgresql://paperless:\${DB_PASSWORD}@db:5432/paperless
       EMBEDDING_MODEL: all-MiniLM-L6-v2
+      SEMANTIC_MIN_SIMILARITY: "0.25"
       SYNC_INTERVAL_SECONDS: "60"
       MCP_HTTP_PORT: "3001"
       MCP_AUTH_TOKEN: \${MCP_AUTH_TOKEN}
@@ -826,18 +868,18 @@ ENV
     info "Generated helper scripts (update.sh, backup.sh, restore.sh)"
 
     # Pull images and start
-    step "Pulling container images (this is the slow part)..."
-    (cd "$install_dir" && run_quiet docker compose pull)
+    step "Pulling container images (this may take a few minutes)..."
+    run_in_dir "$install_dir" run_quiet docker compose pull
     info "Images pulled"
 
     step "Starting services..."
-    (cd "$install_dir" && run_quiet docker compose up -d)
+    run_in_dir "$install_dir" run_quiet docker compose up -d
     info "Services started"
 
     step "Waiting for Paperless to be ready (this can take a minute on first run)..."
     local attempts=0
     while (( attempts < 60 )); do
-        if (cd "$install_dir" && docker compose exec -T paperless curl -fs http://localhost:8000 &>/dev/null); then
+        if run_in_dir "$install_dir" docker compose exec -T paperless curl -fs http://localhost:8000 &>/dev/null; then
             break
         fi
         sleep 5
@@ -852,7 +894,7 @@ ENV
 
     # Wait briefly for companion to connect
     sleep 5
-    if (cd "$install_dir" && docker compose ps companion 2>/dev/null | grep -q "running"); then
+    if run_in_dir "$install_dir" sh -c 'docker compose ps companion 2>/dev/null | grep -q "running"'; then
         info "Companion service connected"
     else
         warn "Companion service may still be starting. Check: docker compose logs companion"
@@ -940,6 +982,13 @@ do_addon_install() {
 
     # Determine internal Paperless URL
     local paperless_internal_url="http://${PAPERLESS_SERVICE_NAME}:8000"
+    ADDON_ENABLE_CADDY=true
+    if [[ "$PORT_80_IN_USE" == "true" ]] || [[ -n "${DOMAIN:-}" && "$PORT_443_IN_USE" == "true" ]]; then
+        warn "Port 80 or 443 is already in use, so the installer will not add Caddy."
+        warn "Paperless Ag will still expose the companion directly on port 3001."
+        warn "Add /search to your existing reverse proxy when you are ready for same-origin search."
+        ADDON_ENABLE_CADDY=false
+    fi
 
     # Generate docker-compose.override.yml
     local override_content="# Paperless Ag add-on -- generated by installer
@@ -973,35 +1022,44 @@ DB_NAME='${DB_NAME}'
 DB_USER='${DB_USER}'
 DB_PASS='${DB_PASS}'
 EMBEDDING_MODEL='all-MiniLM-L6-v2'
+SEMANTIC_MIN_SIMILARITY='0.25'
 SYNC_INTERVAL_SECONDS='60'
 MCP_HTTP_PORT='3001'
 MCP_AUTH_TOKEN='${MCP_AUTH_TOKEN}'
+PAPERLESS_AG_COMPANION_IMAGE='${COMPANION_IMAGE}'
+PAPERLESS_AG_DOMAIN='${DOMAIN:-}'
+PAPERLESS_AG_CADDY_ENABLED='${ADDON_ENABLE_CADDY}'
 PYTHONUNBUFFERED='1'
 ENVFILE
     chmod 600 "$compose_dir/paperless-ag.env"
 
-    # Expose MCP port directly when no domain/Caddy is configured
-    if [[ -z "${DOMAIN:-}" ]]; then
+    # Keep the direct companion port when no domain is configured, or when Caddy
+    # cannot be added without conflicting with the existing Paperless install.
+    if [[ -z "${DOMAIN:-}" ]] || [[ "${ADDON_ENABLE_CADDY}" != "true" ]]; then
         override_content+="
     ports:
       - \"3001:3001\""
     fi
 
-    # Add Caddy if domain provided
-    if [[ -n "${DOMAIN:-}" ]]; then
+    if [[ "${ADDON_ENABLE_CADDY}" == "true" ]]; then
+        local caddy_ports='      - "80:80"'
+        if [[ -n "${DOMAIN:-}" ]]; then
+            caddy_ports="$caddy_ports"$'\n''      - "443:443"'
+        fi
+
         override_content+="
 
   caddy:
     image: caddy:2-alpine
     restart: unless-stopped
     ports:
-      - \"80:80\"
-      - \"443:443\"
+${caddy_ports}
     volumes:
       - ./Caddyfile:/etc/caddy/Caddyfile:ro
       - caddy-data:/data
       - caddy-config:/config
     depends_on:
+      - ${PAPERLESS_SERVICE_NAME}
       - companion
 
 volumes:
@@ -1012,8 +1070,7 @@ volumes:
     echo "$override_content" > "$compose_dir/docker-compose.override.yml"
     info "Generated docker-compose.override.yml"
 
-    # Generate Caddyfile if domain provided
-    if [[ -n "${DOMAIN:-}" ]]; then
+    if [[ "${ADDON_ENABLE_CADDY}" == "true" ]]; then
         generate_caddyfile "$compose_dir/Caddyfile"
         info "Generated Caddyfile"
     fi
@@ -1024,12 +1081,12 @@ volumes:
 
     # Restart the stack (picks up override automatically)
     step "Restarting services..."
-    (cd "$compose_dir" && run_quiet docker compose up -d)
+    run_in_dir "$compose_dir" run_quiet docker compose up -d
     info "Services started"
 
     # Wait for companion
     sleep 10
-    if (cd "$compose_dir" && docker compose ps companion 2>/dev/null | grep -q "running"); then
+    if run_in_dir "$compose_dir" sh -c 'docker compose ps companion 2>/dev/null | grep -q "running"'; then
         info "Companion service is running"
     else
         warn "Companion may still be starting. Check: cd $compose_dir && docker compose logs companion"
@@ -1062,6 +1119,12 @@ ${DOMAIN} {${tls_block}
             header_up Host localhost:3001
         }
     }
+    @search path /search /search/*
+    handle @search {
+        reverse_proxy companion:3001 {
+            header_up Host localhost:3001
+        }
+    }
     handle {
         reverse_proxy ${paperless_service}:8000
     }
@@ -1080,6 +1143,12 @@ CADDY
             header_up Host localhost:3001
         }
     }
+    @search path /search /search/*
+    handle @search {
+        reverse_proxy companion:3001 {
+            header_up Host localhost:3001
+        }
+    }
     handle {
         reverse_proxy ${paperless_service}:8000
     }
@@ -1093,8 +1162,37 @@ generate_update_script() {
     cat > "$install_dir/update.sh" <<'SCRIPT'
 #!/usr/bin/env bash
 set -euo pipefail
-cd "$(dirname "$0")"
+script_dir="$(cd "$(dirname "$0")" 2>/dev/null && pwd -P)" || {
+    echo "Could not enter script directory." >&2
+    exit 1
+}
+cd "$script_dir"
 mkdir -p backups
+caddyfile_changed=false
+
+add_search_route_to_caddyfile() {
+    local tmp
+    tmp=$(mktemp)
+    if awk '
+        BEGIN { inserted = 0 }
+        /^[[:space:]]*handle[[:space:]]*\{$/ && !inserted {
+            print "    @search path /search /search/*"
+            print "    handle @search {"
+            print "        reverse_proxy companion:3001 {"
+            print "            header_up Host localhost:3001"
+            print "        }"
+            print "    }"
+            inserted = 1
+        }
+        { print }
+        END { if (!inserted) exit 1 }
+    ' Caddyfile > "$tmp"; then
+        mv "$tmp" Caddyfile
+        return 0
+    fi
+    rm -f "$tmp"
+    return 1
+}
 
 if docker compose ps --status running db 2>/dev/null | grep -q db; then
     echo "Backing up database before update..."
@@ -1115,11 +1213,22 @@ if [[ -f Caddyfile ]] && grep -q 'handle_path /mcp' Caddyfile; then
         sed -i '/@mcp path/i\    @discovery path \/.well-known\/oauth-authorization-server \/.well-known\/openid-configuration\n    handle @discovery {\n        respond 404\n    }' Caddyfile
     fi
     echo "[✓] Caddyfile updated"
+    caddyfile_changed=true
 fi
 # Migrate legacy .well-known/oauth* to specific discovery endpoints
 if [[ -f Caddyfile ]] && grep -q 'handle /\.well-known/oauth\*' Caddyfile; then
     sed -i '/handle \/\.well-known\/oauth\*/,/}/c\    @discovery path \/.well-known\/oauth-authorization-server \/.well-known\/openid-configuration\n    handle @discovery {\n        respond 404\n    }' Caddyfile
     echo "[✓] Caddyfile discovery block updated"
+    caddyfile_changed=true
+fi
+# Add same-origin search route for existing installs.
+if [[ -f Caddyfile ]] && ! grep -q '@search path' Caddyfile; then
+    if add_search_route_to_caddyfile; then
+        echo "[✓] Caddyfile search route added"
+        caddyfile_changed=true
+    else
+        echo "[!] Could not find the fallback handle block in Caddyfile; add /search routing manually."
+    fi
 fi
 
 echo "Pulling latest images..."
@@ -1127,6 +1236,12 @@ docker compose pull
 
 echo "Restarting services..."
 docker compose up -d
+
+if [[ "$caddyfile_changed" == "true" ]]; then
+    echo "Reloading Caddy..."
+    docker compose exec -T caddy caddy reload --config /etc/caddy/Caddyfile \
+        || docker compose restart caddy
+fi
 
 echo ""
 echo "[✓] Update complete. Check your Paperless UI to confirm."
@@ -1139,13 +1254,219 @@ generate_addon_update_script() {
     cat > "$compose_dir/paperless-ag-update.sh" <<'SCRIPT'
 #!/usr/bin/env bash
 set -euo pipefail
-cd "$(dirname "$0")"
+script_dir="$(cd "$(dirname "$0")" 2>/dev/null && pwd -P)" || {
+    echo "Could not enter script directory." >&2
+    exit 1
+}
+cd "$script_dir"
+caddyfile_changed=false
 
-echo "Pulling latest Paperless Ag image..."
-docker pull ghcr.io/nerdoutinc/paperless-ag:latest
+add_search_route_to_caddyfile() {
+    local tmp
+    tmp=$(mktemp)
+    if awk '
+        BEGIN { inserted = 0 }
+        /^[[:space:]]*handle[[:space:]]*\{$/ && !inserted {
+            print "    @search path /search /search/*"
+            print "    handle @search {"
+            print "        reverse_proxy companion:3001 {"
+            print "            header_up Host localhost:3001"
+            print "        }"
+            print "    }"
+            inserted = 1
+        }
+        { print }
+        END { if (!inserted) exit 1 }
+    ' Caddyfile > "$tmp"; then
+        mv "$tmp" Caddyfile
+        return 0
+    fi
+    rm -f "$tmp"
+    return 1
+}
+
+detect_paperless_service() {
+    local service=""
+    service=$(docker compose ps -q 2>/dev/null \
+        | while read -r container_id; do
+            docker inspect "$container_id" \
+                --format '{{ index .Config.Labels "com.docker.compose.service" }} {{ .Config.Image }}' 2>/dev/null
+        done \
+        | awk 'tolower($0) ~ /paperless-ngx/ {print $1; exit}' || true)
+    if [[ -z "$service" ]]; then
+        service=$(docker compose config --services 2>/dev/null \
+            | grep -E '^(paperless|paperless-webserver|webserver)$' \
+            | head -1 || true)
+    fi
+    echo "$service"
+}
+
+port_in_use() {
+    ss -tlnp 2>/dev/null | grep -q ":${1} "
+}
+
+paperless_ag_env_value() {
+    local key="$1"
+    local line
+    line=$(grep -E "^${key}=" paperless-ag.env 2>/dev/null | tail -1 || true)
+    if [[ -z "$line" ]]; then
+        return
+    fi
+    line="${line#*=}"
+    line="${line#\'}"
+    line="${line%\'}"
+    line="${line#\"}"
+    line="${line%\"}"
+    printf '%s\n' "$line"
+}
+
+write_default_caddyfile() {
+    local paperless_service="$1"
+    cat > Caddyfile <<CADDY
+:80 {
+    @discovery path /.well-known/oauth-authorization-server /.well-known/openid-configuration
+    handle @discovery {
+        respond 404
+    }
+    @mcp path /mcp /mcp/*
+    handle @mcp {
+        reverse_proxy companion:3001 {
+            header_up Host localhost:3001
+        }
+    }
+    @search path /search /search/*
+    handle @search {
+        reverse_proxy companion:3001 {
+            header_up Host localhost:3001
+        }
+    }
+    handle {
+        reverse_proxy ${paperless_service}:8000
+    }
+}
+CADDY
+}
+
+ensure_override_volume() {
+    local volume_name="$1"
+    if grep -Eq "^[[:space:]]{2}${volume_name}:" docker-compose.override.yml; then
+        return
+    fi
+    if ! grep -Eq '^volumes:[[:space:]]*$' docker-compose.override.yml; then
+        cat >> docker-compose.override.yml <<YAML
+
+volumes:
+  ${volume_name}:
+YAML
+        return
+    fi
+
+    local tmp
+    tmp=$(mktemp)
+    awk -v volume_name="$volume_name" '
+        BEGIN { inserted = 0; in_volumes = 0 }
+        /^volumes:[[:space:]]*$/ {
+            in_volumes = 1
+            print
+            next
+        }
+        in_volumes && /^[^[:space:]][^:]*:/ && !inserted {
+            print "  " volume_name ":"
+            inserted = 1
+            in_volumes = 0
+        }
+        { print }
+        END {
+            if (in_volumes && !inserted) {
+                print "  " volume_name ":"
+            }
+        }
+    ' docker-compose.override.yml > "$tmp"
+    mv "$tmp" docker-compose.override.yml
+}
+
+ensure_caddy_for_legacy_no_domain_addon() {
+    if [[ -f Caddyfile ]]; then
+        return
+    fi
+    local configured_domain configured_caddy_enabled
+    configured_domain=$(paperless_ag_env_value PAPERLESS_AG_DOMAIN)
+    configured_caddy_enabled=$(paperless_ag_env_value PAPERLESS_AG_CADDY_ENABLED)
+    if [[ -n "$configured_domain" && "$configured_caddy_enabled" == "false" ]]; then
+        echo "[!] This add-on was installed for https://${configured_domain} with managed Caddy disabled."
+        echo "    Leaving routing unchanged; keep using your existing reverse proxy for /search and /mcp."
+        return
+    fi
+    local paperless_service
+    paperless_service=$(detect_paperless_service)
+    if docker compose config --services 2>/dev/null | grep -qx caddy; then
+        echo "[!] Existing caddy service found, but no ./Caddyfile is present."
+        echo "    Configure that Caddy service to send /search and /mcp to companion:3001."
+        return
+    fi
+    if [[ ! -f docker-compose.override.yml ]] \
+        || ! grep -q 'Paperless Ag add-on' docker-compose.override.yml; then
+        echo "[!] No Caddyfile found. Re-run the installer to add same-origin /search routing."
+        return
+    fi
+    if port_in_use 80; then
+        echo "[!] Port 80 is already in use; leaving the existing Paperless routing unchanged."
+        echo "    Host proxies should send /search and /mcp to http://127.0.0.1:3001."
+        echo "    Container proxies on this Compose network can use http://companion:3001."
+        return
+    fi
+
+    if [[ -z "$paperless_service" ]]; then
+        echo "[!] Could not detect the Paperless service name. Re-run the installer to add /search routing."
+        return
+    fi
+
+    cat >> docker-compose.override.yml <<YAML
+
+  caddy:
+    image: caddy:2-alpine
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy-data:/data
+      - caddy-config:/config
+    depends_on:
+      - ${paperless_service}
+      - companion
+YAML
+    ensure_override_volume caddy-data
+    ensure_override_volume caddy-config
+    write_default_caddyfile "$paperless_service"
+    echo "[✓] Caddy service and /search route added"
+    caddyfile_changed=true
+}
+
+ensure_caddy_for_legacy_no_domain_addon
+
+# Add same-origin search route for existing add-on installs.
+if [[ -f Caddyfile ]] && ! grep -q '@search path' Caddyfile; then
+    if add_search_route_to_caddyfile; then
+        echo "[✓] Caddyfile search route added"
+        caddyfile_changed=true
+    else
+        echo "[!] Could not find the fallback handle block in Caddyfile; add /search routing manually."
+    fi
+fi
+
+echo "Pulling Paperless Ag companion image..."
+docker compose pull companion
 
 echo "Restarting services..."
 docker compose up -d
+
+if [[ "$caddyfile_changed" == "true" ]] \
+    && docker compose config --services 2>/dev/null | grep -qx caddy; then
+    echo "Reloading Caddy..."
+    docker compose exec -T caddy caddy reload --config /etc/caddy/Caddyfile \
+        || docker compose restart caddy
+fi
 
 echo ""
 echo "[✓] Paperless Ag updated."
@@ -1158,7 +1479,11 @@ generate_backup_script() {
     cat > "$install_dir/backup.sh" <<'SCRIPT'
 #!/usr/bin/env bash
 set -euo pipefail
-cd "$(dirname "$0")"
+script_dir="$(cd "$(dirname "$0")" 2>/dev/null && pwd -P)" || {
+    echo "Could not enter script directory." >&2
+    exit 1
+}
+cd "$script_dir"
 
 BACKUP_DIR="backups"
 TIMESTAMP=$(date +%Y%m%d-%H%M%S)
@@ -1181,7 +1506,11 @@ generate_restore_script() {
     cat > "$install_dir/restore.sh" <<'SCRIPT'
 #!/usr/bin/env bash
 set -euo pipefail
-cd "$(dirname "$0")"
+script_dir="$(cd "$(dirname "$0")" 2>/dev/null && pwd -P)" || {
+    echo "Could not enter script directory." >&2
+    exit 1
+}
+cd "$script_dir"
 
 if [[ $# -lt 1 ]]; then
     echo "Usage: bash restore.sh <backup-file.sql>"
@@ -1240,8 +1569,9 @@ setup_backup_cron() {
 
 print_fresh_summary() {
     local install_dir="$1"
-    local paperless_url="$2"
-    local mcp_url="${paperless_url}/mcp"
+    local paperless_url="${2%/}"
+    local search_url="${paperless_url}/search"
+    local mcp_setup_url="${paperless_url}/search/mcp"
 
     echo
     echo -e "${BOLD}════════════════════════════════════════════════════${NC}"
@@ -1249,42 +1579,23 @@ print_fresh_summary() {
     echo -e "${BOLD}════════════════════════════════════════════════════${NC}"
     echo
     echo -e "  ${BOLD}Paperless Web UI:${NC}  $paperless_url"
+    echo -e "  ${BOLD}Search Web UI:${NC}     $search_url"
     echo -e "  ${BOLD}Username:${NC}          $ADMIN_USER"
     echo -e "  ${BOLD}Password:${NC}          (what you entered)"
     echo
-    echo "  Upload documents: Drag and drop in the web UI, or email them"
-    echo "                    (configure in Settings > Mail)"
+    echo "  Upload documents: Drag and drop in Paperless, then search them"
+    echo "                    from the Search Web UI."
     echo
     echo -e "  ${BOLD}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
     echo
-    echo -e "  ${BOLD}CONNECT TO CLAUDE:${NC}"
+    echo -e "  ${BOLD}OPTIONAL: CONNECT AI APPS WITH MCP:${NC}"
     echo
-    echo "  In Claude Code, run this command:"
+    echo "  Log in to Paperless and open:"
+    echo "    ${mcp_setup_url}"
     echo
-    echo -e "    ${BOLD}claude mcp add --transport http paperless-ag ${mcp_url} \\\\${NC}"
-    echo -e "    ${BOLD}  --header \"Authorization: Bearer ${MCP_AUTH_TOKEN}\"${NC}"
-    echo
-    echo "  Or add this to your .mcp.json:"
-    echo
-    echo "    {"
-    echo "      \"mcpServers\": {"
-    echo "        \"paperless-ag\": {"
-    echo "          \"type\": \"http\","
-    echo "          \"url\": \"${mcp_url}\","
-    echo "          \"headers\": {"
-    echo "            \"Authorization\": \"Bearer ${MCP_AUTH_TOKEN}\""
-    echo "          }"
-    echo "        }"
-    echo "      }"
-    echo "    }"
-    echo
-    echo "  Claude Desktop uses mcp-remote instead of the .mcp.json HTTP block."
-    echo "  Open Claude > Settings > Developer > Edit Config and use:"
-    echo "    Server URL: ${mcp_url}"
-    echo "    Token:      ${MCP_AUTH_TOKEN}"
-    echo "  Full config example: https://paperless.fullstack.ag"
-    echo
-    echo "  Then ask Claude: \"Search my farm documents for crop insurance\""
+    echo "  That page shows your MCP URL, the auth token for"
+    echo "  Paperless admins, and setup instructions for Claude,"
+    echo "  Codex, VS Code/Copilot, and llama.cpp."
     echo
     echo -e "  ${BOLD}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
     echo
@@ -1303,11 +1614,20 @@ print_addon_summary() {
     local ip_addr
     ip_addr=$(hostname -I 2>/dev/null | awk '{print $1}' || echo "YOUR_SERVER_IP")
 
-    local mcp_url
-    if [[ -n "${DOMAIN:-}" ]]; then
-        mcp_url="https://${DOMAIN}/mcp"
+    local search_url
+    local mcp_setup_url
+    if [[ "${ADDON_ENABLE_CADDY:-true}" != "true" ]]; then
+        if [[ -n "${DOMAIN:-}" ]]; then
+            mcp_setup_url="https://${DOMAIN}/search/mcp"
+        else
+            mcp_setup_url="http://${ip_addr}/search/mcp"
+        fi
+    elif [[ -n "${DOMAIN:-}" ]]; then
+        search_url="https://${DOMAIN}/search"
+        mcp_setup_url="https://${DOMAIN}/search/mcp"
     else
-        mcp_url="http://${ip_addr}:3001/mcp"
+        search_url="http://${ip_addr}/search"
+        mcp_setup_url="http://${ip_addr}/search/mcp"
     fi
 
     echo
@@ -1318,36 +1638,29 @@ print_addon_summary() {
     echo "  Semantic search is now active. Your existing Paperless"
     echo "  documents will be embedded automatically (check logs)."
     echo
+    if [[ "${ADDON_ENABLE_CADDY:-true}" != "true" ]]; then
+        echo -e "  ${BOLD}Search Web UI:${NC}  configure your existing reverse proxy for /search"
+        echo "  Same-origin /search was not added because port 80/443 is already in use."
+        echo "  Host proxies should use http://127.0.0.1:3001."
+        echo "  Container proxies on this Compose network can use http://companion:3001."
+    else
+        echo -e "  ${BOLD}Search Web UI:${NC}  ${search_url}"
+    fi
+    echo
     echo -e "  ${BOLD}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
     echo
-    echo -e "  ${BOLD}CONNECT TO CLAUDE:${NC}"
+    echo -e "  ${BOLD}OPTIONAL: CONNECT AI APPS WITH MCP:${NC}"
     echo
-    echo "  In Claude Code, run this command:"
+    if [[ "${ADDON_ENABLE_CADDY:-true}" != "true" ]]; then
+        echo "  After your reverse proxy routes /search, log in and open:"
+    else
+        echo "  Log in to Paperless and open:"
+    fi
+    echo "    ${mcp_setup_url}"
     echo
-    echo -e "    ${BOLD}claude mcp add --transport http paperless-ag ${mcp_url} \\\\${NC}"
-    echo -e "    ${BOLD}  --header \"Authorization: Bearer ${MCP_AUTH_TOKEN}\"${NC}"
-    echo
-    echo "  Or add this to your .mcp.json:"
-    echo
-    echo "    {"
-    echo "      \"mcpServers\": {"
-    echo "        \"paperless-ag\": {"
-    echo "          \"type\": \"http\","
-    echo "          \"url\": \"${mcp_url}\","
-    echo "          \"headers\": {"
-    echo "            \"Authorization\": \"Bearer ${MCP_AUTH_TOKEN}\""
-    echo "          }"
-    echo "        }"
-    echo "      }"
-    echo "    }"
-    echo
-    echo "  Claude Desktop uses mcp-remote instead of the .mcp.json HTTP block."
-    echo "  Open Claude > Settings > Developer > Edit Config and use:"
-    echo "    Server URL: ${mcp_url}"
-    echo "    Token:      ${MCP_AUTH_TOKEN}"
-    echo "  Full config example: https://paperless.fullstack.ag"
-    echo
-    echo "  Then ask Claude: \"Search my farm documents for crop insurance\""
+    echo "  That page shows your MCP URL, the auth token for"
+    echo "  Paperless admins, and setup instructions for Claude,"
+    echo "  Codex, VS Code/Copilot, and llama.cpp."
     echo
     echo -e "  ${BOLD}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
     echo

@@ -164,6 +164,26 @@
         font-size: 0.85rem;
         margin-top: 1.5rem;
       }
+      .completion-link {
+        display: block;
+        margin-top: 1.5rem;
+        padding: 0.8rem;
+        border-radius: 6px;
+        font-size: 1rem;
+        font-weight: 600;
+        text-align: center;
+        text-decoration: none;
+      }
+      .completion-link.primary {
+        background: #2d5016;
+        color: #fff;
+      }
+      .completion-link.secondary {
+        margin-top: 0.75rem;
+        background: #eef3e9;
+        border: 1px solid #d9dfd4;
+        color: #2d5016;
+      }
     </style>
   </head>
   <body>
@@ -286,7 +306,7 @@
         </button>
       </div>
       <div class="warning">
-        Save this token now. You need it to connect Claude to your Paperless
+        Save this token now if you plan to connect AI apps to your Paperless
         instance.
       </div>
       <p class="ssh-hint">
@@ -294,23 +314,13 @@
         <code>cat /opt/paperless-ag/.env | grep MCP_AUTH_TOKEN</code>
       </p>
 
-      <a
-        id="paperless-link"
-        href="#"
-        style="
-          display: block;
-          margin-top: 1.5rem;
-          padding: 0.8rem;
-          background: #2d5016;
-          color: #fff;
-          border-radius: 6px;
-          font-size: 1rem;
-          font-weight: 600;
-          text-align: center;
-          text-decoration: none;
-        "
-        >Open Paperless</a
-      >
+      <a id="search-link" class="completion-link primary" href="#">
+        Open Search
+      </a>
+
+      <a id="paperless-link" class="completion-link secondary" href="#">
+        Open Paperless
+      </a>
       <p class="redirect-note" id="redirect-note"></p>
     </div>
 
@@ -391,7 +401,8 @@
               // Poll for completion
               var token = result.data.mcp_token;
               var url = result.data.paperless_url;
-              pollCompletion(token, url);
+              var searchUrl = result.data.search_url || url + "/search";
+              pollCompletion(token, url, searchUrl);
             })
             .catch(function () {
               formError.textContent = "Connection error. Please try again.";
@@ -400,14 +411,42 @@
             });
         });
 
-        function pollCompletion(token, url) {
+        function pollCompletion(token, url, searchUrl) {
           var lostContact = false;
           var pollCount = 0;
           var maxPolls = 200; // ~10 minutes at 3s intervals
+          var searchProbeInFlight = false;
+          var completionShown = false;
+
+          function completeWhenSearchIsReady() {
+            if (completionShown || searchProbeInFlight) {
+              return;
+            }
+            searchProbeInFlight = true;
+            waitForSearch(searchUrl)
+              .then(function (ready) {
+                searchProbeInFlight = false;
+                if (completionShown) {
+                  return;
+                }
+                if (ready) {
+                  completionShown = true;
+                  clearInterval(interval);
+                  showComplete(token, url, searchUrl);
+                } else {
+                  document.querySelector(".progress-text").textContent =
+                    "Paperless is ready... waiting for Search to start.";
+                }
+              })
+              .catch(function () {
+                searchProbeInFlight = false;
+              });
+          }
 
           var interval = setInterval(function () {
             pollCount++;
             if (pollCount > maxPolls) {
+              completionShown = true;
               clearInterval(interval);
               document.querySelector(".progress-text").textContent =
                 "Setup timed out. SSH in and check: cat /opt/paperless-ag/setup.log";
@@ -417,17 +456,7 @@
 
             if (lostContact) {
               // Setup API is gone -- Docker Caddy now owns :80.
-              // Only probe root; a 2xx/3xx means Paperless is up.
-              fetch("/", { method: "GET", redirect: "manual" })
-                .then(function (res) {
-                  if (res.ok || res.type === "opaqueredirect") {
-                    clearInterval(interval);
-                    showComplete(token, url);
-                  }
-                })
-                .catch(function () {
-                  // Still starting up, keep polling
-                });
+              completeWhenSearchIsReady();
               return;
             }
 
@@ -437,9 +466,9 @@
               })
               .then(function (data) {
                 if (data.state === "complete") {
-                  clearInterval(interval);
-                  showComplete(token, url);
+                  completeWhenSearchIsReady();
                 } else if (data.state === "failed") {
+                  completionShown = true;
                   clearInterval(interval);
                   document.querySelector(".progress-text").textContent =
                     "Setup failed. SSH in and check: cat /opt/paperless-ag/setup.log";
@@ -454,25 +483,70 @@
           }, 3000);
         }
 
-        function showComplete(token, url) {
+        function waitForSearch(searchUrl) {
+          var readyUrl = searchAssetUrl(searchUrl);
+          if (readyUrl.origin === window.location.origin) {
+            return fetch(readyUrl.toString(), {
+              method: "GET",
+              cache: "no-store",
+              redirect: "manual",
+            }).then(function (res) {
+              return res.ok;
+            });
+          }
+          return probeImage(readyUrl.toString());
+        }
+
+        function searchAssetUrl(searchUrl) {
+          var url = new URL(searchUrl || "/search", window.location.href);
+          url.pathname = url.pathname.replace(/\/$/, "") + "/static/ready.svg";
+          url.search = "v=" + Date.now();
+          return url;
+        }
+
+        function probeImage(url) {
+          return new Promise(function (resolve) {
+            var image = new Image();
+            var timeout = window.setTimeout(function () {
+              cleanup(false);
+            }, 5000);
+
+            function cleanup(ready) {
+              window.clearTimeout(timeout);
+              image.onload = null;
+              image.onerror = null;
+              resolve(ready);
+            }
+
+            image.onload = function () {
+              cleanup(true);
+            };
+            image.onerror = function () {
+              cleanup(false);
+            };
+            image.src = url;
+          });
+        }
+
+        function showComplete(token, url, searchUrl) {
           document.getElementById("progress-card").classList.add("hidden");
           document.getElementById("complete-card").classList.remove("hidden");
           document.getElementById("mcp-token").textContent = token;
           document.getElementById("paperless-link").href = url;
+          document.getElementById("search-link").href = searchUrl;
 
           // Countdown redirect
           var seconds = 30;
           var note = document.getElementById("redirect-note");
           var timer = setInterval(function () {
             seconds--;
-            note.textContent =
-              "Redirecting to Paperless in " + seconds + "s...";
+            note.textContent = "Redirecting to Search in " + seconds + "s...";
             if (seconds <= 0) {
               clearInterval(timer);
-              window.location.href = url;
+              window.location.href = searchUrl;
             }
           }, 1000);
-          note.textContent = "Redirecting to Paperless in 30s...";
+          note.textContent = "Redirecting to Search in 30s...";
         }
       })();
 

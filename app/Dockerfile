@@ -26,6 +26,8 @@ RUN python -c "from sentence_transformers import SentenceTransformer; SentenceTr
 ENV EMBEDDING_MODEL=${EMBEDDING_MODEL}
 
 COPY *.py .
+COPY static ./static
+COPY search_pages ./search_pages
 
 USER appuser
 

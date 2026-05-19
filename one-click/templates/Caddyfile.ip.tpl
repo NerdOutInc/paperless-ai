@@ -17,6 +17,13 @@
         }
     }
 
+    @search path /search /search/*
+    handle @search {
+        reverse_proxy companion:3001 {
+            header_up Host localhost:3001
+        }
+    }
+
     handle {
         reverse_proxy paperless:8000
     }

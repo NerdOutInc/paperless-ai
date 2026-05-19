@@ -85,7 +85,8 @@ See `templates/env.template` for the full template with defaults.
 4. Farmer fills out admin credentials, timezone, optional domain
 5. On completion, `finalize-setup.sh` is called
 6. Wizard services stop, Docker Compose services start
-7. Caddy reverse-proxies Paperless on `:80`/`:443` and MCP on `/mcp`
+7. Caddy reverse-proxies Paperless on `:80`/`:443`, Search on `/search`,
+   and MCP on `/mcp`
 
 ## Quick Reference
 
