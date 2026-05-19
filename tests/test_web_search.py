@@ -16,12 +16,18 @@ def install_missing_dependency_stubs():
     if importlib.util.find_spec("sentence_transformers") is None:
         sentence_transformers = types.ModuleType("sentence_transformers")
 
+        class StubEmbedding(list):
+            def tolist(self):
+                return list(self)
+
         class SentenceTransformer:
             def __init__(self, *_args, **_kwargs):
                 pass
 
             def encode(self, value):
-                return value
+                if isinstance(value, list):
+                    return StubEmbedding([[0.0] for _item in value])
+                return StubEmbedding([0.0])
 
         sentence_transformers.SentenceTransformer = SentenceTransformer
         sys.modules["sentence_transformers"] = sentence_transformers
@@ -96,6 +102,7 @@ APP_DIR = Path(
 )
 sys.path.insert(0, str(APP_DIR))
 
+import config  # noqa: E402
 import search  # noqa: E402
 import web_search  # noqa: E402
 
@@ -320,6 +327,18 @@ class WebSearchTests(unittest.TestCase):
             response.headers["location"],
             "/accounts/login/?next=%2Fsearch%2Fmcp",
         )
+
+
+class ConfigTests(unittest.TestCase):
+    @patch.dict(os.environ, {"TEST_FLOAT": "nan"})
+    def test_env_float_rejects_nan(self):
+        with self.assertRaises(SystemExit):
+            config._env_float("TEST_FLOAT", "0")
+
+    @patch.dict(os.environ, {"TEST_FLOAT": "inf"})
+    def test_env_float_rejects_infinity(self):
+        with self.assertRaises(SystemExit):
+            config._env_float("TEST_FLOAT", "0")
 
 
 class SessionSearchTests(unittest.TestCase):

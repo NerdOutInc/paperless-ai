@@ -1,3 +1,4 @@
+import math
 import os
 from urllib.parse import quote
 
@@ -35,6 +36,8 @@ def _env_float(name, default, min_val=0.0, max_val=None):
         value = float(raw)
     except ValueError:
         raise SystemExit(f"ERROR: {name}={raw!r} is not a valid number")
+    if not math.isfinite(value):
+        raise SystemExit(f"ERROR: {name}={raw!r} must be finite")
     if value < min_val:
         raise SystemExit(f"ERROR: {name}={value} must be >= {min_val}")
     if max_val is not None and value > max_val:

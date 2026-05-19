@@ -164,6 +164,26 @@
         font-size: 0.85rem;
         margin-top: 1.5rem;
       }
+      .completion-link {
+        display: block;
+        margin-top: 1.5rem;
+        padding: 0.8rem;
+        border-radius: 6px;
+        font-size: 1rem;
+        font-weight: 600;
+        text-align: center;
+        text-decoration: none;
+      }
+      .completion-link.primary {
+        background: #2d5016;
+        color: #fff;
+      }
+      .completion-link.secondary {
+        margin-top: 0.75rem;
+        background: #eef3e9;
+        border: 1px solid #d9dfd4;
+        color: #2d5016;
+      }
     </style>
   </head>
   <body>
@@ -286,7 +306,7 @@
         </button>
       </div>
       <div class="warning">
-        Save this token now if you plan to connect Claude to your Paperless
+        Save this token now if you plan to connect AI apps to your Paperless
         instance.
       </div>
       <p class="ssh-hint">
@@ -294,42 +314,11 @@
         <code>cat /opt/paperless-ag/.env | grep MCP_AUTH_TOKEN</code>
       </p>
 
-      <a
-        id="search-link"
-        href="#"
-        style="
-          display: block;
-          margin-top: 1.5rem;
-          padding: 0.8rem;
-          background: #2d5016;
-          color: #fff;
-          border-radius: 6px;
-          font-size: 1rem;
-          font-weight: 600;
-          text-align: center;
-          text-decoration: none;
-        "
-      >
+      <a id="search-link" class="completion-link primary" href="#">
         Open Search
       </a>
 
-      <a
-        id="paperless-link"
-        href="#"
-        style="
-          display: block;
-          margin-top: 0.75rem;
-          padding: 0.8rem;
-          background: #eef3e9;
-          color: #2d5016;
-          border: 1px solid #d9dfd4;
-          border-radius: 6px;
-          font-size: 1rem;
-          font-weight: 600;
-          text-align: center;
-          text-decoration: none;
-        "
-      >
+      <a id="paperless-link" class="completion-link secondary" href="#">
         Open Paperless
       </a>
       <p class="redirect-note" id="redirect-note"></p>
