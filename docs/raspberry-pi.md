@@ -204,7 +204,7 @@ to **Developer** and click **Edit Config**. Add this to
         "http://<your-pi-ip>/mcp",
         "--allow-http",
         "--header",
-        "Authorization:Bearer YOUR_MCP_AUTH_TOKEN"
+        "Authorization: Bearer YOUR_MCP_AUTH_TOKEN"
       ],
       "env": {
         "PATH": "YOUR_NODE_BIN_DIR:/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin"

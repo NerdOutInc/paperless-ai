@@ -111,7 +111,7 @@ the menu bar, go to **Developer**, and click **Edit Config**. On Windows, edit
         "YOUR_SERVER_URL/mcp",
         "--allow-http",
         "--header",
-        "Authorization:Bearer YOUR_MCP_TOKEN"
+        "Authorization: Bearer YOUR_MCP_TOKEN"
       ],
       "env": {
         "PATH": "YOUR_NODE_BIN_DIR:/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin"
@@ -239,7 +239,7 @@ docker compose exec -T db psql -U paperless -d paperless \
 ```
 
 Then use `http://localhost:3001/mcp` and
-`Authorization:Bearer paperless-ag-local-demo` in the Claude Desktop
+`Authorization: Bearer paperless-ag-local-demo` in the Claude Desktop
 `mcp-remote` config above. The local demo should report 100 embedded documents
 after the test data finishes processing.
 
