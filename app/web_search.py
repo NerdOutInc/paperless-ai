@@ -247,8 +247,13 @@ def documents_api(request):
         return api_error_response("q is too long", 400)
 
     limit = clamp_limit(request.query_params.get("limit"))
+    search_limit = limit + 1 if limit < MAX_SEARCH_LIMIT else limit
     try:
-        results = search.hybrid_search_for_session(query, limit, cookie_header)
+        results = search.hybrid_search_for_session(
+            query,
+            search_limit,
+            cookie_header,
+        )
     except requests.HTTPError as exc:
         status_code = exc.response.status_code if exc.response is not None else 502
         if status_code in (401, 403):
@@ -267,16 +272,17 @@ def documents_api(request):
         traceback.print_exc()
         return api_error_response("search_failed", 500)
 
+    visible_results = results[:limit]
+    has_more_possible = len(results) > limit and limit < MAX_SEARCH_LIMIT
+
     return JSONResponse(
         {
             "query": query,
             "limit": limit,
             "max_limit": MAX_SEARCH_LIMIT,
-            "has_more_possible": (
-                len(results) == limit and limit < MAX_SEARCH_LIMIT
-            ),
-            "count": len(results),
-            "results": results,
+            "has_more_possible": has_more_possible,
+            "count": len(visible_results),
+            "results": visible_results,
         },
         headers={"Cache-Control": "no-store"},
     )

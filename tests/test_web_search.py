@@ -146,8 +146,11 @@ class WebSearchTests(unittest.TestCase):
         self.assertEqual(web_search.clamp_limit("12"), 12)
 
     @patch("web_search.validate_paperless_session", return_value={"username": "admin"})
-    @patch("web_search.search.hybrid_search_for_session", return_value=[{"id": 1}])
-    def test_documents_api_reports_more_results_possible(self, _search, _validate):
+    @patch(
+        "web_search.search.hybrid_search_for_session",
+        return_value=[{"id": 1}, {"id": 2}],
+    )
+    def test_documents_api_probes_for_more_results(self, hybrid_search, _validate):
         request = SimpleNamespace(
             headers={"cookie": "sessionid=abc"},
             query_params={"q": "crop", "limit": "1"},
@@ -160,6 +163,30 @@ class WebSearchTests(unittest.TestCase):
         self.assertEqual(payload["limit"], 1)
         self.assertEqual(payload["max_limit"], web_search.MAX_SEARCH_LIMIT)
         self.assertTrue(payload["has_more_possible"])
+        self.assertEqual(payload["results"], [{"id": 1}])
+        hybrid_search.assert_called_once_with("crop", 2, "sessionid=abc")
+
+    @patch("web_search.validate_paperless_session", return_value={"username": "admin"})
+    @patch(
+        "web_search.search.hybrid_search_for_session",
+        return_value=[{"id": index} for index in range(web_search.MAX_SEARCH_LIMIT)],
+    )
+    def test_documents_api_does_not_probe_beyond_max_limit(self, hybrid_search, _validate):
+        request = SimpleNamespace(
+            headers={"cookie": "sessionid=abc"},
+            query_params={"q": "crop", "limit": str(web_search.MAX_SEARCH_LIMIT)},
+        )
+
+        response = web_search.documents_api(request)
+        payload = json.loads(response.body)
+
+        self.assertEqual(payload["count"], web_search.MAX_SEARCH_LIMIT)
+        self.assertFalse(payload["has_more_possible"])
+        hybrid_search.assert_called_once_with(
+            "crop",
+            web_search.MAX_SEARCH_LIMIT,
+            "sessionid=abc",
+        )
 
     @patch("web_search.validate_paperless_session", return_value={"username": "admin"})
     def test_documents_api_rejects_empty_query(self, _validate):
