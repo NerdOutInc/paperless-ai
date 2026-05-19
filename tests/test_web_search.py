@@ -39,13 +39,16 @@ def install_missing_dependency_stubs():
 
     if importlib.util.find_spec("pgvector") is None:
         pgvector = types.ModuleType("pgvector")
+        pgvector.__path__ = []
         pgvector_psycopg2 = types.ModuleType("pgvector.psycopg2")
         pgvector_psycopg2.register_vector = lambda *_args, **_kwargs: None
+        pgvector.psycopg2 = pgvector_psycopg2
         sys.modules["pgvector"] = pgvector
         sys.modules["pgvector.psycopg2"] = pgvector_psycopg2
 
     if importlib.util.find_spec("starlette") is None:
         starlette = types.ModuleType("starlette")
+        starlette.__path__ = []
         starlette_responses = types.ModuleType("starlette.responses")
         starlette_routing = types.ModuleType("starlette.routing")
         starlette_staticfiles = types.ModuleType("starlette.staticfiles")
@@ -86,6 +89,9 @@ def install_missing_dependency_stubs():
         starlette_routing.Mount = Mount
         starlette_routing.Route = Route
         starlette_staticfiles.StaticFiles = StaticFiles
+        starlette.responses = starlette_responses
+        starlette.routing = starlette_routing
+        starlette.staticfiles = starlette_staticfiles
         sys.modules["starlette"] = starlette
         sys.modules["starlette.responses"] = starlette_responses
         sys.modules["starlette.routing"] = starlette_routing
