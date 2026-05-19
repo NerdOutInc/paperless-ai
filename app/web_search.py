@@ -87,7 +87,7 @@ def search_unavailable_response():
   </head>
   <body>
     <h1>Search is temporarily unavailable</h1>
-    <p>Paperless-ngx could not verify your Paperless session. Try again in a moment.</p>
+    <p>Search could not verify your Paperless session. Try again in a moment.</p>
   </body>
 </html>
 """,
