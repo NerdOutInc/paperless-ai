@@ -798,6 +798,7 @@ services:
       # DB_PASSWORD is generated from base64 with /+= stripped, so only [A-Za-z0-9] — safe to embed without URL-encoding.
       DATABASE_URL: postgresql://paperless:\${DB_PASSWORD}@db:5432/paperless
       EMBEDDING_MODEL: all-MiniLM-L6-v2
+      SEMANTIC_MIN_SIMILARITY: "0.25"
       SYNC_INTERVAL_SECONDS: "60"
       MCP_HTTP_PORT: "3001"
       MCP_AUTH_TOKEN: \${MCP_AUTH_TOKEN}
@@ -1009,6 +1010,7 @@ DB_NAME='${DB_NAME}'
 DB_USER='${DB_USER}'
 DB_PASS='${DB_PASS}'
 EMBEDDING_MODEL='all-MiniLM-L6-v2'
+SEMANTIC_MIN_SIMILARITY='0.25'
 SYNC_INTERVAL_SECONDS='60'
 MCP_HTTP_PORT='3001'
 MCP_AUTH_TOKEN='${MCP_AUTH_TOKEN}'

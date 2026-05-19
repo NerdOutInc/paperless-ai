@@ -191,6 +191,32 @@ input[type="search"]:focus-visible,
   gap: 16px;
 }
 
+.results-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 18px;
+}
+
+.results-actions[hidden] {
+  display: none;
+}
+
+.secondary-button {
+  min-height: 44px;
+  background: transparent;
+  color: var(--olive-deep);
+}
+
+.secondary-button:hover {
+  background: var(--olive-tint);
+  border-color: var(--olive-deep);
+}
+
+button:disabled {
+  cursor: progress;
+  opacity: 0.65;
+}
+
 .result-card {
   display: grid;
   grid-template-columns: 92px minmax(0, 1fr);

@@ -3,9 +3,15 @@
   var input = document.getElementById("search-query");
   var status = document.getElementById("status");
   var results = document.getElementById("results");
+  var resultsActions = document.getElementById("results-actions");
+  var showMore = document.getElementById("show-more");
   var latestSearchId = 0;
+  var currentQuery = "";
+  var currentLimit = 10;
   // RRF scores are small, so expand top matches into visible meter widths.
   var MATCH_METER_SCORE_SCALE = 1800;
+  var INITIAL_LIMIT = 10;
+  var LIMIT_STEP = 10;
 
   function escapeHtml(value) {
     return String(value || "")
@@ -130,6 +136,14 @@
     status.textContent = message || "";
   }
 
+  function setShowMore(payload) {
+    var maxLimit = Number(payload.max_limit || 50);
+    var canAskForMore =
+      Boolean(payload.has_more_possible) && currentLimit < maxLimit;
+    resultsActions.hidden = !canAskForMore;
+    showMore.disabled = !canAskForMore;
+  }
+
   function errorMessage(code, fallback) {
     var messages = {
       paperless_api_error: "Paperless is unavailable right now.",
@@ -154,6 +168,7 @@
   function renderEmpty(message) {
     results.innerHTML =
       '<div class="empty-state">' + escapeHtml(message) + "</div>";
+    resultsActions.hidden = true;
   }
 
   function meta(label, value) {
@@ -223,6 +238,7 @@
     if (!payload.results || payload.results.length === 0) {
       renderEmpty("No matching documents found.");
       setStatus("No results");
+      resultsActions.hidden = true;
       return;
     }
 
@@ -239,23 +255,33 @@
         payload.query +
         '"',
     );
+    setShowMore(payload);
   }
 
-  function runSearch(query) {
+  function runSearch(query, requestedLimit) {
     latestSearchId += 1;
     var searchId = latestSearchId;
     var trimmed = query.trim();
+    var limit = requestedLimit || INITIAL_LIMIT;
     if (!trimmed) {
       input.focus();
       setStatus("Enter a search query.");
       results.innerHTML = "";
+      resultsActions.hidden = true;
       return;
     }
 
+    currentQuery = trimmed;
+    currentLimit = limit;
     setStatus("Searching...");
+    showMore.disabled = true;
+    resultsActions.hidden = true;
     results.innerHTML = "";
     fetch(
-      "/search/api/documents?q=" + encodeURIComponent(trimmed) + "&limit=10",
+      "/search/api/documents?q=" +
+        encodeURIComponent(trimmed) +
+        "&limit=" +
+        encodeURIComponent(limit),
       {
         headers: { Accept: "application/json" },
       },
@@ -302,7 +328,14 @@
 
   form.addEventListener("submit", function (event) {
     event.preventDefault();
-    runSearch(input.value);
+    runSearch(input.value, INITIAL_LIMIT);
+  });
+
+  showMore.addEventListener("click", function () {
+    if (!currentQuery) {
+      return;
+    }
+    runSearch(currentQuery, currentLimit + LIMIT_STEP);
   });
 
   var params = new URLSearchParams(window.location.search);

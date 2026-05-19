@@ -43,6 +43,22 @@ class WebSearchTests(unittest.TestCase):
         self.assertEqual(web_search.clamp_limit("12"), 12)
 
     @patch("web_search.validate_paperless_session", return_value={"username": "admin"})
+    @patch("web_search.search.hybrid_search_for_session", return_value=[{"id": 1}])
+    def test_documents_api_reports_more_results_possible(self, _search, _validate):
+        request = SimpleNamespace(
+            headers={"cookie": "sessionid=abc"},
+            query_params={"q": "crop", "limit": "1"},
+        )
+
+        response = web_search.documents_api(request)
+        payload = json.loads(response.body)
+
+        self.assertEqual(payload["count"], 1)
+        self.assertEqual(payload["limit"], 1)
+        self.assertEqual(payload["max_limit"], web_search.MAX_SEARCH_LIMIT)
+        self.assertTrue(payload["has_more_possible"])
+
+    @patch("web_search.validate_paperless_session", return_value={"username": "admin"})
     def test_documents_api_rejects_empty_query(self, _validate):
         request = SimpleNamespace(
             headers={"cookie": "sessionid=abc"},
@@ -191,6 +207,33 @@ class SessionSearchTests(unittest.TestCase):
         self.assertEqual(results[0]["matched_chunk"], "authorized soil test chunk")
         self.assertNotIn("secret unauthorized chunk", json.dumps(results))
         get_documents.assert_called_once_with([1, 2], "sessionid=abc")
+
+    @patch("search.embeddings.get_embedding", return_value=[0.1, 0.2])
+    @patch("search.db.search_similar_documents")
+    @patch("search.get_documents_for_session")
+    def test_semantic_search_drops_low_similarity_candidates(
+        self,
+        get_documents,
+        search_similar,
+        _get_embedding,
+    ):
+        search_similar.return_value = [
+            {
+                "document_id": 7,
+                "chunk_index": 0,
+                "chunk_text": "nearest but irrelevant chunk",
+                "similarity": search.config.SEMANTIC_MIN_SIMILARITY - 0.01,
+            },
+        ]
+
+        results = search.semantic_search_for_session(
+            "zzzxxy-nomatch-term-12345",
+            limit=10,
+            cookie_header="sessionid=abc",
+        )
+
+        self.assertEqual(results, [])
+        get_documents.assert_not_called()
 
     @patch("search.embeddings.get_embedding", return_value=[0.1, 0.2])
     @patch("search.db.search_similar_documents")

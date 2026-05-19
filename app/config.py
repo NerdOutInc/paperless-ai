@@ -29,6 +29,19 @@ def _env_int(name, default, min_val=1):
     return value
 
 
+def _env_float(name, default, min_val=0.0, max_val=None):
+    raw = os.getenv(name, default)
+    try:
+        value = float(raw)
+    except ValueError:
+        raise SystemExit(f"ERROR: {name}={raw!r} is not a valid number")
+    if value < min_val:
+        raise SystemExit(f"ERROR: {name}={value} must be >= {min_val}")
+    if max_val is not None and value > max_val:
+        raise SystemExit(f"ERROR: {name}={value} must be <= {max_val}")
+    return value
+
+
 DATABASE_URL = _build_database_url()
 EMBEDDING_MODEL = os.getenv("EMBEDDING_MODEL", "all-MiniLM-L6-v2")
 SYNC_INTERVAL = _env_int("SYNC_INTERVAL_SECONDS", "60")
@@ -36,3 +49,8 @@ CHUNK_SIZE = _env_int("CHUNK_SIZE_TOKENS", "500")
 CHUNK_OVERLAP = _env_int("CHUNK_OVERLAP_TOKENS", "50")
 MCP_PORT = _env_int("MCP_HTTP_PORT", "3001")
 MCP_AUTH_TOKEN = os.getenv("MCP_AUTH_TOKEN", "")
+SEMANTIC_MIN_SIMILARITY = _env_float(
+    "SEMANTIC_MIN_SIMILARITY",
+    "0.25",
+    max_val=1.0,
+)

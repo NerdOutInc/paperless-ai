@@ -15,6 +15,17 @@ PAPERLESS_DOCUMENT_CARD_FIELDS = (
 PAPERLESS_KEYWORD_DOCUMENT_FIELDS = f"{PAPERLESS_DOCUMENT_CARD_FIELDS},content"
 
 
+def _semantic_similarity(result):
+    try:
+        return float(result.get("similarity") or 0)
+    except (TypeError, ValueError):
+        return 0.0
+
+
+def _passes_semantic_threshold(result):
+    return _semantic_similarity(result) >= config.SEMANTIC_MIN_SIMILARITY
+
+
 def get_document_metadata(doc_id):
     resp = auth.api_request(
         "GET", f"{config.PAPERLESS_API_URL}/api/documents/{doc_id}/",
@@ -98,11 +109,16 @@ def semantic_search(query, limit=10):
     # Deduplicate by document_id, keeping highest similarity
     seen = {}
     for result in raw_results:
+        if not _passes_semantic_threshold(result):
+            continue
         doc_id = result["document_id"]
-        if doc_id not in seen or result["similarity"] > seen[doc_id]["similarity"]:
+        if (
+            doc_id not in seen
+            or _semantic_similarity(result) > _semantic_similarity(seen[doc_id])
+        ):
             seen[doc_id] = result
 
-    results = sorted(seen.values(), key=lambda x: x["similarity"], reverse=True)[:limit]
+    results = sorted(seen.values(), key=_semantic_similarity, reverse=True)[:limit]
 
     enriched = []
     for r in results:
@@ -110,13 +126,13 @@ def semantic_search(query, limit=10):
             meta = get_document_metadata(r["document_id"])
             enriched.append({
                 **meta,
-                "similarity": round(r["similarity"], 4),
+                "similarity": round(_semantic_similarity(r), 4),
                 "matched_chunk": r["chunk_text"][:300],
             })
         except Exception as e:
             enriched.append({
                 "id": r["document_id"],
-                "similarity": round(r["similarity"], 4),
+                "similarity": round(_semantic_similarity(r), 4),
                 "matched_chunk": r["chunk_text"][:300],
                 "error": str(e),
             })
@@ -137,11 +153,19 @@ def semantic_search_for_session(query, limit=10, cookie_header=""):
         raw_results = db.search_similar_documents(query_embedding, limit=candidate_limit)
         seen = {}
         for result in raw_results:
+            if not _passes_semantic_threshold(result):
+                continue
             doc_id = result["document_id"]
-            if doc_id not in seen or result["similarity"] > seen[doc_id]["similarity"]:
+            if (
+                doc_id not in seen
+                or _semantic_similarity(result) > _semantic_similarity(seen[doc_id])
+            ):
                 seen[doc_id] = result
 
-        candidates = sorted(seen.values(), key=lambda x: x["similarity"], reverse=True)
+        candidates = sorted(seen.values(), key=_semantic_similarity, reverse=True)
+        if not candidates:
+            return []
+
         candidate_doc_ids = [result["document_id"] for result in candidates]
         unchecked_doc_ids = [
             doc_id

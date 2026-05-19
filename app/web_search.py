@@ -176,6 +176,10 @@ def documents_api(request):
         {
             "query": query,
             "limit": limit,
+            "max_limit": MAX_SEARCH_LIMIT,
+            "has_more_possible": (
+                len(results) == limit and limit < MAX_SEARCH_LIMIT
+            ),
             "count": len(results),
             "results": results,
         },
