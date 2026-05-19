@@ -29,7 +29,7 @@
     @paperless_ui {
         method GET
         header Accept *text/html*
-        not path /api/* /static/* /media/* /accounts/* /search /search/* /mcp /mcp/* /.well-known/*
+        not path /api/* /static/* /media/* /accounts/* /search /search/* /mcp /mcp/* /paperless-ui-proxy /paperless-ui-proxy/* /.well-known/*
     }
     handle @paperless_ui {
         rewrite * /paperless-ui-proxy{uri}

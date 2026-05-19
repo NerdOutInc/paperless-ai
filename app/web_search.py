@@ -171,12 +171,47 @@ def search_unavailable_response():
     )
 
 
+def paperless_ui_unavailable_response():
+    return HTMLResponse(
+        """<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Paperless-ngx unavailable</title>
+  </head>
+  <body>
+    <h1>Paperless-ngx is temporarily unavailable</h1>
+    <p>The Paperless UI could not be loaded. Try again in a moment.</p>
+  </body>
+</html>
+""",
+        status_code=503,
+        headers={"Cache-Control": "no-store"},
+    )
+
+
 def response_headers_from_upstream(response):
-    headers = {}
-    for key, value in response.headers.items():
+    raw_headers = getattr(getattr(response, "raw", None), "headers", None)
+    source = raw_headers if raw_headers is not None else response.headers
+    headers = []
+    for key, value in source.items():
         if key.lower() not in HOP_BY_HOP_HEADERS:
-            headers[key] = value
+            headers.append((key, value))
     return headers
+
+
+def response_with_upstream_headers(content, status_code, upstream_headers):
+    response = Response(content, status_code=status_code)
+    encoded_headers = [
+        (key.lower().encode("latin-1"), value.encode("latin-1"))
+        for key, value in upstream_headers
+    ]
+    if hasattr(response, "raw_headers"):
+        response.raw_headers = list(response.raw_headers) + encoded_headers
+    else:
+        for key, value in upstream_headers:
+            response.headers[key] = value
+    return response
 
 
 def inject_paperless_ui_script(html):
@@ -226,21 +261,21 @@ def paperless_ui_proxy(request):
         )
     except requests.RequestException as exc:
         log_paperless_error("Paperless UI proxy failed", exc)
-        return search_unavailable_response()
+        return paperless_ui_unavailable_response()
 
     response_headers = response_headers_from_upstream(upstream)
     if upstream.status_code != 200 or not is_html_response(upstream):
-        return Response(
+        return response_with_upstream_headers(
             upstream.content,
             status_code=upstream.status_code,
-            headers=response_headers,
+            upstream_headers=response_headers,
         )
 
     upstream.encoding = upstream.encoding or "utf-8"
-    return HTMLResponse(
+    return response_with_upstream_headers(
         inject_paperless_ui_script(upstream.text),
         status_code=upstream.status_code,
-        headers=response_headers,
+        upstream_headers=response_headers,
     )
 
 

@@ -3,6 +3,9 @@
   var LINK_MARKER_ATTRIBUTE = "data-paperless-ag-semantic-search";
   var SEARCH_INPUT_SELECTOR = 'pngx-global-search input[name="query"]';
   var COMPACT_MEDIA_QUERY = "(max-width: 900px)";
+  var activeButton = null;
+  var activeMetricsCleanup = null;
+  var attachScheduled = false;
   var styleApplied = false;
 
   function addStyles() {
@@ -151,19 +154,32 @@
 
   function watchButtonMetrics(input, button, rightEdge) {
     var control = searchControlFor(input);
+    var resizeObserver = null;
+    var disposed = false;
     var update = function () {
       syncButtonMetrics(input, button, rightEdge);
     };
 
     update();
     if ("ResizeObserver" in window) {
-      var observer = new ResizeObserver(update);
-      observer.observe(control);
+      resizeObserver = new ResizeObserver(update);
+      resizeObserver.observe(control);
     }
     window.addEventListener("resize", update, { passive: true });
+
+    return function () {
+      if (disposed) {
+        return;
+      }
+      disposed = true;
+      if (resizeObserver) {
+        resizeObserver.disconnect();
+      }
+      window.removeEventListener("resize", update);
+    };
   }
 
-  function createButton(input, rightEdge) {
+  function createButton(input) {
     var button = document.createElement("button");
     button.type = "button";
     button.className = "paperless-ag-semantic-search-btn";
@@ -188,31 +204,67 @@
     button.addEventListener("click", function () {
       window.location.assign(searchUrlFor(input));
     });
-    watchButtonMetrics(input, button, rightEdge);
     return button;
   }
 
+  function activeButtonIsConnected() {
+    return activeButton && document.documentElement.contains(activeButton);
+  }
+
+  function clearActiveMetrics() {
+    if (activeMetricsCleanup) {
+      activeMetricsCleanup();
+      activeMetricsCleanup = null;
+    }
+    activeButton = null;
+  }
+
   function attachButton() {
+    if (activeButtonIsConnected()) {
+      return true;
+    }
+
+    clearActiveMetrics();
+
     var input = document.querySelector(SEARCH_INPUT_SELECTOR);
     if (!input) {
-      return;
+      return false;
     }
 
     var inputGroup = input.closest(".input-group");
     if (!inputGroup || inputGroup.querySelector("[" + LINK_MARKER_ATTRIBUTE + "]")) {
-      return;
+      return false;
     }
 
     addStyles();
-    inputGroup.appendChild(
-      createButton(input, captureRightEdge(inputGroup, input)),
-    );
+    var rightEdge = captureRightEdge(inputGroup, input);
+    activeButton = createButton(input);
+    inputGroup.appendChild(activeButton);
+    activeMetricsCleanup = watchButtonMetrics(input, activeButton, rightEdge);
+    return true;
+  }
+
+  function scheduleAttachButton() {
+    if (attachScheduled || activeButtonIsConnected()) {
+      return;
+    }
+
+    attachScheduled = true;
+    var run = function () {
+      attachScheduled = false;
+      attachButton();
+    };
+    if (window.requestAnimationFrame) {
+      window.requestAnimationFrame(run);
+    } else {
+      window.setTimeout(run, 0);
+    }
   }
 
   attachButton();
 
   var observer = new MutationObserver(function () {
-    attachButton();
+    scheduleAttachButton();
   });
   observer.observe(document.documentElement, {
     childList: true,
