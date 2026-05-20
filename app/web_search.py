@@ -260,6 +260,14 @@ def response_with_upstream_headers(content, status_code, upstream_headers):
         for key, value in upstream_headers
     ]
     if hasattr(response, "raw_headers"):
+        replacement_header_names = {
+            key for key, _value in encoded_headers if key != b"set-cookie"
+        }
+        response.raw_headers[:] = [
+            header
+            for header in response.raw_headers
+            if header[0].lower() not in replacement_header_names
+        ]
         response.raw_headers.extend(encoded_headers)
     else:
         for key, value in upstream_headers:

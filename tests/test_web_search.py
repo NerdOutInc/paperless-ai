@@ -502,6 +502,32 @@ class WebSearchTests(unittest.TestCase):
         self.assertIn((b"set-cookie", b"sessionid=abc; Path=/"), response.raw_headers)
         self.assertIn((b"set-cookie", b"csrftoken=def; Path=/"), response.raw_headers)
 
+    def test_response_with_upstream_headers_replaces_default_content_type(self):
+        class DefaultContentTypeResponse:
+            def __init__(self, content, status_code=200):
+                self.body = str(content).encode("utf-8")
+                self.status_code = status_code
+                self.raw_headers = [
+                    (b"content-length", str(len(self.body)).encode()),
+                    (b"content-type", b"text/plain; charset=utf-8"),
+                ]
+                self.headers = {}
+
+        with patch("web_search.Response", DefaultContentTypeResponse):
+            response = web_search.response_with_upstream_headers(
+                "<html></html>",
+                200,
+                [("Content-Type", "text/html; charset=utf-8")],
+            )
+
+        content_type_headers = [
+            header for header in response.raw_headers if header[0] == b"content-type"
+        ]
+        self.assertEqual(
+            [(b"content-type", b"text/html; charset=utf-8")],
+            content_type_headers,
+        )
+
     @patch("web_search.requests.get")
     def test_paperless_ui_proxy_injects_script_and_forwards_cookie(self, get):
         get.return_value = FakeResponse(
