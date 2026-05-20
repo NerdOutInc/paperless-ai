@@ -33,6 +33,16 @@ HOP_BY_HOP_HEADERS = {
     "transfer-encoding",
     "upgrade",
 }
+PAPERLESS_UI_PROXY_DENIED_PATHS = (
+    "/api",
+    "/static",
+    "/media",
+    "/accounts",
+    "/search",
+    "/mcp",
+    "/paperless-ui-proxy",
+    "/.well-known",
+)
 MAX_SEARCH_LIMIT = 50
 MAX_QUERY_LENGTH = 500
 DEFAULT_SEARCH_LIMIT = 10
@@ -207,11 +217,18 @@ def response_with_upstream_headers(content, status_code, upstream_headers):
         for key, value in upstream_headers
     ]
     if hasattr(response, "raw_headers"):
-        response.raw_headers = list(response.raw_headers) + encoded_headers
+        response.raw_headers.extend(encoded_headers)
     else:
         for key, value in upstream_headers:
             response.headers[key] = value
     return response
+
+
+def is_denied_paperless_ui_proxy_path(path):
+    return any(
+        path == denied_path or path.startswith(f"{denied_path}/")
+        for denied_path in PAPERLESS_UI_PROXY_DENIED_PATHS
+    )
 
 
 def inject_paperless_ui_script(html):
@@ -240,6 +257,9 @@ def is_html_response(response):
 def paperless_ui_proxy(request):
     proxied_path = request.path_params.get("path", "")
     upstream_path = f"/{proxied_path.lstrip('/')}" if proxied_path else "/"
+    if is_denied_paperless_ui_proxy_path(upstream_path):
+        return Response("Not found", status_code=404)
+
     upstream_url = f"{config.PAPERLESS_API_URL}{upstream_path}"
     if request.url.query:
         upstream_url = f"{upstream_url}?{request.url.query}"
