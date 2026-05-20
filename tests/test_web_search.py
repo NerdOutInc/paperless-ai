@@ -86,6 +86,7 @@ def install_missing_dependency_stubs():
         starlette_responses.HTMLResponse = HTMLResponse
         starlette_responses.JSONResponse = JSONResponse
         starlette_responses.RedirectResponse = RedirectResponse
+        starlette_responses.Response = Response
         starlette_routing.Mount = Mount
         starlette_routing.Route = Route
         starlette_staticfiles.StaticFiles = StaticFiles
@@ -114,11 +115,25 @@ import web_search  # noqa: E402
 
 
 class FakeResponse:
-    def __init__(self, status_code=200, payload=None, json_error=False):
+    def __init__(
+        self,
+        status_code=200,
+        payload=None,
+        json_error=False,
+        text=None,
+        headers=None,
+        content=None,
+        raw_headers=None,
+    ):
         self.status_code = status_code
         self._payload = payload or {}
         self._json_error = json_error
-        self.text = json.dumps(self._payload)
+        self.headers = headers or {}
+        self.text = text if text is not None else json.dumps(self._payload)
+        self.content = content if content is not None else self.text.encode("utf-8")
+        self.encoding = "utf-8"
+        if raw_headers is not None:
+            self.raw = SimpleNamespace(headers=FakeRawHeaders(raw_headers))
 
     def json(self):
         if self._json_error:
@@ -132,6 +147,14 @@ class FakeResponse:
             error = requests.HTTPError(f"HTTP {self.status_code}")
             error.response = self
             raise error
+
+
+class FakeRawHeaders:
+    def __init__(self, headers):
+        self._headers = headers
+
+    def items(self):
+        return list(self._headers)
 
 
 class WebSearchTests(unittest.TestCase):
@@ -311,6 +334,339 @@ class WebSearchTests(unittest.TestCase):
     def test_authenticated_html_is_not_in_public_static_directory(self):
         self.assertFalse((web_search.STATIC_DIR / "index.html").exists())
         self.assertFalse((web_search.STATIC_DIR / "mcp.html").exists())
+
+    def test_inject_paperless_ui_script_inserts_before_body_close(self):
+        html = "<html><body><pngx-root></pngx-root></body></html>"
+
+        injected = web_search.inject_paperless_ui_script(html)
+
+        self.assertIn(web_search.PAPERLESS_UI_SCRIPT_TAG, injected)
+        self.assertLess(
+            injected.index(web_search.PAPERLESS_UI_SCRIPT_TAG),
+            injected.lower().index("</body>"),
+        )
+
+    def test_inject_paperless_ui_script_is_idempotent(self):
+        html = (
+            "<html><body>"
+            f"{web_search.PAPERLESS_UI_SCRIPT_TAG}"
+            "</body></html>"
+        )
+
+        injected = web_search.inject_paperless_ui_script(html)
+
+        self.assertEqual(injected.count(web_search.PAPERLESS_UI_SCRIPT_PATH), 1)
+
+    def test_inject_paperless_ui_script_handles_missing_body_close(self):
+        html = "<html><body><pngx-root></pngx-root>"
+
+        injected = web_search.inject_paperless_ui_script(html)
+
+        self.assertTrue(injected.endswith(f"{web_search.PAPERLESS_UI_SCRIPT_TAG}\n"))
+
+    def test_inject_paperless_ui_script_uses_original_html_indices(self):
+        html = "<html><body>Turkish dotted İ</BoDy></html>"
+
+        injected = web_search.inject_paperless_ui_script(html)
+
+        self.assertIn("Turkish dotted İ", injected)
+        self.assertIn(f"{web_search.PAPERLESS_UI_SCRIPT_TAG}\n</BoDy>", injected)
+
+    def test_response_headers_from_upstream_removes_recomputed_headers(self):
+        response = FakeResponse(
+            headers={
+                "Content-Type": "text/html; charset=utf-8",
+                "Content-Length": "123",
+                "Content-Encoding": "gzip",
+                "Location": "/dashboard",
+            },
+        )
+
+        headers = web_search.response_headers_from_upstream(response)
+
+        self.assertIn(("Content-Type", "text/html; charset=utf-8"), headers)
+        self.assertIn(("Location", "/dashboard"), headers)
+        self.assertNotIn(("Content-Length", "123"), headers)
+        self.assertNotIn(("Content-Encoding", "gzip"), headers)
+
+    def test_response_headers_from_upstream_removes_connection_tokens(self):
+        response = FakeResponse(
+            headers={
+                "Connection": "X-Upstream-Hop, keep-alive",
+                "Content-Type": "text/html; charset=utf-8",
+                "Location": "/dashboard",
+                "X-Upstream-Hop": "drop-me",
+            },
+        )
+
+        headers = web_search.response_headers_from_upstream(response)
+
+        self.assertIn(("Content-Type", "text/html; charset=utf-8"), headers)
+        self.assertIn(("Location", "/dashboard"), headers)
+        self.assertNotIn(("Connection", "X-Upstream-Hop, keep-alive"), headers)
+        self.assertNotIn(("X-Upstream-Hop", "drop-me"), headers)
+
+    def test_response_headers_from_upstream_preserves_duplicate_raw_headers(self):
+        response = FakeResponse(
+            headers={"Set-Cookie": "sessionid=abc, csrftoken=def"},
+            raw_headers=[
+                ("Set-Cookie", "sessionid=abc; Path=/"),
+                ("Set-Cookie", "csrftoken=def; Path=/"),
+                ("Content-Length", "123"),
+            ],
+        )
+
+        headers = web_search.response_headers_from_upstream(response)
+
+        self.assertEqual(
+            [
+                ("Set-Cookie", "sessionid=abc; Path=/"),
+                ("Set-Cookie", "csrftoken=def; Path=/"),
+            ],
+            headers,
+        )
+
+    def test_response_headers_from_upstream_uses_raw_set_cookie_list(self):
+        class CombinedCookieHeaders:
+            def items(self):
+                return [
+                    ("Set-Cookie", "sessionid=abc, csrftoken=def"),
+                    ("Content-Type", "text/html"),
+                ]
+
+            def getlist(self, key):
+                if key.lower() == "set-cookie":
+                    return [
+                        "sessionid=abc; Path=/",
+                        "csrftoken=def; Path=/",
+                    ]
+                return []
+
+        response = FakeResponse(
+            headers={"Set-Cookie": "sessionid=abc, csrftoken=def"},
+        )
+        response.raw = SimpleNamespace(headers=CombinedCookieHeaders())
+
+        headers = web_search.response_headers_from_upstream(response)
+
+        self.assertEqual(
+            [
+                ("Set-Cookie", "sessionid=abc; Path=/"),
+                ("Set-Cookie", "csrftoken=def; Path=/"),
+                ("Content-Type", "text/html"),
+            ],
+            headers,
+        )
+
+    def test_response_with_upstream_headers_preserves_duplicate_headers(self):
+        response = web_search.response_with_upstream_headers(
+            "redirecting",
+            302,
+            [
+                ("Location", "/dashboard"),
+                ("Set-Cookie", "sessionid=abc; Path=/"),
+                ("Set-Cookie", "csrftoken=def; Path=/"),
+            ],
+        )
+
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response.headers["Location"], "/dashboard")
+        raw_headers = getattr(response, "raw_headers", [])
+        if raw_headers:
+            self.assertIn((b"set-cookie", b"sessionid=abc; Path=/"), raw_headers)
+            self.assertIn((b"set-cookie", b"csrftoken=def; Path=/"), raw_headers)
+
+    def test_response_with_upstream_headers_mutates_raw_headers_in_place(self):
+        class RawHeaderResponse:
+            latest = None
+
+            def __init__(self, content, status_code=200):
+                self.body = str(content).encode("utf-8")
+                self.status_code = status_code
+                self.raw_headers = [(b"content-length", str(len(self.body)).encode())]
+                self.original_raw_headers = self.raw_headers
+                self.headers = {}
+                RawHeaderResponse.latest = self
+
+        with patch("web_search.Response", RawHeaderResponse):
+            response = web_search.response_with_upstream_headers(
+                "redirecting",
+                302,
+                [
+                    ("Set-Cookie", "sessionid=abc; Path=/"),
+                    ("Set-Cookie", "csrftoken=def; Path=/"),
+                ],
+            )
+
+        self.assertIs(response.raw_headers, response.original_raw_headers)
+        self.assertIn((b"set-cookie", b"sessionid=abc; Path=/"), response.raw_headers)
+        self.assertIn((b"set-cookie", b"csrftoken=def; Path=/"), response.raw_headers)
+
+    def test_response_with_upstream_headers_replaces_default_content_type(self):
+        class DefaultContentTypeResponse:
+            def __init__(self, content, status_code=200):
+                self.body = str(content).encode("utf-8")
+                self.status_code = status_code
+                self.raw_headers = [
+                    (b"content-length", str(len(self.body)).encode()),
+                    (b"content-type", b"text/plain; charset=utf-8"),
+                ]
+                self.headers = {}
+
+        with patch("web_search.Response", DefaultContentTypeResponse):
+            response = web_search.response_with_upstream_headers(
+                "<html></html>",
+                200,
+                [("Content-Type", "text/html; charset=utf-8")],
+            )
+
+        content_type_headers = [
+            header for header in response.raw_headers if header[0] == b"content-type"
+        ]
+        self.assertEqual(
+            [(b"content-type", b"text/html; charset=utf-8")],
+            content_type_headers,
+        )
+
+    @patch("web_search.requests.get")
+    def test_paperless_ui_proxy_injects_script_and_forwards_cookie(self, get):
+        get.return_value = FakeResponse(
+            200,
+            text="<html><body><pngx-root></pngx-root></body></html>",
+            headers={"Content-Type": "text/html; charset=utf-8"},
+        )
+        request = SimpleNamespace(
+            headers={
+                "accept": "text/html",
+                "cookie": "sessionid=abc",
+                "user-agent": "Browser",
+            },
+            path_params={"path": "dashboard"},
+            url=SimpleNamespace(query="view=all"),
+        )
+
+        response = web_search.paperless_ui_proxy(request)
+
+        self.assertEqual(response.status_code, 200)
+        self.assertIn(web_search.PAPERLESS_UI_SCRIPT_PATH, response.body.decode())
+        get.assert_called_once()
+        self.assertEqual(
+            get.call_args.args[0],
+            f"{web_search.config.PAPERLESS_API_URL}/dashboard?view=all",
+        )
+        self.assertEqual(get.call_args.kwargs["headers"]["Cookie"], "sessionid=abc")
+        self.assertFalse(get.call_args.kwargs["allow_redirects"])
+
+    @patch("web_search.requests.get")
+    def test_paperless_ui_proxy_handles_root_path(self, get):
+        get.return_value = FakeResponse(
+            200,
+            text="<html><body></body></html>",
+            headers={"Content-Type": "text/html"},
+        )
+        request = SimpleNamespace(
+            headers={"accept": "text/html"},
+            path_params={"path": ""},
+            url=SimpleNamespace(query=""),
+        )
+
+        web_search.paperless_ui_proxy(request)
+
+        self.assertEqual(
+            get.call_args.args[0],
+            f"{web_search.config.PAPERLESS_API_URL}/",
+        )
+
+    @patch("web_search.requests.get")
+    def test_paperless_ui_proxy_preserves_redirect_without_injection(self, get):
+        get.return_value = FakeResponse(
+            302,
+            text="",
+            headers={"Location": "/accounts/login/?next=/dashboard"},
+        )
+        request = SimpleNamespace(
+            headers={"accept": "text/html"},
+            path_params={"path": "dashboard"},
+            url=SimpleNamespace(query=""),
+        )
+
+        response = web_search.paperless_ui_proxy(request)
+
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(
+            response.headers["Location"],
+            "/accounts/login/?next=/dashboard",
+        )
+        self.assertNotIn(web_search.PAPERLESS_UI_SCRIPT_PATH, response.body.decode())
+
+    @patch("web_search.requests.get", side_effect=requests.Timeout())
+    def test_paperless_ui_proxy_uses_ui_specific_error_response(self, _get):
+        request = SimpleNamespace(
+            headers={"accept": "text/html"},
+            path_params={"path": "dashboard"},
+            url=SimpleNamespace(query=""),
+        )
+
+        response = web_search.paperless_ui_proxy(request)
+
+        self.assertEqual(response.status_code, 503)
+        self.assertIn("Paperless-ngx is temporarily unavailable", response.body.decode())
+        self.assertNotIn("Search could not verify", response.body.decode())
+
+    @patch("web_search.requests.get")
+    def test_paperless_ui_proxy_rejects_denied_internal_paths(self, get):
+        request = SimpleNamespace(
+            headers={"accept": "application/json"},
+            path_params={"path": "api/documents/"},
+            url=SimpleNamespace(query=""),
+        )
+
+        response = web_search.paperless_ui_proxy(request)
+
+        self.assertEqual(response.status_code, 404)
+        get.assert_not_called()
+
+    @patch("web_search.requests.get")
+    def test_paperless_ui_proxy_rejects_traversal_paths(self, get):
+        unsafe_paths = [
+            "../api/documents/",
+            "dashboard/../api/documents/",
+            "%2e%2e/api/documents/",
+            "dashboard/%2e%2e/api/documents/",
+            "dashboard\\api",
+            "dashboard/%5capi",
+            "%2fapi/documents/",
+        ]
+        for unsafe_path in unsafe_paths:
+            with self.subTest(unsafe_path=unsafe_path):
+                request = SimpleNamespace(
+                    headers={"accept": "text/html"},
+                    path_params={"path": unsafe_path},
+                    url=SimpleNamespace(query=""),
+                )
+
+                response = web_search.paperless_ui_proxy(request)
+
+                self.assertEqual(response.status_code, 404)
+        get.assert_not_called()
+
+    @patch("web_search.requests.get")
+    def test_paperless_ui_proxy_skips_non_html_response(self, get):
+        get.return_value = FakeResponse(
+            200,
+            text='{"ok": true}',
+            headers={"Content-Type": "application/json"},
+        )
+        request = SimpleNamespace(
+            headers={"accept": "application/json"},
+            path_params={"path": "dashboard"},
+            url=SimpleNamespace(query=""),
+        )
+
+        response = web_search.paperless_ui_proxy(request)
+
+        self.assertEqual(response.status_code, 200)
+        self.assertNotIn(web_search.PAPERLESS_UI_SCRIPT_PATH, response.body.decode())
 
     @patch("web_search.config.MCP_AUTH_TOKEN", "paperless-ag-token")
     @patch(

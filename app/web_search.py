@@ -1,12 +1,13 @@
 import hashlib
+import re
 import threading
 import time
 import traceback
 from pathlib import Path
-from urllib.parse import quote
+from urllib.parse import quote, unquote
 
 import requests
-from starlette.responses import HTMLResponse, JSONResponse, RedirectResponse
+from starlette.responses import HTMLResponse, JSONResponse, RedirectResponse, Response
 from starlette.routing import Mount, Route
 from starlette.staticfiles import StaticFiles
 
@@ -16,6 +17,34 @@ import search
 
 STATIC_DIR = Path(__file__).with_name("static").joinpath("search")
 PAGE_DIR = Path(__file__).with_name("search_pages")
+PAPERLESS_UI_SCRIPT_PATH = "/search/static/paperless-ui-link.js"
+PAPERLESS_UI_SCRIPT_TAG = (
+    f'<script src="{PAPERLESS_UI_SCRIPT_PATH}" defer></script>'
+)
+BODY_CLOSE_PATTERN = re.compile(r"</body\s*>", re.IGNORECASE)
+PAPERLESS_UI_PROXY_TIMEOUT = 30
+HOP_BY_HOP_HEADERS = {
+    "connection",
+    "content-encoding",
+    "content-length",
+    "keep-alive",
+    "proxy-authenticate",
+    "proxy-authorization",
+    "te",
+    "trailer",
+    "transfer-encoding",
+    "upgrade",
+}
+PAPERLESS_UI_PROXY_DENIED_PATHS = (
+    "/api",
+    "/static",
+    "/media",
+    "/accounts",
+    "/search",
+    "/mcp",
+    "/paperless-ui-proxy",
+    "/.well-known",
+)
 MAX_SEARCH_LIMIT = 50
 MAX_QUERY_LENGTH = 500
 DEFAULT_SEARCH_LIMIT = 10
@@ -132,7 +161,7 @@ def log_paperless_error(context, exc):
         detail = f"status={response.status_code}"
     else:
         detail = f"type={exc.__class__.__name__}"
-    print(f"{context}: Paperless API request failed ({detail})")
+    print(f"{context}: Paperless request failed ({detail})")
 
 
 def search_unavailable_response():
@@ -151,6 +180,192 @@ def search_unavailable_response():
 """,
         status_code=503,
         headers={"Cache-Control": "no-store"},
+    )
+
+
+def paperless_ui_unavailable_response():
+    return HTMLResponse(
+        """<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Paperless-ngx unavailable</title>
+  </head>
+  <body>
+    <h1>Paperless-ngx is temporarily unavailable</h1>
+    <p>The Paperless UI could not be loaded. Try again in a moment.</p>
+  </body>
+</html>
+""",
+        status_code=503,
+        headers={"Cache-Control": "no-store"},
+    )
+
+
+def response_headers_from_upstream(response):
+    raw_headers = getattr(getattr(response, "raw", None), "headers", None)
+    source = raw_headers if raw_headers is not None else response.headers
+    connection_header_names = connection_header_tokens(source)
+    set_cookie_values = header_values(source, "Set-Cookie")
+    emitted_set_cookie = False
+    headers = []
+    for key, value in source.items():
+        lower_key = key.lower()
+        if lower_key in HOP_BY_HOP_HEADERS or lower_key in connection_header_names:
+            continue
+        if lower_key == "set-cookie" and set_cookie_values:
+            if not emitted_set_cookie:
+                headers.extend(
+                    ("Set-Cookie", value) for value in set_cookie_values
+                )
+                emitted_set_cookie = True
+            continue
+        headers.append((key, value))
+    if set_cookie_values and not emitted_set_cookie:
+        headers.extend(("Set-Cookie", value) for value in set_cookie_values)
+    return headers
+
+
+def header_values(headers, key):
+    for method_name in ("getlist", "get_all"):
+        method = getattr(headers, method_name, None)
+        if method is None:
+            continue
+        values = method(key)
+        if values:
+            return list(values)
+    get = getattr(headers, "get", None)
+    if get is not None:
+        value = get(key)
+        if value:
+            return [value]
+    return []
+
+
+def connection_header_tokens(headers):
+    tokens = set()
+    for value in header_values(headers, "Connection"):
+        tokens.update(
+            token.strip().lower()
+            for token in value.split(",")
+            if token.strip()
+        )
+    return tokens
+
+
+def response_with_upstream_headers(content, status_code, upstream_headers):
+    response = Response(content, status_code=status_code)
+    encoded_headers = [
+        (key.lower().encode("latin-1"), value.encode("latin-1"))
+        for key, value in upstream_headers
+    ]
+    if hasattr(response, "raw_headers"):
+        replacement_header_names = {
+            key for key, _value in encoded_headers if key != b"set-cookie"
+        }
+        response.raw_headers[:] = [
+            header
+            for header in response.raw_headers
+            if header[0].lower() not in replacement_header_names
+        ]
+        response.raw_headers.extend(encoded_headers)
+    else:
+        for key, value in upstream_headers:
+            response.headers[key] = value
+    return response
+
+
+def is_denied_paperless_ui_proxy_path(path):
+    return any(
+        path == denied_path or path.startswith(f"{denied_path}/")
+        for denied_path in PAPERLESS_UI_PROXY_DENIED_PATHS
+    )
+
+
+def normalized_paperless_ui_proxy_path(raw_path):
+    path = f"/{raw_path.lstrip('/')}" if raw_path else "/"
+    decoded_path = unquote(path)
+    if "\\" in decoded_path:
+        return None
+
+    segments = decoded_path.split("/")
+    if any(segment == ".." for segment in segments):
+        return None
+
+    normalized_segments = [
+        segment for segment in segments if segment and segment != "."
+    ]
+    normalized_path = f"/{'/'.join(normalized_segments)}"
+    if decoded_path.endswith("/") and normalized_path != "/":
+        normalized_path = f"{normalized_path}/"
+    return quote(normalized_path, safe="/")
+
+
+def inject_paperless_ui_script(html):
+    if PAPERLESS_UI_SCRIPT_PATH in html:
+        return html
+
+    body_close_matches = list(BODY_CLOSE_PATTERN.finditer(html))
+    if not body_close_matches:
+        return f"{html}\n{PAPERLESS_UI_SCRIPT_TAG}\n"
+    body_close_index = body_close_matches[-1].start()
+    return (
+        f"{html[:body_close_index]}{PAPERLESS_UI_SCRIPT_TAG}\n"
+        f"{html[body_close_index:]}"
+    )
+
+
+def is_html_response(response):
+    content_type = ""
+    for key, value in response.headers.items():
+        if key.lower() == "content-type":
+            content_type = value
+            break
+    return "text/html" in content_type.lower()
+
+
+def paperless_ui_proxy(request):
+    proxied_path = request.path_params.get("path", "")
+    upstream_path = normalized_paperless_ui_proxy_path(proxied_path)
+    if upstream_path is None or is_denied_paperless_ui_proxy_path(upstream_path):
+        return Response("Not found", status_code=404)
+
+    upstream_url = f"{config.PAPERLESS_API_URL}{upstream_path}"
+    if request.url.query:
+        upstream_url = f"{upstream_url}?{request.url.query}"
+
+    headers = {
+        "Accept": request.headers.get("accept", "text/html"),
+        "Accept-Language": request.headers.get("accept-language", ""),
+        "Cookie": cookie_header_from_request(request),
+        "User-Agent": request.headers.get("user-agent", ""),
+    }
+    headers = {key: value for key, value in headers.items() if value}
+
+    try:
+        upstream = requests.get(
+            upstream_url,
+            headers=headers,
+            allow_redirects=False,
+            timeout=PAPERLESS_UI_PROXY_TIMEOUT,
+        )
+    except requests.RequestException as exc:
+        log_paperless_error("Paperless UI proxy failed", exc)
+        return paperless_ui_unavailable_response()
+
+    response_headers = response_headers_from_upstream(upstream)
+    if upstream.status_code != 200 or not is_html_response(upstream):
+        return response_with_upstream_headers(
+            upstream.content,
+            status_code=upstream.status_code,
+            upstream_headers=response_headers,
+        )
+
+    upstream.encoding = upstream.encoding or "utf-8"
+    return response_with_upstream_headers(
+        inject_paperless_ui_script(upstream.text),
+        status_code=upstream.status_code,
+        upstream_headers=response_headers,
     )
 
 
@@ -290,6 +505,9 @@ def documents_api(request):
 
 def routes():
     return [
+        Route("/paperless-ui-proxy", paperless_ui_proxy, methods=["GET"]),
+        Route("/paperless-ui-proxy/", paperless_ui_proxy, methods=["GET"]),
+        Route("/paperless-ui-proxy/{path:path}", paperless_ui_proxy, methods=["GET"]),
         Route("/search", search_page, methods=["GET"]),
         Route("/search/", search_page, methods=["GET"]),
         Route("/search/mcp", mcp_page, methods=["GET"]),
