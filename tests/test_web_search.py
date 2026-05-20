@@ -389,6 +389,23 @@ class WebSearchTests(unittest.TestCase):
         self.assertNotIn(("Content-Length", "123"), headers)
         self.assertNotIn(("Content-Encoding", "gzip"), headers)
 
+    def test_response_headers_from_upstream_removes_connection_tokens(self):
+        response = FakeResponse(
+            headers={
+                "Connection": "X-Upstream-Hop, keep-alive",
+                "Content-Type": "text/html; charset=utf-8",
+                "Location": "/dashboard",
+                "X-Upstream-Hop": "drop-me",
+            },
+        )
+
+        headers = web_search.response_headers_from_upstream(response)
+
+        self.assertIn(("Content-Type", "text/html; charset=utf-8"), headers)
+        self.assertIn(("Location", "/dashboard"), headers)
+        self.assertNotIn(("Connection", "X-Upstream-Hop, keep-alive"), headers)
+        self.assertNotIn(("X-Upstream-Hop", "drop-me"), headers)
+
     def test_response_headers_from_upstream_preserves_duplicate_raw_headers(self):
         response = FakeResponse(
             headers={"Set-Cookie": "sessionid=abc, csrftoken=def"},

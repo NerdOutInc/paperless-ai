@@ -161,7 +161,7 @@ def log_paperless_error(context, exc):
         detail = f"status={response.status_code}"
     else:
         detail = f"type={exc.__class__.__name__}"
-    print(f"{context}: Paperless API request failed ({detail})")
+    print(f"{context}: Paperless request failed ({detail})")
 
 
 def search_unavailable_response():
@@ -205,12 +205,13 @@ def paperless_ui_unavailable_response():
 def response_headers_from_upstream(response):
     raw_headers = getattr(getattr(response, "raw", None), "headers", None)
     source = raw_headers if raw_headers is not None else response.headers
+    connection_header_names = connection_header_tokens(source)
     set_cookie_values = header_values(source, "Set-Cookie")
     emitted_set_cookie = False
     headers = []
     for key, value in source.items():
         lower_key = key.lower()
-        if lower_key in HOP_BY_HOP_HEADERS:
+        if lower_key in HOP_BY_HOP_HEADERS or lower_key in connection_header_names:
             continue
         if lower_key == "set-cookie" and set_cookie_values:
             if not emitted_set_cookie:
@@ -233,7 +234,23 @@ def header_values(headers, key):
         values = method(key)
         if values:
             return list(values)
+    get = getattr(headers, "get", None)
+    if get is not None:
+        value = get(key)
+        if value:
+            return [value]
     return []
+
+
+def connection_header_tokens(headers):
+    tokens = set()
+    for value in header_values(headers, "Connection"):
+        tokens.update(
+            token.strip().lower()
+            for token in value.split(",")
+            if token.strip()
+        )
+    return tokens
 
 
 def response_with_upstream_headers(content, status_code, upstream_headers):

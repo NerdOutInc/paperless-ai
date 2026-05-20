@@ -4,7 +4,8 @@
   var SEARCH_HOST_MARKER_ATTRIBUTE = "data-paperless-ag-search-host";
   var SEARCH_INPUT_SELECTOR = 'pngx-global-search input[name="query"]';
   var COMPACT_MEDIA_QUERY = "(max-width: 900px)";
-  var activeButton = null;
+  var activeLink = null;
+  var activeHrefCleanup = null;
   var activeMetricsCleanup = null;
   var attachScheduled = false;
   var styleApplied = false;
@@ -158,30 +159,30 @@
     };
   }
 
-  function syncButtonMetrics(input, button, rightEdge) {
+  function syncButtonMetrics(input, link, rightEdge) {
     var controlHeight = searchControlFor(input).getBoundingClientRect().height;
     if (controlHeight > 0) {
-      button.style.setProperty(
+      link.style.setProperty(
         "--paperless-ag-search-control-height",
         controlHeight + "px",
       );
     }
-    button.style.setProperty(
+    link.style.setProperty(
       "--paperless-ag-search-border-top-right-radius",
       rightEdge.borderTopRightRadius,
     );
-    button.style.setProperty(
+    link.style.setProperty(
       "--paperless-ag-search-border-bottom-right-radius",
       rightEdge.borderBottomRightRadius,
     );
   }
 
-  function watchButtonMetrics(input, button, rightEdge) {
+  function watchButtonMetrics(input, link, rightEdge) {
     var control = searchControlFor(input);
     var resizeObserver = null;
     var disposed = false;
     var update = function () {
-      syncButtonMetrics(input, button, rightEdge);
+      syncButtonMetrics(input, link, rightEdge);
     };
 
     update();
@@ -203,14 +204,35 @@
     };
   }
 
-  function createButton(input) {
-    var button = document.createElement("button");
-    button.type = "button";
-    button.className = "paperless-ag-semantic-search-btn";
-    button.dataset[LINK_MARKER] = "true";
-    button.setAttribute("aria-label", "Smart Search");
-    button.title = "Smart Search";
-    button.innerHTML = [
+  function watchLinkHref(input, link) {
+    var update = function () {
+      link.href = searchUrlFor(input);
+    };
+
+    update();
+    input.addEventListener("input", update);
+    input.addEventListener("change", update);
+    link.addEventListener("click", update);
+    link.addEventListener("focus", update);
+    link.addEventListener("pointerdown", update);
+
+    return function () {
+      input.removeEventListener("input", update);
+      input.removeEventListener("change", update);
+      link.removeEventListener("click", update);
+      link.removeEventListener("focus", update);
+      link.removeEventListener("pointerdown", update);
+    };
+  }
+
+  function createSearchLink(input) {
+    var link = document.createElement("a");
+    link.className = "paperless-ag-semantic-search-btn";
+    link.dataset[LINK_MARKER] = "true";
+    link.href = searchUrlFor(input);
+    link.setAttribute("aria-label", "Smart Search");
+    link.title = "Smart Search";
+    link.innerHTML = [
       '<svg aria-hidden="true" viewBox="0 0 24 24" fill="none"',
       ' stroke="currentColor" stroke-width="2" stroke-linecap="round"',
       ' stroke-linejoin="round">',
@@ -225,22 +247,23 @@
       "</svg>",
       "<span>Smart Search</span>",
     ].join("");
-    button.addEventListener("click", function () {
-      window.location.assign(searchUrlFor(input));
-    });
-    return button;
+    return link;
   }
 
-  function activeButtonIsConnected() {
-    return activeButton && document.documentElement.contains(activeButton);
+  function activeLinkIsConnected() {
+    return activeLink && document.documentElement.contains(activeLink);
   }
 
   function clearActiveMetrics() {
+    if (activeHrefCleanup) {
+      activeHrefCleanup();
+      activeHrefCleanup = null;
+    }
     if (activeMetricsCleanup) {
       activeMetricsCleanup();
       activeMetricsCleanup = null;
     }
-    activeButton = null;
+    activeLink = null;
   }
 
   function markSearchLayout(inputGroup) {
@@ -251,7 +274,7 @@
   }
 
   function attachButton() {
-    if (activeButtonIsConnected()) {
+    if (activeLinkIsConnected()) {
       return true;
     }
 
@@ -270,14 +293,15 @@
     addStyles();
     markSearchLayout(inputGroup);
     var rightEdge = captureRightEdge(inputGroup, input);
-    activeButton = createButton(input);
-    inputGroup.appendChild(activeButton);
-    activeMetricsCleanup = watchButtonMetrics(input, activeButton, rightEdge);
+    activeLink = createSearchLink(input);
+    activeHrefCleanup = watchLinkHref(input, activeLink);
+    inputGroup.appendChild(activeLink);
+    activeMetricsCleanup = watchButtonMetrics(input, activeLink, rightEdge);
     return true;
   }
 
   function scheduleAttachButton() {
-    if (attachScheduled || activeButtonIsConnected()) {
+    if (attachScheduled || activeLinkIsConnected()) {
       return;
     }
 
