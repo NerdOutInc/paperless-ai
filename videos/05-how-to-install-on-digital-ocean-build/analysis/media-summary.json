@@ -1,9 +1,9 @@
 {
   "schema": "nerdout.media_summary.v1",
-  "source_video": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/source/05-how-to-install-on-digital-ocean-combined.mp4",
-  "source_audio": "/Users/brian/github/nerdoutinc/paperless-ag/videos/src/05-how-to-install-on-digital-ocean.m4a",
+  "source_video": "/Users/brian/github/nerdoutinc/paperless-ai/videos/05-how-to-install-on-digital-ocean-build/source/05-how-to-install-on-digital-ocean-combined.mp4",
+  "source_audio": "/Users/brian/github/nerdoutinc/paperless-ai/videos/src/05-how-to-install-on-digital-ocean.m4a",
   "video": {
-    "path": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/source/05-how-to-install-on-digital-ocean-combined.mp4",
+    "path": "/Users/brian/github/nerdoutinc/paperless-ai/videos/05-how-to-install-on-digital-ocean-build/source/05-how-to-install-on-digital-ocean-combined.mp4",
     "duration": 403.8,
     "width": 3324,
     "height": 2160,
@@ -15,7 +15,7 @@
     "embedded_audio_codecs": []
   },
   "audio": {
-    "path": "/Users/brian/github/nerdoutinc/paperless-ag/videos/src/05-how-to-install-on-digital-ocean.m4a",
+    "path": "/Users/brian/github/nerdoutinc/paperless-ai/videos/src/05-how-to-install-on-digital-ocean.m4a",
     "duration": 267.540317,
     "codec": "aac",
     "channels": 2,

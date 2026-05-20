@@ -12,7 +12,7 @@
     handle {
         rewrite * /wizard.html
         file_server {
-            root /opt/paperless-ag/setup
+            root /opt/paperless-ai/setup
         }
     }
 }

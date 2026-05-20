@@ -1,6 +1,6 @@
 # One-Click Image Builder
 
-This directory contains all files deployed to `/opt/paperless-ag/` on DigitalOcean 1-click Marketplace droplets.
+This directory contains all files deployed to `/opt/paperless-ai/` on DigitalOcean 1-click Marketplace droplets.
 
 ## Directory Structure
 
@@ -38,7 +38,7 @@ Build the snapshot:
 ```bash
 cd packer
 packer init .
-DIGITALOCEAN_API_TOKEN=<your-token> packer build paperless-ag.pkr.hcl
+DIGITALOCEAN_API_TOKEN=<your-token> packer build paperless-ai.pkr.hcl
 ```
 
 The build process:
@@ -46,7 +46,7 @@ The build process:
 1. Launches an Ubuntu 24.04 droplet in NYC1
 2. Installs Docker, Docker Compose, and Caddy
 3. Pre-pulls all Docker images
-4. Deploys files from `one-click/` to `/opt/paperless-ag/`
+4. Deploys files from `one-click/` to `/opt/paperless-ai/`
 5. Installs systemd services
 6. Creates a snapshot
 7. Cleans up the temporary droplet
@@ -79,7 +79,7 @@ See `templates/env.template` for the full template with defaults.
 
 ## First Boot Flow
 
-1. Cloud-init executes `/opt/paperless-ag/scripts/first-boot.sh`
+1. Cloud-init executes `/opt/paperless-ai/scripts/first-boot.sh`
 2. Systemd services start the setup wizard (Caddy + Python stdlib API)
 3. Farmer accesses `http://<droplet-ip>` to configure
 4. Farmer fills out admin credentials, timezone, optional domain
@@ -94,7 +94,7 @@ See `templates/env.template` for the full template with defaults.
 | --- | --- |
 | Check setup progress | `journalctl -u paperless-setup -f` |
 | View API logs | `journalctl -u paperless-setup-api -f` |
-| Restart services | `cd /opt/paperless-ag && docker compose restart` |
-| Backup database | `/opt/paperless-ag/scripts/backup.sh` |
-| Restore database | `/opt/paperless-ag/scripts/restore.sh <backup-file>` |
-| Update images | `/opt/paperless-ag/scripts/update.sh` |
+| Restart services | `cd /opt/paperless-ai && docker compose restart` |
+| Backup database | `/opt/paperless-ai/scripts/backup.sh` |
+| Restore database | `/opt/paperless-ai/scripts/restore.sh <backup-file>` |
+| Update images | `/opt/paperless-ai/scripts/update.sh` |

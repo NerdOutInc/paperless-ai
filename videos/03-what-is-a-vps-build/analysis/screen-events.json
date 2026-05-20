@@ -1,6 +1,6 @@
 {
   "schema": "nerdout.screen_events.v1",
-  "source_video": "/Users/brian/github/nerdoutinc/paperless-ag/videos/src/03-what-is-a-vps.mp4",
+  "source_video": "/Users/brian/github/nerdoutinc/paperless-ai/videos/src/03-what-is-a-vps.mp4",
   "duration": 51.716667,
   "media": {
     "duration": 51.716667,
@@ -31,18 +31,18 @@
     "vision_frame_count": 29
   },
   "artifacts": {
-    "frames_manifest": "/Users/brian/github/nerdoutinc/paperless-ag/videos/03-what-is-a-vps-build/analysis/frames.jsonl",
-    "vision_frames_jsonl": "/Users/brian/github/nerdoutinc/paperless-ag/videos/03-what-is-a-vps-build/analysis/vision-frames.jsonl",
-    "contact_sheet": "/Users/brian/github/nerdoutinc/paperless-ag/videos/03-what-is-a-vps-build/analysis/screen-events-contact-sheet.jpg",
-    "scan_frames_dir": "/Users/brian/github/nerdoutinc/paperless-ag/videos/03-what-is-a-vps-build/analysis/scan-frames",
-    "frames_dir": "/Users/brian/github/nerdoutinc/paperless-ag/videos/03-what-is-a-vps-build/analysis/frames"
+    "frames_manifest": "/Users/brian/github/nerdoutinc/paperless-ai/videos/03-what-is-a-vps-build/analysis/frames.jsonl",
+    "vision_frames_jsonl": "/Users/brian/github/nerdoutinc/paperless-ai/videos/03-what-is-a-vps-build/analysis/vision-frames.jsonl",
+    "contact_sheet": "/Users/brian/github/nerdoutinc/paperless-ai/videos/03-what-is-a-vps-build/analysis/screen-events-contact-sheet.jpg",
+    "scan_frames_dir": "/Users/brian/github/nerdoutinc/paperless-ai/videos/03-what-is-a-vps-build/analysis/scan-frames",
+    "frames_dir": "/Users/brian/github/nerdoutinc/paperless-ai/videos/03-what-is-a-vps-build/analysis/frames"
   },
   "events": [
     {
       "kind": "anchor",
       "time": 5.0,
       "score": 0.0,
-      "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/03-what-is-a-vps-build/analysis/frames/frame_0002_00-05-000_anchor.jpg",
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/03-what-is-a-vps-build/analysis/frames/frame_0002_00-05-000_anchor.jpg",
       "ocr_text": "f DigitalOcean Droplets | DigitalOcean 4 c https:Ilwww.digitslocean.comlproductsldroplets Introducing DigitalOcean Al-Native Cloud 4 Blog Docs Careers Get Support Contact Sales Q DigitalOcean Products v Solutions v Developers v Partners v Pricing Log in Sign up Virtual machines for everyusecase 24.70 X04 Get dependable uptime with our 99.99 /. SLA, simple security tools, and predictable monthly pricing with DigitalOcean's virtual machines, called Droplets. Choose size Get started Contact sales",
       "notes": [
         "regular Apple Vision sample for agent review"
@@ -54,7 +54,7 @@
       "kind": "ocr_change",
       "time": 5.0,
       "score": 0.5769,
-      "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/03-what-is-a-vps-build/analysis/frames/frame_0002_00-05-000_anchor.jpg",
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/03-what-is-a-vps-build/analysis/frames/frame_0002_00-05-000_anchor.jpg",
       "ocr_text": "f DigitalOcean Droplets | DigitalOcean 4 c https:Ilwww.digitslocean.comlproductsldroplets Introducing DigitalOcean Al-Native Cloud 4 Blog Docs Careers Get Support Contact Sales Q DigitalOcean Products v Solutions v Developers v Partners v Pricing Log in Sign up Virtual machines for everyusecase 24.70 X04 Get dependable uptime with our 99.99 /. SLA, simple security tools, and predictable monthly pricing with DigitalOcean's virtual machines, called Droplets. Choose size Get started Contact sales",
       "notes": [
         "visible text changed between Apple Vision OCR samples"
@@ -66,7 +66,7 @@
       "kind": "stable_hold",
       "time": 7.5,
       "score": 0.6285,
-      "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/03-what-is-a-vps-build/analysis/frames/frame_0003_00-07-500_stable_hold.jpg",
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/03-what-is-a-vps-build/analysis/frames/frame_0003_00-07-500_stable_hold.jpg",
       "ocr_text": "r DigitalOcearh Droplets | DigitalOcean 4 C https:Ilwww.digitslocean.comlproductsldroplets Introducing DigitalOcean Al-Native Cloud 4 Blog Docs Careers Get Support Contact Sales Q DigitalOcean Products v Solutions v Developers v Partners v Pricing Log in Sign up Virtual machines for everyusecase Backups Get dependable uptime with our 99.99 /. SLA, simple security tools, and predictable monthly pricing with DigitalOcean's virtual machines, called Droplets. Get started Contact sales",
       "notes": [
         "low visual change span",
@@ -82,7 +82,7 @@
       "kind": "anchor",
       "time": 10.0,
       "score": 0.0,
-      "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/03-what-is-a-vps-build/analysis/frames/frame_0004_00-10-000_anchor.jpg",
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/03-what-is-a-vps-build/analysis/frames/frame_0004_00-10-000_anchor.jpg",
       "ocr_text": "f DigitalOcean Droplets | DigitalOcean 4 c https:Ilwww.digitslocean.comlproductsldroplets Now Available: Kimi K2.6 -> Blog Docs Careers Get Support Contact Sales Q DigitalOcean Products v Solutions v Developers v Partners v Pricing Log in Sign up Virtual machines for everyusecase Choose Authentlcation Melhod Get dependable uptime with our 99.99 /. SLA, simple security tools, and predictable monthly pricing with DigitalOcean's virtual machines, called Droplets. dp Get started Contact sales",
       "notes": [
         "regular Apple Vision sample for agent review"
@@ -94,7 +94,7 @@
       "kind": "scene_change",
       "time": 17.0,
       "score": 0.065,
-      "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/03-what-is-a-vps-build/analysis/frames/frame_0007_00-17-000_scene_change.jpg",
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/03-what-is-a-vps-build/analysis/frames/frame_0007_00-17-000_scene_change.jpg",
       "ocr_text": "r DigitalOcean Droplets | DigitalOcean 4 c https:Ilwww.digitslocean.comlproductsldroplets Missed the Deploy 2026 Keynote live? Watch it now and catch everything that was announced -> Blog Docs Careers Get Support Contact Sales Q DigitalOcean Products v Solutions v Developers v Partners v Pricing Log in Sign up Virtual machines for everyusecase Create Droplets ChoDwR\u2022g Get dependable uptime with our 99.99 /. SLA, simple security tools, and predictable monthly pricing with DigitalOcean's virtual machines, called Droplets. Get started Contact sales",
       "notes": [
         "visual change peak",
@@ -107,7 +107,7 @@
       "kind": "anchor",
       "time": 20.0,
       "score": 0.0,
-      "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/03-what-is-a-vps-build/analysis/frames/frame_0009_00-20-000_anchor.jpg",
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/03-what-is-a-vps-build/analysis/frames/frame_0009_00-20-000_anchor.jpg",
       "ocr_text": "f DigitalOcean Droplets | DigitalOcean 4 c https:Ilwww.digitslocean.comlproductsldroplets Introducing DigitalOcean Al-Native Cloud 4 Blog Docs Careers Get Support Contact Sales Q DigitalOcean Products v Solutions v Developers v Partners v Pricing Log in Sign up Virtual machines for everyusecase Choose an Image Get dependable uptime with our 99.99 /. SLA, simple security tools, and predictable monthly pricing with DigitalOcean's virtual machines, called Droplets. Choose size Get started Contact sales",
       "notes": [
         "regular Apple Vision sample for agent review"
@@ -119,7 +119,7 @@
       "kind": "stable_hold",
       "time": 21.5,
       "score": 0.6327,
-      "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/03-what-is-a-vps-build/analysis/frames/frame_0010_00-21-500_stable_hold.jpg",
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/03-what-is-a-vps-build/analysis/frames/frame_0010_00-21-500_stable_hold.jpg",
       "ocr_text": "f DigitalOcean Droplets | DigitalOcean 4 C https:Ilwww.digitslocean.comlproductsldroplets Introducing DigitalOcean Al-Native Cloud -> Blog Docs Careers Get Support Contact Sales Q DigitalOcean Products v Solutions v Developers v Partners v Pricing Log in Sign up Virtual machines for everyusecase Choose siz Get dependable uptime with our 99.99 /. SLA, simple security tools, and predictable monthly pricing with DigitalOcean's virtual machines, called Droplets. cpu typ\u2022 Get started Contact sales",
       "notes": [
         "low visual change span",
@@ -135,7 +135,7 @@
       "kind": "anchor",
       "time": 25.0,
       "score": 0.0,
-      "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/03-what-is-a-vps-build/analysis/frames/frame_0011_00-25-000_anchor.jpg",
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/03-what-is-a-vps-build/analysis/frames/frame_0011_00-25-000_anchor.jpg",
       "ocr_text": "f DigitalOcean Droplets | DigitalOcean 4 c https:Ilwww.digitslocean.comlproductsldroplets Now Available: Kimi K2.6 -> Blog Docs Careers Get Support Contact Sales Q DigitalOcean Products v Solutions v Developers v Partners v Pricing Log in Sign up Virtual machines for everyusecase yBKkup 19.601n Get dependable uptime with our 99.99 /. SLA, simple security tools, and predictable monthly pricing with DigitalOcean's virtual machines, called Droplets. 'OOwn.\u2022.'iWIUTCI Choose Authentbcation Method SSH K\u2022y Get started Contact sales",
       "notes": [
         "regular Apple Vision sample for agent review"
@@ -147,7 +147,7 @@
       "kind": "ocr_change",
       "time": 27.5,
       "score": 0.5693,
-      "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/03-what-is-a-vps-build/analysis/frames/frame_0013_00-27-500_scene_pre.jpg",
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/03-what-is-a-vps-build/analysis/frames/frame_0013_00-27-500_scene_pre.jpg",
       "ocr_text": "r DigitalOcearh Droplets | DigitalOcean 4 C https:Ilwww.digitslocean.comlproductsldroplets Now Available: Kimi K2.6 -> Blog Docs Careers Get Support Contact Sales Q DigitalOcean Products v Solutions v Developers v Partners v Pricing Log in Sign up Get started Contact sales tOroF4t bfftS-2vw*120gb\u2022l*nyc3.01 Announcing per-second billing, new CPU sizes, and BYOIP for Droplets Now, you can choose from new dedicated CPU sizes for a seamless upgrade, Bring Your Own IP IBYOIPI to help protec your online reputation, and soon pay for Droplets by the second to save money on short-lived workloads. Learn more ->",
       "notes": [
         "visible text changed between Apple Vision OCR samples"
@@ -159,7 +159,7 @@
       "kind": "ocr_change",
       "time": 28.0,
       "score": 0.7126,
-      "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/03-what-is-a-vps-build/analysis/frames/frame_0014_00-28-000_scene_change.jpg",
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/03-what-is-a-vps-build/analysis/frames/frame_0014_00-28-000_scene_change.jpg",
       "ocr_text": "t DigitalOcean Droplets | DigitalOcean <- 4 C https:Ilwww.digitslocean.comlproductsldroplets Now Available: Kimi K2.6 -> Blog Docs Careers Get Support Contact Sales Q DigitalOcean CPU sizes, and BYOIP for Droplets Products v Solutions v Developers v Partners v Pricing Log in Sign up Now, you can choose from new dedicated CPU sizes for a seamless upgrade, Bring Your Own IP IBYOIPI to help protec your online reputation, and soon pay for Droplets by the second to save money on short-lived workloads. Learn more -> Comprehensive, cost-effective cloud computing",
       "notes": [
         "visible text changed between Apple Vision OCR samples"
@@ -171,7 +171,7 @@
       "kind": "scene_change",
       "time": 28.0,
       "score": 0.1793,
-      "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/03-what-is-a-vps-build/analysis/frames/frame_0014_00-28-000_scene_change.jpg",
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/03-what-is-a-vps-build/analysis/frames/frame_0014_00-28-000_scene_change.jpg",
       "ocr_text": "t DigitalOcean Droplets | DigitalOcean <- 4 C https:Ilwww.digitslocean.comlproductsldroplets Now Available: Kimi K2.6 -> Blog Docs Careers Get Support Contact Sales Q DigitalOcean CPU sizes, and BYOIP for Droplets Products v Solutions v Developers v Partners v Pricing Log in Sign up Now, you can choose from new dedicated CPU sizes for a seamless upgrade, Bring Your Own IP IBYOIPI to help protec your online reputation, and soon pay for Droplets by the second to save money on short-lived workloads. Learn more -> Comprehensive, cost-effective cloud computing",
       "notes": [
         "visual change peak",
@@ -184,7 +184,7 @@
       "kind": "ocr_change",
       "time": 28.5,
       "score": 0.4142,
-      "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/03-what-is-a-vps-build/analysis/frames/frame_0015_00-28-500_scene_post.jpg",
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/03-what-is-a-vps-build/analysis/frames/frame_0015_00-28-500_scene_post.jpg",
       "ocr_text": "t DigitalOce8rh Droplets | DigitalOcean 4 c https:Ilwww.digitalocean.comlproductsldroplets Now Available: Kimi K2.6 -> Blog Docs Careers Get Support Contact Sales Q DigitalOcean Products v Solutions v Developers v Partners v Pricing Log in Sign up seamless upgrade, Bring Your Own IP (BYOIPI to help protect your online reputation, and soon pay for Droplets by the second to save money on short-lived workloads. Learn more 4 Comprehensive, cost-effective cloud computing",
       "notes": [
         "visible text changed between Apple Vision OCR samples"
@@ -196,7 +196,7 @@
       "kind": "anchor",
       "time": 30.0,
       "score": 0.0,
-      "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/03-what-is-a-vps-build/analysis/frames/frame_0016_00-30-000_anchor.jpg",
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/03-what-is-a-vps-build/analysis/frames/frame_0016_00-30-000_anchor.jpg",
       "ocr_text": "f DigitalOcean Droplets | fj DigitalOcean 4 c https:Ilwww.digitslocean.comlproductsldroplets Now Available: Kimi K2.6 -> Blog Docs Careers Get Support Contact Sales Q DigitalOcean Products v Solutions v Developers v Partners v Pricing Log in Sign up firewalls-for free with every Droplet. Read more Learn how -> View our pricing -> See Re ional availabilit and Service-level a reements. Simple enough forany user, powerful enough for fast-growing businesses",
       "notes": [
         "regular Apple Vision sample for agent review"
@@ -208,7 +208,7 @@
       "kind": "ocr_change",
       "time": 30.0,
       "score": 0.5534,
-      "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/03-what-is-a-vps-build/analysis/frames/frame_0016_00-30-000_anchor.jpg",
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/03-what-is-a-vps-build/analysis/frames/frame_0016_00-30-000_anchor.jpg",
       "ocr_text": "f DigitalOcean Droplets | fj DigitalOcean 4 c https:Ilwww.digitslocean.comlproductsldroplets Now Available: Kimi K2.6 -> Blog Docs Careers Get Support Contact Sales Q DigitalOcean Products v Solutions v Developers v Partners v Pricing Log in Sign up firewalls-for free with every Droplet. Read more Learn how -> View our pricing -> See Re ional availabilit and Service-level a reements. Simple enough forany user, powerful enough for fast-growing businesses",
       "notes": [
         "visible text changed between Apple Vision OCR samples"
@@ -220,7 +220,7 @@
       "kind": "ocr_change",
       "time": 34.5,
       "score": 0.5548,
-      "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/03-what-is-a-vps-build/analysis/frames/frame_0017_00-34-500_scene_pre.jpg",
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/03-what-is-a-vps-build/analysis/frames/frame_0017_00-34-500_scene_pre.jpg",
       "ocr_text": "f DigitalOcearh Droplets | DigitalOcean 4 C https:Ilwww.digitalocean.comlproductsldroplets Now Available: DeepSeek-V4-Pro Model -> Blog Docs Careers Get Support Contact Sales Q DigitalOcean Products v Solutions v Developers v Partners v Pricing Log in Sign up Join the many businesses saving upto 50% or more with DigitalOcean Are the ever-increasing cloud costs on AWS, GCP, and Azure severely impacting your bottom line? Reach out to our team of experts and we'll show how you can significantly reduce your bill for the same consistent infrastructure experience. Reach out to our cloud expertS -> Seewhatyou can save Monthly caps and flat pricing mean your bill is never a surprise.",
       "notes": [
         "visible text changed between Apple Vision OCR samples"
@@ -232,7 +232,7 @@
       "kind": "ocr_change",
       "time": 35.0,
       "score": 0.3825,
-      "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/03-what-is-a-vps-build/analysis/frames/frame_0018_00-35-000_scene_change.jpg",
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/03-what-is-a-vps-build/analysis/frames/frame_0018_00-35-000_scene_change.jpg",
       "ocr_text": "t DigitalOcean Droplets | Q DigitalOcean 4 c https:Ilwww.digitalocean.comlproductsldroplets Now Available: DeepSeek-V4-Pro Model -> Blog Docs Careers Get Support Contact Sales Q DigitalOcean Products v Solutions v Developers v Partners v Pricing Log in Sign up Reach out to our cloud expertS -> Seewhatyou can save Monthly caps and flat pricing mean your bill is never a surprise. Calculate your savings -> Basic virtual machine costs Easy, fast, and flexible compute built for a range of needs.",
       "notes": [
         "visible text changed between Apple Vision OCR samples"
@@ -244,7 +244,7 @@
       "kind": "scene_change",
       "time": 35.0,
       "score": 0.185,
-      "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/03-what-is-a-vps-build/analysis/frames/frame_0018_00-35-000_scene_change.jpg",
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/03-what-is-a-vps-build/analysis/frames/frame_0018_00-35-000_scene_change.jpg",
       "ocr_text": "t DigitalOcean Droplets | Q DigitalOcean 4 c https:Ilwww.digitalocean.comlproductsldroplets Now Available: DeepSeek-V4-Pro Model -> Blog Docs Careers Get Support Contact Sales Q DigitalOcean Products v Solutions v Developers v Partners v Pricing Log in Sign up Reach out to our cloud expertS -> Seewhatyou can save Monthly caps and flat pricing mean your bill is never a surprise. Calculate your savings -> Basic virtual machine costs Easy, fast, and flexible compute built for a range of needs.",
       "notes": [
         "visual change peak",
@@ -257,7 +257,7 @@
       "kind": "ocr_change",
       "time": 35.5,
       "score": 0.3558,
-      "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/03-what-is-a-vps-build/analysis/frames/frame_0019_00-35-500_scene_post.jpg",
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/03-what-is-a-vps-build/analysis/frames/frame_0019_00-35-500_scene_post.jpg",
       "ocr_text": "r DigitalOcean Droplets | DigitalOcean 4 c https:Ilwww.digitslocean.comlproduct$ldroplets Now Available: DeepSeek-V4-Pro Model -> Blog Docs Careers Get Support Contact Sales Q DigitalOcean Products v Solutions v Developers v Partners v Pricing Log in Sign up Basic virtual machine costs Easy, fast, and flexible compute built for a range of needs. 1CPU 2 CPUs 4 CPUs 8 CPUs 8 GiB Memory1160 GiB Storage15,000 GiB Bandwidth aws DigitalOcean GCP Azure AWS $48.00 $55.09 $60.74 $60.74 Includes bandwidth With bandwidth.. $480.09 With bandwidth: $452.74 With bandwidth: $521.54",
       "notes": [
         "visible text changed between Apple Vision OCR samples"
@@ -269,7 +269,7 @@
       "kind": "anchor",
       "time": 40.0,
       "score": 0.0,
-      "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/03-what-is-a-vps-build/analysis/frames/frame_0020_00-40-000_anchor.jpg",
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/03-what-is-a-vps-build/analysis/frames/frame_0020_00-40-000_anchor.jpg",
       "ocr_text": "f DigitalOcean Droplets | DigitalOcean https:Ilwww.digitslocean.comlproductsldroplets Now Available: DeepSeek-V4-Pro Model -> Blog Docs Careers Get Support Contact Sales Q DigitalOcean Products v Solutions v Developers v Partners v Pricing Log in Sign up distributions Distributions qcow2 RAW Pre-installed apps VDI Custom images VMDK Upload your customized OS or virtual appliance and make it simple to migrate and scale your preferred environment to the Cloud. VHDX",
       "notes": [
         "regular Apple Vision sample for agent review"
@@ -281,7 +281,7 @@
       "kind": "ocr_change",
       "time": 40.0,
       "score": 0.5077,
-      "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/03-what-is-a-vps-build/analysis/frames/frame_0020_00-40-000_anchor.jpg",
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/03-what-is-a-vps-build/analysis/frames/frame_0020_00-40-000_anchor.jpg",
       "ocr_text": "f DigitalOcean Droplets | DigitalOcean https:Ilwww.digitslocean.comlproductsldroplets Now Available: DeepSeek-V4-Pro Model -> Blog Docs Careers Get Support Contact Sales Q DigitalOcean Products v Solutions v Developers v Partners v Pricing Log in Sign up distributions Distributions qcow2 RAW Pre-installed apps VDI Custom images VMDK Upload your customized OS or virtual appliance and make it simple to migrate and scale your preferred environment to the Cloud. VHDX",
       "notes": [
         "visible text changed between Apple Vision OCR samples"
@@ -293,7 +293,7 @@
       "kind": "ocr_change",
       "time": 41.0,
       "score": 0.4549,
-      "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/03-what-is-a-vps-build/analysis/frames/frame_0021_00-41-000_scene_pre.jpg",
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/03-what-is-a-vps-build/analysis/frames/frame_0021_00-41-000_scene_pre.jpg",
       "ocr_text": "f DigitalOcean Droplets | DigitalOcean * c https:Ilwww.digitslocean.comlproductsldroplets Now Available: DeepSeek-V4-Pro Model -> Blog Docs Careers Get Support Contact Sales Q DigitalOcean Products v Solutions v Developers v Partners v Pricing Log in Sign up anU make It simpie to migrate an(J scale your preferred environment to the Cloud. Validin SIMPLY INDEXED. Valldln provldes cornpanles a better way to Index and query 4ata lakes wlth our proprfetary technolo9y, Seri. How ft woFks",
       "notes": [
         "visible text changed between Apple Vision OCR samples"
@@ -305,7 +305,7 @@
       "kind": "ocr_change",
       "time": 41.5,
       "score": 0.569,
-      "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/03-what-is-a-vps-build/analysis/frames/frame_0022_00-41-500_scene_change.jpg",
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/03-what-is-a-vps-build/analysis/frames/frame_0022_00-41-500_scene_change.jpg",
       "ocr_text": "t DigitalOcean Droplets | DigitalOcean 4 c https:Ilwww.digitalocean.comlproductsldroplets Now Available: DeepSeek-V4-Pro Model -> Blog Docs Careers Get Support Contact Sales Q DigitalOcean Products v Solutions v Developers v Partners v Pricing Log in Sign up Validin provides comp3nies a belter way to Index and query tJata lakes with our propdetary technology. Serl. Validin experiences fast performance with low costs with Premium CPU-Optimized Droplets \"When we tried Premium CPU-Optimized Droplets, we moved a workflow that was in AWS, and with the Premium CPU-Optimized Droplets our workloads got faster by several hours and we saved $2000 a month with DigitalOcean.\" Kenneth Kinion. Managing Director, Validin Read the full story ->",
       "notes": [
         "visible text changed between Apple Vision OCR samples"
@@ -317,7 +317,7 @@
       "kind": "scene_change",
       "time": 41.5,
       "score": 0.2025,
-      "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/03-what-is-a-vps-build/analysis/frames/frame_0022_00-41-500_scene_change.jpg",
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/03-what-is-a-vps-build/analysis/frames/frame_0022_00-41-500_scene_change.jpg",
       "ocr_text": "t DigitalOcean Droplets | DigitalOcean 4 c https:Ilwww.digitalocean.comlproductsldroplets Now Available: DeepSeek-V4-Pro Model -> Blog Docs Careers Get Support Contact Sales Q DigitalOcean Products v Solutions v Developers v Partners v Pricing Log in Sign up Validin provides comp3nies a belter way to Index and query tJata lakes with our propdetary technology. Serl. Validin experiences fast performance with low costs with Premium CPU-Optimized Droplets \"When we tried Premium CPU-Optimized Droplets, we moved a workflow that was in AWS, and with the Premium CPU-Optimized Droplets our workloads got faster by several hours and we saved $2000 a month with DigitalOcean.\" Kenneth Kinion. Managing Director, Validin Read the full story ->",
       "notes": [
         "visual change peak",
@@ -330,7 +330,7 @@
       "kind": "ocr_change",
       "time": 45.0,
       "score": 0.6643,
-      "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/03-what-is-a-vps-build/analysis/frames/frame_0024_00-45-000_scene_pre.jpg",
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/03-what-is-a-vps-build/analysis/frames/frame_0024_00-45-000_scene_pre.jpg",
       "ocr_text": "f DigitalOceark Droplets | fj DigitalOcean * c https:Ilwww.digitalocean.comlproductsldroplets Missed the Deploy 2026 Keynote live? Watch it now and catch everything that was announced -> Blog Docs Careers Get Support Contact Sales Q DigitalOcean Products v Solutions v Developers v Partners v Pricing Log in Sign up Is there a free trial for DigitalOcean Droplets? Are there any datacenter options in India? Start building today From GPU-powered inference and Kubernetes to managed databases and storage, get everything you need to build, scale, and deploy intelligent applications. Sign up",
       "notes": [
         "visible text changed between Apple Vision OCR samples"
@@ -342,7 +342,7 @@
       "kind": "ocr_change",
       "time": 45.5,
       "score": 0.9118,
-      "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/03-what-is-a-vps-build/analysis/frames/frame_0025_00-45-500_scene_change.jpg",
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/03-what-is-a-vps-build/analysis/frames/frame_0025_00-45-500_scene_change.jpg",
       "ocr_text": "? DigitalOcean Droplets | Sca. t DigitslOcean * c https:Ilcloud.digitalocean.comldropletslnew?i=f291ac&region=nyc1&size=s-2vcpu-4gb-120gb-intel&fleetUuid=d9754394-c5a5- Search by resource name or public IP ICmd+BI Create v Nick Home Back to Droplets Launchpad New PROJECTS Create Droplet INFERENCE Overview Want to maximize efficiency and cost? Inference Router New Programmatically manage Droplets in a repeatable and re- usable way with our API. Create via API Dedicated Inference Serverless Inference Batch Inference New Choose a datacenter region Model Catalog New Agent Platform $32.OO/month $0.0481hour Manage Total cost COMPUTE Create Droplet GPU Droplets Select an SSH Key to create this Droplet",
       "notes": [
         "visible text changed between Apple Vision OCR samples"
@@ -354,7 +354,7 @@
       "kind": "scene_change",
       "time": 45.5,
       "score": 0.1505,
-      "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/03-what-is-a-vps-build/analysis/frames/frame_0025_00-45-500_scene_change.jpg",
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/03-what-is-a-vps-build/analysis/frames/frame_0025_00-45-500_scene_change.jpg",
       "ocr_text": "? DigitalOcean Droplets | Sca. t DigitslOcean * c https:Ilcloud.digitalocean.comldropletslnew?i=f291ac&region=nyc1&size=s-2vcpu-4gb-120gb-intel&fleetUuid=d9754394-c5a5- Search by resource name or public IP ICmd+BI Create v Nick Home Back to Droplets Launchpad New PROJECTS Create Droplet INFERENCE Overview Want to maximize efficiency and cost? Inference Router New Programmatically manage Droplets in a repeatable and re- usable way with our API. Create via API Dedicated Inference Serverless Inference Batch Inference New Choose a datacenter region Model Catalog New Agent Platform $32.OO/month $0.0481hour Manage Total cost COMPUTE Create Droplet GPU Droplets Select an SSH Key to create this Droplet",
       "notes": [
         "visual change peak",
@@ -367,7 +367,7 @@
       "kind": "ocr_change",
       "time": 46.0,
       "score": 0.5537,
-      "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/03-what-is-a-vps-build/analysis/frames/frame_0026_00-46-000_scene_post.jpg",
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/03-what-is-a-vps-build/analysis/frames/frame_0026_00-46-000_scene_post.jpg",
       "ocr_text": "DigitalOcean Droplets | Sca', t DigitslOcean * c https:Ilcloud.digitalocean.comldropletslnew?i=f291ac&region=nyc1&size=s-2vcpu-4gb-120gb-intel&fleetUuid=d9754394-c5a5- Search by resource name or public IP ICmd+BI Create v Nick New York . Datacenter 3 . NYC3 1 resource Home Launchpad New San Francisco . Datacenter 3 SF03 I resource PROJECTS INFERENCE New York . Datacenter 1 . NYC1 Overview Inference Router New VPC network- default-nyc1 Dedicated Inference All resources created in this datacenter will be members of the same VPC netsvork i. They can communicate securely over their Private IP addres5es. Serverless Inference Batch Inference New Choose an image Model Catalog New Agent Platform Total cost $32.OO/month $0.0481hour Manage COMPUTE Create Droplet GPU Droplets Select an SSH Key to create this Droplet",
       "notes": [
         "visible text changed between Apple Vision OCR samples"
@@ -379,7 +379,7 @@
       "kind": "ocr_change",
       "time": 48.0,
       "score": 0.5682,
-      "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/03-what-is-a-vps-build/analysis/frames/frame_0027_00-48-000_stable_hold.jpg",
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/03-what-is-a-vps-build/analysis/frames/frame_0027_00-48-000_stable_hold.jpg",
       "ocr_text": "? DigitalOcean Droplets | Sca, t DigitalOcean <- * C https:Ilcloud.digitalocean.comldropletslnew?i=f291ac&region=nyc1&size=s-2vcpu-4gb-120gb-intel&fleetUuid=d9754394-c5a5- Search by resource name or public IP ICmd+BI Create v Nick Home CPU Options Launchpad New Regular Disk Type'. SSD Premium AMD Premium Intel PROJECTS Disk Type' NVMe SSD Disk Type.' NVMe SSD INFERENCE Select a Plan Overview 0 $8.OOlmo I Intel vCPU - 1 GB RAM - 35 GB NVMe SSD- 1000 GB Transfer Inference Router New Dedicated Inference 0 $16.OOlmo 1 Intel vCPU - 2 GB RAM- 70 GB NVMe SSD- 2 TB Tr8nsfer Serverless Inference 0 $24.OOlmo 2 Intel vCPU- 2 GB RAM - 90 G8 NVMe SSD- 3 TB Transfer Batch Inference New Model Catalog New Agent Platform Manage Total cost $32.OO/month $0.0481hour COMPUTE Create Droplet GPU Droplets Select an SSH Key to create this Droplet",
       "notes": [
         "visible text changed between Apple Vision OCR samples"
@@ -391,7 +391,7 @@
       "kind": "stable_hold",
       "time": 48.0,
       "score": 0.3947,
-      "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/03-what-is-a-vps-build/analysis/frames/frame_0027_00-48-000_stable_hold.jpg",
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/03-what-is-a-vps-build/analysis/frames/frame_0027_00-48-000_stable_hold.jpg",
       "ocr_text": "? DigitalOcean Droplets | Sca, t DigitalOcean <- * C https:Ilcloud.digitalocean.comldropletslnew?i=f291ac&region=nyc1&size=s-2vcpu-4gb-120gb-intel&fleetUuid=d9754394-c5a5- Search by resource name or public IP ICmd+BI Create v Nick Home CPU Options Launchpad New Regular Disk Type'. SSD Premium AMD Premium Intel PROJECTS Disk Type' NVMe SSD Disk Type.' NVMe SSD INFERENCE Select a Plan Overview 0 $8.OOlmo I Intel vCPU - 1 GB RAM - 35 GB NVMe SSD- 1000 GB Transfer Inference Router New Dedicated Inference 0 $16.OOlmo 1 Intel vCPU - 2 GB RAM- 70 GB NVMe SSD- 2 TB Tr8nsfer Serverless Inference 0 $24.OOlmo 2 Intel vCPU- 2 GB RAM - 90 G8 NVMe SSD- 3 TB Transfer Batch Inference New Model Catalog New Agent Platform Manage Total cost $32.OO/month $0.0481hour COMPUTE Create Droplet GPU Droplets Select an SSH Key to create this Droplet",
       "notes": [
         "low visual change span",
@@ -407,7 +407,7 @@
       "kind": "anchor",
       "time": 50.0,
       "score": 0.0,
-      "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/03-what-is-a-vps-build/analysis/frames/frame_0028_00-50-000_anchor.jpg",
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/03-what-is-a-vps-build/analysis/frames/frame_0028_00-50-000_anchor.jpg",
       "ocr_text": "? DigitalOcean Droplets | Sca', t DigitslOcean <- * C https:Ilcloud.digitalocean.comldropletslnew?i=f291ac&region=nyc1&size=s-2vcpu-4gb-120gb-intel&fleetUuid=d9754394-c5a5- Search by resource name or public IP ICmd+BI Create v Nick Home Launchpad New Networking Private IPv4 address is always assigned for secure, internal traffic within the same VPC. PROJECTS Enable IPv6 (Freel INFERENCE Built-In authentlClc tion and privacy support, and makes it difficull for hackers to launch scanning attacks. Require5 turning off the Droplel after creation. Overview Inference Router New Monitoring Dedicated Inference Improved Metrics and monitoring IFree) This will install our DigitalOcean Metrics Agent J to collect and graph expanded 5yStem-level metrics, track performance, and set up alerts instantly within the control panel. Serverless Inference QAI. Batch Inference New Model Catalog New Agent Platform Manage Total cost $32.OO/month $0.0481hour COMPUTE Create Droplet GPU Droplets Select an SSH Key to create this Droplet",
       "notes": [
         "regular Apple Vision sample for agent review"
@@ -419,7 +419,7 @@
       "kind": "ocr_change",
       "time": 50.0,
       "score": 0.5237,
-      "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/03-what-is-a-vps-build/analysis/frames/frame_0028_00-50-000_anchor.jpg",
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/03-what-is-a-vps-build/analysis/frames/frame_0028_00-50-000_anchor.jpg",
       "ocr_text": "? DigitalOcean Droplets | Sca', t DigitslOcean <- * C https:Ilcloud.digitalocean.comldropletslnew?i=f291ac&region=nyc1&size=s-2vcpu-4gb-120gb-intel&fleetUuid=d9754394-c5a5- Search by resource name or public IP ICmd+BI Create v Nick Home Launchpad New Networking Private IPv4 address is always assigned for secure, internal traffic within the same VPC. PROJECTS Enable IPv6 (Freel INFERENCE Built-In authentlClc tion and privacy support, and makes it difficull for hackers to launch scanning attacks. Require5 turning off the Droplel after creation. Overview Inference Router New Monitoring Dedicated Inference Improved Metrics and monitoring IFree) This will install our DigitalOcean Metrics Agent J to collect and graph expanded 5yStem-level metrics, track performance, and set up alerts instantly within the control panel. Serverless Inference QAI. Batch Inference New Model Catalog New Agent Platform Manage Total cost $32.OO/month $0.0481hour COMPUTE Create Droplet GPU Droplets Select an SSH Key to create this Droplet",
       "notes": [
         "visible text changed between Apple Vision OCR samples"
@@ -431,7 +431,7 @@
       "kind": "ocr_change",
       "time": 51.0,
       "score": 0.6207,
-      "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/03-what-is-a-vps-build/analysis/frames/frame_0029_00-51-000_hold_end.jpg",
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/03-what-is-a-vps-build/analysis/frames/frame_0029_00-51-000_hold_end.jpg",
       "ocr_text": "? DigitalOcean Droplets | Sca, * DigitslOcean <- * C https:Ilcloud.digitalocean.comldropletslnew?i=f291ac&region=nyc1&size=s-2vcpu-4gb-120gb-intel&fleetUuid=d9754394-c5a5- Search by resource name or public IP ICmd+BI Create v Nick Home Add a worry-free Managed Database Oui scalable database cluster service includes daily backups with PITR, no downtime scaling, automated failover, and end-to-end SSL Launchpad New PROJECTS $15.00 / month INFERENCE Overview Quantity Deploy multiple Droplet5 Wlth the same configuralion. Inference Router New Dedicated Inference Serverless Inference Batch Inference New Give your Droplet a name Can only contain alphanumeric characters, dashes, and periods only. Model Catalog New Agent Platform Total cost $32.OO/month $0.0481hour Manage COMPUTE Create Droplet GPU Droplets Select an SSH Key to create this Droplet",
       "notes": [
         "visible text changed between Apple Vision OCR samples"

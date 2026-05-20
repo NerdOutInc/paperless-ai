@@ -27,7 +27,7 @@ GitHub Actions
 
 ```text
 packer/
-    paperless-ag.pkr.hcl             Packer template (DO builder config)
+    paperless-ai.pkr.hcl             Packer template (DO builder config)
     provision.sh                     Provisioning script run during image build
     docker-compose.pull.yml          Minimal compose file for pre-pulling images
 
@@ -162,7 +162,7 @@ services:
       start_period: 90s
 
   companion:
-    image: ghcr.io/nerdoutinc/paperless-ag:latest
+    image: ghcr.io/nerdoutinc/paperless-ai:latest
     restart: unless-stopped
     depends_on:
       db:
@@ -284,7 +284,7 @@ adapted from the existing `docs/install.sh` generated scripts.
 ```bash
 #!/usr/bin/env bash
 set -euo pipefail
-cd /opt/paperless-ag
+cd /opt/paperless-ai
 
 mkdir -p backups
 
@@ -315,7 +315,7 @@ Write to `one-click/scripts/update.sh`.
 ```bash
 #!/usr/bin/env bash
 set -euo pipefail
-cd /opt/paperless-ag
+cd /opt/paperless-ai
 
 BACKUP_DIR="backups"
 TIMESTAMP=$(date +%Y%m%d-%H%M%S)
@@ -339,7 +339,7 @@ Write to `one-click/scripts/backup.sh`.
 ```bash
 #!/usr/bin/env bash
 set -euo pipefail
-cd /opt/paperless-ag
+cd /opt/paperless-ai
 
 if [[ $# -lt 1 ]]; then
     echo "Usage: bash restore.sh <backup-file.sql>"
@@ -408,7 +408,7 @@ the backup cron.
 ```bash
 #!/usr/bin/env bash
 set -euo pipefail
-cd /opt/paperless-ag
+cd /opt/paperless-ai
 
 echo "Starting Paperless AI stack..."
 
@@ -438,7 +438,7 @@ fi
 systemctl disable paperless-setup.service
 
 # Register daily backup cron at 7 AM
-(crontab -l 2>/dev/null || true; echo "0 7 * * * /opt/paperless-ag/scripts/backup.sh >> /opt/paperless-ag/backups/cron.log 2>&1") | crontab -
+(crontab -l 2>/dev/null || true; echo "0 7 * * * /opt/paperless-ai/scripts/backup.sh >> /opt/paperless-ai/backups/cron.log 2>&1") | crontab -
 
 echo "[OK] Setup complete"
 
@@ -468,7 +468,7 @@ import threading
 from http.server import HTTPServer, BaseHTTPRequestHandler
 from pathlib import Path
 
-BASE_DIR = Path("/opt/paperless-ag")
+BASE_DIR = Path("/opt/paperless-ai")
 TEMPLATES_DIR = BASE_DIR / "templates"
 SETUP_STATE_FILE = BASE_DIR / ".setup-state"
 
@@ -630,7 +630,7 @@ class SetupHandler(BaseHTTPRequestHandler):
         # before the host Caddy shuts down
         def finalize():
             subprocess.run(
-                ["/opt/paperless-ag/scripts/finalize-setup.sh"],
+                ["/opt/paperless-ai/scripts/finalize-setup.sh"],
                 capture_output=True,
             )
             set_state("complete")
@@ -904,7 +904,7 @@ dependencies. Three states: form, progress, complete.
   </div>
   <p class="ssh-hint">
     Lost your token later? SSH in and run:<br>
-    <code>cat /opt/paperless-ag/.env | grep MCP_AUTH_TOKEN</code>
+    <code>cat /opt/paperless-ai/.env | grep MCP_AUTH_TOKEN</code>
   </p>
 
   <a id="paperless-link" href="#">
@@ -1078,7 +1078,7 @@ that runs both Caddy and the setup API on first boot.
 
     handle {
         file_server {
-            root /opt/paperless-ag/setup
+            root /opt/paperless-ai/setup
             index wizard.html
         }
     }
@@ -1102,8 +1102,8 @@ Wants=network-online.target
 
 [Service]
 Type=simple
-ExecStartPre=/usr/bin/python3 /opt/paperless-ag/setup/setup-api.py &
-ExecStart=/usr/bin/caddy run --config /opt/paperless-ag/setup/Caddyfile.setup
+ExecStartPre=/usr/bin/python3 /opt/paperless-ai/setup/setup-api.py &
+ExecStart=/usr/bin/caddy run --config /opt/paperless-ai/setup/Caddyfile.setup
 Restart=on-failure
 RestartSec=5
 
@@ -1125,7 +1125,7 @@ Wants=network-online.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/python3 /opt/paperless-ag/setup/setup-api.py
+ExecStart=/usr/bin/python3 /opt/paperless-ai/setup/setup-api.py
 Restart=on-failure
 RestartSec=5
 
@@ -1145,7 +1145,7 @@ Requires=paperless-setup-api.service
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/caddy run --config /opt/paperless-ag/setup/Caddyfile.setup
+ExecStart=/usr/bin/caddy run --config /opt/paperless-ai/setup/Caddyfile.setup
 Restart=on-failure
 RestartSec=5
 
@@ -1238,7 +1238,7 @@ DigitalOcean snapshot.
 
 **Files:**
 
-- Create: `packer/paperless-ag.pkr.hcl`
+- Create: `packer/paperless-ai.pkr.hcl`
 - Create: `packer/provision.sh`
 - Create: `packer/docker-compose.pull.yml`
 
@@ -1256,7 +1256,7 @@ services:
   paperless:
     image: ghcr.io/paperless-ngx/paperless-ngx:latest
   companion:
-    image: ghcr.io/nerdoutinc/paperless-ag:latest
+    image: ghcr.io/nerdoutinc/paperless-ai:latest
   caddy:
     image: caddy:2-alpine
 
@@ -1315,12 +1315,12 @@ cd /
 rm -rf /tmp/pull
 
 # 6. Copy application files into place
-mkdir -p /opt/paperless-ag/{setup,templates,scripts,systemd,backups}
-cp -r /tmp/one-click/setup/* /opt/paperless-ag/setup/
-cp -r /tmp/one-click/templates/* /opt/paperless-ag/templates/
-cp -r /tmp/one-click/scripts/* /opt/paperless-ag/scripts/
-chmod +x /opt/paperless-ag/scripts/*.sh
-chmod +x /opt/paperless-ag/setup/setup-api.py
+mkdir -p /opt/paperless-ai/{setup,templates,scripts,systemd,backups}
+cp -r /tmp/one-click/setup/* /opt/paperless-ai/setup/
+cp -r /tmp/one-click/templates/* /opt/paperless-ai/templates/
+cp -r /tmp/one-click/scripts/* /opt/paperless-ai/scripts/
+chmod +x /opt/paperless-ai/scripts/*.sh
+chmod +x /opt/paperless-ai/setup/setup-api.py
 
 # 7. Install systemd services
 cp /tmp/one-click/systemd/paperless-setup.service /etc/systemd/system/
@@ -1331,9 +1331,9 @@ systemctl enable paperless-setup-api.service
 
 # 8. Install cloud-init config
 mkdir -p /var/lib/cloud/scripts/per-instance
-cp /opt/paperless-ag/scripts/first-boot.sh \
-    /var/lib/cloud/scripts/per-instance/01-paperless-ag.sh
-chmod +x /var/lib/cloud/scripts/per-instance/01-paperless-ag.sh
+cp /opt/paperless-ai/scripts/first-boot.sh \
+    /var/lib/cloud/scripts/per-instance/01-paperless-ai.sh
+chmod +x /var/lib/cloud/scripts/per-instance/01-paperless-ai.sh
 
 # 9. Snapshot hygiene
 apt-get clean
@@ -1349,7 +1349,7 @@ echo "=== Provisioning complete ==="
 
 Write to `packer/provision.sh` and `chmod +x`.
 
-- [ ] **Step 3: Create paperless-ag.pkr.hcl**
+- [ ] **Step 3: Create paperless-ai.pkr.hcl**
 
 ```hcl
 packer {
@@ -1367,13 +1367,13 @@ variable "do_api_token" {
   default   = env("DIGITALOCEAN_API_TOKEN")
 }
 
-source "digitalocean" "paperless-ag" {
+source "digitalocean" "paperless-ai" {
   api_token    = var.do_api_token
   image        = "ubuntu-24-04-x64"
   region       = "nyc1"
   size         = "s-2vcpu-4gb"
   ssh_username = "root"
-  snapshot_name = "paperless-ag-{{timestamp}}"
+  snapshot_name = "paperless-ai-{{timestamp}}"
   snapshot_regions = [
     "nyc1", "nyc3", "sfo3", "ams3", "sgp1",
     "lon1", "fra1", "tor1", "blr1", "syd1"
@@ -1381,7 +1381,7 @@ source "digitalocean" "paperless-ag" {
 }
 
 build {
-  sources = ["source.digitalocean.paperless-ag"]
+  sources = ["source.digitalocean.paperless-ai"]
 
   # Upload application files
   provisioner "file" {
@@ -1412,7 +1412,7 @@ build {
 
 ```
 
-Write to `packer/paperless-ag.pkr.hcl`.
+Write to `packer/paperless-ai.pkr.hcl`.
 
 - [ ] **Step 4: Commit**
 
@@ -1480,11 +1480,11 @@ jobs:
 
       - name: Init Packer plugins
         working-directory: packer
-        run: packer init paperless-ag.pkr.hcl
+        run: packer init paperless-ai.pkr.hcl
 
       - name: Build snapshot
         working-directory: packer
-        run: packer build paperless-ag.pkr.hcl
+        run: packer build paperless-ai.pkr.hcl
 
       - name: Extract snapshot ID
         id: snapshot
@@ -1514,11 +1514,11 @@ jobs:
 
       - name: Delete previous snapshot
         run: |
-          # List all paperless-ag snapshots, delete all except the newest
+          # List all paperless-ai snapshots, delete all except the newest
           SNAPSHOTS=$(curl -s -X GET \
             -H "Authorization: Bearer $DIGITALOCEAN_API_TOKEN" \
             "https://api.digitalocean.com/v2/snapshots?resource_type=droplet&per_page=200" \
-            | jq -r '.snapshots[] | select(.name | startswith("paperless-ag-")) | .id' \
+            | jq -r '.snapshots[] | select(.name | startswith("paperless-ai-")) | .id' \
             | sort -rn)
 
           KEEP="${{ steps.snapshot.outputs.id }}"
@@ -1610,7 +1610,7 @@ Brief developer docs covering:
 
 - Required env var: `DIGITALOCEAN_API_TOKEN`
 - How the CI auto-builds weekly
-- File layout on the resulting image (`/opt/paperless-ag/`)
+- File layout on the resulting image (`/opt/paperless-ai/`)
 
 Keep it concise -- 30-50 lines.
 

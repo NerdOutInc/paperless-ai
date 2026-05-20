@@ -93,7 +93,7 @@ The installer will:
    - Admin username and password
    - Timezone
    - Domain name (press Enter to skip -- not needed for local network)
-   - Install directory (default: `~/paperless-ag`)
+   - Install directory (default: `~/paperless-ai`)
 4. **Pull images and start services** -- this downloads about 2 GB of
    container images. On a Pi with a decent internet connection, expect
    5--15 minutes.
@@ -137,7 +137,7 @@ upload, give it a minute or two to generate embeddings (you can watch
 progress in the logs):
 
 ```bash
-cd ~/paperless-ag && docker compose logs -f companion
+cd ~/paperless-ai && docker compose logs -f companion
 ```
 
 ## 7. Search your documents
@@ -174,7 +174,7 @@ If you didn't save the token from the install summary, it's in the `.env`
 file:
 
 ```bash
-grep MCP_AUTH_TOKEN ~/paperless-ag/.env
+grep MCP_AUTH_TOKEN ~/paperless-ai/.env
 ```
 
 ## Day-to-day operations
@@ -182,7 +182,7 @@ grep MCP_AUTH_TOKEN ~/paperless-ag/.env
 ### Start / stop
 
 ```bash
-cd ~/paperless-ag
+cd ~/paperless-ai
 docker compose up -d      # start
 docker compose down        # stop
 ```
@@ -192,7 +192,7 @@ Services restart automatically on reboot (`restart: unless-stopped`).
 ### Update
 
 ```bash
-bash ~/paperless-ag/update.sh
+bash ~/paperless-ai/update.sh
 ```
 
 This backs up the database, pulls the latest images, and restarts.
@@ -200,8 +200,8 @@ This backs up the database, pulls the latest images, and restarts.
 ### Backup and restore
 
 ```bash
-bash ~/paperless-ag/backup.sh                        # manual backup
-bash ~/paperless-ag/restore.sh backups/some-file.sql # restore
+bash ~/paperless-ai/backup.sh                        # manual backup
+bash ~/paperless-ai/restore.sh backups/some-file.sql # restore
 ```
 
 A daily backup runs automatically at 2 AM via cron.
@@ -209,7 +209,7 @@ A daily backup runs automatically at 2 AM via cron.
 ### View logs
 
 ```bash
-cd ~/paperless-ag
+cd ~/paperless-ai
 docker compose logs -f              # all services
 docker compose logs -f companion    # just the semantic search companion
 docker compose logs -f paperless    # just Paperless-ngx
@@ -244,7 +244,7 @@ run the install script again.
 Check logs for the failing service:
 
 ```bash
-cd ~/paperless-ag && docker compose logs --tail 50 companion
+cd ~/paperless-ai && docker compose logs --tail 50 companion
 ```
 
 Common causes:

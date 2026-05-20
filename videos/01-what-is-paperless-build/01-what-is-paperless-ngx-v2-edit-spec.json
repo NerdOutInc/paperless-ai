@@ -1,8 +1,8 @@
 {
-  "output": "/Users/brian/github/nerdoutinc/paperless-ag/videos/01-what-is-paperless-ngx-v2.mp4",
+  "output": "/Users/brian/github/nerdoutinc/paperless-ai/videos/01-what-is-paperless-ngx-v2.mp4",
   "inputs": {
-    "video": "/Users/brian/github/nerdoutinc/paperless-ag/videos/src/01-what-is-paperless.mp4",
-    "audio": "/Users/brian/github/nerdoutinc/paperless-ag/videos/src/01-what-is-paperless-ngx.m4a"
+    "video": "/Users/brian/github/nerdoutinc/paperless-ai/videos/src/01-what-is-paperless.mp4",
+    "audio": "/Users/brian/github/nerdoutinc/paperless-ai/videos/src/01-what-is-paperless-ngx.m4a"
   },
   "timeline": {
     "width": 3600,
@@ -66,13 +66,13 @@
       }
     ],
     "intro": {
-      "path": "/Users/brian/github/nerdoutinc/paperless-ag/videos/01-what-is-paperless-build-v2/cards/intro-paperless-ngx.png",
+      "path": "/Users/brian/github/nerdoutinc/paperless-ai/videos/01-what-is-paperless-build-v2/cards/intro-paperless-ngx.png",
       "duration": 4,
       "fade_duration": 1,
       "offset": 3
     },
     "outro": {
-      "path": "/Users/brian/github/nerdoutinc/paperless-ag/videos/01-what-is-paperless-build-v2/cards/outro-fullstack-ag.png",
+      "path": "/Users/brian/github/nerdoutinc/paperless-ai/videos/01-what-is-paperless-build-v2/cards/outro-fullstack-ag.png",
       "duration": 3.871552,
       "fade_duration": 1,
       "offset": 88.311668

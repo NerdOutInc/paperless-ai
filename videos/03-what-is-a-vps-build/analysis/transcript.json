@@ -1,15 +1,15 @@
 {
   "schema": "nerdout.transcript.v1",
-  "source_audio": "/Users/brian/github/nerdoutinc/paperless-ag/videos/src/03-what-is-a-vps.m4a",
+  "source_audio": "/Users/brian/github/nerdoutinc/paperless-ai/videos/src/03-what-is-a-vps.m4a",
   "duration": 129.335147,
   "language": "en",
   "engine": "whisper.cpp",
   "model": "/Users/brian/.cache/whisper.cpp/ggml-base.en.bin",
   "whisper_cli": "/opt/homebrew/bin/whisper-cli",
   "raw_outputs": {
-    "text": "/Users/brian/github/nerdoutinc/paperless-ag/videos/03-what-is-a-vps-build/analysis/whisper.txt",
-    "srt": "/Users/brian/github/nerdoutinc/paperless-ag/videos/03-what-is-a-vps-build/analysis/whisper.srt",
-    "json": "/Users/brian/github/nerdoutinc/paperless-ag/videos/03-what-is-a-vps-build/analysis/whisper.json"
+    "text": "/Users/brian/github/nerdoutinc/paperless-ai/videos/03-what-is-a-vps-build/analysis/whisper.txt",
+    "srt": "/Users/brian/github/nerdoutinc/paperless-ai/videos/03-what-is-a-vps-build/analysis/whisper.srt",
+    "json": "/Users/brian/github/nerdoutinc/paperless-ai/videos/03-what-is-a-vps-build/analysis/whisper.json"
   },
   "segments": [
     {

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
-cd /opt/paperless-ag
+cd /opt/paperless-ai
 
 if [[ $# -lt 1 ]]; then
     echo "Usage: bash restore.sh <backup-file.sql>"

@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 umask 077
-if ! cd /opt/paperless-ag 2>/dev/null; then
-    echo "Could not enter /opt/paperless-ag" >&2
+if ! cd /opt/paperless-ai 2>/dev/null; then
+    echo "Could not enter /opt/paperless-ai" >&2
     exit 1
 fi
 

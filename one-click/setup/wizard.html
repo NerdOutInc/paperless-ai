@@ -311,7 +311,7 @@
       </div>
       <p class="ssh-hint">
         Lost your token later? SSH in and run:<br />
-        <code>cat /opt/paperless-ag/.env | grep MCP_AUTH_TOKEN</code>
+        <code>cat /opt/paperless-ai/.env | grep MCP_AUTH_TOKEN</code>
       </p>
 
       <a id="search-link" class="completion-link primary" href="#">
@@ -449,7 +449,7 @@
               completionShown = true;
               clearInterval(interval);
               document.querySelector(".progress-text").textContent =
-                "Setup timed out. SSH in and check: cat /opt/paperless-ag/setup.log";
+                "Setup timed out. SSH in and check: cat /opt/paperless-ai/setup.log";
               document.querySelector(".spinner").style.display = "none";
               return;
             }
@@ -471,7 +471,7 @@
                   completionShown = true;
                   clearInterval(interval);
                   document.querySelector(".progress-text").textContent =
-                    "Setup failed. SSH in and check: cat /opt/paperless-ag/setup.log";
+                    "Setup failed. SSH in and check: cat /opt/paperless-ai/setup.log";
                   document.querySelector(".spinner").style.display = "none";
                 }
               })

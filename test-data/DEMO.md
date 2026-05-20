@@ -60,7 +60,7 @@ Type:
 /mcp
 ```
 
-> I can see the paperless-ag MCP server is connected. It gives Claude seven search tools -- semantic search, tag search, date range search, and a few others. Now let me ask the same question, but as a natural language prompt.
+> I can see the paperless-ai MCP server is connected. It gives Claude seven search tools -- semantic search, tag search, date range search, and a few others. Now let me ask the same question, but as a natural language prompt.
 
 ### [Type the following prompt into Claude Code]
 

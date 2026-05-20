@@ -103,7 +103,7 @@ install_missing_dependency_stubs()
 
 APP_DIR = Path(
     os.environ.get(
-        "PAPERLESS_AG_APP_DIR",
+        "PAPERLESS_AI_APP_DIR",
         Path(__file__).resolve().parents[1] / "app",
     )
 )
@@ -668,7 +668,7 @@ class WebSearchTests(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertNotIn(web_search.PAPERLESS_UI_SCRIPT_PATH, response.body.decode())
 
-    @patch("web_search.config.MCP_AUTH_TOKEN", "paperless-ag-token")
+    @patch("web_search.config.MCP_AUTH_TOKEN", "paperless-ai-token")
     @patch(
         "web_search.validate_paperless_session",
         return_value={"username": "admin", "is_superuser": True},
@@ -679,14 +679,14 @@ class WebSearchTests(unittest.TestCase):
         response = web_search.mcp_config_api(request)
         payload = json.loads(response.body)
 
-        self.assertEqual(payload["server_name"], "paperless-ag")
+        self.assertEqual(payload["server_name"], "paperless-ai")
         self.assertEqual(payload["endpoint_path"], "/mcp")
-        self.assertEqual(payload["auth_token"], "paperless-ag-token")
+        self.assertEqual(payload["auth_token"], "paperless-ai-token")
         self.assertTrue(payload["can_view_token"])
         self.assertTrue(payload["token_available"])
         self.assertTrue(payload["token_configured"])
 
-    @patch("web_search.config.MCP_AUTH_TOKEN", "paperless-ag-token")
+    @patch("web_search.config.MCP_AUTH_TOKEN", "paperless-ai-token")
     @patch(
         "web_search.validate_paperless_session",
         return_value={"username": "viewer", "is_superuser": False, "is_staff": False},
@@ -702,7 +702,7 @@ class WebSearchTests(unittest.TestCase):
         self.assertFalse(payload["token_available"])
         self.assertTrue(payload["token_configured"])
 
-    @patch("web_search.config.MCP_AUTH_TOKEN", "paperless-ag-token")
+    @patch("web_search.config.MCP_AUTH_TOKEN", "paperless-ai-token")
     @patch(
         "web_search.validate_paperless_session",
         return_value={"username": "staff", "is_superuser": False, "is_staff": True},

@@ -7,8 +7,8 @@ systemctl restart ssh
 
 # Generate a one-time setup token and persist it for the setup API
 SETUP_TOKEN=$(head -c 48 /dev/urandom | base64 | tr -dc 'a-zA-Z0-9' | head -c 32)
-echo "$SETUP_TOKEN" > /opt/paperless-ag/.setup-token
-chmod 600 /opt/paperless-ag/.setup-token
+echo "$SETUP_TOKEN" > /opt/paperless-ai/.setup-token
+chmod 600 /opt/paperless-ai/.setup-token
 
 # Start the setup wizard services
 systemctl start paperless-setup-api.service

@@ -47,14 +47,14 @@ Docker Compose:
     db          pgvector/pgvector:pg16
     redis       redis:7-alpine
     paperless   paperless-ngx:latest
-    companion   ghcr.io/nerdoutinc/paperless-ag:latest
+    companion   ghcr.io/nerdoutinc/paperless-ai:latest
     caddy       caddy:2-alpine
 ```
 
 ## File Layout on Image
 
 ```text
-/opt/paperless-ag/
+/opt/paperless-ai/
     setup/
         wizard.html            Static HTML setup form (inline CSS/JS, no CDN deps)
         setup-api.py           Python 3 stdlib HTTP handler (~150 lines)
@@ -75,13 +75,13 @@ Docker Compose:
 
 ### 1. Packer Image Build
 
-**Template:** `packer/paperless-ag.pkr.hcl`
+**Template:** `packer/paperless-ai.pkr.hcl`
 
 - Source: `digitalocean` builder
 - Base image: Ubuntu 24.04 LTS (`ubuntu-24-04-x64`)
 - Build droplet size: `s-2vcpu-4gb`
 - Region: `nyc1` (snapshots available in all regions)
-- Snapshot name: `paperless-ag-{{timestamp}}`
+- Snapshot name: `paperless-ai-{{timestamp}}`
 
 **Provision script** (`packer/provision.sh`):
 
@@ -91,7 +91,7 @@ Docker Compose:
    Docker Caddy that runs in production). Installed via official Caddy apt repo.
 4. Verify Python 3 is present (ships with Ubuntu 24.04)
 5. `docker compose pull` all images via a build-time compose file
-6. Copy `/opt/paperless-ag/` file tree into place
+6. Copy `/opt/paperless-ai/` file tree into place
 7. Install + enable `paperless-setup.service` (systemd, runs host Caddy +
    setup-api.py -- NOT the Docker Caddy)
 8. Snapshot hygiene:
@@ -136,7 +136,7 @@ No Docker containers start until the user completes the wizard.
 - MCP auth token in a read-only field with a "Copy" button
 - "Save this token -- you'll need it to connect Claude"
 - "Lost your token? SSH in and run:
-  `cat /opt/paperless-ag/.env | grep MCP_AUTH_TOKEN`"
+  `cat /opt/paperless-ai/.env | grep MCP_AUTH_TOKEN`"
 - Auto-redirects to Paperless login after 30 seconds
 
 **`setup-api.py`** -- Python 3 stdlib HTTP handler:
@@ -159,7 +159,7 @@ No Docker containers start until the user completes the wizard.
     }
     handle {
         file_server {
-            root /opt/paperless-ag/setup
+            root /opt/paperless-ai/setup
             index wizard.html
         }
     }
@@ -202,11 +202,11 @@ Identical to the existing Paperless AI production stack:
 **Helper scripts:**
 
 - `update.sh`: backs up DB, pulls latest images, restarts stack
-- `backup.sh`: `pg_dump` wrapper, writes to `/opt/paperless-ag/backups/`
+- `backup.sh`: `pg_dump` wrapper, writes to `/opt/paperless-ai/backups/`
 - `restore.sh`: `psql` wrapper for restoring SQL dumps
 
 **Re-running setup:** Not supported via the web wizard. If reconfiguration
-is needed, the user SSHes in and edits `/opt/paperless-ag/.env` + restarts
+is needed, the user SSHes in and edits `/opt/paperless-ai/.env` + restarts
 Docker Compose. This is intentional -- re-running setup on a system with
 existing data is risky.
 

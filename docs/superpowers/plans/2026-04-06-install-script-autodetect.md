@@ -564,7 +564,7 @@ Test the updated install script against it.
 ```bash
 ssh root@157.245.90.6 "cd /home/paperless/paperless-ngx && \
     docker compose down && \
-    rm -f docker-compose.override.yml paperless-ag.env && \
+    rm -f docker-compose.override.yml paperless-ai.env && \
     docker compose up -d"
 ```
 

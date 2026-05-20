@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 umask 077
-cd /opt/paperless-ag
+cd /opt/paperless-ai
 
 BACKUP_DIR="backups"
 TIMESTAMP=$(date +%Y%m%d-%H%M%S)

@@ -18,7 +18,7 @@ import time
 from http.server import HTTPServer, BaseHTTPRequestHandler
 from pathlib import Path
 
-BASE_DIR = Path("/opt/paperless-ag")
+BASE_DIR = Path("/opt/paperless-ai")
 TEMPLATES_DIR = BASE_DIR / "templates"
 SETUP_STATE_FILE = BASE_DIR / ".setup-state"
 SETUP_TOKEN_FILE = BASE_DIR / ".setup-token"
@@ -256,7 +256,7 @@ class SetupHandler(BaseHTTPRequestHandler):
             log_path = BASE_DIR / "setup.log"
             with open(log_path, "w") as log:
                 subprocess.run(
-                    ["/opt/paperless-ag/scripts/finalize-setup.sh"],
+                    ["/opt/paperless-ai/scripts/finalize-setup.sh"],
                     stdout=log,
                     stderr=subprocess.STDOUT,
                 )

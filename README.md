@@ -31,13 +31,13 @@ tag and pass it to the installer:
 
 ```bash
 gh workflow run publish-image.yml \
-  --repo NerdOutInc/paperless-ag \
+  --repo NerdOutInc/paperless-ai \
   --ref your-branch-name
 ```
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/NerdOutInc/paperless-ag/your-branch-name/docs/install.sh \
-  | COMPANION_IMAGE=ghcr.io/nerdoutinc/paperless-ag:your-branch-name bash
+curl -fsSL https://raw.githubusercontent.com/NerdOutInc/paperless-ai/your-branch-name/docs/install.sh \
+  | COMPANION_IMAGE=ghcr.io/nerdoutinc/paperless-ai:your-branch-name bash
 ```
 
 The installer detects if you already have Paperless-ngx running and walks you through setup. Works on any VPS -- pick one to get started:
@@ -134,14 +134,14 @@ For local development, give the companion a temporary MCP token without editing
 tracked Compose files:
 
 ```bash
-cat >/tmp/paperless-ag.override.yml <<'YAML'
+cat >/tmp/paperless-ai.override.yml <<'YAML'
 services:
   app:
     environment:
-      MCP_AUTH_TOKEN: paperless-ag-local-demo
+      MCP_AUTH_TOKEN: paperless-ai-local-demo
 YAML
 
-docker compose -f docker-compose.yml -f /tmp/paperless-ag.override.yml up -d --build
+docker compose -f docker-compose.yml -f /tmp/paperless-ai.override.yml up -d --build
 ```
 
 Verify the MCP server and embeddings:
@@ -154,22 +154,22 @@ docker compose exec -T db psql -U paperless -d paperless \
 ```
 
 Then use `http://localhost:3001/mcp` with the bearer token
-`paperless-ag-local-demo` in an MCP client. The local demo should report 100
+`paperless-ai-local-demo` in an MCP client. The local demo should report 100
 embedded documents after the test data finishes processing.
 
 ## Uninstall
 
-To completely remove Paperless AI and all its data from your server (`/root/paperless-ag` is the default install directory -- adjust if you chose a different path during setup):
+To completely remove Paperless AI and all its data from your server (`/root/paperless-ai` is the default install directory -- adjust if you chose a different path during setup):
 
 ```bash
-cd /root/paperless-ag
+cd /root/paperless-ai
 docker compose down -v
-crontab -l | grep -v paperless-ag | crontab -
+crontab -l | grep -v paperless-ai | crontab -
 cd ~
-rm -rf /root/paperless-ag
+rm -rf /root/paperless-ai
 ```
 
-> **Warning:** This deletes all documents and database contents. Run `bash /root/paperless-ag/backup.sh` first if you want to keep your data.
+> **Warning:** This deletes all documents and database contents. Run `bash /root/paperless-ai/backup.sh` first if you want to keep your data.
 
 ## Project Status
 

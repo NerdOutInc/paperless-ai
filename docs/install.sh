@@ -3,12 +3,12 @@ set -euo pipefail
 
 # ─────────────────────────────────────────────────────────
 # Paperless AI Installer
-# https://github.com/NerdOutInc/paperless-ag
+# https://github.com/NerdOutInc/paperless-ai
 #
 # Usage: curl -fsSL https://paperless.fullstack.ag/install.sh | bash
 # ─────────────────────────────────────────────────────────
 
-COMPANION_IMAGE="${COMPANION_IMAGE:-ghcr.io/nerdoutinc/paperless-ag:latest}"
+COMPANION_IMAGE="${COMPANION_IMAGE:-ghcr.io/nerdoutinc/paperless-ai:latest}"
 MIN_DISK_GB=5
 MIN_RAM_MB=3500
 RECOMMENDED_RAM_MB=7400
@@ -173,7 +173,7 @@ check_platform() {
     if [[ "$(uname -s)" != "Linux" ]]; then
         fail "This installer is designed for Linux servers."
         echo "  For local development on macOS/Windows, see:"
-        echo "  https://github.com/NerdOutInc/paperless-ag#local-development"
+        echo "  https://github.com/NerdOutInc/paperless-ai#local-development"
         exit 1
     fi
 }
@@ -567,7 +567,7 @@ collect_fresh_config() {
 
     divider
 
-    INSTALL_DIR=$(prompt_safe "Install directory" "$HOME/paperless-ag")
+    INSTALL_DIR=$(prompt_safe "Install directory" "$HOME/paperless-ai")
     DB_PASSWORD=$(generate_password)
     SECRET_KEY=$(generate_password)
     MCP_AUTH_TOKEN=$(generate_password)
@@ -923,7 +923,7 @@ do_addon_install() {
 
     # Check for existing override
     if [[ -f "$compose_dir/docker-compose.override.yml" ]]; then
-        if grep -q "paperless-ag\|companion" "$compose_dir/docker-compose.override.yml" 2>/dev/null; then
+        if grep -q "paperless-ai\|companion" "$compose_dir/docker-compose.override.yml" 2>/dev/null; then
             warn "Paperless AI appears to already be installed (found override file)."
             if ! prompt_yn "Overwrite the existing override?" "n"; then
                 exit 0
@@ -1009,10 +1009,10 @@ services:"
     depends_on:
       - ${DB_HOST}
     env_file:
-      - paperless-ag.env"
+      - paperless-ai.env"
 
     # Write companion env to a separate file (avoids YAML escaping issues)
-    cat > "$compose_dir/paperless-ag.env" <<ENVFILE
+    cat > "$compose_dir/paperless-ai.env" <<ENVFILE
 PAPERLESS_API_URL='${paperless_internal_url}'
 PAPERLESS_USERNAME='${ADMIN_USER}'
 PAPERLESS_PASSWORD='${ADMIN_PASSWORD}'
@@ -1026,12 +1026,12 @@ SEMANTIC_MIN_SIMILARITY='0.25'
 SYNC_INTERVAL_SECONDS='60'
 MCP_HTTP_PORT='3001'
 MCP_AUTH_TOKEN='${MCP_AUTH_TOKEN}'
-PAPERLESS_AG_COMPANION_IMAGE='${COMPANION_IMAGE}'
-PAPERLESS_AG_DOMAIN='${DOMAIN:-}'
-PAPERLESS_AG_CADDY_ENABLED='${ADDON_ENABLE_CADDY}'
+PAPERLESS_AI_COMPANION_IMAGE='${COMPANION_IMAGE}'
+PAPERLESS_AI_DOMAIN='${DOMAIN:-}'
+PAPERLESS_AI_CADDY_ENABLED='${ADDON_ENABLE_CADDY}'
 PYTHONUNBUFFERED='1'
 ENVFILE
-    chmod 600 "$compose_dir/paperless-ag.env"
+    chmod 600 "$compose_dir/paperless-ai.env"
 
     # Keep the direct companion port when no domain is configured, or when Caddy
     # cannot be added without conflicting with the existing Paperless install.
@@ -1310,7 +1310,7 @@ SCRIPT
 
 generate_addon_update_script() {
     local compose_dir="$1"
-    cat > "$compose_dir/paperless-ag-update.sh" <<'SCRIPT'
+    cat > "$compose_dir/paperless-ai-update.sh" <<'SCRIPT'
 #!/usr/bin/env bash
 set -euo pipefail
 script_dir="$(cd "$(dirname "$0")" 2>/dev/null && pwd -P)" || {
@@ -1393,10 +1393,10 @@ port_in_use() {
     ss -tlnp 2>/dev/null | grep -q ":${1} "
 }
 
-paperless_ag_env_value() {
+paperless_ai_env_value() {
     local key="$1"
     local line
-    line=$(grep -E "^${key}=" paperless-ag.env 2>/dev/null | tail -1 || true)
+    line=$(grep -E "^${key}=" paperless-ai.env 2>/dev/null | tail -1 || true)
     if [[ -z "$line" ]]; then
         return
     fi
@@ -1489,8 +1489,8 @@ ensure_caddy_for_legacy_no_domain_addon() {
         return
     fi
     local configured_domain configured_caddy_enabled
-    configured_domain=$(paperless_ag_env_value PAPERLESS_AG_DOMAIN)
-    configured_caddy_enabled=$(paperless_ag_env_value PAPERLESS_AG_CADDY_ENABLED)
+    configured_domain=$(paperless_ai_env_value PAPERLESS_AI_DOMAIN)
+    configured_caddy_enabled=$(paperless_ai_env_value PAPERLESS_AI_CADDY_ENABLED)
     if [[ -n "$configured_domain" && "$configured_caddy_enabled" == "false" ]]; then
         echo "[!] This add-on was installed for https://${configured_domain} with managed Caddy disabled."
         echo "    Leaving routing unchanged; keep using your existing reverse proxy for /search and /mcp."
@@ -1578,7 +1578,7 @@ fi
 echo ""
 echo "[✓] Paperless AI updated."
 SCRIPT
-    chmod +x "$compose_dir/paperless-ag-update.sh"
+    chmod +x "$compose_dir/paperless-ai-update.sh"
 }
 
 generate_backup_script() {
@@ -1712,7 +1712,7 @@ print_fresh_summary() {
     echo "  To backup:  bash $install_dir/backup.sh"
     echo "  Logs:       cd $install_dir && docker compose logs -f"
     echo
-    echo "  Need help?  https://github.com/NerdOutInc/paperless-ag/issues"
+    echo "  Need help?  https://github.com/NerdOutInc/paperless-ai/issues"
     echo
 }
 
@@ -1772,9 +1772,9 @@ print_addon_summary() {
     echo -e "  ${BOLD}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
     echo
     echo "  Companion logs: cd $compose_dir && docker compose logs -f companion"
-    echo "  Update:         bash $compose_dir/paperless-ag-update.sh"
+    echo "  Update:         bash $compose_dir/paperless-ai-update.sh"
     echo
-    echo "  Need help?  https://github.com/NerdOutInc/paperless-ag/issues"
+    echo "  Need help?  https://github.com/NerdOutInc/paperless-ai/issues"
     echo
 }
 
