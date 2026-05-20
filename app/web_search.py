@@ -111,6 +111,21 @@ def login_redirect_for(request):
     )
 
 
+def profile_from_session_payload(payload):
+    if not isinstance(payload, dict):
+        raise requests.RequestException("Paperless session response was not an object")
+
+    user = payload.get("user")
+    if isinstance(user, dict):
+        profile = dict(user)
+        permissions = payload.get("permissions")
+        if isinstance(permissions, list):
+            profile["permissions"] = permissions
+        return profile
+
+    return payload
+
+
 def validate_paperless_session(cookie_header):
     if not cookie_header:
         return None
@@ -124,7 +139,7 @@ def validate_paperless_session(cookie_header):
             return cached["profile"]
 
     response = requests.get(
-        f"{config.PAPERLESS_API_URL}/api/profile/",
+        f"{config.PAPERLESS_API_URL}/api/ui_settings/",
         headers={
             "Accept": "application/json",
             "Cookie": cookie_header,
@@ -137,11 +152,10 @@ def validate_paperless_session(cookie_header):
     response.raise_for_status()
 
     try:
-        profile = response.json()
+        payload = response.json()
     except ValueError:
-        raise requests.RequestException("Paperless profile response was not JSON")
-    if not isinstance(profile, dict):
-        raise requests.RequestException("Paperless profile response was not an object")
+        raise requests.RequestException("Paperless session response was not JSON")
+    profile = profile_from_session_payload(payload)
 
     store_session_cache(cache_key, profile, time.monotonic())
     return profile
