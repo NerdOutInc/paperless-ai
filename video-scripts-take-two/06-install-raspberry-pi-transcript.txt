@@ -1,6 +1,6 @@
 Hey this is Brian from Fullstack Ag.
 
-If you would rather run Paperless Ag at home instead of renting a cloud server, a Raspberry Pi is a nice little option. It is small, quiet, cheap to power, and it keeps your document archive on your own network.
+If you would rather run Paperless AI at home instead of renting a cloud server, a Raspberry Pi is a nice little option. It is small, quiet, cheap to power, and it keeps your document archive on your own network.
 
 I would use a Pi 4 with at least 4 gigabytes of memory, or a Pi 5 if you have one. For storage, an SD card works for trying things, but a USB SSD is much better for a real archive because the database will be writing to disk over time.
 
@@ -22,7 +22,7 @@ On a Pi, pulling images and starting everything can take a while, especially the
 
 Open a browser and go to paperless.local, or the Pi's IP address. Log in with the admin account you created. Now Paperless is running on the Raspberry Pi in your house.
 
-I like to upload one small PDF right away to confirm the pipeline. Paperless ingests it, OCRs it, and Paperless Ag starts indexing it for semantic search. A big archive will take longer on ARM hardware, but it catches up in the background.
+I like to upload one small PDF right away to confirm the pipeline. Paperless ingests it, OCRs it, and Paperless AI starts indexing it for semantic search. A big archive will take longer on ARM hardware, but it catches up in the background.
 
 Two practical tips: give the Pi a DHCP reservation in your router so its address does not change, and set up backups before you trust it with important documents. Also remember that this is local by default. If you want access away from home, use a VPN or choose the cloud install instead of opening random ports to the internet.
 

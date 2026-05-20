@@ -1,8 +1,8 @@
-# Paperless Ag Demo
+# Paperless AI Demo
 
 ## Overview
 
-This demo shows how Paperless Ag's semantic search finds documents that keyword search completely misses. The key insight: farmers think in concepts ("crop failure"), but their documents use formal terminology ("Revenue Protection," "ARC-CO Guarantee," "coverage against loss of revenue caused by low yields"). Keyword search can't bridge that gap. Semantic search can.
+This demo shows how Paperless AI's semantic search finds documents that keyword search completely misses. The key insight: farmers think in concepts ("crop failure"), but their documents use formal terminology ("Revenue Protection," "ARC-CO Guarantee," "coverage against loss of revenue caused by low yields"). Keyword search can't bridge that gap. Semantic search can.
 
 ## Setup
 
@@ -50,7 +50,7 @@ Open <http://localhost:8000> and log in (admin/admin).
 claude
 ```
 
-> Now let me try the same question through Claude Code. Paperless Ag adds a companion container that generates vector embeddings for every document. Claude connects to it through an MCP server. Let me first make sure it's running.
+> Now let me try the same question through Claude Code. Paperless AI adds a companion container that generates vector embeddings for every document. Claude connects to it through an MCP server. Let me first make sure it's running.
 
 ### [In Claude Code, check MCP status]
 
@@ -73,17 +73,17 @@ using the format http://localhost:8000/documents/ID/details
 ### [Wait for Claude's response]
 
 > Look at that. Claude found my corn revenue protection policy, my soybean revenue protection policy, my wheat insurance -- and my FSA ARC-CO election forms. These are exactly the documents I was looking for. Every single one is about protecting against crop failure, but none of them contain those words.
-
+>
 > The corn policy says "coverage against loss of revenue caused by price decrease, low yields, or a combination." The FSA form explains that "ARC-CO payments are issued when actual county revenue falls below the guarantee." Same concept as "crop failure" -- the AI understood that.
-
+>
 > And each result has a clickable link that takes me straight to the document in Paperless. I didn't have to remember the right keywords. I just described what I was worried about.
 
 ---
 
 ## Part 3: Why This Matters
 
-> This is the problem Paperless Ag solves. Farmers don't think in government form numbers and insurance terminology. They think in concepts -- "crop failure," "what do I owe on rent," "when did we spray for weeds." The semantic search in the companion container understands what you mean, not just what you type.
-
+> This is the problem Paperless AI solves. Farmers don't think in government form numbers and insurance terminology. They think in concepts -- "crop failure," "what do I owe on rent," "when did we spray for weeds." The semantic search in the companion container understands what you mean, not just what you type.
+>
 > Paperless-ngx stays completely stock. We didn't modify it at all. The companion container just sits alongside it, reads the documents through the API, generates embeddings, and exposes search through an MCP server that Claude can call.
 
 ---

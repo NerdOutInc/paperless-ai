@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Paperless Ag is a companion Docker container for [Paperless-ngx](https://github.com/paperless-ngx/paperless-ngx) that adds semantic search and an MCP server for Claude integration. It lets farmers search their document archive using natural language. Paperless-ngx stays completely stock.
+Paperless AI is a companion Docker container for [Paperless-ngx](https://github.com/paperless-ngx/paperless-ngx) that adds semantic search and an MCP server for Claude integration. It lets farmers search their document archive using natural language. Paperless-ngx stays completely stock.
 
 ## Architecture
 
@@ -74,7 +74,7 @@ docker compose \
   up -d --build
 ```
 
-Before asking Claude to use Paperless Ag, verify all of these:
+Before asking Claude to use Paperless AI, verify all of these:
 
 - Paperless responds at `http://localhost:8000`.
 - Companion health responds at `http://localhost:3001/health`.

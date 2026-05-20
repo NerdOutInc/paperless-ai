@@ -1,48 +1,48 @@
 Hey this is Brian from Fullstack Ag.
 
-In the last video, 
-we saw Paperless-ngx turn farm paperwork into a searchable archive. 
-And while that's already useful, 
+In the last video,
+we saw Paperless-ngx turn farm paperwork into a searchable archive.
+And while that's already useful,
 the normal search could still be better.
 
-You have to guess the words the document actually used. 
-If I search for fertilizer recommendations, 
-Paperless comes back empty. 
-But I know those records exist. 
-they are just named things like Nutrient Management Plan, 
+You have to guess the words the document actually used.
+If I search for fertilizer recommendations,
+Paperless comes back empty.
+But I know those records exist.
+they are just named things like Nutrient Management Plan,
 and they mention products like anhydrous ammonia instead of the words I typed.
 
-Paperless Ag fixes that by adding semantic search. 
+Paperless AI fixes that by adding semantic search.
 It does not replace Paperless-ngx,
-and it does not modify Paperless itself. 
-It runs beside it as a companion container, 
-reads the text Paperless already extracted, 
+and it does not modify Paperless itself.
+It runs beside it as a companion container,
+reads the text Paperless already extracted,
 and builds a local search index based on meaning.
 
-The technical version is: 
-it splits documents into chunks, 
-creates embeddings with a small local model, 
-stores those embeddings in Postgres with pgvector, 
-and exposes search tools through MCP. 
-The plain-English version is: 
+The technical version is:
+it splits documents into chunks,
+creates embeddings with a small local model,
+stores those embeddings in Postgres with pgvector,
+and exposes search tools through MCP.
+The plain-English version is:
 Claude gets a safe way to search your Paperless archive.
 
-So now I can ask the question the way I would say it out loud: 
-what are my fertilizer recommendations? 
-Claude calls the Paperless Ag search tool, 
-searches the archive by meaning, 
+So now I can ask the question the way I would say it out loud:
+what are my fertilizer recommendations?
+Claude calls the Paperless AI search tool,
+searches the archive by meaning,
 and finds the nutrient plans that keyword search missed.
 
-That is the important difference. 
-I do not have to remember the exact title, 
-the exact product name, 
-or the exact phrase. 
-I can describe the thing I need, 
+That is the important difference.
+I do not have to remember the exact title,
+the exact product name,
+or the exact phrase.
+I can describe the thing I need,
 and Claude can bring back the right documents with enough context to answer.
 
-Paperless Ag indexes the documents on your server 
-without modifying your Paperless-ngx data. 
-Paperless stays stock, 
-and Paperless Ag adds the smarter layer beside it.
+Paperless AI indexes the documents on your server
+without modifying your Paperless-ngx data.
+Paperless stays stock,
+and Paperless AI adds the smarter layer beside it.
 
 Thanks for watching!

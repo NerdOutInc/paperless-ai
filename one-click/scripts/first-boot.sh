@@ -18,7 +18,7 @@ systemctl start paperless-setup.service
 cat <<MSG
 
 ============================================================
- Paperless Ag setup wizard is ready on port 80.
+ Paperless AI setup wizard is ready on port 80.
 
  Your one-time setup token:  $SETUP_TOKEN
 
@@ -31,7 +31,7 @@ MSG
 cat > /etc/update-motd.d/99-paperless-setup <<MOTD
 #!/bin/sh
 echo ""
-echo "Paperless Ag setup token: $SETUP_TOKEN"
+echo "Paperless AI setup token: $SETUP_TOKEN"
 echo "Open http://\$(curl -s -4 http://169.254.169.254/metadata/v1/interfaces/public/0/ipv4/address) to begin setup."
 echo ""
 MOTD

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Setup wizard API for Paperless Ag 1-click image.
+"""Setup wizard API for Paperless AI 1-click image.
 
 Handles form submission, generates config files, and kicks off
 Docker Compose via finalize-setup.sh. Runs on localhost:8080,

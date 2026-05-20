@@ -1,4 +1,4 @@
-# Paperless Ag - Local Development Stack
+# Paperless AI - Local Development Stack
 #
 # This runs a stock Paperless-ngx instance with pgvector-enabled Postgres.
 # Use this for local development of the companion app container.

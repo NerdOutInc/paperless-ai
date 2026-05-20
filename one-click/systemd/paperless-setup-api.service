@@ -1,5 +1,5 @@
 [Unit]
-Description=Paperless Ag Setup API
+Description=Paperless AI Setup API
 After=network-online.target
 Wants=network-online.target
 

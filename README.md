@@ -1,4 +1,4 @@
-# Paperless Ag
+# Paperless AI
 
 A companion container for [Paperless-ngx](https://github.com/paperless-ngx/paperless-ngx) that adds semantic search, a same-origin search page, and optional MCP access for AI apps. Built for the [Fullstack Ag](https://fullstack.ag) community.
 
@@ -59,11 +59,11 @@ https://yourdomain.com/search
 Log in with your Paperless account if prompted. Search results link back to the
 stock Paperless document page at `/documents/{id}`.
 
-![Paperless Ag search page showing realistic search results](docs/assets/search-results.png)
+![Paperless AI search page showing realistic search results](docs/assets/search-results.png)
 
 ## MCP Support
 
-MCP access is optional. It lets AI apps use Paperless Ag's read-only search
+MCP access is optional. It lets AI apps use Paperless AI's read-only search
 tools without exposing Postgres or modifying Paperless-ngx.
 
 After installation, log in to Paperless and open:
@@ -76,7 +76,7 @@ That page shows your MCP server URL, the auth token for Paperless admins, and
 current setup instructions for Claude Code, Claude Desktop, Codex, VS
 Code/Copilot, and llama.cpp.
 
-![Paperless Ag MCP setup page with connection details and app instructions](docs/assets/mcp-setup.png)
+![Paperless AI MCP setup page with connection details and app instructions](docs/assets/mcp-setup.png)
 
 ## Architecture
 
@@ -159,7 +159,7 @@ embedded documents after the test data finishes processing.
 
 ## Uninstall
 
-To completely remove Paperless Ag and all its data from your server (`/root/paperless-ag` is the default install directory -- adjust if you chose a different path during setup):
+To completely remove Paperless AI and all its data from your server (`/root/paperless-ag` is the default install directory -- adjust if you chose a different path during setup):
 
 ```bash
 cd /root/paperless-ag

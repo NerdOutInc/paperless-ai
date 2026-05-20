@@ -35,20 +35,20 @@
       "output": "26.5-40.0",
       "action": "Paperless shows zero filtered documents.",
       "narration": "Paperless comes back empty; those records exist under different wording.",
-      "edit": "Freeze the clean empty-result frame until the narration is ready to introduce Paperless Ag."
+      "edit": "Freeze the clean empty-result frame until the narration is ready to introduce Paperless AI."
     },
     {
       "source": "8.0 still",
       "output": "40.0-65.0",
-      "action": "Paperless Ag project page holds on the initial project overview.",
-      "narration": "Lead-in before the line: And what Paperless Ag is going to do...",
-      "edit": "Freeze the clean site-top frame until the narration introduces Paperless Ag."
+      "action": "Paperless AI project page holds on the initial project overview.",
+      "narration": "Lead-in before the line: And what Paperless AI is going to do...",
+      "edit": "Freeze the clean site-top frame until the narration introduces Paperless AI."
     },
     {
       "source": "9.0-11.0",
       "output": "65.0-77.0",
-      "action": "Paperless Ag project page scrolls down to the Claude MCP configuration.",
-      "narration": "Paperless Ag adds semantic search and shows how Claude connects through MCP.",
+      "action": "Paperless AI project page scrolls down to the Claude MCP configuration.",
+      "narration": "Paperless AI adds semantic search and shows how Claude connects through MCP.",
       "edit": "Slow continuous scroll starting at the first visible movement; stop at the current 01:17 frame."
     },
     {
@@ -69,7 +69,7 @@
       "source": "25.0-64.0",
       "output": "93.0-106.65",
       "action": "Claude works through tool calls and search progress.",
-      "narration": "Claude calls the Paperless Ag search tool and searches by meaning.",
+      "narration": "Claude calls the Paperless AI search tool and searches by meaning.",
       "edit": "Speed up waiting time only."
     },
     {
@@ -83,14 +83,14 @@
       "source": "82.0-86.139",
       "output": "124.65-128.375",
       "action": "Source list and final answer area scroll into the final source view.",
-      "narration": "Paperless-ngx stays stock while Paperless Ag runs beside it.",
+      "narration": "Paperless-ngx stays stock while Paperless AI runs beside it.",
       "edit": "Mild speed-up until the frame that previously appeared around output 02:13."
     },
     {
       "source": "86.139 still",
       "output": "128.375-135.25",
       "action": "Final Claude source list frame holds through the outro fade.",
-      "narration": "Paperless-ngx stays stock while Paperless Ag runs beside it.",
+      "narration": "Paperless-ngx stays stock while Paperless AI runs beside it.",
       "edit": "Freeze the clean final Claude frame until the outro title card fade begins."
     }
   ]

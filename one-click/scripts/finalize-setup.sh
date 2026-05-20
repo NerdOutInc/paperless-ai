@@ -2,7 +2,7 @@
 set -euo pipefail
 cd /opt/paperless-ag
 
-echo "Starting Paperless Ag stack..."
+echo "Starting Paperless AI stack..."
 
 # Stop only the host Caddy so port 80 is free for the Docker Caddy.
 # Do NOT stop paperless-setup-api.service here -- this script runs as a

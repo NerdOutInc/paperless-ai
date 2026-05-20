@@ -1,4 +1,4 @@
-# Install Paperless Ag on a Raspberry Pi
+# Install Paperless AI on a Raspberry Pi
 
 Run Paperless-ngx with semantic search on your home network using a
 Raspberry Pi. This guide walks through the full setup -- from flashing the
@@ -156,7 +156,7 @@ For example: `http://192.168.1.42/search` or
 
 ## 8. Connect AI apps with MCP
 
-MCP support is optional. It lets AI apps use Paperless Ag's read-only search
+MCP support is optional. It lets AI apps use Paperless AI's read-only search
 tools without exposing Postgres or changing Paperless-ngx.
 
 After installation, log in to Paperless and open:

@@ -1,8 +1,8 @@
 Hey this is Brian from Fullstack Ag.
 
-Before we install Paperless Ag in the cloud, 
-it helps to know what a VPS is. 
-VPS stands for virtual private server, 
+Before we install Paperless AI in the cloud,
+it helps to know what a VPS is.
+VPS stands for virtual private server,
 and it's basically a computer you rent online.
 
 You can install Paperless on a computer you have at home,
@@ -12,9 +12,9 @@ to your documents from anywhere.
 On DigitalOcean, a VPS is called a Droplet.
 When you create one, you pick a region,
 an operating system, and a size.
-For Paperless Ag, 
-I like starting with at least 4 gigabytes of memory and 2 CPUs. 
-That gives Paperless, Postgres, Redis, 
+For Paperless AI,
+I like starting with at least 4 gigabytes of memory and 2 CPUs.
+That gives Paperless, Postgres, Redis,
 and our search add-on enough room to breathe.
 
 The tradeoff to using a VPS over hosting it on a computer at home
@@ -22,9 +22,9 @@ is that it is a real server on ther internet:
 use strong passwords, SSH keys, backups,
 and delete it when you no longer need it so you stop paying for it.
 
-That is all a VPS is for our purposes: 
-an always-on Linux computer rented from a cloud provider. 
-In the install video, 
-we will create one and put Paperless Ag on it step by step.
+That is all a VPS is for our purposes:
+an always-on Linux computer rented from a cloud provider.
+In the install video,
+we will create one and put Paperless AI on it step by step.
 
 Thanks for watching!

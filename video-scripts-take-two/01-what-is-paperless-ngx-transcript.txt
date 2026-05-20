@@ -29,6 +29,6 @@ Paperless-ngx is not the AI part yet.
 It is the solid foundation: upload, OCR, tags, dates, document types, 
 and a searchable archive running on hardware you control. 
 In another video, 
-I will show you what Paperless Ag adds to make searching a lot smarter.
+I will show you what Paperless AI adds to make searching a lot smarter.
 
 So... Thanks for watching!

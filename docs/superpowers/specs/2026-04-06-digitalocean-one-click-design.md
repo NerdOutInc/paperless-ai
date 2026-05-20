@@ -6,7 +6,7 @@
 
 ## Goal
 
-Provide non-technical users (farmers) a turnkey Paperless Ag deployment
+Provide non-technical users (farmers) a turnkey Paperless AI deployment
 on DigitalOcean via a single link on the project website. No SSH, no
 Docker knowledge, no command-line interaction required for initial setup.
 
@@ -15,7 +15,7 @@ Docker knowledge, no command-line interaction required for initial setup.
 Pre-baked DigitalOcean snapshot built with Packer. All Docker images
 pre-pulled. A web-based setup wizard runs on first boot so the user
 configures their instance from a browser. After setup completes, the
-wizard disables itself and the standard Paperless Ag stack takes over.
+wizard disables itself and the standard Paperless AI stack takes over.
 
 Distributed via a "Deploy on DigitalOcean" button on
 `paperless.fullstack.ag` that links to the DO droplet creation page
@@ -131,7 +131,7 @@ No Docker containers start until the user completes the wizard.
 
 **Completion page shows:**
 
-- "Paperless Ag is ready!" heading
+- "Paperless AI is ready!" heading
 - Link to the Paperless UI (domain or IP)
 - MCP auth token in a read-only field with a "Copy" button
 - "Save this token -- you'll need it to connect Claude"
@@ -192,7 +192,7 @@ No Docker containers start until the user completes the wizard.
 
 ### 4. Post-Setup Runtime
 
-Identical to the existing Paperless Ag production stack:
+Identical to the existing Paperless AI production stack:
 
 - All services managed by Docker Compose
 - Caddy reverse-proxies Paperless and MCP
@@ -253,7 +253,7 @@ the constructed URL.
 
 **Landing page content:**
 
-- What they'll get (Paperless Ag -- document management for farms)
+- What they'll get (Paperless AI -- document management for farms)
 - Cost: ~$24/mo on DigitalOcean
 - Requirement: DigitalOcean account
 - Steps: click button, create droplet, visit IP, fill setup wizard
