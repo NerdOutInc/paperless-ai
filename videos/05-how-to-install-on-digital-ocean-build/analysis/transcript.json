@@ -5,7 +5,7 @@
   "language": "en",
   "engine": "whisper.cpp",
   "model": "ggml-base.en.bin",
-  "whisper_cli": "/opt/homebrew/bin/whisper-cli",
+  "whisper_cli": "whisper-cli",
   "raw_outputs": {
     "text": "videos/05-how-to-install-on-digital-ocean-build/analysis/whisper.txt",
     "srt": "videos/05-how-to-install-on-digital-ocean-build/analysis/whisper.srt",

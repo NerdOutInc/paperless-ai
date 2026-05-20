@@ -1,9 +1,9 @@
 {
   "schema": "nerdout.media_summary.v1",
-  "source_video": "/Users/brian/github/nerdoutinc/paperless-ai/videos/src/03-what-is-a-vps.mp4",
-  "source_audio": "/Users/brian/github/nerdoutinc/paperless-ai/videos/src/03-what-is-a-vps.m4a",
+  "source_video": "videos/src/03-what-is-a-vps.mp4",
+  "source_audio": "videos/src/03-what-is-a-vps.m4a",
   "video": {
-    "path": "/Users/brian/github/nerdoutinc/paperless-ai/videos/src/03-what-is-a-vps.mp4",
+    "path": "videos/src/03-what-is-a-vps.mp4",
     "duration": 51.716667,
     "width": 3600,
     "height": 2160,
@@ -15,7 +15,7 @@
     "embedded_audio_codecs": []
   },
   "audio": {
-    "path": "/Users/brian/github/nerdoutinc/paperless-ai/videos/src/03-what-is-a-vps.m4a",
+    "path": "videos/src/03-what-is-a-vps.m4a",
     "duration": 129.335147,
     "codec": "aac",
     "channels": 2,

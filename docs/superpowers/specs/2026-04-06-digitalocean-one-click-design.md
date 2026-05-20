@@ -2,7 +2,7 @@
 
 **Date:** 2026-04-06
 **Branch:** `one-click`
-**Status:** Implemented
+**Status:** Partially implemented
 
 ## Goal
 
@@ -12,10 +12,15 @@ Docker knowledge, no command-line interaction required for initial setup.
 
 ## Approach
 
-Pre-baked DigitalOcean snapshot built with Packer. All Docker images
-pre-pulled. A web-based setup wizard runs on first boot so the user
-configures their instance from a browser. After setup completes, the
-wizard disables itself and the standard Paperless AI stack takes over.
+Intended image-build approach: pre-baked DigitalOcean snapshot built with
+Packer. All Docker images pre-pulled. A web-based setup wizard runs on first
+boot so the user configures their instance from a browser. After setup
+completes, the wizard disables itself and the standard Paperless AI stack takes
+over.
+
+Current repository status: the droplet payload exists under `one-click/`, but
+the `packer/` directory and `.github/workflows/packer-build.yml` workflow are
+not currently checked in.
 
 Distributed via a "Deploy on DigitalOcean" button on
 `paperless.fullstack.ag` that links to the DO droplet creation page
@@ -73,9 +78,9 @@ Docker Compose:
 
 ## Component Details
 
-### 1. Packer Image Build
+### 1. Proposed Packer Image Build
 
-**Template:** `packer/paperless-ai.pkr.hcl`
+**Template:** proposed `packer/paperless-ai.pkr.hcl` (not currently checked in)
 
 - Source: `digitalocean` builder
 - Base image: Ubuntu 24.04 LTS (`ubuntu-24-04-x64`)
@@ -83,7 +88,7 @@ Docker Compose:
 - Region: `nyc1` (snapshots available in all regions)
 - Snapshot name: `paperless-ai-{{timestamp}}`
 
-**Provision script** (`packer/provision.sh`):
+**Provision script**: proposed `packer/provision.sh` (not currently checked in):
 
 1. `apt update && apt upgrade` for latest security patches
 2. Install Docker CE + Docker Compose v2 from official Docker apt repo
@@ -210,9 +215,10 @@ is needed, the user SSHes in and edits `/opt/paperless-ai/.env` + restarts
 Docker Compose. This is intentional -- re-running setup on a system with
 existing data is risky.
 
-### 5. CI Pipeline
+### 5. Proposed CI Pipeline
 
-**Workflow:** `.github/workflows/packer-build.yml`
+**Workflow:** proposed `.github/workflows/packer-build.yml` (not currently
+checked in)
 
 - Triggers:
   - Weekly schedule (Sunday night)

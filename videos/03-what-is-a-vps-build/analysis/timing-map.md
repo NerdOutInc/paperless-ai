@@ -4,20 +4,20 @@ This is an evidence scaffold for review. It is not a render spec.
 
 ## Summary
 
-- Source video: `/Users/brian/github/nerdoutinc/paperless-ai/videos/src/03-what-is-a-vps.mp4`
-- Narration audio: `/Users/brian/github/nerdoutinc/paperless-ai/videos/src/03-what-is-a-vps.m4a`
+- Source video: `videos/src/03-what-is-a-vps.mp4`
+- Narration audio: `videos/src/03-what-is-a-vps.m4a`
 - Video duration: 51.717s
 - Narration duration: 129.335s
 - Duration delta: 77.618s
 
 ## Artifacts
 
-- media_summary: `/Users/brian/github/nerdoutinc/paperless-ai/videos/03-what-is-a-vps-build/analysis/media-summary.json`
-- transcript: `/Users/brian/github/nerdoutinc/paperless-ai/videos/03-what-is-a-vps-build/analysis/transcript.json`
-- screen_events: `/Users/brian/github/nerdoutinc/paperless-ai/videos/03-what-is-a-vps-build/analysis/screen-events.json`
-- screen_events_contact_sheet: `/Users/brian/github/nerdoutinc/paperless-ai/videos/03-what-is-a-vps-build/analysis/screen-events-contact-sheet.jpg`
-- timing_map_markdown: `/Users/brian/github/nerdoutinc/paperless-ai/videos/03-what-is-a-vps-build/analysis/timing-map.md`
-- timing_map_json: `/Users/brian/github/nerdoutinc/paperless-ai/videos/03-what-is-a-vps-build/analysis/timing-map.json`
+- media_summary: `videos/03-what-is-a-vps-build/analysis/media-summary.json`
+- transcript: `videos/03-what-is-a-vps-build/analysis/transcript.json`
+- screen_events: `videos/03-what-is-a-vps-build/analysis/screen-events.json`
+- screen_events_contact_sheet: `videos/03-what-is-a-vps-build/analysis/screen-events-contact-sheet.jpg`
+- timing_map_markdown: `videos/03-what-is-a-vps-build/analysis/timing-map.md`
+- timing_map_json: `videos/03-what-is-a-vps-build/analysis/timing-map.json`
 
 ## Warnings
 

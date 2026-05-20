@@ -4,20 +4,20 @@ This is an evidence scaffold for review. It is not a render spec.
 
 ## Summary
 
-- Source video: `/Users/brian/github/nerdoutinc/paperless-ai/videos/src/04-what-is-docker.mp4`
-- Narration audio: `/Users/brian/github/nerdoutinc/paperless-ai/videos/src/04-what-is-docker.m4a`
+- Source video: `videos/src/04-what-is-docker.mp4`
+- Narration audio: `videos/src/04-what-is-docker.m4a`
 - Video duration: 31.000s
 - Narration duration: 120.419s
 - Duration delta: 89.419s
 
 ## Artifacts
 
-- media_summary: `/Users/brian/github/nerdoutinc/paperless-ai/videos/04-what-is-docker-build/analysis/media-summary.json`
-- transcript: `/Users/brian/github/nerdoutinc/paperless-ai/videos/04-what-is-docker-build/analysis/transcript.json`
-- screen_events: `/Users/brian/github/nerdoutinc/paperless-ai/videos/04-what-is-docker-build/analysis/screen-events.json`
-- screen_events_contact_sheet: `/Users/brian/github/nerdoutinc/paperless-ai/videos/04-what-is-docker-build/analysis/screen-events-contact-sheet.jpg`
-- timing_map_markdown: `/Users/brian/github/nerdoutinc/paperless-ai/videos/04-what-is-docker-build/analysis/timing-map.md`
-- timing_map_json: `/Users/brian/github/nerdoutinc/paperless-ai/videos/04-what-is-docker-build/analysis/timing-map.json`
+- media_summary: `videos/04-what-is-docker-build/analysis/media-summary.json`
+- transcript: `videos/04-what-is-docker-build/analysis/transcript.json`
+- screen_events: `videos/04-what-is-docker-build/analysis/screen-events.json`
+- screen_events_contact_sheet: `videos/04-what-is-docker-build/analysis/screen-events-contact-sheet.jpg`
+- timing_map_markdown: `videos/04-what-is-docker-build/analysis/timing-map.md`
+- timing_map_json: `videos/04-what-is-docker-build/analysis/timing-map.json`
 
 ## Warnings
 

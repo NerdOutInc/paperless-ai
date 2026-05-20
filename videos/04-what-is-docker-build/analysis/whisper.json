@@ -20,7 +20,7 @@
 		"ftype": 1
 	},
 	"params": {
-		"model": "/Users/brian/.cache/whisper.cpp/ggml-base.en.bin",
+		"model": "ggml-base.en.bin",
 		"language": "en",
 		"translate": false
 	},

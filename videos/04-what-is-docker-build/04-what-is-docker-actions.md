@@ -2,7 +2,7 @@
 
 ## Source
 
-- Audio: `/Users/brian/github/nerdoutinc/paperless-ai/videos/src/04-what-is-docker.m4a`
+- Audio: `videos/src/04-what-is-docker.m4a`
 - Duration: 120.419 seconds
 - Transcript: `/tmp/screen-studio-04-what-is-docker-transcript/transcript.json`
 - Capture scope: full display with Screen Studio
@@ -80,7 +80,7 @@ To be filled during dry runs:
 - Screen Studio project:
   `/Users/brian/Screen Studio Projects/Built-in Retina Display 2026-05-12 20:15:36.screenstudio`
 - Repo copy:
-  `/Users/brian/github/nerdoutinc/paperless-ai/video-scripts/04-what-is-docker.screenstudio`
+  `video-scripts/04-what-is-docker.screenstudio`
 - Display track:
   `/Users/brian/Screen Studio Projects/Built-in Retina Display 2026-05-12 20:15:36.screenstudio/recording/channel-1-display-0.mp4`
 - Display-track duration: 32.647 seconds

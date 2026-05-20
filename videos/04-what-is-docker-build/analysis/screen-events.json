@@ -1,6 +1,6 @@
 {
   "schema": "nerdout.screen_events.v1",
-  "source_video": "/Users/brian/github/nerdoutinc/paperless-ai/videos/src/04-what-is-docker.mp4",
+  "source_video": "videos/src/04-what-is-docker.mp4",
   "duration": 31.0,
   "media": {
     "duration": 31.0,
@@ -31,18 +31,18 @@
     "vision_frame_count": 14
   },
   "artifacts": {
-    "frames_manifest": "/Users/brian/github/nerdoutinc/paperless-ai/videos/04-what-is-docker-build/analysis/frames.jsonl",
-    "vision_frames_jsonl": "/Users/brian/github/nerdoutinc/paperless-ai/videos/04-what-is-docker-build/analysis/vision-frames.jsonl",
-    "contact_sheet": "/Users/brian/github/nerdoutinc/paperless-ai/videos/04-what-is-docker-build/analysis/screen-events-contact-sheet.jpg",
-    "scan_frames_dir": "/Users/brian/github/nerdoutinc/paperless-ai/videos/04-what-is-docker-build/analysis/scan-frames",
-    "frames_dir": "/Users/brian/github/nerdoutinc/paperless-ai/videos/04-what-is-docker-build/analysis/frames"
+    "frames_manifest": "videos/04-what-is-docker-build/analysis/frames.jsonl",
+    "vision_frames_jsonl": "videos/04-what-is-docker-build/analysis/vision-frames.jsonl",
+    "contact_sheet": "videos/04-what-is-docker-build/analysis/screen-events-contact-sheet.jpg",
+    "scan_frames_dir": "videos/04-what-is-docker-build/analysis/scan-frames",
+    "frames_dir": "videos/04-what-is-docker-build/analysis/frames"
   },
   "events": [
     {
       "kind": "anchor",
       "time": 0.0,
       "score": 0.0,
-      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/04-what-is-docker-build/analysis/frames/frame_0001_00-00-000_anchor.jpg",
+      "frame": "videos/04-what-is-docker-build/analysis/frames/frame_0001_00-00-000_anchor.jpg",
       "ocr_text": "Sign In The #1 containerization software for developers and teams Choose plan CPU u3a9e usage .01\u00b0,. 11200% 17.47 GB Extensions",
       "notes": [
         "regular Apple Vision sample for agent review"
@@ -53,7 +53,7 @@
       "kind": "ocr_change",
       "time": 3.0,
       "score": 0.9753,
-      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/04-what-is-docker-build/analysis/frames/frame_0002_00-03-000_hold_start.jpg",
+      "frame": "videos/04-what-is-docker-build/analysis/frames/frame_0002_00-03-000_hold_start.jpg",
       "ocr_text": "Docker Desktop.' The #': https'.Ilwww.docker.comlproduct5ldocker-desktopl Products v Support v Pricing v Blog Docs Sign In Get Started *dockerdesktop Searc Containers Give leedback o Vitw #ll your running eoni8lr*rs 8nd appllcaiion8. Le8m more 14IwrnOmoryuS3W ImagfrS 0.07/. 11200% 249.6MB 17.47 GB ShOW eharts llb 112CPU5 allDCUtedl Vdumes Search Orfy $how nmning container$ Bullds Dev EThvlronments Name CrJntsiner ID Image Last started cpu% AcikJns O Oock*r Sco spla5hy-wha froe-wlll '.L3test 8000'.8000 1 hoLJr ago o% Docker Hub barnaG1e-tsb 70398a3bd155 kini-bottom 2 hour5 ago 0.22% Exten$k)n8 \u2022 y8rr-maiey 87324y65ff32 4 hours ago o% shrirnp-clamtsstlc 34655h3uI143 cocktall-yuc8 10 hours ago o% oswald-we5t 57438h2gff89 I dby agJ o% enoiess-summer 5823aa342f51 swf$-u 1 d8y 8g0 o% 120GB CFUO.22% ia2 r* uMdllmh 5&37r*i > T*miMI v4.40.0",
       "notes": [
         "visible text changed between Apple Vision OCR samples"
@@ -65,7 +65,7 @@
       "kind": "anchor",
       "time": 5.0,
       "score": 0.0,
-      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/04-what-is-docker-build/analysis/frames/frame_0003_00-05-000_anchor.jpg",
+      "frame": "videos/04-what-is-docker-build/analysis/frames/frame_0003_00-05-000_anchor.jpg",
       "ocr_text": "Docker Desktop.' The # https'.Ilwww.docker.comlproductsldocker-desktopl Products v Support v Pricing v Blog Docs Sign In Get Started Increase productivity and efficiency to reduce time to deployment Docker Desktop enhances your development experience by offering a powerful, user- friendly platform for container management. Fully integrated with your development tools, it simplifies container deployment and accelerates your workflow efficiency.",
       "notes": [
         "regular Apple Vision sample for agent review"
@@ -77,7 +77,7 @@
       "kind": "ocr_change",
       "time": 5.0,
       "score": 0.9566,
-      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/04-what-is-docker-build/analysis/frames/frame_0003_00-05-000_anchor.jpg",
+      "frame": "videos/04-what-is-docker-build/analysis/frames/frame_0003_00-05-000_anchor.jpg",
       "ocr_text": "Docker Desktop.' The # https'.Ilwww.docker.comlproductsldocker-desktopl Products v Support v Pricing v Blog Docs Sign In Get Started Increase productivity and efficiency to reduce time to deployment Docker Desktop enhances your development experience by offering a powerful, user- friendly platform for container management. Fully integrated with your development tools, it simplifies container deployment and accelerates your workflow efficiency.",
       "notes": [
         "visible text changed between Apple Vision OCR samples"
@@ -89,7 +89,7 @@
       "kind": "ocr_change",
       "time": 10.0,
       "score": 0.7889,
-      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/04-what-is-docker-build/analysis/frames/frame_0004_00-10-000_stable_hold.jpg",
+      "frame": "videos/04-what-is-docker-build/analysis/frames/frame_0004_00-10-000_stable_hold.jpg",
       "ocr_text": "Docker Desktop.' The #-, https'.Ilwww.docker.comlproductsldocker-desktopl Products v Support v Pricing v Blog Docs Sign In Get Started Docker Desktop enhances its capabilities through Docker Extensions, allowing developers to integrate seamlessly with their favorite tools and services. These extensions expand Docker Desktop's functionality, providing a tailored experience that meets specific development needs. Manage Extensions Give feedback D Docker Exlensions let you use third-party tools within Docker Desktop to exlend its f unctionality. My Extensions 1 Browse Create Learn more about Extensions > Release Share Enhanced integration Connect with a wide range of popular tools and services, streamlining your development workflow. Release ' releasecomldocker-extension Share your containers publicly with a cliek. Customizable experience Personalize Docker Desktop with extensions that suit your individual or team needs, improving productivity and efficiency. Support for popular tools Leverage extensions from leading image publishers and tool providers, ensuring compatibility with the tools you rely on.",
       "notes": [
         "visible text changed between Apple Vision OCR samples"
@@ -101,7 +101,7 @@
       "kind": "stable_hold",
       "time": 10.0,
       "score": 0.3146,
-      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/04-what-is-docker-build/analysis/frames/frame_0004_00-10-000_stable_hold.jpg",
+      "frame": "videos/04-what-is-docker-build/analysis/frames/frame_0004_00-10-000_stable_hold.jpg",
       "ocr_text": "Docker Desktop.' The #-, https'.Ilwww.docker.comlproductsldocker-desktopl Products v Support v Pricing v Blog Docs Sign In Get Started Docker Desktop enhances its capabilities through Docker Extensions, allowing developers to integrate seamlessly with their favorite tools and services. These extensions expand Docker Desktop's functionality, providing a tailored experience that meets specific development needs. Manage Extensions Give feedback D Docker Exlensions let you use third-party tools within Docker Desktop to exlend its f unctionality. My Extensions 1 Browse Create Learn more about Extensions > Release Share Enhanced integration Connect with a wide range of popular tools and services, streamlining your development workflow. Release ' releasecomldocker-extension Share your containers publicly with a cliek. Customizable experience Personalize Docker Desktop with extensions that suit your individual or team needs, improving productivity and efficiency. Support for popular tools Leverage extensions from leading image publishers and tool providers, ensuring compatibility with the tools you rely on.",
       "notes": [
         "low visual change span",
@@ -117,7 +117,7 @@
       "kind": "anchor",
       "time": 15.0,
       "score": 0.0,
-      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/04-what-is-docker-build/analysis/frames/frame_0005_00-15-000_anchor.jpg",
+      "frame": "videos/04-what-is-docker-build/analysis/frames/frame_0005_00-15-000_anchor.jpg",
       "ocr_text": "Docker Desktop.' The #'. https'.Ilwww.docker.comlproductsldocker-desktopl Products v Support v Pricing v Blog Docs Sign In Get Started Learn more > Learn more > Leam more > Find resources Explore a wealth of resources including webinars and white papers. Equip yourself with the knowledge and tools needed to make the most of Docker. Learn more > Products Fealures Developers Pricing Company Languages Products Overview Cornmand Line Interface Documentation Personal About Us English Docker De5ktop IDE Extensions Getting Started Pro What is a Container Docker Hub Container Runtime Trainings Team Blog Docker Scout Docker Extensions Extensions SDK Business Why Docker Docker Build CIoLJd Trusted Open Soufce Content Community Premium Support and TAM Trust https'.Ilwww.docker.cornlcomrnunity Secure Software Supply Chain Open Source Pricing FAQ Customer Success",
       "notes": [
         "regular Apple Vision sample for agent review"
@@ -129,7 +129,7 @@
       "kind": "ocr_change",
       "time": 15.0,
       "score": 0.9484,
-      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/04-what-is-docker-build/analysis/frames/frame_0005_00-15-000_anchor.jpg",
+      "frame": "videos/04-what-is-docker-build/analysis/frames/frame_0005_00-15-000_anchor.jpg",
       "ocr_text": "Docker Desktop.' The #'. https'.Ilwww.docker.comlproductsldocker-desktopl Products v Support v Pricing v Blog Docs Sign In Get Started Learn more > Learn more > Leam more > Find resources Explore a wealth of resources including webinars and white papers. Equip yourself with the knowledge and tools needed to make the most of Docker. Learn more > Products Fealures Developers Pricing Company Languages Products Overview Cornmand Line Interface Documentation Personal About Us English Docker De5ktop IDE Extensions Getting Started Pro What is a Container Docker Hub Container Runtime Trainings Team Blog Docker Scout Docker Extensions Extensions SDK Business Why Docker Docker Build CIoLJd Trusted Open Soufce Content Community Premium Support and TAM Trust https'.Ilwww.docker.cornlcomrnunity Secure Software Supply Chain Open Source Pricing FAQ Customer Success",
       "notes": [
         "visible text changed between Apple Vision OCR samples"
@@ -141,7 +141,7 @@
       "kind": "ocr_change",
       "time": 17.0,
       "score": 0.7559,
-      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/04-what-is-docker-build/analysis/frames/frame_0006_00-17-000_hold_end.jpg",
+      "frame": "videos/04-what-is-docker-build/analysis/frames/frame_0006_00-17-000_hold_end.jpg",
       "ocr_text": "Docker Desktop.' The #\". https'.Ilwww.docker.comlproductsldocker-desktopl Products v Support v Pricing v Blog Docs Sign In Get Started Products Features Developers Pricing Company Languages Products Overview Command Line Interface Documentation Personal About Us English Docker Desktop IDE Extensions Getting Started Pro What is a Container Docker Hub Container Runtime Trainings Team Blog Docker Scout Docker Extensions Extensions SDK Business Why Docker Docker Build Cloud Trusted Open Source Content Community Premium Support and TAM Trust Testconlainers Desktop Secure Software Supply Chain Open Source Pricing FAQ Customer Success Testconlainers Cloud Preview Program Contact Sales Partners Docker MCP Catalog and Toolkit Newsletter Events Docker Hardened Images Docker System Status Newsroom Swag Store Brand Guidelines Trademark Guidelines Careers Contact Us in \u2022\u2022\u2022oo 2026 Docker Inc. All rights reserved l Ternis of Service I Privacy l Legal",
       "notes": [
         "visible text changed between Apple Vision OCR samples"
@@ -153,7 +153,7 @@
       "kind": "ocr_change",
       "time": 18.0,
       "score": 0.9877,
-      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/04-what-is-docker-build/analysis/frames/frame_0008_00-18-000_scene_change.jpg",
+      "frame": "videos/04-what-is-docker-build/analysis/frames/frame_0008_00-18-000_scene_change.jpg",
       "ocr_text": "*dockerdesktop PERSONAL Q Search Sign in Gordon paperless-ai IUsers/brianlgithublnerdoutinc/paperless-ai View configurations Containers Images Volumes app\u2022 paperless-ai-app 3001'.3001 paperless-webserver [2026-05-12 20:10:00.000] [INFO] [celery. beat] Scheduler: Sending due task Check all e-mail accounts (paperless mail.tasks.process m3tl_a ccounts) [2026-05-12 20:10:00.003] [INFO] [celery.worker.strategy] Task paperless Nail. tasks. proces5 nail_ac counts [33b16122- c7b3-4328- 95aa- afda21bfb962] received [2026-05-12 20:10:00,033] [INFO] [celery.app.trace] Task paperless Nail. tasks. process nail_ac counts [33b16122- c7b3-4328- 953a- afda21bfb962] succeeded in 0. 028166958998554037s'. ' No new docuD)ents were added. Kubernetes Builds paperless-we... paperle:s-ngx/pai 4b 8000'.8000 Models MCP Toolkit Docker Hub redis \u2022 redis 7-alpine Docker Scout db \u2022 pgvector Logs pgvectoi Extensions db 2026-05-13 @1:10:28.451 UTC 127] LOG.' checkpoint starting: tine 2026-OS-13 81:10:29.590 UTC [27] LOG.. checkpoint complete: wrote 12 buffers (O.l%)' O WAL file(s) added. renoved. @ Fecycled; write=1. 127 sync-O.00S s. total-1.140 s' sync f iles-12. longe5t-0. 004 s. average-O. 06I s,. dtstance-56 kB, estinate=79 kB. Isn=017661BCO. redo Isn=017661B88 Englne running RAM S.46 GB CPU 0.60% Disk'. 62.29 GB used Ilimit 910.69 GBI v4.72.0",
       "notes": [
         "visible text changed between Apple Vision OCR samples"
@@ -165,7 +165,7 @@
       "kind": "scene_change",
       "time": 18.0,
       "score": 0.5421,
-      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/04-what-is-docker-build/analysis/frames/frame_0008_00-18-000_scene_change.jpg",
+      "frame": "videos/04-what-is-docker-build/analysis/frames/frame_0008_00-18-000_scene_change.jpg",
       "ocr_text": "*dockerdesktop PERSONAL Q Search Sign in Gordon paperless-ai IUsers/brianlgithublnerdoutinc/paperless-ai View configurations Containers Images Volumes app\u2022 paperless-ai-app 3001'.3001 paperless-webserver [2026-05-12 20:10:00.000] [INFO] [celery. beat] Scheduler: Sending due task Check all e-mail accounts (paperless mail.tasks.process m3tl_a ccounts) [2026-05-12 20:10:00.003] [INFO] [celery.worker.strategy] Task paperless Nail. tasks. proces5 nail_ac counts [33b16122- c7b3-4328- 95aa- afda21bfb962] received [2026-05-12 20:10:00,033] [INFO] [celery.app.trace] Task paperless Nail. tasks. process nail_ac counts [33b16122- c7b3-4328- 953a- afda21bfb962] succeeded in 0. 028166958998554037s'. ' No new docuD)ents were added. Kubernetes Builds paperless-we... paperle:s-ngx/pai 4b 8000'.8000 Models MCP Toolkit Docker Hub redis \u2022 redis 7-alpine Docker Scout db \u2022 pgvector Logs pgvectoi Extensions db 2026-05-13 @1:10:28.451 UTC 127] LOG.' checkpoint starting: tine 2026-OS-13 81:10:29.590 UTC [27] LOG.. checkpoint complete: wrote 12 buffers (O.l%)' O WAL file(s) added. renoved. @ Fecycled; write=1. 127 sync-O.00S s. total-1.140 s' sync f iles-12. longe5t-0. 004 s. average-O. 06I s,. dtstance-56 kB, estinate=79 kB. Isn=017661BCO. redo Isn=017661B88 Englne running RAM S.46 GB CPU 0.60% Disk'. 62.29 GB used Ilimit 910.69 GBI v4.72.0",
       "notes": [
         "visual change peak",
@@ -178,7 +178,7 @@
       "kind": "anchor",
       "time": 20.0,
       "score": 0.0,
-      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/04-what-is-docker-build/analysis/frames/frame_0010_00-20-000_anchor.jpg",
+      "frame": "videos/04-what-is-docker-build/analysis/frames/frame_0010_00-20-000_anchor.jpg",
       "ocr_text": "*dockerdesktop PERSONAL Q Search Sign in Gordon paperless-ai IUsers/brianlgithublnerdoutinc/paperless-ai View configurations Containers Images Volumes app\u2022 paperless-ai-app 3001'.3001 paperless-webserver [2026-05-12 20:10:00.000] [INFO] [celery. beat] Scheduler: Sending due task Check all e-Nail accounts (paperless_mail. tasks. process matl_a ccounts) [2026-05-12 20:10:00.003] [INFO] [celery.worker.strategy] Task paperless Nail. tasks. proces5 nail_ac counts [33b16122- c7b3-4328- 95aa- afda21bfb962] received [2026-05-12 20:10:00,033] [INFO] [celery.app.trace] Task paperless Nail. tasks. process nail_ac counts [33b16122- c7b3-4328- 953a- afda21bfb962] succeeded in 0. 028166958998554fy375'. ' No new docuD)ents were added. Kubernetes Builds paperl*ss-we... paperle:s-Iigx/pai 8000'.8000 Models MCP Toolkit Docker Hub redis \u2022 redis 7-alpine Docker Scout db \u2022 pgvector Logs pgvectoi Extensions db 2026-05-13 @1:10:28.451 UTC 127] LOG.' checkpoint starting: tine 2026-OS-13 01:10:29.590 UTC [27] LOG.. checkpoint complete: wrote 12 buffers (O.l%)' O WAL file(s) added. renoved. @ Fecycled; write=1. 127 sync-O.OOS s. total-1.140 s' sync f iles-12. longe5t-0. 004 s. average-O. 08I s,. dtstance-56 kB, estinate-79 kB. Isn=017661BCO, redo Isn=017661B88 Engine runfiing RAM S.46 GB CPU 0.60% Disk.' 62.29 GB used Ilimit 910.69 GBI v4.72.0",
       "notes": [
         "regular Apple Vision sample for agent review"
@@ -190,7 +190,7 @@
       "kind": "ocr_change",
       "time": 21.0,
       "score": 0.9266,
-      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/04-what-is-docker-build/analysis/frames/frame_0011_00-21-000_hold_start.jpg",
+      "frame": "videos/04-what-is-docker-build/analysis/frames/frame_0011_00-21-000_hold_start.jpg",
       "ocr_text": "\u2022 \u2022 \u2022 Ai paperless-ai--bash- 126x42 erless-ag on P vps-and-docker-videos 1$171",
       "notes": [
         "visible text changed between Apple Vision OCR samples"
@@ -202,7 +202,7 @@
       "kind": "anchor",
       "time": 25.0,
       "score": 0.0,
-      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/04-what-is-docker-build/analysis/frames/frame_0012_00-25-000_anchor.jpg",
+      "frame": "videos/04-what-is-docker-build/analysis/frames/frame_0012_00-25-000_anchor.jpg",
       "ocr_text": "\u2022 \u2022 \u2022 Ai paperless-ai--bash- 126x42 paperloss-ag on tr vps-and-docker-videos 1$ l ? I i) docker ps -filter name=paperless-ai -format 'table 11.NamesllKtII.Statusll\" NAMES STATUS paperless-ai-app-I Up 4 hours Ihealthy) paperless-ai-paperless-webserver-I Up 4 hours Ihealthy) paperless-ai-redis-I Up 4 hours Ihealthy) paperless-ai-db-I Up 4 hours Ihealthy) erless-ag on P vps-and-docker-videos [$17]",
       "notes": [
         "regular Apple Vision sample for agent review"
@@ -214,7 +214,7 @@
       "kind": "ocr_change",
       "time": 25.0,
       "score": 0.7347,
-      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/04-what-is-docker-build/analysis/frames/frame_0012_00-25-000_anchor.jpg",
+      "frame": "videos/04-what-is-docker-build/analysis/frames/frame_0012_00-25-000_anchor.jpg",
       "ocr_text": "\u2022 \u2022 \u2022 Ai paperless-ai--bash- 126x42 paperloss-ag on tr vps-and-docker-videos 1$ l ? I i) docker ps -filter name=paperless-ai -format 'table 11.NamesllKtII.Statusll\" NAMES STATUS paperless-ai-app-I Up 4 hours Ihealthy) paperless-ai-paperless-webserver-I Up 4 hours Ihealthy) paperless-ai-redis-I Up 4 hours Ihealthy) paperless-ai-db-I Up 4 hours Ihealthy) erless-ag on P vps-and-docker-videos [$17]",
       "notes": [
         "visible text changed between Apple Vision OCR samples"
@@ -226,7 +226,7 @@
       "kind": "stable_hold",
       "time": 25.5,
       "score": 0.9191,
-      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/04-what-is-docker-build/analysis/frames/frame_0013_00-25-500_stable_hold.jpg",
+      "frame": "videos/04-what-is-docker-build/analysis/frames/frame_0013_00-25-500_stable_hold.jpg",
       "ocr_text": "\u2022 \u2022 \u2022 Ai paperless-ai--bash- 126x42 paperloss-ag on tr vps-and-docker-videos 1$ l ?I i) docker ps -filter name=paperless-ai -format 'table 11.NamesllKtII.Statusll\" NAMES STATUS paperless-ai-app-I Up 4 hours Ihealthy) paperless-ai-paperless-webserver-I Up 4 hours Ihealthy) paperless-ai-redis-I Up 4 hours Ihealthy) paperless-ai-db-I Up 4 hours Ihealthy) erless-ag on P vps-and-docker-videos 1$171",
       "notes": [
         "low visual change span",
