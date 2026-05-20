@@ -364,6 +364,14 @@ class WebSearchTests(unittest.TestCase):
 
         self.assertTrue(injected.endswith(f"{web_search.PAPERLESS_UI_SCRIPT_TAG}\n"))
 
+    def test_inject_paperless_ui_script_uses_original_html_indices(self):
+        html = "<html><body>Turkish dotted İ</BoDy></html>"
+
+        injected = web_search.inject_paperless_ui_script(html)
+
+        self.assertIn("Turkish dotted İ", injected)
+        self.assertIn(f"{web_search.PAPERLESS_UI_SCRIPT_TAG}\n</BoDy>", injected)
+
     def test_response_headers_from_upstream_removes_recomputed_headers(self):
         response = FakeResponse(
             headers={

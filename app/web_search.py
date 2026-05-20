@@ -1,4 +1,5 @@
 import hashlib
+import re
 import threading
 import time
 import traceback
@@ -20,6 +21,7 @@ PAPERLESS_UI_SCRIPT_PATH = "/search/static/paperless-ui-link.js"
 PAPERLESS_UI_SCRIPT_TAG = (
     f'<script src="{PAPERLESS_UI_SCRIPT_PATH}" defer></script>'
 )
+BODY_CLOSE_PATTERN = re.compile(r"</body\s*>", re.IGNORECASE)
 PAPERLESS_UI_PROXY_TIMEOUT = 30
 HOP_BY_HOP_HEADERS = {
     "connection",
@@ -235,10 +237,10 @@ def inject_paperless_ui_script(html):
     if PAPERLESS_UI_SCRIPT_PATH in html:
         return html
 
-    lower_html = html.lower()
-    body_close_index = lower_html.rfind("</body>")
-    if body_close_index == -1:
+    body_close_matches = list(BODY_CLOSE_PATTERN.finditer(html))
+    if not body_close_matches:
         return f"{html}\n{PAPERLESS_UI_SCRIPT_TAG}\n"
+    body_close_index = body_close_matches[-1].start()
     return (
         f"{html[:body_close_index]}{PAPERLESS_UI_SCRIPT_TAG}\n"
         f"{html[body_close_index:]}"
