@@ -4,7 +4,7 @@ import threading
 import time
 import traceback
 from pathlib import Path
-from urllib.parse import quote
+from urllib.parse import quote, unquote
 
 import requests
 from starlette.responses import HTMLResponse, JSONResponse, RedirectResponse, Response
@@ -233,6 +233,25 @@ def is_denied_paperless_ui_proxy_path(path):
     )
 
 
+def normalized_paperless_ui_proxy_path(raw_path):
+    path = f"/{raw_path.lstrip('/')}" if raw_path else "/"
+    decoded_path = unquote(path)
+    if "\\" in decoded_path:
+        return None
+
+    segments = decoded_path.split("/")
+    if any(segment == ".." for segment in segments):
+        return None
+
+    normalized_segments = [
+        segment for segment in segments if segment and segment != "."
+    ]
+    normalized_path = f"/{'/'.join(normalized_segments)}"
+    if decoded_path.endswith("/") and normalized_path != "/":
+        normalized_path = f"{normalized_path}/"
+    return quote(normalized_path, safe="/")
+
+
 def inject_paperless_ui_script(html):
     if PAPERLESS_UI_SCRIPT_PATH in html:
         return html
@@ -258,8 +277,8 @@ def is_html_response(response):
 
 def paperless_ui_proxy(request):
     proxied_path = request.path_params.get("path", "")
-    upstream_path = f"/{proxied_path.lstrip('/')}" if proxied_path else "/"
-    if is_denied_paperless_ui_proxy_path(upstream_path):
+    upstream_path = normalized_paperless_ui_proxy_path(proxied_path)
+    if upstream_path is None or is_denied_paperless_ui_proxy_path(upstream_path):
         return Response("Not found", status_code=404)
 
     upstream_url = f"{config.PAPERLESS_API_URL}{upstream_path}"

@@ -1128,7 +1128,7 @@ ${DOMAIN} {${tls_block}
     @paperless_ui {
         method GET
         header Accept *text/html*
-        not path /api/* /static/* /media/* /accounts/* /search /search/* /mcp /mcp/* /paperless-ui-proxy /paperless-ui-proxy/* /.well-known/*
+        not path /api /api/* /static /static/* /media /media/* /accounts /accounts/* /search /search/* /mcp /mcp/* /paperless-ui-proxy /paperless-ui-proxy/* /.well-known /.well-known/*
     }
     handle @paperless_ui {
         rewrite * /paperless-ui-proxy{uri}
@@ -1163,7 +1163,7 @@ CADDY
     @paperless_ui {
         method GET
         header Accept *text/html*
-        not path /api/* /static/* /media/* /accounts/* /search /search/* /mcp /mcp/* /paperless-ui-proxy /paperless-ui-proxy/* /.well-known/*
+        not path /api /api/* /static /static/* /media /media/* /accounts /accounts/* /search /search/* /mcp /mcp/* /paperless-ui-proxy /paperless-ui-proxy/* /.well-known /.well-known/*
     }
     handle @paperless_ui {
         rewrite * /paperless-ui-proxy{uri}
@@ -1225,7 +1225,7 @@ add_paperless_ui_route_to_caddyfile() {
             print "    @paperless_ui {"
             print "        method GET"
             print "        header Accept *text/html*"
-            print "        not path /api/* /static/* /media/* /accounts/* /search /search/* /mcp /mcp/* /paperless-ui-proxy /paperless-ui-proxy/* /.well-known/*"
+            print "        not path /api /api/* /static /static/* /media /media/* /accounts /accounts/* /search /search/* /mcp /mcp/* /paperless-ui-proxy /paperless-ui-proxy/* /.well-known /.well-known/*"
             print "    }"
             print "    handle @paperless_ui {"
             print "        rewrite * /paperless-ui-proxy{uri}"
@@ -1353,7 +1353,7 @@ add_paperless_ui_route_to_caddyfile() {
             print "    @paperless_ui {"
             print "        method GET"
             print "        header Accept *text/html*"
-            print "        not path /api/* /static/* /media/* /accounts/* /search /search/* /mcp /mcp/* /paperless-ui-proxy /paperless-ui-proxy/* /.well-known/*"
+            print "        not path /api /api/* /static /static/* /media /media/* /accounts /accounts/* /search /search/* /mcp /mcp/* /paperless-ui-proxy /paperless-ui-proxy/* /.well-known /.well-known/*"
             print "    }"
             print "    handle @paperless_ui {"
             print "        rewrite * /paperless-ui-proxy{uri}"
@@ -1431,7 +1431,7 @@ write_default_caddyfile() {
     @paperless_ui {
         method GET
         header Accept *text/html*
-        not path /api/* /static/* /media/* /accounts/* /search /search/* /mcp /mcp/* /paperless-ui-proxy /paperless-ui-proxy/* /.well-known/*
+        not path /api /api/* /static /static/* /media /media/* /accounts /accounts/* /search /search/* /mcp /mcp/* /paperless-ui-proxy /paperless-ui-proxy/* /.well-known /.well-known/*
     }
     handle @paperless_ui {
         rewrite * /paperless-ui-proxy{uri}

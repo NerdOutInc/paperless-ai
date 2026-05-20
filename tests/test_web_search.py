@@ -552,6 +552,30 @@ class WebSearchTests(unittest.TestCase):
         get.assert_not_called()
 
     @patch("web_search.requests.get")
+    def test_paperless_ui_proxy_rejects_traversal_paths(self, get):
+        unsafe_paths = [
+            "../api/documents/",
+            "dashboard/../api/documents/",
+            "%2e%2e/api/documents/",
+            "dashboard/%2e%2e/api/documents/",
+            "dashboard\\api",
+            "dashboard/%5capi",
+            "%2fapi/documents/",
+        ]
+        for unsafe_path in unsafe_paths:
+            with self.subTest(unsafe_path=unsafe_path):
+                request = SimpleNamespace(
+                    headers={"accept": "text/html"},
+                    path_params={"path": unsafe_path},
+                    url=SimpleNamespace(query=""),
+                )
+
+                response = web_search.paperless_ui_proxy(request)
+
+                self.assertEqual(response.status_code, 404)
+        get.assert_not_called()
+
+    @patch("web_search.requests.get")
     def test_paperless_ui_proxy_skips_non_html_response(self, get):
         get.return_value = FakeResponse(
             200,
