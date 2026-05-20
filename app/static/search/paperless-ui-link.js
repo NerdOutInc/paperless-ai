@@ -1,6 +1,7 @@
 (function () {
   var LINK_MARKER = "paperlessAgSemanticSearch";
   var LINK_MARKER_ATTRIBUTE = "data-paperless-ag-semantic-search";
+  var SEARCH_HOST_MARKER_ATTRIBUTE = "data-paperless-ag-search-host";
   var SEARCH_INPUT_SELECTOR = 'pngx-global-search input[name="query"]';
   var COMPACT_MEDIA_QUERY = "(max-width: 900px)";
   var activeButton = null;
@@ -51,6 +52,29 @@
       "  text-decoration: none;",
       "  transition: background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;",
       "  white-space: nowrap;",
+      "}",
+      "[" + SEARCH_HOST_MARKER_ATTRIBUTE + "] {",
+      "  flex: 1 1 auto !important;",
+      "  max-width: none !important;",
+      "  min-width: 0 !important;",
+      "  width: 100% !important;",
+      "}",
+      "[" + SEARCH_HOST_MARKER_ATTRIBUTE + "] > pngx-global-search {",
+      "  display: block;",
+      "  min-width: 0;",
+      "  width: 100%;",
+      "}",
+      "[" + SEARCH_HOST_MARKER_ATTRIBUTE + "] .dropdown,",
+      "[" + SEARCH_HOST_MARKER_ATTRIBUTE + "] .form-inline,",
+      "[" + SEARCH_HOST_MARKER_ATTRIBUTE + "] .input-group {",
+      "  min-width: 0;",
+      "  width: 100%;",
+      "}",
+      "[" + SEARCH_HOST_MARKER_ATTRIBUTE + "] .input-group {",
+      "  flex-wrap: nowrap;",
+      "}",
+      "[" + SEARCH_HOST_MARKER_ATTRIBUTE + "] .input-group > .form-control {",
+      "  min-width: 0;",
       "}",
       ".paperless-ag-semantic-search-btn:hover {",
       "  background: var(--paperless-ag-button-bg-hover);",
@@ -184,8 +208,8 @@
     button.type = "button";
     button.className = "paperless-ag-semantic-search-btn";
     button.dataset[LINK_MARKER] = "true";
-    button.setAttribute("aria-label", "Semantic Search");
-    button.title = "Semantic Search";
+    button.setAttribute("aria-label", "Smart Search");
+    button.title = "Smart Search";
     button.innerHTML = [
       '<svg aria-hidden="true" viewBox="0 0 24 24" fill="none"',
       ' stroke="currentColor" stroke-width="2" stroke-linecap="round"',
@@ -199,7 +223,7 @@
       '<path d="M3 21 14.5 9.5" />',
       '<path d="m7 17 3-3" />',
       "</svg>",
-      "<span>Semantic Search</span>",
+      "<span>Smart Search</span>",
     ].join("");
     button.addEventListener("click", function () {
       window.location.assign(searchUrlFor(input));
@@ -217,6 +241,13 @@
       activeMetricsCleanup = null;
     }
     activeButton = null;
+  }
+
+  function markSearchLayout(inputGroup) {
+    var host = inputGroup.closest(".col-12") || inputGroup.parentElement;
+    if (host) {
+      host.setAttribute(SEARCH_HOST_MARKER_ATTRIBUTE, "true");
+    }
   }
 
   function attachButton() {
@@ -237,6 +268,7 @@
     }
 
     addStyles();
+    markSearchLayout(inputGroup);
     var rightEdge = captureRightEdge(inputGroup, input);
     activeButton = createButton(input);
     inputGroup.appendChild(activeButton);
