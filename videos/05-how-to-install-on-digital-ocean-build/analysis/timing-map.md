@@ -4,20 +4,20 @@ This is an evidence scaffold for review. It is not a render spec.
 
 ## Summary
 
-- Source video: `/Users/brian/github/nerdoutinc/paperless-ai/videos/05-how-to-install-on-digital-ocean-build/source/05-how-to-install-on-digital-ocean-combined.mp4`
-- Narration audio: `/Users/brian/github/nerdoutinc/paperless-ai/videos/src/05-how-to-install-on-digital-ocean.m4a`
+- Source video: `videos/05-how-to-install-on-digital-ocean-build/source/05-how-to-install-on-digital-ocean-combined.mp4`
+- Narration audio: `videos/src/05-how-to-install-on-digital-ocean.m4a`
 - Video duration: 403.800s
 - Narration duration: 267.540s
 - Duration delta: -136.260s
 
 ## Artifacts
 
-- media_summary: `/Users/brian/github/nerdoutinc/paperless-ai/videos/05-how-to-install-on-digital-ocean-build/analysis/media-summary.json`
-- transcript: `/Users/brian/github/nerdoutinc/paperless-ai/videos/05-how-to-install-on-digital-ocean-build/analysis/transcript.json`
-- screen_events: `/Users/brian/github/nerdoutinc/paperless-ai/videos/05-how-to-install-on-digital-ocean-build/analysis/screen-events.json`
-- screen_events_contact_sheet: `/Users/brian/github/nerdoutinc/paperless-ai/videos/05-how-to-install-on-digital-ocean-build/analysis/screen-events-contact-sheet.jpg`
-- timing_map_markdown: `/Users/brian/github/nerdoutinc/paperless-ai/videos/05-how-to-install-on-digital-ocean-build/analysis/timing-map.md`
-- timing_map_json: `/Users/brian/github/nerdoutinc/paperless-ai/videos/05-how-to-install-on-digital-ocean-build/analysis/timing-map.json`
+- media_summary: `videos/05-how-to-install-on-digital-ocean-build/analysis/media-summary.json`
+- transcript: `videos/05-how-to-install-on-digital-ocean-build/analysis/transcript.json`
+- screen_events: `videos/05-how-to-install-on-digital-ocean-build/analysis/screen-events.json`
+- screen_events_contact_sheet: `videos/05-how-to-install-on-digital-ocean-build/analysis/screen-events-contact-sheet.jpg`
+- timing_map_markdown: `videos/05-how-to-install-on-digital-ocean-build/analysis/timing-map.md`
+- timing_map_json: `videos/05-how-to-install-on-digital-ocean-build/analysis/timing-map.json`
 
 ## Warnings
 
