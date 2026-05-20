@@ -277,6 +277,21 @@ class WebSearchTests(unittest.TestCase):
         )
 
     @patch("web_search.requests.get")
+    def test_validate_session_ignores_non_list_ui_settings_permissions(self, get):
+        get.return_value = FakeResponse(
+            200,
+            {
+                "user": {"username": "admin"},
+                "permissions": "view_document",
+                "settings": {},
+            },
+        )
+
+        profile = web_search.validate_paperless_session("sessionid=abc")
+
+        self.assertEqual(profile, {"username": "admin"})
+
+    @patch("web_search.requests.get")
     def test_validate_session_caches_profile_briefly(self, get):
         get.return_value = FakeResponse(200, {"user": {"username": "admin"}})
 
@@ -325,6 +340,15 @@ class WebSearchTests(unittest.TestCase):
     @patch("web_search.requests.get")
     def test_validate_session_rejects_non_json_profile_response(self, get):
         get.return_value = FakeResponse(200, json_error=True)
+
+        with self.assertRaises(requests.RequestException):
+            web_search.validate_paperless_session("sessionid=abc")
+
+        self.assertEqual(web_search._session_cache, {})
+
+    @patch("web_search.requests.get")
+    def test_validate_session_rejects_non_object_payload(self, get):
+        get.return_value = FakeResponse(200, ["not", "an", "object"])
 
         with self.assertRaises(requests.RequestException):
             web_search.validate_paperless_session("sessionid=abc")
