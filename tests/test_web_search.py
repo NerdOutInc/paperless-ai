@@ -244,8 +244,41 @@ class WebSearchTests(unittest.TestCase):
         self.assertIsNone(web_search.validate_paperless_session("sessionid=bad"))
 
     @patch("web_search.requests.get")
+    def test_validate_session_reads_user_from_ui_settings(self, get):
+        get.return_value = FakeResponse(
+            200,
+            {
+                "user": {
+                    "id": 1,
+                    "username": "admin",
+                    "is_staff": True,
+                    "is_superuser": True,
+                },
+                "permissions": ["view_document"],
+                "settings": {},
+            },
+        )
+
+        profile = web_search.validate_paperless_session("sessionid=abc")
+
+        self.assertEqual(
+            profile,
+            {
+                "id": 1,
+                "username": "admin",
+                "is_staff": True,
+                "is_superuser": True,
+                "permissions": ["view_document"],
+            },
+        )
+        self.assertEqual(
+            get.call_args.args[0],
+            f"{config.PAPERLESS_API_URL}/api/ui_settings/",
+        )
+
+    @patch("web_search.requests.get")
     def test_validate_session_caches_profile_briefly(self, get):
-        get.return_value = FakeResponse(200, {"username": "admin"})
+        get.return_value = FakeResponse(200, {"user": {"username": "admin"}})
 
         first = web_search.validate_paperless_session("sessionid=abc")
         second = web_search.validate_paperless_session("sessionid=abc")
