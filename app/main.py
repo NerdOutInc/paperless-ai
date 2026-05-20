@@ -11,7 +11,7 @@ from mcp_server import mcp, BearerTokenMiddleware
 
 def main():
     print("=" * 50)
-    print("Paperless Ag Companion Container")
+    print("Paperless AI Companion Container")
     print("=" * 50)
 
     # Initialize database (retry in case DB isn't ready yet)

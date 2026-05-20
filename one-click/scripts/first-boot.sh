@@ -7,8 +7,8 @@ systemctl restart ssh
 
 # Generate a one-time setup token and persist it for the setup API
 SETUP_TOKEN=$(head -c 48 /dev/urandom | base64 | tr -dc 'a-zA-Z0-9' | head -c 32)
-echo "$SETUP_TOKEN" > /opt/paperless-ag/.setup-token
-chmod 600 /opt/paperless-ag/.setup-token
+echo "$SETUP_TOKEN" > /opt/paperless-ai/.setup-token
+chmod 600 /opt/paperless-ai/.setup-token
 
 # Start the setup wizard services
 systemctl start paperless-setup-api.service
@@ -18,7 +18,7 @@ systemctl start paperless-setup.service
 cat <<MSG
 
 ============================================================
- Paperless Ag setup wizard is ready on port 80.
+ Paperless AI setup wizard is ready on port 80.
 
  Your one-time setup token:  $SETUP_TOKEN
 
@@ -31,7 +31,7 @@ MSG
 cat > /etc/update-motd.d/99-paperless-setup <<MOTD
 #!/bin/sh
 echo ""
-echo "Paperless Ag setup token: $SETUP_TOKEN"
+echo "Paperless AI setup token: $SETUP_TOKEN"
 echo "Open http://\$(curl -s -4 http://169.254.169.254/metadata/v1/interfaces/public/0/ipv4/address) to begin setup."
 echo ""
 MOTD

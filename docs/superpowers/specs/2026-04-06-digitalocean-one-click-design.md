@@ -2,20 +2,25 @@
 
 **Date:** 2026-04-06
 **Branch:** `one-click`
-**Status:** Implemented
+**Status:** Partially implemented
 
 ## Goal
 
-Provide non-technical users (farmers) a turnkey Paperless Ag deployment
+Provide non-technical users (farmers) a turnkey Paperless AI deployment
 on DigitalOcean via a single link on the project website. No SSH, no
 Docker knowledge, no command-line interaction required for initial setup.
 
 ## Approach
 
-Pre-baked DigitalOcean snapshot built with Packer. All Docker images
-pre-pulled. A web-based setup wizard runs on first boot so the user
-configures their instance from a browser. After setup completes, the
-wizard disables itself and the standard Paperless Ag stack takes over.
+Intended image-build approach: pre-baked DigitalOcean snapshot built with
+Packer. All Docker images pre-pulled. A web-based setup wizard runs on first
+boot so the user configures their instance from a browser. After setup
+completes, the wizard disables itself and the standard Paperless AI stack takes
+over.
+
+Current repository status: the droplet payload exists under `one-click/`, but
+the `packer/` directory and `.github/workflows/packer-build.yml` workflow are
+not currently checked in.
 
 Distributed via a "Deploy on DigitalOcean" button on
 `paperless.fullstack.ag` that links to the DO droplet creation page
@@ -47,14 +52,14 @@ Docker Compose:
     db          pgvector/pgvector:pg16
     redis       redis:7-alpine
     paperless   paperless-ngx:latest
-    companion   ghcr.io/nerdoutinc/paperless-ag:latest
+    companion   ghcr.io/nerdoutinc/paperless-ai:latest
     caddy       caddy:2-alpine
 ```
 
 ## File Layout on Image
 
 ```text
-/opt/paperless-ag/
+/opt/paperless-ai/
     setup/
         wizard.html            Static HTML setup form (inline CSS/JS, no CDN deps)
         setup-api.py           Python 3 stdlib HTTP handler (~150 lines)
@@ -73,17 +78,17 @@ Docker Compose:
 
 ## Component Details
 
-### 1. Packer Image Build
+### 1. Proposed Packer Image Build
 
-**Template:** `packer/paperless-ag.pkr.hcl`
+**Template:** proposed `packer/paperless-ai.pkr.hcl` (not currently checked in)
 
 - Source: `digitalocean` builder
 - Base image: Ubuntu 24.04 LTS (`ubuntu-24-04-x64`)
 - Build droplet size: `s-2vcpu-4gb`
 - Region: `nyc1` (snapshots available in all regions)
-- Snapshot name: `paperless-ag-{{timestamp}}`
+- Snapshot name: `paperless-ai-{{timestamp}}`
 
-**Provision script** (`packer/provision.sh`):
+**Provision script**: proposed `packer/provision.sh` (not currently checked in):
 
 1. `apt update && apt upgrade` for latest security patches
 2. Install Docker CE + Docker Compose v2 from official Docker apt repo
@@ -91,7 +96,7 @@ Docker Compose:
    Docker Caddy that runs in production). Installed via official Caddy apt repo.
 4. Verify Python 3 is present (ships with Ubuntu 24.04)
 5. `docker compose pull` all images via a build-time compose file
-6. Copy `/opt/paperless-ag/` file tree into place
+6. Copy `/opt/paperless-ai/` file tree into place
 7. Install + enable `paperless-setup.service` (systemd, runs host Caddy +
    setup-api.py -- NOT the Docker Caddy)
 8. Snapshot hygiene:
@@ -131,12 +136,12 @@ No Docker containers start until the user completes the wizard.
 
 **Completion page shows:**
 
-- "Paperless Ag is ready!" heading
+- "Paperless AI is ready!" heading
 - Link to the Paperless UI (domain or IP)
 - MCP auth token in a read-only field with a "Copy" button
 - "Save this token -- you'll need it to connect Claude"
 - "Lost your token? SSH in and run:
-  `cat /opt/paperless-ag/.env | grep MCP_AUTH_TOKEN`"
+  `cat /opt/paperless-ai/.env | grep MCP_AUTH_TOKEN`"
 - Auto-redirects to Paperless login after 30 seconds
 
 **`setup-api.py`** -- Python 3 stdlib HTTP handler:
@@ -159,7 +164,7 @@ No Docker containers start until the user completes the wizard.
     }
     handle {
         file_server {
-            root /opt/paperless-ag/setup
+            root /opt/paperless-ai/setup
             index wizard.html
         }
     }
@@ -192,7 +197,7 @@ No Docker containers start until the user completes the wizard.
 
 ### 4. Post-Setup Runtime
 
-Identical to the existing Paperless Ag production stack:
+Identical to the existing Paperless AI production stack:
 
 - All services managed by Docker Compose
 - Caddy reverse-proxies Paperless and MCP
@@ -202,17 +207,18 @@ Identical to the existing Paperless Ag production stack:
 **Helper scripts:**
 
 - `update.sh`: backs up DB, pulls latest images, restarts stack
-- `backup.sh`: `pg_dump` wrapper, writes to `/opt/paperless-ag/backups/`
+- `backup.sh`: `pg_dump` wrapper, writes to `/opt/paperless-ai/backups/`
 - `restore.sh`: `psql` wrapper for restoring SQL dumps
 
 **Re-running setup:** Not supported via the web wizard. If reconfiguration
-is needed, the user SSHes in and edits `/opt/paperless-ag/.env` + restarts
+is needed, the user SSHes in and edits `/opt/paperless-ai/.env` + restarts
 Docker Compose. This is intentional -- re-running setup on a system with
 existing data is risky.
 
-### 5. CI Pipeline
+### 5. Proposed CI Pipeline
 
-**Workflow:** `.github/workflows/packer-build.yml`
+**Workflow:** proposed `.github/workflows/packer-build.yml` (not currently
+checked in)
 
 - Triggers:
   - Weekly schedule (Sunday night)
@@ -253,7 +259,7 @@ the constructed URL.
 
 **Landing page content:**
 
-- What they'll get (Paperless Ag -- document management for farms)
+- What they'll get (Paperless AI -- document management for farms)
 - Cost: ~$24/mo on DigitalOcean
 - Requirement: DigitalOcean account
 - Steps: click button, create droplet, visit IP, fill setup wizard

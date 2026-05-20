@@ -1,6 +1,6 @@
 {
   "mcpServers": {
-    "paperless-ag": {
+    "paperless-ai": {
       "type": "http",
       "url": "http://localhost:3001/mcp"
     }

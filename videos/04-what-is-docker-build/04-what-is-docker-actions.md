@@ -2,7 +2,7 @@
 
 ## Source
 
-- Audio: `/Users/brian/github/nerdoutinc/paperless-ag/videos/src/04-what-is-docker.m4a`
+- Audio: `videos/src/04-what-is-docker.m4a`
 - Duration: 120.419 seconds
 - Transcript: `/tmp/screen-studio-04-what-is-docker-transcript/transcript.json`
 - Capture scope: full display with Screen Studio
@@ -37,7 +37,7 @@ Audio timing is a guide only. The recording should clearly capture the intended 
 
 - Paperless stack responding at `http://localhost:8000`.
 - Companion health responding at `http://localhost:3001/health`.
-- `docker ps` shows Paperless containers, including `paperless-ag-app-1` and `paperless-ag-paperless-webserver-1`.
+- `docker ps` shows Paperless containers, including `paperless-ai-app-1` and `paperless-ai-paperless-webserver-1`.
 - Docker Desktop opens to a visible window, not tray-only.
 - Helium opens to a Docker website page without address-bar focus.
 - Terminal is ready in the repo with a clear prompt and the command `docker ps` available.
@@ -61,7 +61,7 @@ To be filled during dry runs:
 - Docker website scroll command: `04-what-is-docker-helper.sh scroll-product-page`
 - Docker Desktop Containers view coordinates:
 - Terminal window focus point:
-- Terminal command: `docker ps --filter name=paperless-ag --format "table {{.Names}}\t{{.Status}}"`
+- Terminal command: `docker ps --filter name=paperless-ai --format "table {{.Names}}\t{{.Status}}"`
 - Final hold state: Terminal output listing the Paperless containers and healthy status.
 
 ## Dry-Run Notes
@@ -80,7 +80,7 @@ To be filled during dry runs:
 - Screen Studio project:
   `/Users/brian/Screen Studio Projects/Built-in Retina Display 2026-05-12 20:15:36.screenstudio`
 - Repo copy:
-  `/Users/brian/github/nerdoutinc/paperless-ag/video-scripts/04-what-is-docker.screenstudio`
+  `video-scripts/04-what-is-docker.screenstudio`
 - Display track:
   `/Users/brian/Screen Studio Projects/Built-in Retina Display 2026-05-12 20:15:36.screenstudio/recording/channel-1-display-0.mp4`
 - Display-track duration: 32.647 seconds
@@ -88,9 +88,9 @@ To be filled during dry runs:
 - Frame review:
   - 00:00-00:16: Helium starts on Docker Desktop's product page and scrolls to
     the footer.
-  - 00:18-00:22: Docker Desktop is visible on the `paperless-ag` project with
+  - 00:18-00:22: Docker Desktop is visible on the `paperless-ai` project with
     the cursor off the app and no active hover state.
   - 00:24-00:32: Terminal is visible with formatted `docker ps` output listing
-    `paperless-ag-app-1`, `paperless-ag-paperless-webserver-1`,
-    `paperless-ag-redis-1`, and `paperless-ag-db-1` as healthy.
+    `paperless-ai-app-1`, `paperless-ai-paperless-webserver-1`,
+    `paperless-ai-redis-1`, and `paperless-ai-db-1` as healthy.
 - Verdict: Keeper. The retake matches the user's requested three-shot sequence.

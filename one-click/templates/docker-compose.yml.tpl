@@ -57,7 +57,7 @@ services:
       start_period: 90s
 
   companion:
-    image: ghcr.io/nerdoutinc/paperless-ag:latest
+    image: ghcr.io/nerdoutinc/paperless-ai:latest
     restart: unless-stopped
     depends_on:
       db:

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Paperless Ag Setup</title>
+    <title>Paperless AI Setup</title>
     <style>
       * {
         box-sizing: border-box;
@@ -189,7 +189,7 @@
   <body>
     <!-- STATE 1: Form -->
     <div class="card" id="form-card">
-      <h1>Paperless Ag Setup</h1>
+      <h1>Paperless AI Setup</h1>
       <p class="subtitle">Configure your document management system.</p>
 
       <form id="setup-form" novalidate>
@@ -276,13 +276,13 @@
 
         <div class="error" id="form-error"></div>
 
-        <button type="submit" id="submit-btn">Set Up Paperless Ag</button>
+        <button type="submit" id="submit-btn">Set Up Paperless AI</button>
       </form>
     </div>
 
     <!-- STATE 2: Progress -->
     <div class="card hidden" id="progress-card">
-      <h1>Setting Up Paperless Ag</h1>
+      <h1>Setting Up Paperless AI</h1>
       <div class="spinner"></div>
       <p class="progress-text">
         Starting services... this takes a few minutes.
@@ -291,7 +291,7 @@
 
     <!-- STATE 3: Complete -->
     <div class="card hidden" id="complete-card">
-      <h1>Paperless Ag is Ready!</h1>
+      <h1>Paperless AI is Ready!</h1>
       <p class="subtitle">Your document management system is running.</p>
 
       <label>MCP Auth Token</label>
@@ -311,7 +311,7 @@
       </div>
       <p class="ssh-hint">
         Lost your token later? SSH in and run:<br />
-        <code>cat /opt/paperless-ag/.env | grep MCP_AUTH_TOKEN</code>
+        <code>cat /opt/paperless-ai/.env | grep MCP_AUTH_TOKEN</code>
       </p>
 
       <a id="search-link" class="completion-link primary" href="#">
@@ -449,7 +449,7 @@
               completionShown = true;
               clearInterval(interval);
               document.querySelector(".progress-text").textContent =
-                "Setup timed out. SSH in and check: cat /opt/paperless-ag/setup.log";
+                "Setup timed out. SSH in and check: cat /opt/paperless-ai/setup.log";
               document.querySelector(".spinner").style.display = "none";
               return;
             }
@@ -471,7 +471,7 @@
                   completionShown = true;
                   clearInterval(interval);
                   document.querySelector(".progress-text").textContent =
-                    "Setup failed. SSH in and check: cat /opt/paperless-ag/setup.log";
+                    "Setup failed. SSH in and check: cat /opt/paperless-ai/setup.log";
                   document.querySelector(".spinner").style.display = "none";
                 }
               })

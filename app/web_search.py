@@ -434,7 +434,7 @@ def mcp_config_api(request):
     auth_token = config.MCP_AUTH_TOKEN if can_view_token else None
     return JSONResponse(
         {
-            "server_name": "paperless-ag",
+            "server_name": "paperless-ai",
             "endpoint_path": "/mcp",
             "auth_token": auth_token,
             "can_view_token": can_view_token,

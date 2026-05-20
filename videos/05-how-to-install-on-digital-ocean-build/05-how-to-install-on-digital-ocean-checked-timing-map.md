@@ -9,8 +9,8 @@ Narration: `audio/05-how-to-install-on-digital-ocean-narration-v13.m4a`
 | Output | Source | Visual | Narration Cue | Edit |
 | --- | --- | --- | --- | --- |
 | 00:00-00:03 | title card | Branded title card | Opening greeting starts under the card | Intro still |
-| 00:03-00:25 | patched 00:00 still | Paperless Ag install page | Setup promise and exact deploy-button cue | Clean freeze first frame |
-| 00:25-00:29 | 00:00-00:04 | Paperless Ag site to DigitalOcean | Use the deploy button / DigitalOcean | Native speed transition |
+| 00:03-00:25 | patched 00:00 still | Paperless AI install page | Setup promise and exact deploy-button cue | Clean freeze first frame |
+| 00:25-00:29 | 00:00-00:04 | Paperless AI site to DigitalOcean | Use the deploy button / DigitalOcean | Native speed transition |
 | 00:29-00:31.9 | 00:04-00:06.9 | DigitalOcean Create Droplet page settles | Button defaults | Native speed settle |
 | 00:31.9-00:37.5 | 00:06.9 still | Create Droplet top before scrolling | Button defaults | Freeze before scroll |
 | 00:37.5-00:40.43 | 00:06.9-00:09.833 | First scroll down the Create Droplet page | Start scrolling past region | Native speed scroll |
@@ -31,7 +31,7 @@ Narration: `audio/05-how-to-install-on-digital-ocean-narration-v13.m4a`
 | 01:52.36-02:00.5 | 01:16 still | Fingerprint confirmation prompt | Fingerprint mention | Freeze on prompt |
 | 02:00.5-02:04.5 | 01:16-01:20 | Type yes and login | "I'll type yes" | Native speed |
 | 02:04.5-02:08 | 01:20 still | Logged-in terminal prompt | Copy install script setup | Freeze before site insert |
-| 02:08-02:14 | patched Paperless Ag still | paperless.fullstack.ag install script | Copy install script | Freeze webpage |
+| 02:08-02:14 | patched Paperless AI still | paperless.fullstack.ag install script | Copy install script | Freeze webpage |
 | 02:14-02:18 | 01:22-01:26 | Terminal prompt to pasted curl command | Paste/run script | Native terminal action |
 | 02:18-02:20.19 | 01:26-01:45 | Install command starts setup | Script starts | Fast catch-up |
 | 02:20.19-02:32.75 | 01:45-02:08 | Install command / prompts | Copy and run script | Speed-up |

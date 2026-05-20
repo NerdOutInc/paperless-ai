@@ -4,20 +4,20 @@ This is an evidence scaffold for review. It is not a render spec.
 
 ## Summary
 
-- Source video: `/Users/brian/github/nerdoutinc/paperless-ag/videos/src/03-what-is-a-vps.mp4`
-- Narration audio: `/Users/brian/github/nerdoutinc/paperless-ag/videos/src/03-what-is-a-vps.m4a`
+- Source video: `videos/src/03-what-is-a-vps.mp4`
+- Narration audio: `videos/src/03-what-is-a-vps.m4a`
 - Video duration: 51.717s
 - Narration duration: 129.335s
 - Duration delta: 77.618s
 
 ## Artifacts
 
-- media_summary: `/Users/brian/github/nerdoutinc/paperless-ag/videos/03-what-is-a-vps-build/analysis/media-summary.json`
-- transcript: `/Users/brian/github/nerdoutinc/paperless-ag/videos/03-what-is-a-vps-build/analysis/transcript.json`
-- screen_events: `/Users/brian/github/nerdoutinc/paperless-ag/videos/03-what-is-a-vps-build/analysis/screen-events.json`
-- screen_events_contact_sheet: `/Users/brian/github/nerdoutinc/paperless-ag/videos/03-what-is-a-vps-build/analysis/screen-events-contact-sheet.jpg`
-- timing_map_markdown: `/Users/brian/github/nerdoutinc/paperless-ag/videos/03-what-is-a-vps-build/analysis/timing-map.md`
-- timing_map_json: `/Users/brian/github/nerdoutinc/paperless-ag/videos/03-what-is-a-vps-build/analysis/timing-map.json`
+- media_summary: `videos/03-what-is-a-vps-build/analysis/media-summary.json`
+- transcript: `videos/03-what-is-a-vps-build/analysis/transcript.json`
+- screen_events: `videos/03-what-is-a-vps-build/analysis/screen-events.json`
+- screen_events_contact_sheet: `videos/03-what-is-a-vps-build/analysis/screen-events-contact-sheet.jpg`
+- timing_map_markdown: `videos/03-what-is-a-vps-build/analysis/timing-map.md`
+- timing_map_json: `videos/03-what-is-a-vps-build/analysis/timing-map.json`
 
 ## Warnings
 
@@ -69,4 +69,4 @@ This is an evidence scaffold for review. It is not a render spec.
 | the VPS is already on the Internet and ready to go. | 113.940s - 117.980s | 43.000s - 50.000s | ocr_change e027 @ 46.000s: DigitalOcean Droplets \| Sca', t DigitslOcean * c https:Ilcloud.digitalocean.com...; ocr_change e025 @ 45.500s: ? DigitalOcean Drople... | align_to_event | medium | Narration is 77.6s longer than the source video overall. |
 | So that's it. A VPS is just a computer you write online. | 117.980s - 122.140s | 43.500s - 51.717s | ocr_change e028 @ 48.000s: ? DigitalOcean Droplets \| Sca, t DigitalOcean <- * C https:Ilcloud.digitalocean...; ocr_change e031 @ 50.000s: ? DigitalOcean Drople... | align_to_event | medium | Narration is 77.6s longer than the source video overall. |
 | In a later video, we'll walk you through actually creating one of these | 122.140s - 125.740s | 44.000s - 51.717s | ocr_change e031 @ 50.000s: ? DigitalOcean Droplets \| Sca', t DigitslOcean <- * C https:Ilcloud.digitalocea...; ocr_change e032 @ 51.000s: ? DigitalOcean Drople... | align_to_event | medium | Narration is 77.6s longer than the source video overall. |
-| and installing paperless on it step-by-step. | 125.740s - 128.940s | 44.000s - 51.717s | ocr_change e032 @ 51.000s: ? DigitalOcean Droplets \| Sca, * DigitslOcean <- * C https:Ilcloud.digitalocean...; ocr_change e031 @ 50.000s: ? DigitalOcean Drople... | align_to_event | medium | Narration is 77.6s longer than the source video overall. |
+| and installing paperless on it step-by-step. | 125.740s - 128.940s | 44.000s - 51.717s | ocr_change e032 @ 51.000s: ? DigitalOcean Droplets \| Sca, \* DigitslOcean <- \* C https:Ilcloud.digitalocean...; ocr_change e031 @ 50.000s: ? DigitalOcean Drople... | align_to_event | medium | Narration is 77.6s longer than the source video overall. |

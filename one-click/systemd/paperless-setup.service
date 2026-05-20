@@ -1,12 +1,12 @@
 [Unit]
-Description=Paperless Ag Setup Wizard (Caddy)
+Description=Paperless AI Setup Wizard (Caddy)
 After=network-online.target paperless-setup-api.service
 Wants=network-online.target
 Requires=paperless-setup-api.service
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/caddy run --config /opt/paperless-ag/setup/Caddyfile.setup
+ExecStart=/usr/bin/caddy run --config /opt/paperless-ai/setup/Caddyfile.setup
 Restart=on-failure
 RestartSec=5
 

@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Paperless Ag is a companion Docker container for [Paperless-ngx](https://github.com/paperless-ngx/paperless-ngx) that adds semantic search and an MCP server for Claude integration. It lets farmers search their document archive using natural language. Paperless-ngx stays completely stock.
+Paperless AI is a companion Docker container for [Paperless-ngx](https://github.com/paperless-ngx/paperless-ngx) that adds semantic search and an MCP server for Claude integration. It lets farmers search their document archive using natural language. Paperless-ngx stays completely stock.
 
 ## Architecture
 
@@ -61,29 +61,29 @@ When proving the local MCP flow, do not edit tracked Compose files just to set a
 demo token. Use a temporary override:
 
 ```bash
-cat >/tmp/paperless-ag.override.yml <<'YAML'
+cat >/tmp/paperless-ai.override.yml <<'YAML'
 services:
   app:
     environment:
-      MCP_AUTH_TOKEN: paperless-ag-local-demo
+      MCP_AUTH_TOKEN: paperless-ai-local-demo
 YAML
 
 docker compose \
   -f docker-compose.yml \
-  -f /tmp/paperless-ag.override.yml \
+  -f /tmp/paperless-ai.override.yml \
   up -d --build
 ```
 
-Before asking Claude to use Paperless Ag, verify all of these:
+Before asking Claude to use Paperless AI, verify all of these:
 
 - Paperless responds at `http://localhost:8000`.
 - Companion health responds at `http://localhost:3001/health`.
 - Unauthenticated MCP requests fail and authenticated MCP requests work with
-  `Authorization: Bearer paperless-ag-local-demo`.
+  `Authorization: Bearer paperless-ai-local-demo`.
 - `document_embeddings` covers all 100 demo documents.
 - Claude Desktop is configured with `mcp-remote` for
   `http://localhost:3001/mcp` and has relaunched.
-- Claude shows the `paperless-ag` connector enabled or has spawned an
+- Claude shows the `paperless-ai` connector enabled or has spawned an
   `mcp-remote` process for `localhost:3001/mcp`.
 
 Claude Desktop's macOS config file is

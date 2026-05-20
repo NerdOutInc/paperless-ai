@@ -1,12 +1,13 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-ROOT="/Users/brian/github/nerdoutinc/paperless-ag"
-SKILL_DIR="/Users/brian/github/nerdoutinc/ai-skills/screen-studio"
-CLICLICK="/opt/homebrew/bin/cliclick"
-SCROLL_WHEEL="$SKILL_DIR/scripts/scroll-wheel.swift"
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+ROOT="${PAPERLESS_AI_ROOT:-$(cd -- "$SCRIPT_DIR/../.." && pwd)}"
+SKILL_DIR="${SCREEN_STUDIO_SKILL_DIR:-$ROOT/../ai-skills/screen-studio}"
+CLICLICK="${CLICLICK:-/opt/homebrew/bin/cliclick}"
+SCROLL_WHEEL="${SCREEN_STUDIO_SCROLL_WHEEL:-$SKILL_DIR/scripts/scroll-wheel.swift}"
 DOCKER_URL="https://www.docker.com/products/docker-desktop/"
-DOCKER_PS_COMMAND='docker ps --filter name=paperless-ag --format "table {{.Names}}\t{{.Status}}"'
+DOCKER_PS_COMMAND='docker ps --filter name=paperless-ai --format "table {{.Names}}\t{{.Status}}"'
 
 hide_process() {
   local name="$1"

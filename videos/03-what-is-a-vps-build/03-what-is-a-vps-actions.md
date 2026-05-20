@@ -2,7 +2,7 @@
 
 ## Source
 
-- Audio: `/Users/brian/github/nerdoutinc/paperless-ag/videos/src/03-what-is-a-vps.m4a`
+- Audio: `videos/src/03-what-is-a-vps.m4a`
 - Duration: 129.287 seconds
 - Transcript: `/tmp/screen-studio-03-what-is-a-vps-transcript/transcript.json`
 - Capture scope: full display with Screen Studio
@@ -74,9 +74,9 @@ for both pages.
 - Screen Studio project:
   `/Users/brian/Screen Studio Projects/Built-in Retina Display 2026-05-12 22:37:03.screenstudio`
 - Repo copy:
-  `/Users/brian/github/nerdoutinc/paperless-ag/video-scripts/03-what-is-a-vps.screenstudio`
+  `video-scripts/03-what-is-a-vps.screenstudio`
 - Display track:
-  `/Users/brian/github/nerdoutinc/paperless-ag/video-scripts/03-what-is-a-vps.screenstudio/recording/channel-1-display-0.mp4`
+  `video-scripts/03-what-is-a-vps.screenstudio/recording/channel-1-display-0.mp4`
 - Display-track duration: 187.555 seconds
 - Contact sheet: `/tmp/03-vps-final-contact-sheet.jpg`
 - Verdict: keeper. Frame review confirms the Droplets product page appears

@@ -1,7 +1,7 @@
 (function () {
-  var LINK_MARKER = "paperlessAgSemanticSearch";
-  var LINK_MARKER_ATTRIBUTE = "data-paperless-ag-semantic-search";
-  var SEARCH_HOST_MARKER_ATTRIBUTE = "data-paperless-ag-search-host";
+  var LINK_MARKER = "paperlessAiSemanticSearch";
+  var LINK_MARKER_ATTRIBUTE = "data-paperless-ai-semantic-search";
+  var SEARCH_HOST_MARKER_ATTRIBUTE = "data-paperless-ai-search-host";
   var SEARCH_INPUT_SELECTOR = 'pngx-global-search input[name="query"]';
   var COMPACT_MEDIA_QUERY = "(max-width: 900px)";
   var activeLink = null;
@@ -11,29 +11,29 @@
   var styleApplied = false;
 
   function addStyles() {
-    if (styleApplied || document.getElementById("paperless-ag-ui-link-style")) {
+    if (styleApplied || document.getElementById("paperless-ai-ui-link-style")) {
       styleApplied = true;
       return;
     }
 
     var style = document.createElement("style");
-    style.id = "paperless-ag-ui-link-style";
+    style.id = "paperless-ai-ui-link-style";
     style.textContent = [
-      ".paperless-ag-semantic-search-btn {",
-      "  --paperless-ag-button-border: rgba(255, 255, 255, 0.34);",
-      "  --paperless-ag-button-bg: rgba(255, 255, 255, 0.12);",
-      "  --paperless-ag-button-bg-hover: rgba(255, 255, 255, 0.2);",
+      ".paperless-ai-semantic-search-btn {",
+      "  --paperless-ai-button-border: rgba(255, 255, 255, 0.34);",
+      "  --paperless-ai-button-bg: rgba(255, 255, 255, 0.12);",
+      "  --paperless-ai-button-bg-hover: rgba(255, 255, 255, 0.2);",
       "  align-items: center;",
-      "  background: var(--paperless-ag-button-bg);",
-      "  border: 1px solid var(--paperless-ag-button-border);",
+      "  background: var(--paperless-ai-button-bg);",
+      "  border: 1px solid var(--paperless-ai-button-border);",
       "  border-bottom-left-radius: 0;",
       "  border-bottom-right-radius: var(",
-      "    --paperless-ag-search-border-bottom-right-radius,",
+      "    --paperless-ai-search-border-bottom-right-radius,",
       "    var(--bs-border-radius-sm, 0.25rem)",
       "  );",
       "  border-top-left-radius: 0;",
       "  border-top-right-radius: var(",
-      "    --paperless-ag-search-border-top-right-radius,",
+      "    --paperless-ai-search-border-top-right-radius,",
       "    var(--bs-border-radius-sm, 0.25rem)",
       "  );",
       "  box-sizing: border-box;",
@@ -45,10 +45,10 @@
       "  font-size: 0.8125rem;",
       "  font-weight: 600;",
       "  gap: 0.35rem;",
-      "  height: var(--paperless-ag-search-control-height, auto);",
+      "  height: var(--paperless-ai-search-control-height, auto);",
       "  line-height: 1;",
       "  margin-left: calc(var(--bs-border-width, 1px) * -1);",
-      "  min-height: var(--paperless-ag-search-control-height, auto);",
+      "  min-height: var(--paperless-ai-search-control-height, auto);",
       "  padding: 0 0.72rem;",
       "  text-decoration: none;",
       "  transition: background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;",
@@ -79,29 +79,29 @@
       "[" + SEARCH_HOST_MARKER_ATTRIBUTE + "] .input-group > .form-control {",
       "  min-width: 0;",
       "}",
-      ".paperless-ag-semantic-search-btn:hover {",
-      "  background: var(--paperless-ag-button-bg-hover);",
+      ".paperless-ai-semantic-search-btn:hover {",
+      "  background: var(--paperless-ai-button-bg-hover);",
       "  border-color: rgba(255, 255, 255, 0.55);",
       "  color: var(--pngx-primary-text-contrast, #ffffff);",
       "}",
-      ".paperless-ag-semantic-search-btn:focus-visible {",
+      ".paperless-ai-semantic-search-btn:focus-visible {",
       "  box-shadow: 0 0 0 0.16rem rgba(255, 255, 255, 0.26);",
       "  outline: 0;",
       "}",
-      ".paperless-ag-semantic-search-btn:active {",
+      ".paperless-ai-semantic-search-btn:active {",
       "  transform: translateY(1px);",
       "}",
-      ".paperless-ag-semantic-search-btn svg {",
+      ".paperless-ai-semantic-search-btn svg {",
       "  flex: 0 0 auto;",
       "  height: 1em;",
       "  width: 1em;",
       "}",
       "@media " + COMPACT_MEDIA_QUERY + " {",
-      "  .paperless-ag-semantic-search-btn {",
+      "  .paperless-ai-semantic-search-btn {",
       "    gap: 0;",
       "    padding: 0 0.48rem;",
       "  }",
-      "  .paperless-ag-semantic-search-btn span {",
+      "  .paperless-ai-semantic-search-btn span {",
       "    clip: rect(0 0 0 0);",
       "    clip-path: inset(50%);",
       "    height: 1px;",
@@ -165,16 +165,16 @@
     var controlHeight = searchControlFor(input).getBoundingClientRect().height;
     if (controlHeight > 0) {
       link.style.setProperty(
-        "--paperless-ag-search-control-height",
+        "--paperless-ai-search-control-height",
         controlHeight + "px",
       );
     }
     link.style.setProperty(
-      "--paperless-ag-search-border-top-right-radius",
+      "--paperless-ai-search-border-top-right-radius",
       rightEdge.borderTopRightRadius,
     );
     link.style.setProperty(
-      "--paperless-ag-search-border-bottom-right-radius",
+      "--paperless-ai-search-border-bottom-right-radius",
       rightEdge.borderBottomRightRadius,
     );
   }
@@ -229,7 +229,7 @@
 
   function createSearchLink(input) {
     var link = document.createElement("a");
-    link.className = "paperless-ag-semantic-search-btn";
+    link.className = "paperless-ai-semantic-search-btn";
     link.dataset[LINK_MARKER] = "true";
     link.href = searchUrlFor(input);
     link.setAttribute("aria-label", "Smart Search");

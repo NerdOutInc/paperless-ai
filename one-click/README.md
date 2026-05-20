@@ -1,6 +1,6 @@
 # One-Click Image Builder
 
-This directory contains all files deployed to `/opt/paperless-ag/` on DigitalOcean 1-click Marketplace droplets.
+This directory contains all files deployed to `/opt/paperless-ai/` on DigitalOcean 1-click Marketplace droplets.
 
 ## Directory Structure
 
@@ -26,42 +26,45 @@ one-click/
     └── paperless-setup-api.service # Setup API service
 ```
 
-## Building Locally
+## Image Build Status
 
-Prerequisites:
+This directory is the droplet payload for a DigitalOcean image build. The repo
+does not currently include the Packer template or snapshot-build workflow, so
+there is no runnable local image-build command in this checkout.
 
-- [Packer](https://www.packer.io/downloads) (v1.8+)
-- DigitalOcean account with API token
-
-Build the snapshot:
+To test payload changes on a machine, copy this directory to the path used by
+the setup services:
 
 ```bash
-cd packer
-packer init .
-DIGITALOCEAN_API_TOKEN=<your-token> packer build paperless-ag.pkr.hcl
+sudo mkdir -p /opt/paperless-ai
+sudo rsync -a one-click/ /opt/paperless-ai/
+sudo bash -n /opt/paperless-ai/scripts/*.sh
 ```
 
-The build process:
+A future image build should:
 
-1. Launches an Ubuntu 24.04 droplet in NYC1
-2. Installs Docker, Docker Compose, and Caddy
-3. Pre-pulls all Docker images
-4. Deploys files from `one-click/` to `/opt/paperless-ag/`
-5. Installs systemd services
-6. Creates a snapshot
-7. Cleans up the temporary droplet
+1. Launch an Ubuntu 24.04 droplet in NYC1
+2. Install Docker, Docker Compose, and Caddy
+3. Pre-pull all Docker images
+4. Deploy files from `one-click/` to `/opt/paperless-ai/`
+5. Install systemd services
+6. Create a snapshot
+7. Clean up the temporary droplet
 
-Snapshot will be available in your DigitalOcean dashboard and replicated to additional regions.
+The snapshot should be available in your DigitalOcean dashboard and replicated
+to additional regions.
 
-## Automated Builds
+## Planned Automated Builds
 
-The CI/CD workflow at `.github/workflows/packer-build.yml`:
+The planned CI/CD workflow is `.github/workflows/packer-build.yml`, but that
+workflow is not currently checked in. Once added, it should:
 
-- Runs weekly on Sundays at 4 AM UTC
-- Runs on any git tag (e.g., `v1.0.0`)
-- Can be triggered manually via GitHub Actions
+- Run weekly on Sundays at 4 AM UTC
+- Run on any git tag (e.g., `v1.0.0`)
+- Support manual triggering via GitHub Actions
 
-Each build updates `docs/deploy-config.json` with the new snapshot ID, which the deploy button reads to launch fresh droplets.
+Each build should update `docs/deploy-config.json` with the new snapshot ID,
+which the deploy button reads to launch fresh droplets.
 
 ## Environment Variables
 
@@ -79,7 +82,7 @@ See `templates/env.template` for the full template with defaults.
 
 ## First Boot Flow
 
-1. Cloud-init executes `/opt/paperless-ag/scripts/first-boot.sh`
+1. Cloud-init executes `/opt/paperless-ai/scripts/first-boot.sh`
 2. Systemd services start the setup wizard (Caddy + Python stdlib API)
 3. Farmer accesses `http://<droplet-ip>` to configure
 4. Farmer fills out admin credentials, timezone, optional domain
@@ -94,7 +97,7 @@ See `templates/env.template` for the full template with defaults.
 | --- | --- |
 | Check setup progress | `journalctl -u paperless-setup -f` |
 | View API logs | `journalctl -u paperless-setup-api -f` |
-| Restart services | `cd /opt/paperless-ag && docker compose restart` |
-| Backup database | `/opt/paperless-ag/scripts/backup.sh` |
-| Restore database | `/opt/paperless-ag/scripts/restore.sh <backup-file>` |
-| Update images | `/opt/paperless-ag/scripts/update.sh` |
+| Restart services | `cd /opt/paperless-ai && docker compose restart` |
+| Backup database | `/opt/paperless-ai/scripts/backup.sh` |
+| Restore database | `/opt/paperless-ai/scripts/restore.sh <backup-file>` |
+| Update images | `/opt/paperless-ai/scripts/update.sh` |

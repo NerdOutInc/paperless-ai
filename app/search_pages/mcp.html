@@ -27,7 +27,7 @@
           <div>
             <h1 id="mcp-title">MCP setup</h1>
             <p class="lede">
-              Connect AI apps to the same read-only Paperless Ag MCP server.
+              Connect AI apps to the same read-only Paperless AI MCP server.
               Paperless admins can copy the token here.
             </p>
           </div>
@@ -36,7 +36,7 @@
         <div class="connection-grid" aria-label="MCP connection details">
           <div class="connection-item">
             <span>Server</span>
-            <code id="mcp-server-name" data-server-name>paperless-ag</code>
+            <code id="mcp-server-name" data-server-name>paperless-ai</code>
           </div>
           <div class="connection-item">
             <span>URL</span>
@@ -162,10 +162,10 @@ claude mcp list</code></pre>
               >
                 Copy
               </button>
-              <pre><code id="codex-command" data-template="codex">export PAPERLESS_AG_MCP_TOKEN="{{MCP_TOKEN}}"
+              <pre><code id="codex-command" data-template="codex">export PAPERLESS_AI_MCP_TOKEN="{{MCP_TOKEN}}"
 codex mcp add {{SERVER_NAME}} \
   --url {{MCP_URL}} \
-  --bearer-token-env-var PAPERLESS_AG_MCP_TOKEN
+  --bearer-token-env-var PAPERLESS_AI_MCP_TOKEN
 
 codex mcp list</code></pre>
             </div>
@@ -226,7 +226,7 @@ codex mcp list</code></pre>
               <li>Open the MCP servers/settings screen and add a server.</li>
               <li>
                 Set the server name to
-                <code data-server-name>paperless-ag</code>.
+                <code data-server-name>paperless-ai</code>.
               </li>
               <li>
                 Set the server URL to <code data-mcp-url>Loading...</code>.
@@ -242,7 +242,7 @@ codex mcp list</code></pre>
             </ol>
             <p>
               If <code>llama-server</code> runs inside Docker, the URL must be
-              reachable from that container. In the older Paperless Ag local AI
+              reachable from that container. In the older Paperless AI local AI
               branch, this was wired as <code>http://caddy:8088/mcp</code> with
               proxying enabled and Caddy injecting the token internally.
             </p>

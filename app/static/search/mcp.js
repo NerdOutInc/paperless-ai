@@ -1,7 +1,7 @@
 (function () {
   var status = document.getElementById("mcp-status");
   var values = {
-    SERVER_NAME: "paperless-ag",
+    SERVER_NAME: "paperless-ai",
     MCP_URL: window.location.origin + "/mcp",
     MCP_TOKEN: "YOUR_MCP_AUTH_TOKEN",
     AUTH_HEADER: "Bearer YOUR_MCP_AUTH_TOKEN",

@@ -1,21 +1,21 @@
 {
   "schema": "nerdout.timing_map.v1",
-  "source_video": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/source/05-how-to-install-on-digital-ocean-combined.mp4",
-  "source_audio": "/Users/brian/github/nerdoutinc/paperless-ag/videos/src/05-how-to-install-on-digital-ocean.m4a",
+  "source_video": "videos/05-how-to-install-on-digital-ocean-build/source/05-how-to-install-on-digital-ocean-combined.mp4",
+  "source_audio": "videos/src/05-how-to-install-on-digital-ocean.m4a",
   "artifacts": {
-    "media_summary": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/media-summary.json",
-    "transcript": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/transcript.json",
-    "screen_events": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/screen-events.json",
-    "screen_events_contact_sheet": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/screen-events-contact-sheet.jpg",
-    "timing_map_markdown": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/timing-map.md",
-    "timing_map_json": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/timing-map.json"
+    "media_summary": "videos/05-how-to-install-on-digital-ocean-build/analysis/media-summary.json",
+    "transcript": "videos/05-how-to-install-on-digital-ocean-build/analysis/transcript.json",
+    "screen_events": "videos/05-how-to-install-on-digital-ocean-build/analysis/screen-events.json",
+    "screen_events_contact_sheet": "videos/05-how-to-install-on-digital-ocean-build/analysis/screen-events-contact-sheet.jpg",
+    "timing_map_markdown": "videos/05-how-to-install-on-digital-ocean-build/analysis/timing-map.md",
+    "timing_map_json": "videos/05-how-to-install-on-digital-ocean-build/analysis/timing-map.json"
   },
   "media_summary": {
     "schema": "nerdout.media_summary.v1",
-    "source_video": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/source/05-how-to-install-on-digital-ocean-combined.mp4",
-    "source_audio": "/Users/brian/github/nerdoutinc/paperless-ag/videos/src/05-how-to-install-on-digital-ocean.m4a",
+    "source_video": "videos/05-how-to-install-on-digital-ocean-build/source/05-how-to-install-on-digital-ocean-combined.mp4",
+    "source_audio": "videos/src/05-how-to-install-on-digital-ocean.m4a",
     "video": {
-      "path": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/source/05-how-to-install-on-digital-ocean-combined.mp4",
+      "path": "videos/05-how-to-install-on-digital-ocean-build/source/05-how-to-install-on-digital-ocean-combined.mp4",
       "duration": 403.8,
       "width": 3324,
       "height": 2160,
@@ -27,7 +27,7 @@
       "embedded_audio_codecs": []
     },
     "audio": {
-      "path": "/Users/brian/github/nerdoutinc/paperless-ag/videos/src/05-how-to-install-on-digital-ocean.m4a",
+      "path": "videos/src/05-how-to-install-on-digital-ocean.m4a",
       "duration": 267.540317,
       "codec": "aac",
       "channels": 2,
@@ -68,7 +68,7 @@
           "score": 0.9914,
           "distance_from_expected": 1.0643672116154366,
           "ocr_text": "Lll",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0003_00-03-600_scene_change.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0003_00-03-600_scene_change.jpg",
           "notes": ["visible text changed between Apple Vision OCR samples"],
           "text_overlap": {
             "score": 0.0,
@@ -85,7 +85,7 @@
           "score": 1.0,
           "distance_from_expected": 1.2643672116154363,
           "ocr_text": "\u2022 \u2022 \u2022 Q D&lt\u2022lOeMn Q Dlgll\u2022lOc\u2022in https;Ilcloud.dlgltaloc\u2022in.comldropl\u2022tiln\u2022w7\u2022lz\u2022=1-2vcpu-4gb&lmig\u2022=dock\u2022r-20-04&r\u2022glo...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0004_00-03-800_scene_post.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0004_00-03-800_scene_post.jpg",
           "notes": ["visible text changed between Apple Vision OCR samples"],
           "text_overlap": {
             "score": 0.0,
@@ -102,7 +102,7 @@
           "score": 0.8054,
           "distance_from_expected": 1.4643672116154365,
           "ocr_text": "Hellum File Edit View Tabs Bookmarks History Profiles Window Help Thu May 7 8.'04AM \u2022 Q DigitalOcean Q DigitalOcean <-...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0005_00-04-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0005_00-04-000_anchor.jpg",
           "notes": ["visible text changed between Apple Vision OCR samples"],
           "text_overlap": {
             "score": 0.0,
@@ -119,7 +119,7 @@
           "score": 0.6909,
           "distance_from_expected": 5.4643672116154365,
           "ocr_text": "Hellum File Edit View Tabs Bookmarks Hi5tory Profiles Window Help Thu May 7 8'.05AM \u2022 \u2022 9 DigitalOcean g DigitalOcean 4...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0006_00-08-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0006_00-08-000_anchor.jpg",
           "notes": ["visible text changed between Apple Vision OCR samples"],
           "text_overlap": {
             "score": 0.0,
@@ -165,7 +165,7 @@
           "score": 0.4366,
           "distance_from_expected": 0.13686088291507836,
           "ocr_text": "Helium File Edit View Tabs Bookmarks Hi5tory Profiles Window Help Thu May 7 8'.06AM 9 DigitalOcean g DigitalOcean 4 C h...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0008_00-12-000_stable_hold.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0008_00-12-000_stable_hold.jpg",
           "notes": ["visible text changed between Apple Vision OCR samples"],
           "text_overlap": {
             "score": 0.0,
@@ -182,7 +182,7 @@
           "score": 0.479,
           "distance_from_expected": 2.1368608829150784,
           "ocr_text": "Helium File Edit View Tabs Bookmarks Hi5tory Profiles Window Help Thu May 7 8'.08AM \u2022 \u2022 9 DigitalOcean g DigitalOcean f...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0009_00-14-000_hold_end.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0009_00-14-000_hold_end.jpg",
           "notes": ["visible text changed between Apple Vision OCR samples"],
           "text_overlap": {
             "score": 0.0,
@@ -199,7 +199,7 @@
           "score": 0.6909,
           "distance_from_expected": 3.8631391170849216,
           "ocr_text": "Hellum File Edit View Tabs Bookmarks Hi5tory Profiles Window Help Thu May 7 8'.05AM \u2022 \u2022 9 DigitalOcean g DigitalOcean 4...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0006_00-08-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0006_00-08-000_anchor.jpg",
           "notes": ["visible text changed between Apple Vision OCR samples"],
           "text_overlap": {
             "score": 0.0,
@@ -216,7 +216,7 @@
           "score": 0.9763,
           "distance_from_expected": 5.936860882915079,
           "ocr_text": "111 ii\u2022iii\u2022 iil iiiililli Il'11 I I11 I I I l) Ci\u2022\u2022l\u2022 v SSH K\u2022yi PAiiwoid Add an SSH K\u2022y for fiulli\u2022nllcntlon SSH K\u2022y w...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0011_00-17-800_scene_pre.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0011_00-17-800_scene_pre.jpg",
           "notes": ["visible text changed between Apple Vision OCR samples"],
           "text_overlap": {
             "score": 0.0,
@@ -262,7 +262,7 @@
           "score": 0.5577,
           "distance_from_expected": 2.7187962403438455,
           "ocr_text": "Helium File Edit View Tabs Bookmarks Hi5tory Profiles Window Help Thu May 7 8'.11 AM \u2022 \u2022 9 DigitalOcean g DigitalOcean...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0016_00-24-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0016_00-24-000_anchor.jpg",
           "notes": ["visible text changed between Apple Vision OCR samples"],
           "text_overlap": {
             "score": 0.0,
@@ -279,7 +279,7 @@
           "score": 0.4637,
           "distance_from_expected": 3.0812037596561552,
           "ocr_text": "Helium File Edit View Tabs 8ookmarks History Profiles Window Help Thu May 7 8:08AM \u2022\u2022\u2022 gD 4 C igilalOcean Q DigitalOcea...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0013_00-18-200_scene_post.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0013_00-18-200_scene_post.jpg",
           "notes": ["visible text changed between Apple Vision OCR samples"],
           "text_overlap": {
             "score": 0.0,
@@ -296,7 +296,7 @@
           "score": 0.8538,
           "distance_from_expected": 3.2812037596561545,
           "ocr_text": "Q Dlglt\u2022lOc\u2022\u2022n htipsJtsloud.dlgltaloc\u2022an,comldropl\u2022t$ln\u2022w7$lz\u2022=1-2vcpu-4gb&lmag\u2022=dock\u2022r-20-04&r\u2022glon=nyc3&1=f291\u2022c&fl\u2022\u2022...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0012_00-18-000_scene_change.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0012_00-18-000_scene_change.jpg",
           "notes": ["visible text changed between Apple Vision OCR samples"],
           "text_overlap": {
             "score": 0.0,
@@ -313,7 +313,7 @@
           "score": 0.9763,
           "distance_from_expected": 3.481203759656154,
           "ocr_text": "111 ii\u2022iii\u2022 iil iiiililli Il'11 I I11 I I I l) Ci\u2022\u2022l\u2022 v SSH K\u2022yi PAiiwoid Add an SSH K\u2022y for fiulli\u2022nllcntlon SSH K\u2022y w...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0011_00-17-800_scene_pre.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0011_00-17-800_scene_pre.jpg",
           "notes": ["visible text changed between Apple Vision OCR samples"],
           "text_overlap": {
             "score": 0.0,
@@ -359,7 +359,7 @@
           "score": 0.9434,
           "distance_from_expected": 1.8399500236818511,
           "ocr_text": "MipsJW.di9il\u2022locun,comldropl\u2022t\u2022ln\u2022w?\u2022lz\u2022a\u2022-2vcpu-4gb&lm\u2022oraockw-2fv Search by resource name or public IP (Cmd+B) Give y...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0019_00-27-800_scene_change.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0019_00-27-800_scene_change.jpg",
           "notes": ["visible text changed between Apple Vision OCR samples"],
           "text_overlap": {
             "score": 0.5,
@@ -375,8 +375,8 @@
           "duration": null,
           "score": 0.9661,
           "distance_from_expected": 2.0399500236818504,
-          "ocr_text": "Paperless-ngx Q Paperless Ag Search by resource name or public IP (Cmd+B) Create v Home Launchpad New Give your Droplet...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0020_00-28-000_scene_post.jpg",
+          "ocr_text": "Paperless-ngx Q Paperless AI Search by resource name or public IP (Cmd+B) Create v Home Launchpad New Give your Droplet...",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0020_00-28-000_scene_post.jpg",
           "notes": ["visible text changed between Apple Vision OCR samples"],
           "text_overlap": {
             "score": 0.5,
@@ -393,7 +393,7 @@
           "score": 0.3893,
           "distance_from_expected": 1.6399500236818518,
           "ocr_text": "Fle Edit View Tabs Bookmarks History Profiles Window Help Tlw h\u2022ay 7 &13MI \u2022 \u2022 \u2022 Q Di9italOcean fr 4 C Q DigitalOcean h...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0018_00-27-600_scene_pre.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0018_00-27-600_scene_pre.jpg",
           "notes": ["visible text changed between Apple Vision OCR samples"],
           "text_overlap": {
             "score": 0.0,
@@ -410,7 +410,7 @@
           "score": 0.5577,
           "distance_from_expected": 1.9600499763181496,
           "ocr_text": "Helium File Edit View Tabs Bookmarks Hi5tory Profiles Window Help Thu May 7 8'.11 AM \u2022 \u2022 9 DigitalOcean g DigitalOcean...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0016_00-24-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0016_00-24-000_anchor.jpg",
           "notes": ["visible text changed between Apple Vision OCR samples"],
           "text_overlap": {
             "score": 0.0,
@@ -459,7 +459,7 @@
           "score": 0.8491,
           "distance_from_expected": 2.6141682862699227,
           "ocr_text": "New Give your Droplet a name Can only contain alphanumeric characters, dashes, and periods only. paperless-video uter F...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0026_00-36-000_scene_post.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0026_00-36-000_scene_post.jpg",
           "notes": ["visible text changed between Apple Vision OCR samples"],
           "text_overlap": {
             "score": 0.125,
@@ -476,7 +476,7 @@
           "score": 0.9372,
           "distance_from_expected": 1.3858317137300773,
           "ocr_text": "Helium File Edit View Tabs Bookmarks Hi5tory Profiles Window Help Thu May 7 8'.13AM \u2022 \u2022 g DigitalOcean g DigitalOcean f...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0022_00-32-000_stable_hold.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0022_00-32-000_stable_hold.jpg",
           "notes": ["visible text changed between Apple Vision OCR samples"],
           "text_overlap": {
             "score": 0.0,
@@ -493,7 +493,7 @@
           "score": 0.8821,
           "distance_from_expected": 2.214168286269924,
           "ocr_text": "* \u2022* ruY*)w& cokJns. dashes, and underscores. Create Droplet",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0024_00-35-600_scene_pre.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0024_00-35-600_scene_pre.jpg",
           "notes": ["visible text changed between Apple Vision OCR samples"],
           "text_overlap": {
             "score": 0.0,
@@ -510,7 +510,7 @@
           "score": 0.9671,
           "distance_from_expected": 2.41416828626992,
           "ocr_text": "wii Thopl\u2022t \u2022J Iiani\u2022 Cthi ciNilfilii filpliai)111)i#ilc. r.linifir.IviN, (In*liv*, fiii(I iJ#iliiil* c)Iily, Mptrilt)5...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0025_00-35-800_scene_change.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0025_00-35-800_scene_change.jpg",
           "notes": ["visible text changed between Apple Vision OCR samples"],
           "text_overlap": {
             "score": 0.0,
@@ -556,7 +556,7 @@
           "score": 0.4403,
           "distance_from_expected": 0.5701246141530163,
           "ocr_text": "Helium File Edit View Tabs Bookmarks Hi5tory Profiles Window Help Thu May 7 8'.15AM \u2022 \u2022 9 DigitalOcean g paperless-vide...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0028_00-40-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0028_00-40-000_anchor.jpg",
           "notes": ["visible text changed between Apple Vision OCR samples"],
           "text_overlap": {
             "score": 0.0,
@@ -573,7 +573,7 @@
           "score": 0.9626,
           "distance_from_expected": 2.5701246141530163,
           "ocr_text": "Helium File Edit View Tabs Bookmarks History Profiles Window Help Thu May 7 8'.15AM \u2022 \u2022 \u2022 g DigitalOcean ? DigitalOcean...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0027_00-38-000_hold_start.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0027_00-38-000_hold_start.jpg",
           "notes": ["visible text changed between Apple Vision OCR samples"],
           "text_overlap": {
             "score": 0.0,
@@ -590,7 +590,7 @@
           "score": 0.8491,
           "distance_from_expected": 4.570124614153016,
           "ocr_text": "New Give your Droplet a name Can only contain alphanumeric characters, dashes, and periods only. paperless-video uter F...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0026_00-36-000_scene_post.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0026_00-36-000_scene_post.jpg",
           "notes": ["visible text changed between Apple Vision OCR samples"],
           "text_overlap": {
             "score": 0.0,
@@ -607,7 +607,7 @@
           "score": 0.9671,
           "distance_from_expected": 4.770124614153019,
           "ocr_text": "wii Thopl\u2022t \u2022J Iiani\u2022 Cthi ciNilfilii filpliai)111)i#ilc. r.linifir.IviN, (In*liv*, fiii(I iJ#iliiil* c)Iily, Mptrilt)5...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0025_00-35-800_scene_change.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0025_00-35-800_scene_change.jpg",
           "notes": ["visible text changed between Apple Vision OCR samples"],
           "text_overlap": {
             "score": 0.0,
@@ -653,7 +653,7 @@
           "score": 0.7747,
           "distance_from_expected": 3.724701611981722,
           "ocr_text": "Helium File Edit View Tabs Bookmarks Hi5tory Profiles Window Help Thu May 7 8'.15AM \u2022 \u2022 9 DigitalOcean g paperless-vide...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0031_00-50-000_stable_hold.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0031_00-50-000_stable_hold.jpg",
           "notes": [
             "low visual change span",
             "candidate loading/wait/freeze-frame region"
@@ -673,7 +673,7 @@
           "score": 0.0,
           "distance_from_expected": 1.7247016119817218,
           "ocr_text": "Helium File Edit View Tabs Bookmarks Hi5tory Profiles Window Help Thu May 7 8'.15AM \u2022 \u2022 g DigitalOcean g paperless-vide...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0030_00-48-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0030_00-48-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.0,
@@ -690,7 +690,7 @@
           "score": 0.0,
           "distance_from_expected": 2.275298388018278,
           "ocr_text": "Helium File Edit View Tabs Bookmarks Hi5tory Profiles Window Help Thu May 7 8'.15AM \u2022 \u2022 9 DigitalOcean g paperless-vide...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0029_00-44-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0029_00-44-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.0,
@@ -707,7 +707,7 @@
           "score": 0.0,
           "distance_from_expected": 5.724701611981722,
           "ocr_text": "Helium File Edit View Tabs Bookmarks Hi5tory Profiles Window Help Thu May 7 8'.15AM \u2022 \u2022 9 DigitalOcean g paperless-vide...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0032_00-52-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0032_00-52-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.0,
@@ -756,7 +756,7 @@
           "score": 0.7747,
           "distance_from_expected": 2.976613614463197,
           "ocr_text": "Helium File Edit View Tabs Bookmarks Hi5tory Profiles Window Help Thu May 7 8'.15AM \u2022 \u2022 9 DigitalOcean g paperless-vide...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0031_00-50-000_stable_hold.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0031_00-50-000_stable_hold.jpg",
           "notes": [
             "low visual change span",
             "candidate loading/wait/freeze-frame region"
@@ -776,7 +776,7 @@
           "score": 0.0,
           "distance_from_expected": 0.9766136144631972,
           "ocr_text": "Helium File Edit View Tabs Bookmarks Hi5tory Profiles Window Help Thu May 7 8'.15AM \u2022 \u2022 9 DigitalOcean g paperless-vide...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0032_00-52-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0032_00-52-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.0,
@@ -793,7 +793,7 @@
           "score": 0.0,
           "distance_from_expected": 3.023386385536803,
           "ocr_text": "Helium File Edit View Tabs Bookmarks Hi5tory Profiles Window Help Thu May 7 8'.15AM \u2022 \u2022 9 DigitalOcean g paperless-vide...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0033_00-56-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0033_00-56-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.0,
@@ -810,7 +810,7 @@
           "score": 0.0,
           "distance_from_expected": 4.976613614463197,
           "ocr_text": "Helium File Edit View Tabs Bookmarks Hi5tory Profiles Window Help Thu May 7 8'.15AM \u2022 \u2022 g DigitalOcean g paperless-vide...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0030_00-48-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0030_00-48-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.0,
@@ -859,7 +859,7 @@
           "score": 0.8407,
           "distance_from_expected": 5.933510346405093,
           "ocr_text": "Helium File Edit View Tabs Bookmarks Hi5tory Profiles Window Help Thu May 7 8'.15AM \u2022 \u2022 9 DigitalOcean g paperless-vide...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0037_01-07-000_stable_hold.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0037_01-07-000_stable_hold.jpg",
           "notes": [
             "low visual change span",
             "candidate loading/wait/freeze-frame region"
@@ -879,7 +879,7 @@
           "score": 0.0,
           "distance_from_expected": 1.0664896535949069,
           "ocr_text": "Helium File Edit View Tabs Bookmarks Hi5tory Profiles Window Help Thu May 7 8'.15AM \u2022 \u2022 g DigitalOcean g paperless-vide...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0034_01-00-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0034_01-00-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.0,
@@ -896,7 +896,7 @@
           "score": 0.0,
           "distance_from_expected": 5.066489653594907,
           "ocr_text": "Helium File Edit View Tabs Bookmarks Hi5tory Profiles Window Help Thu May 7 8'.15AM \u2022 \u2022 9 DigitalOcean g paperless-vide...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0033_00-56-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0033_00-56-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.0,
@@ -945,7 +945,7 @@
           "score": 0.8605,
           "distance_from_expected": 0.40516225971281017,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May 7 10=57AM \u2022 * brian- root@paperless-vid80:_--bash- 125x44",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0041_01-11-800_scene_change.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0041_01-11-800_scene_change.jpg",
           "notes": ["visible text changed between Apple Vision OCR samples"],
           "text_overlap": {
             "score": 0.0,
@@ -962,7 +962,7 @@
           "score": 0.6838,
           "distance_from_expected": 3.7948377402871927,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May 7 10=59AM brian- root@paperless-video: _- $sh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0043_01-16-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0043_01-16-000_anchor.jpg",
           "notes": ["visible text changed between Apple Vision OCR samples"],
           "text_overlap": {
             "score": 0.0,
@@ -979,7 +979,7 @@
           "score": 0.4114,
           "distance_from_expected": 0.40516225971281017,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May 7 10=57AM \u2022 * brian- root@paperless-vid80:_--bash- 125x44",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0041_01-11-800_scene_change.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0041_01-11-800_scene_change.jpg",
           "notes": [
             "visual change peak",
             "Apple Vision feature-print analyzed"
@@ -999,7 +999,7 @@
           "score": 0.8407,
           "distance_from_expected": 5.205162259712807,
           "ocr_text": "Helium File Edit View Tabs Bookmarks Hi5tory Profiles Window Help Thu May 7 8'.15AM \u2022 \u2022 9 DigitalOcean g paperless-vide...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0037_01-07-000_stable_hold.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0037_01-07-000_stable_hold.jpg",
           "notes": [
             "low visual change span",
             "candidate loading/wait/freeze-frame region"
@@ -1048,7 +1048,7 @@
           "score": 0.5123,
           "distance_from_expected": 3.3175073086274267,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May 7 10=59AM brian- root@paperless-video: _- ssh n)ot@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0044_01-19-000_stable_hold.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0044_01-19-000_stable_hold.jpg",
           "notes": ["visible text changed between Apple Vision OCR samples"],
           "text_overlap": {
             "score": 0.125,
@@ -1065,7 +1065,7 @@
           "score": 0.6232,
           "distance_from_expected": 3.3175073086274267,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May 7 10=59AM brian- root@paperless-video: _- ssh n)ot@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0044_01-19-000_stable_hold.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0044_01-19-000_stable_hold.jpg",
           "notes": [
             "low visual change span",
             "candidate loading/wait/freeze-frame region"
@@ -1085,7 +1085,7 @@
           "score": 0.0,
           "distance_from_expected": 2.3175073086274267,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May 7 10=59AM brian- root@paperles$-vid80: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0045_01-20-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0045_01-20-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.125,
@@ -1102,7 +1102,7 @@
           "score": 0.0,
           "distance_from_expected": 1.6824926913725733,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May7 11=OOAM brian- root@paperless-video: _- $sh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0046_01-24-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0046_01-24-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.0,
@@ -1148,7 +1148,7 @@
           "score": 0.0,
           "distance_from_expected": 1.0794528736392408,
           "ocr_text": "Terminal Shell Edit View Window Help Thu May7 11=01AM brian- root@paperless-video: _- $sh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0049_01-32-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0049_01-32-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.0,
@@ -1165,7 +1165,7 @@
           "score": 0.0,
           "distance_from_expected": 2.920547126360759,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May7 11=01AM brian- root@paperless-vid80: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0048_01-28-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0048_01-28-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.0,
@@ -1182,7 +1182,7 @@
           "score": 0.0,
           "distance_from_expected": 5.079452873639241,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May7 11=01AM brian- root@paperless-video: _- $sh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0050_01-36-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0050_01-36-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.0,
@@ -1228,7 +1228,7 @@
           "score": 0.0,
           "distance_from_expected": 1.018140260333169,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May7 11=01AM brian- root@paperless-video: _- $sh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0050_01-36-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0050_01-36-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.0,
@@ -1245,7 +1245,7 @@
           "score": 0.0,
           "distance_from_expected": 2.981859739666831,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May7 11=01AM brian- root@paperless-vid80: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0051_01-40-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0051_01-40-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.0,
@@ -1262,7 +1262,7 @@
           "score": 0.0,
           "distance_from_expected": 5.018140260333169,
           "ocr_text": "Terminal Shell Edit View Window Help Thu May7 11=01AM brian- root@paperless-video: _- $sh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0049_01-32-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0049_01-32-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.0,
@@ -1308,7 +1308,7 @@
           "score": 0.0,
           "distance_from_expected": 3.2817569697355253,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May7 11=01AM brian- root@paperless-vid80: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0051_01-40-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0051_01-40-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.1,
@@ -1325,7 +1325,7 @@
           "score": 0.0,
           "distance_from_expected": 4.718243030264475,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May7 11=01AM brian- root@paperless-vid80: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0053_01-48-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0053_01-48-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.1,
@@ -1342,7 +1342,7 @@
           "score": 0.0,
           "distance_from_expected": 0.7182430302644747,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May7 11=01AM brian- root@paperless-vid80: _- $sh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0052_01-44-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0052_01-44-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.0,
@@ -1388,7 +1388,7 @@
           "score": 0.9119,
           "distance_from_expected": 0.579077193812239,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May7 11=01AM brian- root@paperless-video: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0054_01-52-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0054_01-52-000_anchor.jpg",
           "notes": ["visible text changed between Apple Vision OCR samples"],
           "text_overlap": {
             "score": 0.143,
@@ -1405,7 +1405,7 @@
           "score": 0.0,
           "distance_from_expected": 0.579077193812239,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May7 11=01AM brian- root@paperless-video: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0054_01-52-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0054_01-52-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.143,
@@ -1422,7 +1422,7 @@
           "score": 0.3243,
           "distance_from_expected": 3.420922806187761,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May7 11=02AM brian- root@paperless-vid80: _- $sh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0055_01-56-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0055_01-56-000_anchor.jpg",
           "notes": ["visible text changed between Apple Vision OCR samples"],
           "text_overlap": {
             "score": 0.0,
@@ -1439,7 +1439,7 @@
           "score": 0.0,
           "distance_from_expected": 3.420922806187761,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May7 11=02AM brian- root@paperless-vid80: _- $sh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0055_01-56-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0055_01-56-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.0,
@@ -1485,7 +1485,7 @@
           "score": 0.6425,
           "distance_from_expected": 0.8272597135331807,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May 7 11=04AM brian- root@paperless-video: _- $sh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0057_02-02-000_hold_start.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0057_02-02-000_hold_start.jpg",
           "notes": ["visible text changed between Apple Vision OCR samples"],
           "text_overlap": {
             "score": 0.222,
@@ -1502,7 +1502,7 @@
           "score": 0.6462,
           "distance_from_expected": 2.8272597135331807,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May 7 11=04AM brian- root@paperless-video: _- $sh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0056_02-00-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0056_02-00-000_anchor.jpg",
           "notes": ["visible text changed between Apple Vision OCR samples"],
           "text_overlap": {
             "score": 0.222,
@@ -1519,7 +1519,7 @@
           "score": 0.5432,
           "distance_from_expected": 5.172740286466819,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May7 11=05AM brian- root@paperless-video: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0060_02-08-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0060_02-08-000_anchor.jpg",
           "notes": ["visible text changed between Apple Vision OCR samples"],
           "text_overlap": {
             "score": 0.222,
@@ -1536,7 +1536,7 @@
           "score": 0.8308,
           "distance_from_expected": 1.1727402864668193,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May 7 11=04AM brian- root@paperles$-vid80: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0058_02-04-000_stable_hold.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0058_02-04-000_stable_hold.jpg",
           "notes": [
             "low visual change span",
             "candidate loading/wait/freeze-frame region"
@@ -1585,7 +1585,7 @@
           "score": 0.8241,
           "distance_from_expected": 0.3962548792225391,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May 7 11=06AM brian- root@paperless-video: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0062_02-12-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0062_02-12-000_anchor.jpg",
           "notes": ["visible text changed between Apple Vision OCR samples"],
           "text_overlap": {
             "score": 0.0,
@@ -1602,7 +1602,7 @@
           "score": 0.5432,
           "distance_from_expected": 4.396254879222539,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May7 11=05AM brian- root@paperless-video: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0060_02-08-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0060_02-08-000_anchor.jpg",
           "notes": ["visible text changed between Apple Vision OCR samples"],
           "text_overlap": {
             "score": 0.0,
@@ -1619,7 +1619,7 @@
           "score": 0.0,
           "distance_from_expected": 0.3962548792225391,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May 7 11=06AM brian- root@paperless-video: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0062_02-12-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0062_02-12-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.0,
@@ -1636,7 +1636,7 @@
           "score": 0.0,
           "distance_from_expected": 3.603745120777461,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May 7 11=06AM brian- root@paperless-video: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0063_02-16-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0063_02-16-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.0,
@@ -1682,7 +1682,7 @@
           "score": 0.8241,
           "distance_from_expected": 5.799567606851554,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May 7 11=06AM brian- root@paperless-video: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0062_02-12-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0062_02-12-000_anchor.jpg",
           "notes": ["visible text changed between Apple Vision OCR samples"],
           "text_overlap": {
             "score": 0.0,
@@ -1699,7 +1699,7 @@
           "score": 0.0,
           "distance_from_expected": 1.7995676068515536,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May 7 11=06AM brian- root@paperless-video: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0063_02-16-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0063_02-16-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.0,
@@ -1716,7 +1716,7 @@
           "score": 0.0,
           "distance_from_expected": 2.2004323931484464,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May 7 11=06AM brian- root@paperless-video: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0064_02-20-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0064_02-20-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.0,
@@ -1733,7 +1733,7 @@
           "score": 0.0,
           "distance_from_expected": 5.799567606851554,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May 7 11=06AM brian- root@paperless-video: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0062_02-12-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0062_02-12-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.0,
@@ -1779,7 +1779,7 @@
           "score": 0.0,
           "distance_from_expected": 0.8027438795327555,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May 7 11=06AM brian- root@paperless-video: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0065_02-24-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0065_02-24-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.0,
@@ -1796,7 +1796,7 @@
           "score": 0.0,
           "distance_from_expected": 3.1972561204672445,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May 7 11=06AM brian- root@paperless-video: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0066_02-28-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0066_02-28-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.0,
@@ -1813,7 +1813,7 @@
           "score": 0.0,
           "distance_from_expected": 4.8027438795327555,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May 7 11=06AM brian- root@paperless-video: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0064_02-20-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0064_02-20-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.0,
@@ -1859,7 +1859,7 @@
           "score": 0.0,
           "distance_from_expected": 0.3492700354391616,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May 7 11=06AM brian- root@paperless-video: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0067_02-32-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0067_02-32-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.0,
@@ -1876,7 +1876,7 @@
           "score": 0.0,
           "distance_from_expected": 3.6507299645608384,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May 7 11=06AM brian- root@paperless-video: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0068_02-36-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0068_02-36-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.0,
@@ -1893,7 +1893,7 @@
           "score": 0.0,
           "distance_from_expected": 4.349270035439162,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May 7 11=06AM brian- root@paperless-video: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0066_02-28-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0066_02-28-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.0,
@@ -1939,7 +1939,7 @@
           "score": 0.0,
           "distance_from_expected": 0.31550654101977216,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May 7 11=06AM brian- root@paperless-video: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0069_02-40-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0069_02-40-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.0,
@@ -1956,7 +1956,7 @@
           "score": 0.0,
           "distance_from_expected": 3.684493458980228,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May 7 11=06AM brian- root@paperless-video: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0068_02-36-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0068_02-36-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.0,
@@ -1973,7 +1973,7 @@
           "score": 0.0,
           "distance_from_expected": 4.315506541019772,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May 7 11=06AM brian- root@paperless-video: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0070_02-44-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0070_02-44-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.0,
@@ -2019,7 +2019,7 @@
           "score": 0.0,
           "distance_from_expected": 1.931486550492508,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May7 11=07AM brian- root@paperless-video: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0072_02-52-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0072_02-52-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.333,
@@ -2036,7 +2036,7 @@
           "score": 0.0,
           "distance_from_expected": 2.068513449507492,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May 7 11=06AM brian- root@paperless-video: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0071_02-48-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0071_02-48-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.333,
@@ -2053,7 +2053,7 @@
           "score": 0.0,
           "distance_from_expected": 5.931486550492508,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May7 11=07AM brian- root@paperless-vid80: _- s$h root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0073_02-56-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0073_02-56-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.167,
@@ -2102,7 +2102,7 @@
           "score": 0.0,
           "distance_from_expected": 0.4223473354111036,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May7 11=07AM brian- root@paperless-video: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0074_03-00-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0074_03-00-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.0,
@@ -2119,7 +2119,7 @@
           "score": 0.0,
           "distance_from_expected": 3.5776526645888964,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May7 11=07AM brian- root@paperless-video: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0075_03-04-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0075_03-04-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.0,
@@ -2136,7 +2136,7 @@
           "score": 0.0,
           "distance_from_expected": 4.422347335411104,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May7 11=07AM brian- root@paperless-vid80: _- s$h root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0073_02-56-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0073_02-56-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.0,
@@ -2182,7 +2182,7 @@
           "score": 0.0,
           "distance_from_expected": 0.6933400022845717,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May7 11=07AM brian- root@paperless-video: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0076_03-08-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0076_03-08-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.0,
@@ -2199,7 +2199,7 @@
           "score": 0.0,
           "distance_from_expected": 3.3066599977154283,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May7 11=07AM brian- root@paperless-video: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0077_03-12-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0077_03-12-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.0,
@@ -2216,7 +2216,7 @@
           "score": 0.0,
           "distance_from_expected": 4.693340002284572,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May7 11=07AM brian- root@paperless-video: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0075_03-04-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0075_03-04-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.0,
@@ -2262,7 +2262,7 @@
           "score": 0.8592,
           "distance_from_expected": 3.9110643649270855,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May7 11=07AM brian- root@paperless-video: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0079_03-20-000_stable_hold.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0079_03-20-000_stable_hold.jpg",
           "notes": [
             "low visual change span",
             "candidate loading/wait/freeze-frame region"
@@ -2282,7 +2282,7 @@
           "score": 0.0,
           "distance_from_expected": 0.08893563507291447,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May7 11=07AM brian- root@paperless-vid80: _- s$h root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0078_03-16-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0078_03-16-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.125,
@@ -2299,7 +2299,7 @@
           "score": 0.0,
           "distance_from_expected": 4.0889356350729145,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May7 11=07AM brian- root@paperless-video: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0077_03-12-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0077_03-12-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.125,
@@ -2348,7 +2348,7 @@
           "score": 0.8592,
           "distance_from_expected": 4.812719871300743,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May7 11=07AM brian- root@paperless-video: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0079_03-20-000_stable_hold.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0079_03-20-000_stable_hold.jpg",
           "notes": [
             "low visual change span",
             "candidate loading/wait/freeze-frame region"
@@ -2368,7 +2368,7 @@
           "score": 0.0,
           "distance_from_expected": 0.8127198713007431,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May7 11=07AM brian- root@paperless-video: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0080_03-24-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0080_03-24-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.0,
@@ -2385,7 +2385,7 @@
           "score": 0.0,
           "distance_from_expected": 3.187280128699257,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May7 11=07AM brian- root@paperless-video: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0081_03-28-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0081_03-28-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.0,
@@ -2434,7 +2434,7 @@
           "score": 0.0,
           "distance_from_expected": 1.7028688203280922,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May7 11=07AM brian- root@paperless-video: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0081_03-28-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0081_03-28-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.0,
@@ -2451,7 +2451,7 @@
           "score": 0.0,
           "distance_from_expected": 2.297131179671908,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May7 11=07AM brian- root@paperless-video: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0082_03-32-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0082_03-32-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.0,
@@ -2468,7 +2468,7 @@
           "score": 0.0,
           "distance_from_expected": 5.702868820328092,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May7 11=07AM brian- root@paperless-video: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0080_03-24-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0080_03-24-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.0,
@@ -2514,7 +2514,7 @@
           "score": 0.0,
           "distance_from_expected": 1.234643061292303,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May7 11=07AM brian- root@paperless-video: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0082_03-32-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0082_03-32-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.0,
@@ -2531,7 +2531,7 @@
           "score": 0.0,
           "distance_from_expected": 2.765356938707697,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May7 11=07AM brian- root@paperless-vid80: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0083_03-36-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0083_03-36-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.0,
@@ -2548,7 +2548,7 @@
           "score": 0.0,
           "distance_from_expected": 5.234643061292303,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May7 11=07AM brian- root@paperless-video: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0081_03-28-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0081_03-28-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.0,
@@ -2594,7 +2594,7 @@
           "score": 0.0,
           "distance_from_expected": 0.8488804324770456,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May7 11=07AM brian- root@paperless-video: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0084_03-40-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0084_03-40-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.0,
@@ -2611,7 +2611,7 @@
           "score": 0.0,
           "distance_from_expected": 3.1511195675229544,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May7 11=07AM brian- root@paperless-vid80: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0083_03-36-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0083_03-36-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.0,
@@ -2628,7 +2628,7 @@
           "score": 0.0,
           "distance_from_expected": 4.848880432477046,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May7 11=07AM brian- root@paperless-video: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0085_03-44-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0085_03-44-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.0,
@@ -2674,7 +2674,7 @@
           "score": 0.0,
           "distance_from_expected": 1.4230986950651072,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May7 11=07AM brian- root@paperless-video: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0086_03-48-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0086_03-48-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.167,
@@ -2691,7 +2691,7 @@
           "score": 0.0,
           "distance_from_expected": 2.576901304934893,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May7 11=07AM brian- root@paperless-video: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0085_03-44-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0085_03-44-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.167,
@@ -2708,7 +2708,7 @@
           "score": 0.0,
           "distance_from_expected": 5.423098695065107,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May 7 11=08AM brian- root@paperless-video: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0087_03-52-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0087_03-52-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.167,
@@ -2754,7 +2754,7 @@
           "score": 0.0,
           "distance_from_expected": 1.5898045452341876,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May 7 11=08AM brian- root@paperless-video: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0088_03-56-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0088_03-56-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.0,
@@ -2771,7 +2771,7 @@
           "score": 0.0,
           "distance_from_expected": 2.4101954547658124,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May 7 11=08AM brian- root@paperless-video: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0087_03-52-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0087_03-52-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.0,
@@ -2788,7 +2788,7 @@
           "score": 0.0,
           "distance_from_expected": 5.589804545234188,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May 7 11=08AM brian- root@paperless-video: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0089_04-00-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0089_04-00-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.0,
@@ -2834,7 +2834,7 @@
           "score": 0.0,
           "distance_from_expected": 1.6548605644359782,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May 7 11=08AM brian- root@paperless-video: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0089_04-00-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0089_04-00-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.0,
@@ -2851,7 +2851,7 @@
           "score": 0.0,
           "distance_from_expected": 2.345139435564022,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May 7 11=08AM brian- root@paperless-video: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0090_04-04-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0090_04-04-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.0,
@@ -2868,7 +2868,7 @@
           "score": 0.0,
           "distance_from_expected": 5.654860564435978,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May 7 11=08AM brian- root@paperless-video: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0088_03-56-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0088_03-56-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.0,
@@ -2914,7 +2914,7 @@
           "score": 0.0,
           "distance_from_expected": 0.7938743079234882,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May 7 11=08AM brian- root@paperless-video: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0091_04-08-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0091_04-08-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.0,
@@ -2931,7 +2931,7 @@
           "score": 0.0,
           "distance_from_expected": 3.2061256920765118,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May 7 11=08AM brian- root@paperless-video: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0092_04-12-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0092_04-12-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.0,
@@ -2948,7 +2948,7 @@
           "score": 0.0,
           "distance_from_expected": 4.793874307923488,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May 7 11=08AM brian- root@paperless-video: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0090_04-04-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0090_04-04-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.0,
@@ -2994,7 +2994,7 @@
           "score": 0.0,
           "distance_from_expected": 1.185611393291424,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May 7 11=08AM brian- root@paperless-video: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0093_04-16-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0093_04-16-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.0,
@@ -3011,7 +3011,7 @@
           "score": 0.0,
           "distance_from_expected": 2.814388606708576,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May 7 11=08AM brian- root@paperless-video: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0094_04-20-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0094_04-20-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.0,
@@ -3028,7 +3028,7 @@
           "score": 0.0,
           "distance_from_expected": 5.185611393291424,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May 7 11=08AM brian- root@paperless-video: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0092_04-12-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0092_04-12-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.0,
@@ -3074,7 +3074,7 @@
           "score": 0.0,
           "distance_from_expected": 0.11307338026364278,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May 7 11=08AM brian- root@paperless-video: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0095_04-24-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0095_04-24-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.0,
@@ -3091,7 +3091,7 @@
           "score": 0.0,
           "distance_from_expected": 3.8869266197363572,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May 7 11=08AM brian- root@paperless-video: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0094_04-20-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0094_04-20-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.0,
@@ -3108,7 +3108,7 @@
           "score": 0.0,
           "distance_from_expected": 4.113073380263643,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May 7 11=08AM brian- root@paperless-video: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0096_04-28-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0096_04-28-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.0,
@@ -3154,7 +3154,7 @@
           "score": 0.0,
           "distance_from_expected": 1.7430309167197038,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May 7 11=08AM brian- root@paperless-video: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0096_04-28-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0096_04-28-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.143,
@@ -3171,7 +3171,7 @@
           "score": 0.0,
           "distance_from_expected": 5.743030916719704,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May 7 11=08AM brian- root@paperless-video: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0095_04-24-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0095_04-24-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.143,
@@ -3217,7 +3217,7 @@
           "score": 0.0,
           "distance_from_expected": 1.9838374789695763,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May 7 11=08AM brian- root@paperless-video: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0099_04-36-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0099_04-36-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.0,
@@ -3234,7 +3234,7 @@
           "score": 0.0,
           "distance_from_expected": 2.0161625210304237,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May 7 11=08AM brian- root@paperless-video: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0100_04-40-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0100_04-40-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.0,
@@ -3280,7 +3280,7 @@
           "score": 0.0,
           "distance_from_expected": 0.47735345996466094,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May 7 11=08AM brian- root@paperless-video: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0102_04-48-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0102_04-48-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.0,
@@ -3297,7 +3297,7 @@
           "score": 0.0,
           "distance_from_expected": 3.522646540035339,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May 7 11=08AM brian- root@paperless-video: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0101_04-44-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0101_04-44-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.0,
@@ -3314,7 +3314,7 @@
           "score": 0.0,
           "distance_from_expected": 4.477353459964661,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May 7 11=09AM brian- root@paperless-video: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0103_04-52-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0103_04-52-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.0,
@@ -3360,7 +3360,7 @@
           "score": 0.0,
           "distance_from_expected": 1.8462943213153267,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May 7 11=09AM brian- root@paperless-video: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0104_04-56-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0104_04-56-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.167,
@@ -3377,7 +3377,7 @@
           "score": 0.0,
           "distance_from_expected": 2.1537056786846733,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May 7 11=09AM brian- root@paperless-vid80: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0105_05-00-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0105_05-00-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.167,
@@ -3394,7 +3394,7 @@
           "score": 0.0,
           "distance_from_expected": 5.846294321315327,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May 7 11=09AM brian- root@paperless-video: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0103_04-52-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0103_04-52-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.167,
@@ -3440,7 +3440,7 @@
           "score": 0.0,
           "distance_from_expected": 0.6450827222425914,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May 7 11=09AM brian- root@paperless-video: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0107_05-08-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0107_05-08-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.111,
@@ -3457,7 +3457,7 @@
           "score": 0.0,
           "distance_from_expected": 3.3549172777574086,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May 7 11=09AM brian- root@paperless-vid80: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0106_05-04-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0106_05-04-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.111,
@@ -3474,7 +3474,7 @@
           "score": 0.0,
           "distance_from_expected": 4.6450827222425914,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May 7 11=09AM brian- root@paperless-video: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0108_05-12-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0108_05-12-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.111,
@@ -3520,7 +3520,7 @@
           "score": 0.8546,
           "distance_from_expected": 5.28739028891863,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May 7 11=09AM brian- root@paperless-video: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0111_05-22-000_stable_hold.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0111_05-22-000_stable_hold.jpg",
           "notes": [
             "low visual change span",
             "candidate loading/wait/freeze-frame region"
@@ -3540,7 +3540,7 @@
           "score": 0.0,
           "distance_from_expected": 0.7126097110813703,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May 7 11=09AM brian- root@paperless-video: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0109_05-16-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0109_05-16-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.0,
@@ -3557,7 +3557,7 @@
           "score": 0.0,
           "distance_from_expected": 3.2873902889186297,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May 7 11=09AM brian- root@paperless-vid80: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0110_05-20-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0110_05-20-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.0,
@@ -3574,7 +3574,7 @@
           "score": 0.0,
           "distance_from_expected": 4.71260971108137,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May 7 11=09AM brian- root@paperless-video: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0108_05-12-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0108_05-12-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.0,
@@ -3623,7 +3623,7 @@
           "score": 0.8546,
           "distance_from_expected": 1.5950415652681045,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May 7 11=09AM brian- root@paperless-video: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0111_05-22-000_stable_hold.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0111_05-22-000_stable_hold.jpg",
           "notes": [
             "low visual change span",
             "candidate loading/wait/freeze-frame region"
@@ -3643,7 +3643,7 @@
           "score": 0.0,
           "distance_from_expected": 0.4049584347318955,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May 7 11=09AM brian- root@paperless-video: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0112_05-24-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0112_05-24-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.0,
@@ -3660,7 +3660,7 @@
           "score": 0.0,
           "distance_from_expected": 3.5950415652681045,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May 7 11=09AM brian- root@paperless-vid80: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0110_05-20-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0110_05-20-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.0,
@@ -3677,7 +3677,7 @@
           "score": 0.0,
           "distance_from_expected": 4.4049584347318955,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May 7 11=09AM brian- root@paperless-vid80: _- s$h root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0113_05-28-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0113_05-28-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.0,
@@ -3726,7 +3726,7 @@
           "score": 0.0,
           "distance_from_expected": 2.760156870113974,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May 7 11=09AM brian- root@paperless-video: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0114_05-32-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0114_05-32-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.286,
@@ -3743,7 +3743,7 @@
           "score": 0.0,
           "distance_from_expected": 5.239843129886026,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May 7 11=09AM brian- root@paperless-video: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0112_05-24-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0112_05-24-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.286,
@@ -3760,7 +3760,7 @@
           "score": 0.0,
           "distance_from_expected": 1.239843129886026,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May 7 11=09AM brian- root@paperless-vid80: _- s$h root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0113_05-28-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0113_05-28-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.143,
@@ -3809,7 +3809,7 @@
           "score": 0.0,
           "distance_from_expected": 0.6176257165756169,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May 7 11=09AM brian- root@paperless-video: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0116_05-40-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0116_05-40-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.2,
@@ -3826,7 +3826,7 @@
           "score": 0.0,
           "distance_from_expected": 3.382374283424383,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May 7 11=09AM brian- root@paperless-video: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0115_05-36-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0115_05-36-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.2,
@@ -3843,7 +3843,7 @@
           "score": 0.0,
           "distance_from_expected": 4.617625716575617,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May 7 11=09AM brian- root@paperless-video: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0117_05-44-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0117_05-44-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.2,
@@ -3889,7 +3889,7 @@
           "score": 0.0,
           "distance_from_expected": 1.4645332277153784,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May 7 11=09AM brian- root@paperless-video: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0118_05-48-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0118_05-48-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.0,
@@ -3906,7 +3906,7 @@
           "score": 0.0,
           "distance_from_expected": 2.5354667722846216,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May7 11=10AM brian- root@paperless-video: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0119_05-52-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0119_05-52-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.0,
@@ -3923,7 +3923,7 @@
           "score": 0.0,
           "distance_from_expected": 5.464533227715378,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May 7 11=09AM brian- root@paperless-video: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0117_05-44-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0117_05-44-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.0,
@@ -3969,7 +3969,7 @@
           "score": 0.0,
           "distance_from_expected": 1.4034787437289538,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May7 11=10AM brian- root@paperless-video: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0120_05-56-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0120_05-56-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.0,
@@ -3986,7 +3986,7 @@
           "score": 0.0,
           "distance_from_expected": 2.5965212562710462,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May7 11=10AM brian- root@paperless-video: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0121_06-00-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0121_06-00-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.0,
@@ -4003,7 +4003,7 @@
           "score": 0.0,
           "distance_from_expected": 5.403478743728954,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May7 11=10AM brian- root@paperless-video: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0119_05-52-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0119_05-52-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.0,
@@ -4049,7 +4049,7 @@
           "score": 0.0,
           "distance_from_expected": 0.10650876219153815,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May7 11=10AM brian- root@paperless-video: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0122_06-04-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0122_06-04-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.0,
@@ -4066,7 +4066,7 @@
           "score": 0.0,
           "distance_from_expected": 3.893491237808462,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May7 11=10AM brian- root@paperless-video: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0121_06-00-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0121_06-00-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.0,
@@ -4083,7 +4083,7 @@
           "score": 0.0,
           "distance_from_expected": 4.106508762191538,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May7 11=10AM brian- root@paperless-video: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0123_06-08-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0123_06-08-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.0,
@@ -4129,7 +4129,7 @@
           "score": 0.0,
           "distance_from_expected": 1.5081066978028161,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May7 11=10AM brian- root@paperless-video: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0123_06-08-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0123_06-08-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.0,
@@ -4146,7 +4146,7 @@
           "score": 0.0,
           "distance_from_expected": 5.508106697802816,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May7 11=10AM brian- root@paperless-video: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0122_06-04-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0122_06-04-000_anchor.jpg",
           "notes": ["regular Apple Vision sample for agent review"],
           "text_overlap": {
             "score": 0.0,
@@ -4192,7 +4192,7 @@
           "score": 0.613,
           "distance_from_expected": 0.2433696451066112,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May7 11=10AM brian- root@paperless-video: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0126_06-16-000_stable_hold.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0126_06-16-000_stable_hold.jpg",
           "notes": ["visible text changed between Apple Vision OCR samples"],
           "text_overlap": {
             "score": 0.0,
@@ -4209,7 +4209,7 @@
           "score": 0.4072,
           "distance_from_expected": 2.243369645106611,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May7 11=10AM brian- root@paperless-video: _- ssh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0127_06-18-000_hold_end.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0127_06-18-000_hold_end.jpg",
           "notes": ["visible text changed between Apple Vision OCR samples"],
           "text_overlap": {
             "score": 0.0,
@@ -4226,7 +4226,7 @@
           "score": 0.3242,
           "distance_from_expected": 4.243369645106611,
           "ocr_text": "Termlnal Shell Edit View Window Help Oc+J. E. Thu May7 11:10AM brian- root@paperless-vid80: _- ssh root@174.138.57.126...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0128_06-20-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0128_06-20-000_anchor.jpg",
           "notes": ["visible text changed between Apple Vision OCR samples"],
           "text_overlap": {
             "score": 0.0,
@@ -4243,7 +4243,7 @@
           "score": 0.8781,
           "distance_from_expected": 5.843369645106634,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May7 11=10AM brian- root@paperless-video: _- $sh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0129_06-21-600_scene_pre.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0129_06-21-600_scene_pre.jpg",
           "notes": ["visible text changed between Apple Vision OCR samples"],
           "text_overlap": {
             "score": 0.0,
@@ -4289,7 +4289,7 @@
           "score": 0.9023,
           "distance_from_expected": 0.8088761044564308,
           "ocr_text": "Helium File Edit View Tabs Bookmarks Hi5tory Profiles Window Help Thu May7 11=12AM g DigitalOcean ? paperless-video - D...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0130_06-21-800_scene_change.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0130_06-21-800_scene_change.jpg",
           "notes": ["visible text changed between Apple Vision OCR samples"],
           "text_overlap": {
             "score": 0.143,
@@ -4306,7 +4306,7 @@
           "score": 0.8781,
           "distance_from_expected": 1.0088761044564194,
           "ocr_text": "Termlnal Shell Edit View Window Help Thu May7 11=10AM brian- root@paperless-video: _- $sh root@174.138.57.126 - 125x44...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0129_06-21-600_scene_pre.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0129_06-21-600_scene_pre.jpg",
           "notes": ["visible text changed between Apple Vision OCR samples"],
           "text_overlap": {
             "score": 0.143,
@@ -4323,7 +4323,7 @@
           "score": 0.6149,
           "distance_from_expected": 2.5911238955435465,
           "ocr_text": "Hellum File Edit View Tabs Bookmarks Hi5tory Profiles Window Help Thu May7 11=12AM \u2022 \u2022 9 DigitalOcean g paperless-video...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0134_06-25-200_scene_change.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0134_06-25-200_scene_change.jpg",
           "notes": ["visible text changed between Apple Vision OCR samples"],
           "text_overlap": {
             "score": 0.143,
@@ -4340,7 +4340,7 @@
           "score": 0.44,
           "distance_from_expected": 2.391123895543558,
           "ocr_text": "Hellum File Edit View Tabs Bookmarks Hi5tory Profiles Window Help Thu May7 11=12AM 9 DigitalOcean 4 C A Not Secure | ht...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0133_06-25-000_scene_pre.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0133_06-25-000_scene_pre.jpg",
           "notes": ["visible text changed between Apple Vision OCR samples"],
           "text_overlap": {
             "score": 0.0,
@@ -4386,7 +4386,7 @@
           "score": 0.4387,
           "distance_from_expected": 0.5767813454448856,
           "ocr_text": "Hellum File Edit View Tabs Bookmarks Hi5tory Profiles Window Help Thu May7 11=14AM 9 DigitalOcean g paperless-video - D...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0139_06-32-000_anchor.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0139_06-32-000_anchor.jpg",
           "notes": ["visible text changed between Apple Vision OCR samples"],
           "text_overlap": {
             "score": 0.0,
@@ -4403,7 +4403,7 @@
           "score": 0.5351,
           "distance_from_expected": 1.376781345444897,
           "ocr_text": "Hellum File Edit View Tabs Bookmarks Hi5tory Profiles Window Help Thu May7 11=14AM 9 DigitalOcean g paperless-video - D...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0140_06-32-800_scene_pre.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0140_06-32-800_scene_pre.jpg",
           "notes": ["visible text changed between Apple Vision OCR samples"],
           "text_overlap": {
             "score": 0.0,
@@ -4420,7 +4420,7 @@
           "score": 0.4103,
           "distance_from_expected": 1.5767813454448856,
           "ocr_text": "Hellum File Edit View Tabs Bookmarks Hi5tory Profiles Window Help Thu May7 11=14AM g DigitalOcean g paperless-video - D...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0141_06-33-000_scene_change.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0141_06-33-000_scene_change.jpg",
           "notes": ["visible text changed between Apple Vision OCR samples"],
           "text_overlap": {
             "score": 0.0,
@@ -4437,7 +4437,7 @@
           "score": 0.4979,
           "distance_from_expected": 1.7767813454448742,
           "ocr_text": "HelSum File Edit View Tabs Bookmarks Hi5tory Profiles Window Help Thu May7 11=14AM g DigitalOcean g paperless-video - D...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0142_06-33-200_scene_post.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0142_06-33-200_scene_post.jpg",
           "notes": ["visible text changed between Apple Vision OCR samples"],
           "text_overlap": {
             "score": 0.0,
@@ -4483,7 +4483,7 @@
           "score": 0.458,
           "distance_from_expected": 3.603653007557682,
           "ocr_text": "Hellum File Edit View Tabs Bookmarks Hi5tory Profiles Window Help Thu May7 11=14AM g DigitalOcean g paperless-video - D...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0144_06-36-000_stable_hold.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0144_06-36-000_stable_hold.jpg",
           "notes": ["visible text changed between Apple Vision OCR samples"],
           "text_overlap": {
             "score": 0.125,
@@ -4500,7 +4500,7 @@
           "score": 0.5975,
           "distance_from_expected": 5.603653007557682,
           "ocr_text": "Hellum File Edit View Tabs Bookmarks Hi5tory Profiles Window Help Thu May7 11=14AM \u2022 \u2022 9 DigitalOcean ? paperless-video...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0143_06-34-000_hold_start.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0143_06-34-000_hold_start.jpg",
           "notes": ["visible text changed between Apple Vision OCR samples"],
           "text_overlap": {
             "score": 0.125,
@@ -4517,7 +4517,7 @@
           "score": 0.9662,
           "distance_from_expected": 1.396346992442318,
           "ocr_text": "Helium File ri f41 rJ 11",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0148_06-41-000_scene_change.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0148_06-41-000_scene_change.jpg",
           "notes": ["visible text changed between Apple Vision OCR samples"],
           "text_overlap": {
             "score": 0.0,
@@ -4534,7 +4534,7 @@
           "score": 0.9342,
           "distance_from_expected": 1.5963469924423066,
           "ocr_text": "Helium File Edit View Tabs Bookmarks History Profiles Wind(r\u2022V Help \u2022 \u2022 \u2022 g DigitalOcean g paperless.vNJeo . DigitaK)c...",
-          "frame": "/Users/brian/github/nerdoutinc/paperless-ag/videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0149_06-41-200_scene_post.jpg",
+          "frame": "videos/05-how-to-install-on-digital-ocean-build/analysis/frames/frame_0149_06-41-200_scene_post.jpg",
           "notes": ["visible text changed between Apple Vision OCR samples"],
           "text_overlap": {
             "score": 0.0,
