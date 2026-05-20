@@ -409,6 +409,38 @@ class WebSearchTests(unittest.TestCase):
             headers,
         )
 
+    def test_response_headers_from_upstream_uses_raw_set_cookie_list(self):
+        class CombinedCookieHeaders:
+            def items(self):
+                return [
+                    ("Set-Cookie", "sessionid=abc, csrftoken=def"),
+                    ("Content-Type", "text/html"),
+                ]
+
+            def getlist(self, key):
+                if key.lower() == "set-cookie":
+                    return [
+                        "sessionid=abc; Path=/",
+                        "csrftoken=def; Path=/",
+                    ]
+                return []
+
+        response = FakeResponse(
+            headers={"Set-Cookie": "sessionid=abc, csrftoken=def"},
+        )
+        response.raw = SimpleNamespace(headers=CombinedCookieHeaders())
+
+        headers = web_search.response_headers_from_upstream(response)
+
+        self.assertEqual(
+            [
+                ("Set-Cookie", "sessionid=abc; Path=/"),
+                ("Set-Cookie", "csrftoken=def; Path=/"),
+                ("Content-Type", "text/html"),
+            ],
+            headers,
+        )
+
     def test_response_with_upstream_headers_preserves_duplicate_headers(self):
         response = web_search.response_with_upstream_headers(
             "redirecting",

@@ -205,11 +205,35 @@ def paperless_ui_unavailable_response():
 def response_headers_from_upstream(response):
     raw_headers = getattr(getattr(response, "raw", None), "headers", None)
     source = raw_headers if raw_headers is not None else response.headers
+    set_cookie_values = header_values(source, "Set-Cookie")
+    emitted_set_cookie = False
     headers = []
     for key, value in source.items():
-        if key.lower() not in HOP_BY_HOP_HEADERS:
-            headers.append((key, value))
+        lower_key = key.lower()
+        if lower_key in HOP_BY_HOP_HEADERS:
+            continue
+        if lower_key == "set-cookie" and set_cookie_values:
+            if not emitted_set_cookie:
+                headers.extend(
+                    ("Set-Cookie", value) for value in set_cookie_values
+                )
+                emitted_set_cookie = True
+            continue
+        headers.append((key, value))
+    if set_cookie_values and not emitted_set_cookie:
+        headers.extend(("Set-Cookie", value) for value in set_cookie_values)
     return headers
+
+
+def header_values(headers, key):
+    for method_name in ("getlist", "get_all"):
+        method = getattr(headers, method_name, None)
+        if method is None:
+            continue
+        values = method(key)
+        if values:
+            return list(values)
+    return []
 
 
 def response_with_upstream_headers(content, status_code, upstream_headers):
