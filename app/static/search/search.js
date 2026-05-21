@@ -137,9 +137,21 @@
     status.textContent = message || "";
   }
 
-  function canShowMore(payload) {
+  function responseLimit(payload) {
+    var limit = Number(payload.limit || 0);
+    return Number.isFinite(limit) && limit > 0 ? limit : currentLimit;
+  }
+
+  function maxSearchLimit(payload) {
     var maxLimit = Number(payload.max_limit || 50);
-    return Boolean(payload.has_more_possible) && currentLimit < maxLimit;
+    return Number.isFinite(maxLimit) && maxLimit > 0 ? maxLimit : 50;
+  }
+
+  function canShowMore(payload) {
+    return (
+      Boolean(payload.has_more_possible) &&
+      responseLimit(payload) < maxSearchLimit(payload)
+    );
   }
 
   function setShowMore(payload) {
@@ -148,8 +160,20 @@
     showMore.disabled = !canAskForMore;
   }
 
-  function setResultsEnd(isVisible) {
+  function resultsEndMessage(payload) {
+    var count = Number(payload.count || 0);
+    var maxLimit = maxSearchLimit(payload);
+    if (responseLimit(payload) >= maxLimit && count >= maxLimit) {
+      return "Result limit reached";
+    }
+    return "No more results";
+  }
+
+  function setResultsEnd(isVisible, message) {
     if (resultsEnd) {
+      if (message) {
+        resultsEnd.textContent = message;
+      }
       resultsEnd.hidden = !isVisible;
     }
   }
@@ -267,7 +291,7 @@
       countLabel + resultNoun + ' for "' + payload.query + '"',
     );
     setShowMore(payload);
-    setResultsEnd(!moreAvailable);
+    setResultsEnd(!moreAvailable, resultsEndMessage(payload));
   }
 
   function runSearch(query, requestedLimit) {
