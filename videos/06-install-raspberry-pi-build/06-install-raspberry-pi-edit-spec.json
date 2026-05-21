@@ -1,0 +1,38 @@
+{
+  "output": "06-install-raspberry-pi-with-fades.mp4",
+  "inputs": {
+    "video": "source/06-install-raspberry-pi-body-only.mp4"
+  },
+  "timeline": {
+    "width": 3600,
+    "height": 2160,
+    "fps": 60,
+    "segments": [
+      {
+        "type": "video",
+        "start": 0,
+        "end": 178.216667,
+        "setpts_multiplier": 1
+      }
+    ],
+    "intro": {
+      "path": "cards/intro-install-raspberry-pi.png",
+      "duration": 4.0,
+      "fade_duration": 1.0
+    },
+    "outro": {
+      "path": "cards/outro-fullstack-ag.png",
+      "duration": 4.0,
+      "fade_duration": 1.0
+    }
+  },
+  "profiles": {
+    "hq": {
+      "video_codec": "libx264",
+      "preset": "slow",
+      "crf": 18,
+      "movflags_faststart": true,
+      "shortest": true
+    }
+  }
+}

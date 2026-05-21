@@ -26,6 +26,20 @@ update the HTML template only so these instructions do not go stale.
 3. Render the copied HTML to a `3600x2160` PNG.
 4. Show the still PNG for approval before re-rendering a full screencast.
 
+The local Chrome app can render a card without a web server:
+
+```bash
+"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" \
+  --headless=new \
+  --disable-gpu \
+  --hide-scrollbars \
+  --force-device-scale-factor=1 \
+  --window-size=3600,2160 \
+  --user-data-dir=/tmp/fullstack-ag-title-card-chrome \
+  --screenshot=videos/06-install-raspberry-pi-build/cards/intro-install-raspberry-pi.png \
+  file://"$PWD/videos/06-install-raspberry-pi-build/cards/intro-install-raspberry-pi.html"
+```
+
 Keep the episode text in the central clear area between the logo/wordmark and
 the orange line. The background PNG already includes the green gradient,
 topographic texture, wheat/field-row decoration, Fullstack AG logo treatment,
