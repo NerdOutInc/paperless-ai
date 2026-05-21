@@ -17,9 +17,11 @@ import search
 
 STATIC_DIR = Path(__file__).with_name("static").joinpath("search")
 PAGE_DIR = Path(__file__).with_name("search_pages")
+STATIC_ASSET_VERSION_PLACEHOLDER = "__STATIC_ASSET_VERSION__"
 PAPERLESS_UI_SCRIPT_PATH = "/search/static/paperless-ui-link.js"
 PAPERLESS_UI_SCRIPT_TAG = (
-    f'<script src="{PAPERLESS_UI_SCRIPT_PATH}" defer></script>'
+    f'<script src="{PAPERLESS_UI_SCRIPT_PATH}{STATIC_ASSET_VERSION_PLACEHOLDER}" '
+    "defer></script>"
 )
 BODY_CLOSE_PATTERN = re.compile(r"</body\s*>", re.IGNORECASE)
 PAPERLESS_UI_PROXY_TIMEOUT = 30
@@ -53,6 +55,8 @@ SESSION_CACHE_MAX_ENTRIES = 256
 SESSION_VALIDATION_TIMEOUT = 3
 _session_cache = {}
 _session_cache_lock = threading.Lock()
+_asset_version_cache = None
+_asset_version_lock = threading.Lock()
 
 
 def clamp_limit(raw_limit, default=DEFAULT_SEARCH_LIMIT, max_limit=MAX_SEARCH_LIMIT):
@@ -70,6 +74,48 @@ def cookie_header_from_request(request):
 def clear_session_cache():
     with _session_cache_lock:
         _session_cache.clear()
+
+
+def clear_asset_version_cache():
+    global _asset_version_cache
+    with _asset_version_lock:
+        _asset_version_cache = None
+
+
+def static_asset_version():
+    configured_version = config.APP_ASSET_VERSION.strip()
+    if configured_version:
+        return configured_version
+
+    global _asset_version_cache
+    with _asset_version_lock:
+        if _asset_version_cache is None:
+            digest = hashlib.sha256()
+            for path in sorted(STATIC_DIR.rglob("*")):
+                if not path.is_file():
+                    continue
+                relative_path = path.relative_to(STATIC_DIR).as_posix()
+                digest.update(relative_path.encode("utf-8"))
+                digest.update(b"\0")
+                digest.update(path.read_bytes())
+                digest.update(b"\0")
+            _asset_version_cache = digest.hexdigest()[:12]
+        return _asset_version_cache
+
+
+def static_asset_version_query():
+    return f"?v={quote(static_asset_version(), safe='-._~')}"
+
+
+def render_static_asset_versions(html):
+    return html.replace(
+        STATIC_ASSET_VERSION_PLACEHOLDER,
+        static_asset_version_query(),
+    )
+
+
+def paperless_ui_script_tag():
+    return render_static_asset_versions(PAPERLESS_UI_SCRIPT_TAG)
 
 
 def session_cache_key(cookie_header):
@@ -319,12 +365,13 @@ def inject_paperless_ui_script(html):
     if PAPERLESS_UI_SCRIPT_PATH in html:
         return html
 
+    script_tag = paperless_ui_script_tag()
     body_close_matches = list(BODY_CLOSE_PATTERN.finditer(html))
     if not body_close_matches:
-        return f"{html}\n{PAPERLESS_UI_SCRIPT_TAG}\n"
+        return f"{html}\n{script_tag}\n"
     body_close_index = body_close_matches[-1].start()
     return (
-        f"{html[:body_close_index]}{PAPERLESS_UI_SCRIPT_TAG}\n"
+        f"{html[:body_close_index]}{script_tag}\n"
         f"{html[body_close_index:]}"
     )
 
@@ -408,7 +455,7 @@ def authenticated_static_page(request, filename):
 
     index_path = PAGE_DIR / filename
     return HTMLResponse(
-        index_path.read_text(encoding="utf-8"),
+        render_static_asset_versions(index_path.read_text(encoding="utf-8")),
         headers={"Cache-Control": "no-store"},
     )
 
