@@ -263,6 +263,11 @@
     var searchId = latestSearchId;
     var trimmed = query.trim();
     var limit = requestedLimit || INITIAL_LIMIT;
+    var previousQuery = currentQuery;
+    var previousLimit = currentLimit;
+    var hasRenderedResults = results.querySelector(".result-card") !== null;
+    var isLoadingMore =
+      trimmed === previousQuery && limit > previousLimit && hasRenderedResults;
     if (!trimmed) {
       input.focus();
       setStatus("Enter a search query.");
@@ -273,10 +278,12 @@
 
     currentQuery = trimmed;
     currentLimit = limit;
-    setStatus("Searching...");
+    setStatus(isLoadingMore ? "Loading more..." : "Searching...");
     showMore.disabled = true;
-    resultsActions.hidden = true;
-    results.innerHTML = "";
+    if (!isLoadingMore) {
+      resultsActions.hidden = true;
+      results.innerHTML = "";
+    }
     fetch(
       "/search/api/documents?q=" +
         encodeURIComponent(trimmed) +
@@ -322,6 +329,12 @@
         }
         var message = error.message || "Search failed";
         setStatus(message);
+        if (isLoadingMore) {
+          currentLimit = previousLimit;
+          showMore.disabled = false;
+          resultsActions.hidden = false;
+          return;
+        }
         renderEmpty(message);
       });
   }

@@ -1,3 +1,6 @@
+import math
+import re
+
 import requests
 
 import auth
@@ -13,6 +16,56 @@ PAPERLESS_DOCUMENT_CARD_FIELDS = (
     "id,title,created,created_date,added,original_file_name,page_count,mime_type"
 )
 PAPERLESS_KEYWORD_DOCUMENT_FIELDS = f"{PAPERLESS_DOCUMENT_CARD_FIELDS},content"
+QUERY_STOP_WORDS = {
+    "about",
+    "after",
+    "also",
+    "and",
+    "any",
+    "are",
+    "as",
+    "at",
+    "be",
+    "but",
+    "by",
+    "can",
+    "do",
+    "for",
+    "from",
+    "has",
+    "have",
+    "how",
+    "if",
+    "in",
+    "into",
+    "is",
+    "it",
+    "not",
+    "of",
+    "on",
+    "or",
+    "our",
+    "out",
+    "show",
+    "that",
+    "the",
+    "their",
+    "then",
+    "there",
+    "these",
+    "this",
+    "those",
+    "to",
+    "up",
+    "was",
+    "we",
+    "were",
+    "what",
+    "when",
+    "where",
+    "with",
+    "you",
+}
 
 
 def _semantic_similarity(result):
@@ -26,11 +79,79 @@ def _passes_semantic_threshold(result):
     return _semantic_similarity(result) >= config.SEMANTIC_MIN_SIMILARITY
 
 
-def get_document_metadata(doc_id):
-    resp = auth.api_request(
-        "GET", f"{config.PAPERLESS_API_URL}/api/documents/{doc_id}/",
-    )
-    doc = resp.json()
+def _query_terms(query):
+    terms = []
+    for term in re.findall(r"[a-z0-9]+", query.lower()):
+        if len(term) < 2 or term in QUERY_STOP_WORDS:
+            continue
+        terms.append(term)
+    return terms
+
+
+def _term_variants(term):
+    variants = {term}
+    if len(term) > 4 and term.endswith("ies"):
+        variants.add(f"{term[:-3]}y")
+    elif len(term) > 3 and term.endswith("s"):
+        variants.add(term[:-1])
+    return variants
+
+
+def _topic_text_matches_query(query, result):
+    terms = _query_terms(query)
+    if not terms:
+        return False
+
+    topic_tokens = set(re.findall(
+        r"[a-z0-9]+",
+        " ".join(
+            str(result.get(field) or "")
+            for field in ("title", "original_file_name")
+        ).lower(),
+    ))
+    if not topic_tokens:
+        return False
+
+    matches = 0
+    for term in terms:
+        if _term_variants(term) & topic_tokens:
+            matches += 1
+
+    required_matches = 1
+    if len(terms) > 1:
+        required_matches = max(2, math.ceil(len(terms) * 0.6))
+    return matches >= required_matches
+
+
+def _semantic_elbow_index(candidates):
+    """Find the first rank where semantic scores fall out of the match cluster."""
+    if len(candidates) <= config.SEMANTIC_ELBOW_MIN_RESULTS:
+        return len(candidates)
+
+    top_similarity = _semantic_similarity(candidates[0])
+    if top_similarity <= 0:
+        return len(candidates)
+
+    min_results = max(1, config.SEMANTIC_ELBOW_MIN_RESULTS)
+    for index in range(min_results, len(candidates)):
+        previous_similarity = _semantic_similarity(candidates[index - 1])
+        current_similarity = _semantic_similarity(candidates[index])
+        gap = previous_similarity - current_similarity
+        if (
+            gap >= config.SEMANTIC_ELBOW_MIN_GAP
+            and current_similarity <= top_similarity * config.SEMANTIC_ELBOW_DROP_RATIO
+        ):
+            return index
+
+    return len(candidates)
+
+
+def _apply_semantic_cutoff(candidates):
+    cutoff_index = _semantic_elbow_index(candidates)
+    return candidates[:cutoff_index], cutoff_index < len(candidates)
+
+
+def _metadata_payload(doc):
     return {
         "id": doc["id"],
         "title": doc.get("title", ""),
@@ -40,6 +161,40 @@ def get_document_metadata(doc_id):
         "created": doc.get("created", ""),
         "content": doc.get("content", "")[:500],
     }
+
+
+def get_document_metadata(doc_id):
+    resp = auth.api_request(
+        "GET", f"{config.PAPERLESS_API_URL}/api/documents/{doc_id}/",
+    )
+    return _metadata_payload(resp.json())
+
+
+def get_documents_metadata(doc_ids):
+    if not doc_ids:
+        return {}
+
+    documents = {}
+    for offset in range(0, len(doc_ids), PAPERLESS_DOCUMENT_BATCH_SIZE):
+        batch = doc_ids[offset:offset + PAPERLESS_DOCUMENT_BATCH_SIZE]
+        resp = auth.api_request(
+            "GET",
+            f"{config.PAPERLESS_API_URL}/api/documents/",
+            params={
+                "id__in": ",".join(str(doc_id) for doc_id in batch),
+                "page_size": len(batch),
+                "fields": (
+                    "id,title,correspondent,document_type,tags,created"
+                ),
+            },
+        )
+        documents.update(
+            {
+                doc["id"]: _metadata_payload(doc)
+                for doc in resp.json().get("results", [])
+            }
+        )
+    return documents
 
 
 def paperless_session_request(method, path, cookie_header, **kwargs):
@@ -104,7 +259,13 @@ def get_documents_for_session(doc_ids, cookie_header):
 
 def semantic_search(query, limit=10):
     query_embedding = embeddings.get_embedding(query)
-    raw_results = db.search_similar(query_embedding, limit=limit * 2)
+    raw_results = db.search_similar(
+        query_embedding,
+        limit=min(
+            max(limit * 8, SEMANTIC_MIN_CANDIDATES),
+            SEMANTIC_MAX_CANDIDATES,
+        ),
+    )
 
     # Deduplicate by document_id, keeping highest similarity
     seen = {}
@@ -118,24 +279,34 @@ def semantic_search(query, limit=10):
         ):
             seen[doc_id] = result
 
-    results = sorted(seen.values(), key=_semantic_similarity, reverse=True)[:limit]
+    candidates = sorted(seen.values(), key=_semantic_similarity, reverse=True)
+    candidates, _cutoff_applied = _apply_semantic_cutoff(candidates)
+    candidate_doc_ids = [result["document_id"] for result in candidates]
+    try:
+        metadata_by_id = get_documents_metadata(candidate_doc_ids)
+    except requests.RequestException as e:
+        print(
+            "Semantic search metadata lookup failed: "
+            f"{type(e).__name__}: {e}"
+        )
+        return []
 
     enriched = []
-    for r in results:
-        try:
-            meta = get_document_metadata(r["document_id"])
-            enriched.append({
-                **meta,
-                "similarity": round(_semantic_similarity(r), 4),
-                "matched_chunk": r["chunk_text"][:300],
-            })
-        except Exception as e:
-            enriched.append({
-                "id": r["document_id"],
-                "similarity": round(_semantic_similarity(r), 4),
-                "matched_chunk": r["chunk_text"][:300],
-                "error": str(e),
-            })
+    for r in candidates:
+        if len(enriched) >= limit:
+            break
+        meta = metadata_by_id.get(r["document_id"])
+        if meta is None:
+            print(
+                "Skipping semantic search candidate "
+                f"{r['document_id']}: document metadata unavailable"
+            )
+            continue
+        enriched.append({
+            **meta,
+            "similarity": round(_semantic_similarity(r), 4),
+            "matched_chunk": r["chunk_text"][:300],
+        })
 
     return enriched
 
@@ -178,11 +349,16 @@ def semantic_search_for_session(query, limit=10, cookie_header=""):
             )
             checked_doc_ids.update(unchecked_doc_ids)
 
+        visible_candidates = [
+            result
+            for result in candidates
+            if result["document_id"] in authorized_docs
+        ]
+        visible_candidates, cutoff_applied = _apply_semantic_cutoff(visible_candidates)
+
         results = []
-        for result in candidates:
+        for result in visible_candidates:
             doc = authorized_docs.get(result["document_id"])
-            if doc is None:
-                continue
             results.append(
                 _document_payload(
                     doc,
@@ -196,6 +372,7 @@ def semantic_search_for_session(query, limit=10, cookie_header=""):
 
         if (
             len(results) >= limit
+            or cutoff_applied
             or not raw_results
             or candidate_limit >= SEMANTIC_MAX_CANDIDATES
         ):
@@ -213,6 +390,7 @@ def keyword_search(query, limit=10):
         {
             "id": doc["id"],
             "title": doc.get("title", ""),
+            "original_file_name": doc.get("original_file_name", ""),
             "correspondent": doc.get("correspondent"),
             "document_type": doc.get("document_type"),
             "tags": doc.get("tags", []),
@@ -256,6 +434,8 @@ def hybrid_search(query, limit=10):
 
     for rank, result in enumerate(keyword_results):
         doc_id = result["id"]
+        if doc_id not in doc_data and not _topic_text_matches_query(query, result):
+            continue
         scores[doc_id] = scores.get(doc_id, 0) + 1.0 / (k + rank)
         if doc_id not in doc_data:
             doc_data[doc_id] = result
@@ -296,6 +476,8 @@ def hybrid_search_for_session(query, limit=10, cookie_header=""):
 
     for rank, result in enumerate(keyword_results):
         doc_id = result["id"]
+        if doc_id not in doc_data and not _topic_text_matches_query(query, result):
+            continue
         scores[doc_id] = scores.get(doc_id, 0) + 1.0 / (k + rank)
         if doc_id not in doc_data:
             doc_data[doc_id] = result
