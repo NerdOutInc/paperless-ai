@@ -1,3 +1,6 @@
+import math
+import re
+
 import requests
 
 import auth
@@ -13,6 +16,41 @@ PAPERLESS_DOCUMENT_CARD_FIELDS = (
     "id,title,created,created_date,added,original_file_name,page_count,mime_type"
 )
 PAPERLESS_KEYWORD_DOCUMENT_FIELDS = f"{PAPERLESS_DOCUMENT_CARD_FIELDS},content"
+QUERY_STOP_WORDS = {
+    "about",
+    "after",
+    "also",
+    "and",
+    "any",
+    "are",
+    "but",
+    "can",
+    "for",
+    "from",
+    "has",
+    "have",
+    "how",
+    "into",
+    "not",
+    "our",
+    "out",
+    "show",
+    "that",
+    "the",
+    "their",
+    "then",
+    "there",
+    "these",
+    "this",
+    "those",
+    "was",
+    "were",
+    "what",
+    "when",
+    "where",
+    "with",
+    "you",
+}
 
 
 def _semantic_similarity(result):
@@ -24,6 +62,75 @@ def _semantic_similarity(result):
 
 def _passes_semantic_threshold(result):
     return _semantic_similarity(result) >= config.SEMANTIC_MIN_SIMILARITY
+
+
+def _query_terms(query):
+    terms = []
+    for term in re.findall(r"[a-z0-9]+", query.lower()):
+        if len(term) < 3 or term in QUERY_STOP_WORDS:
+            continue
+        terms.append(term)
+    return terms
+
+
+def _term_variants(term):
+    variants = {term}
+    if len(term) > 3 and term.endswith("s"):
+        variants.add(term[:-1])
+    if len(term) > 4 and term.endswith("ies"):
+        variants.add(f"{term[:-3]}y")
+    return variants
+
+
+def _topic_text_matches_query(query, result):
+    terms = _query_terms(query)
+    if not terms:
+        return False
+
+    topic_text = " ".join(
+        str(result.get(field) or "")
+        for field in ("title", "original_file_name")
+    ).lower()
+    if not topic_text:
+        return False
+
+    matches = 0
+    for term in terms:
+        if any(variant in topic_text for variant in _term_variants(term)):
+            matches += 1
+
+    required_matches = 1
+    if len(terms) > 1:
+        required_matches = max(2, math.ceil(len(terms) * 0.6))
+    return matches >= required_matches
+
+
+def _semantic_elbow_index(candidates):
+    """Find the first rank where semantic scores fall out of the match cluster."""
+    if len(candidates) <= config.SEMANTIC_ELBOW_MIN_RESULTS:
+        return len(candidates)
+
+    top_similarity = _semantic_similarity(candidates[0])
+    if top_similarity <= 0:
+        return len(candidates)
+
+    min_results = max(1, config.SEMANTIC_ELBOW_MIN_RESULTS)
+    for index in range(min_results, len(candidates)):
+        previous_similarity = _semantic_similarity(candidates[index - 1])
+        current_similarity = _semantic_similarity(candidates[index])
+        gap = previous_similarity - current_similarity
+        if (
+            gap >= config.SEMANTIC_ELBOW_MIN_GAP
+            and current_similarity <= top_similarity * config.SEMANTIC_ELBOW_DROP_RATIO
+        ):
+            return index
+
+    return len(candidates)
+
+
+def _apply_semantic_cutoff(candidates):
+    cutoff_index = _semantic_elbow_index(candidates)
+    return candidates[:cutoff_index], cutoff_index < len(candidates)
 
 
 def get_document_metadata(doc_id):
@@ -118,7 +225,9 @@ def semantic_search(query, limit=10):
         ):
             seen[doc_id] = result
 
-    results = sorted(seen.values(), key=_semantic_similarity, reverse=True)[:limit]
+    candidates = sorted(seen.values(), key=_semantic_similarity, reverse=True)
+    candidates, _cutoff_applied = _apply_semantic_cutoff(candidates)
+    results = candidates[:limit]
 
     enriched = []
     for r in results:
@@ -129,13 +238,8 @@ def semantic_search(query, limit=10):
                 "similarity": round(_semantic_similarity(r), 4),
                 "matched_chunk": r["chunk_text"][:300],
             })
-        except Exception as e:
-            enriched.append({
-                "id": r["document_id"],
-                "similarity": round(_semantic_similarity(r), 4),
-                "matched_chunk": r["chunk_text"][:300],
-                "error": str(e),
-            })
+        except Exception:
+            continue
 
     return enriched
 
@@ -178,11 +282,16 @@ def semantic_search_for_session(query, limit=10, cookie_header=""):
             )
             checked_doc_ids.update(unchecked_doc_ids)
 
+        visible_candidates = [
+            result
+            for result in candidates
+            if result["document_id"] in authorized_docs
+        ]
+        visible_candidates, cutoff_applied = _apply_semantic_cutoff(visible_candidates)
+
         results = []
-        for result in candidates:
+        for result in visible_candidates:
             doc = authorized_docs.get(result["document_id"])
-            if doc is None:
-                continue
             results.append(
                 _document_payload(
                     doc,
@@ -196,6 +305,7 @@ def semantic_search_for_session(query, limit=10, cookie_header=""):
 
         if (
             len(results) >= limit
+            or cutoff_applied
             or not raw_results
             or candidate_limit >= SEMANTIC_MAX_CANDIDATES
         ):
@@ -256,6 +366,8 @@ def hybrid_search(query, limit=10):
 
     for rank, result in enumerate(keyword_results):
         doc_id = result["id"]
+        if doc_id not in doc_data and not _topic_text_matches_query(query, result):
+            continue
         scores[doc_id] = scores.get(doc_id, 0) + 1.0 / (k + rank)
         if doc_id not in doc_data:
             doc_data[doc_id] = result
@@ -296,6 +408,8 @@ def hybrid_search_for_session(query, limit=10, cookie_header=""):
 
     for rank, result in enumerate(keyword_results):
         doc_id = result["id"]
+        if doc_id not in doc_data and not _topic_text_matches_query(query, result):
+            continue
         scores[doc_id] = scores.get(doc_id, 0) + 1.0 / (k + rank)
         if doc_id not in doc_data:
             doc_data[doc_id] = result

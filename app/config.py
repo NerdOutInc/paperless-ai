@@ -54,6 +54,17 @@ MCP_PORT = _env_int("MCP_HTTP_PORT", "3001")
 MCP_AUTH_TOKEN = os.getenv("MCP_AUTH_TOKEN", "")
 SEMANTIC_MIN_SIMILARITY = _env_float(
     "SEMANTIC_MIN_SIMILARITY",
-    "0.25",
+    "0.35",
+    max_val=1.0,
+)
+SEMANTIC_ELBOW_MIN_RESULTS = _env_int("SEMANTIC_ELBOW_MIN_RESULTS", "4")
+SEMANTIC_ELBOW_MIN_GAP = _env_float(
+    "SEMANTIC_ELBOW_MIN_GAP",
+    "0.025",
+    max_val=1.0,
+)
+SEMANTIC_ELBOW_DROP_RATIO = _env_float(
+    "SEMANTIC_ELBOW_DROP_RATIO",
+    "0.88",
     max_val=1.0,
 )

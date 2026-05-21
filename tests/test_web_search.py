@@ -1025,7 +1025,12 @@ class SessionSearchTests(unittest.TestCase):
         ]
         keyword.return_value = [
             {"id": 1, "title": "A", "document_url": "/documents/1", "sources": ["keyword"]},
-            {"id": 3, "title": "C", "document_url": "/documents/3", "sources": ["keyword"]},
+            {
+                "id": 3,
+                "title": "Crop report",
+                "document_url": "/documents/3",
+                "sources": ["keyword"],
+            },
         ]
 
         results = search.hybrid_search_for_session("crop", limit=10, cookie_header="sessionid=abc")
@@ -1034,6 +1039,66 @@ class SessionSearchTests(unittest.TestCase):
         self.assertEqual(by_id[1]["sources"], ["keyword", "semantic"])
         self.assertGreater(by_id[1]["relevance_score"], by_id[2]["relevance_score"])
         self.assertEqual(by_id[3]["document_url"], "/documents/3")
+
+    def test_semantic_cutoff_stops_at_score_gap(self):
+        candidates = [
+            {"document_id": 1, "similarity": 0.50},
+            {"document_id": 2, "similarity": 0.48},
+            {"document_id": 3, "similarity": 0.46},
+            {"document_id": 4, "similarity": 0.45},
+            {"document_id": 5, "similarity": 0.39},
+        ]
+
+        filtered, cutoff_applied = search._apply_semantic_cutoff(candidates)
+
+        self.assertTrue(cutoff_applied)
+        self.assertEqual([result["document_id"] for result in filtered], [1, 2, 3, 4])
+
+    @patch("search.keyword_search_for_session")
+    @patch("search.semantic_search_for_session", return_value=[])
+    def test_hybrid_drops_keyword_only_content_mentions(self, _semantic, keyword):
+        keyword.return_value = [
+            {
+                "id": 37,
+                "title": "Cash Rent Lease - South 80 Acres",
+                "original_file_name": "037_cash_rent_lease_south_80_acres.pdf",
+                "document_url": "/documents/37",
+                "matched_chunk": (
+                    "Tenant shall apply fertilizer according to soil test "
+                    "recommendations."
+                ),
+                "sources": ["keyword"],
+            },
+        ]
+
+        results = search.hybrid_search_for_session(
+            "fertilizer recommendations",
+            limit=10,
+            cookie_header="sessionid=abc",
+        )
+
+        self.assertEqual(results, [])
+
+    @patch("search.keyword_search_for_session")
+    @patch("search.semantic_search_for_session", return_value=[])
+    def test_hybrid_keeps_keyword_only_topic_matches(self, _semantic, keyword):
+        keyword.return_value = [
+            {
+                "id": 37,
+                "title": "Cash Rent Lease - South 80 Acres",
+                "original_file_name": "037_cash_rent_lease_south_80_acres.pdf",
+                "document_url": "/documents/37",
+                "sources": ["keyword"],
+            },
+        ]
+
+        results = search.hybrid_search_for_session(
+            "cash rent lease",
+            limit=10,
+            cookie_header="sessionid=abc",
+        )
+
+        self.assertEqual([result["id"] for result in results], [37])
 
 
 if __name__ == "__main__":
