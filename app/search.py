@@ -90,10 +90,10 @@ def _query_terms(query):
 
 def _term_variants(term):
     variants = {term}
-    if len(term) > 3 and term.endswith("s"):
-        variants.add(term[:-1])
     if len(term) > 4 and term.endswith("ies"):
         variants.add(f"{term[:-3]}y")
+    elif len(term) > 3 and term.endswith("s"):
+        variants.add(term[:-1])
     return variants
 
 
@@ -184,7 +184,7 @@ def get_documents_metadata(doc_ids):
                 "id__in": ",".join(str(doc_id) for doc_id in batch),
                 "page_size": len(batch),
                 "fields": (
-                    "id,title,correspondent,document_type,tags,created,content"
+                    "id,title,correspondent,document_type,tags,created"
                 ),
             },
         )

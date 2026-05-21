@@ -845,6 +845,19 @@ class SessionSearchTests(unittest.TestCase):
         self.assertEqual(len(results), 205)
         self.assertEqual(paperless_request.call_count, 3)
 
+    @patch("search.auth.api_request")
+    def test_get_documents_metadata_omits_full_content(self, api_request):
+        api_request.return_value = FakeResponse(
+            200,
+            {"results": [{"id": 7, "title": "Crop plan"}]},
+        )
+
+        results = search.get_documents_metadata([7])
+
+        self.assertEqual(results[7]["title"], "Crop plan")
+        params = api_request.call_args.kwargs["params"]
+        self.assertNotIn("content", params["fields"])
+
     @patch("search.paperless_session_request")
     def test_keyword_search_for_session_requests_card_fields(self, paperless_request):
         paperless_request.return_value = FakeResponse(
@@ -1107,6 +1120,12 @@ class SessionSearchTests(unittest.TestCase):
 
         self.assertTrue(cutoff_applied)
         self.assertEqual([result["document_id"] for result in filtered], [1, 2, 3, 4])
+
+    def test_term_variants_handle_ies_before_plural_s(self):
+        self.assertEqual(
+            search._term_variants("companies"),
+            {"companies", "company"},
+        )
 
     @patch("search.keyword_search_for_session")
     @patch("search.semantic_search_for_session", return_value=[])
