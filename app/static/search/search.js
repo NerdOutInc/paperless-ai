@@ -4,6 +4,7 @@
   var status = document.getElementById("status");
   var results = document.getElementById("results");
   var resultsActions = document.getElementById("results-actions");
+  var resultsEnd = document.getElementById("results-end");
   var showMore = document.getElementById("show-more");
   var latestSearchId = 0;
   var currentQuery = "";
@@ -136,12 +137,21 @@
     status.textContent = message || "";
   }
 
-  function setShowMore(payload) {
+  function canShowMore(payload) {
     var maxLimit = Number(payload.max_limit || 50);
-    var canAskForMore =
-      Boolean(payload.has_more_possible) && currentLimit < maxLimit;
+    return Boolean(payload.has_more_possible) && currentLimit < maxLimit;
+  }
+
+  function setShowMore(payload) {
+    var canAskForMore = canShowMore(payload);
     resultsActions.hidden = !canAskForMore;
     showMore.disabled = !canAskForMore;
+  }
+
+  function setResultsEnd(isVisible) {
+    if (resultsEnd) {
+      resultsEnd.hidden = !isVisible;
+    }
   }
 
   function errorMessage(code, fallback) {
@@ -169,6 +179,7 @@
     results.innerHTML =
       '<div class="empty-state">' + escapeHtml(message) + "</div>";
     resultsActions.hidden = true;
+    setResultsEnd(false);
   }
 
   function meta(label, value) {
@@ -248,14 +259,15 @@
         return resultCard(result, highlight, index);
       })
       .join("");
+    var moreAvailable = canShowMore(payload);
+    var countLabel = String(payload.count) + (moreAvailable ? "+" : "");
+    var resultNoun =
+      payload.count === 1 && !moreAvailable ? " result" : " results";
     setStatus(
-      payload.count +
-        (payload.count === 1 ? " result" : " results") +
-        ' for "' +
-        payload.query +
-        '"',
+      countLabel + resultNoun + ' for "' + payload.query + '"',
     );
     setShowMore(payload);
+    setResultsEnd(!moreAvailable);
   }
 
   function runSearch(query, requestedLimit) {
@@ -273,6 +285,7 @@
       setStatus("Enter a search query.");
       results.innerHTML = "";
       resultsActions.hidden = true;
+      setResultsEnd(false);
       return;
     }
 
@@ -280,6 +293,7 @@
     currentLimit = limit;
     setStatus(isLoadingMore ? "Loading more..." : "Searching...");
     showMore.disabled = true;
+    setResultsEnd(false);
     if (!isLoadingMore) {
       resultsActions.hidden = true;
       results.innerHTML = "";
