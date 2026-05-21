@@ -23,15 +23,27 @@ QUERY_STOP_WORDS = {
     "and",
     "any",
     "are",
+    "as",
+    "at",
+    "be",
     "but",
+    "by",
     "can",
+    "do",
     "for",
     "from",
     "has",
     "have",
     "how",
+    "if",
+    "in",
     "into",
+    "is",
+    "it",
     "not",
+    "of",
+    "on",
+    "or",
     "our",
     "out",
     "show",
@@ -43,7 +55,10 @@ QUERY_STOP_WORDS = {
     "these",
     "this",
     "those",
+    "to",
+    "up",
     "was",
+    "we",
     "were",
     "what",
     "when",
@@ -67,7 +82,7 @@ def _passes_semantic_threshold(result):
 def _query_terms(query):
     terms = []
     for term in re.findall(r"[a-z0-9]+", query.lower()):
-        if len(term) < 3 or term in QUERY_STOP_WORDS:
+        if len(term) < 2 or term in QUERY_STOP_WORDS:
             continue
         terms.append(term)
     return terms
@@ -91,12 +106,17 @@ def _topic_text_matches_query(query, result):
         str(result.get(field) or "")
         for field in ("title", "original_file_name")
     ).lower()
-    if not topic_text:
+    topic_tokens = set(re.findall(r"[a-z0-9]+", topic_text))
+    if not topic_tokens:
         return False
 
     matches = 0
     for term in terms:
-        if any(variant in topic_text for variant in _term_variants(term)):
+        if len(term) <= 2:
+            matched = term in topic_tokens
+        else:
+            matched = any(variant in topic_text for variant in _term_variants(term))
+        if matched:
             matches += 1
 
     required_matches = 1
@@ -211,7 +231,13 @@ def get_documents_for_session(doc_ids, cookie_header):
 
 def semantic_search(query, limit=10):
     query_embedding = embeddings.get_embedding(query)
-    raw_results = db.search_similar(query_embedding, limit=limit * 2)
+    raw_results = db.search_similar(
+        query_embedding,
+        limit=min(
+            max(limit * 8, SEMANTIC_MIN_CANDIDATES),
+            SEMANTIC_MAX_CANDIDATES,
+        ),
+    )
 
     # Deduplicate by document_id, keeping highest similarity
     seen = {}
@@ -227,10 +253,10 @@ def semantic_search(query, limit=10):
 
     candidates = sorted(seen.values(), key=_semantic_similarity, reverse=True)
     candidates, _cutoff_applied = _apply_semantic_cutoff(candidates)
-    results = candidates[:limit]
-
     enriched = []
-    for r in results:
+    for r in candidates:
+        if len(enriched) >= limit:
+            break
         try:
             meta = get_document_metadata(r["document_id"])
             enriched.append({

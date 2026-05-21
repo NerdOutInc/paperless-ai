@@ -1016,6 +1016,42 @@ class SessionSearchTests(unittest.TestCase):
 
         self.assertEqual(results[0]["similarity"], 0.0)
 
+    @patch("search.get_document_metadata")
+    @patch("search.embeddings.get_embedding", return_value=[0.1, 0.2])
+    @patch("search.db.search_similar")
+    def test_semantic_search_keeps_collecting_after_metadata_skip(
+        self,
+        search_similar,
+        _get_embedding,
+        get_document_metadata,
+    ):
+        search_similar.return_value = [
+            {
+                "document_id": 1,
+                "chunk_index": 0,
+                "chunk_text": "stale chunk",
+                "similarity": 0.9,
+            },
+            {
+                "document_id": 2,
+                "chunk_index": 0,
+                "chunk_text": "viable chunk",
+                "similarity": 0.89,
+            },
+        ]
+
+        def metadata_for(doc_id):
+            if doc_id == 1:
+                raise RuntimeError("stale Paperless document")
+            return {"id": 2, "title": "Viable document"}
+
+        get_document_metadata.side_effect = metadata_for
+
+        results = search.semantic_search("crop", limit=1)
+
+        self.assertEqual([result["id"] for result in results], [2])
+        self.assertEqual(results[0]["matched_chunk"], "viable chunk")
+
     @patch("search.keyword_search_for_session")
     @patch("search.semantic_search_for_session")
     def test_hybrid_search_merges_sources_and_scores(self, semantic, keyword):
@@ -1099,6 +1135,49 @@ class SessionSearchTests(unittest.TestCase):
         )
 
         self.assertEqual([result["id"] for result in results], [37])
+
+    @patch("search.keyword_search_for_session")
+    @patch("search.semantic_search_for_session", return_value=[])
+    def test_hybrid_keeps_short_keyword_only_topic_matches(self, _semantic, keyword):
+        keyword.return_value = [
+            {
+                "id": 88,
+                "title": "AI Search Setup Notes",
+                "original_file_name": "088_ai_search_setup_notes.pdf",
+                "document_url": "/documents/88",
+                "sources": ["keyword"],
+            },
+        ]
+
+        results = search.hybrid_search_for_session(
+            "AI",
+            limit=10,
+            cookie_header="sessionid=abc",
+        )
+
+        self.assertEqual([result["id"] for result in results], [88])
+
+    @patch("search.keyword_search_for_session")
+    @patch("search.semantic_search_for_session", return_value=[])
+    def test_hybrid_drops_short_keyword_only_side_mentions(self, _semantic, keyword):
+        keyword.return_value = [
+            {
+                "id": 89,
+                "title": "Seed Contract",
+                "original_file_name": "089_seed_contract.pdf",
+                "document_url": "/documents/89",
+                "matched_chunk": "This clause mentions AI in passing.",
+                "sources": ["keyword"],
+            },
+        ]
+
+        results = search.hybrid_search_for_session(
+            "AI",
+            limit=10,
+            cookie_header="sessionid=abc",
+        )
+
+        self.assertEqual(results, [])
 
 
 if __name__ == "__main__":
