@@ -160,6 +160,7 @@ class FakeRawHeaders:
 class WebSearchTests(unittest.TestCase):
     def setUp(self):
         web_search.clear_session_cache()
+        web_search.clear_asset_version_cache()
 
     def test_clamp_limit_handles_bad_and_out_of_range_values(self):
         self.assertEqual(web_search.clamp_limit(None), 10)
@@ -392,21 +393,67 @@ class WebSearchTests(unittest.TestCase):
         self.assertFalse((web_search.STATIC_DIR / "index.html").exists())
         self.assertFalse((web_search.STATIC_DIR / "mcp.html").exists())
 
+    @patch("web_search.config.APP_ASSET_VERSION", "test-version")
+    @patch("web_search.validate_paperless_session", return_value={"username": "admin"})
+    def test_search_page_versions_static_assets(self, _validate):
+        request = SimpleNamespace(headers={"cookie": "sessionid=abc"})
+
+        response = web_search.search_page(request)
+        html = response.body.decode()
+
+        self.assertIn('/search/static/search.css?v=test-version"', html)
+        self.assertIn('/search/static/paperless-leaf.svg?v=test-version"', html)
+        self.assertIn('/search/static/search.js?v=test-version"', html)
+        self.assertNotIn(web_search.STATIC_ASSET_VERSION_PLACEHOLDER, html)
+
+    @patch("web_search.config.APP_ASSET_VERSION", "test-version")
+    @patch("web_search.validate_paperless_session", return_value={"username": "admin"})
+    def test_mcp_page_versions_static_assets(self, _validate):
+        request = SimpleNamespace(headers={"cookie": "sessionid=abc"})
+
+        response = web_search.mcp_page(request)
+        html = response.body.decode()
+
+        self.assertIn('/search/static/search.css?v=test-version"', html)
+        self.assertIn('/search/static/paperless-leaf.svg?v=test-version"', html)
+        self.assertIn('/search/static/mcp.js?v=test-version"', html)
+        self.assertNotIn(web_search.STATIC_ASSET_VERSION_PLACEHOLDER, html)
+
+    @patch("web_search.config.APP_ASSET_VERSION", "")
+    def test_static_asset_version_defaults_to_content_hash(self):
+        version = web_search.static_asset_version()
+
+        self.assertRegex(version, r"^[0-9a-f]{12}$")
+
     def test_inject_paperless_ui_script_inserts_before_body_close(self):
         html = "<html><body><pngx-root></pngx-root></body></html>"
 
         injected = web_search.inject_paperless_ui_script(html)
+        script_tag = web_search.paperless_ui_script_tag()
 
-        self.assertIn(web_search.PAPERLESS_UI_SCRIPT_TAG, injected)
+        self.assertIn(script_tag, injected)
         self.assertLess(
-            injected.index(web_search.PAPERLESS_UI_SCRIPT_TAG),
+            injected.index(script_tag),
             injected.lower().index("</body>"),
         )
 
+    @patch("web_search.config.APP_ASSET_VERSION", "test-version")
+    def test_inject_paperless_ui_script_versions_script_asset(self):
+        html = "<html><body><pngx-root></pngx-root></body></html>"
+
+        injected = web_search.inject_paperless_ui_script(html)
+
+        self.assertIn(
+            '/search/static/paperless-ui-link.js?v=test-version"',
+            injected,
+        )
+        self.assertNotIn(web_search.STATIC_ASSET_VERSION_PLACEHOLDER, injected)
+
     def test_inject_paperless_ui_script_is_idempotent(self):
+        script_tag = web_search.paperless_ui_script_tag()
         html = (
             "<html><body>"
-            f"{web_search.PAPERLESS_UI_SCRIPT_TAG}"
+            f"{script_tag}"
             "</body></html>"
         )
 
@@ -419,7 +466,7 @@ class WebSearchTests(unittest.TestCase):
 
         injected = web_search.inject_paperless_ui_script(html)
 
-        self.assertTrue(injected.endswith(f"{web_search.PAPERLESS_UI_SCRIPT_TAG}\n"))
+        self.assertTrue(injected.endswith(f"{web_search.paperless_ui_script_tag()}\n"))
 
     def test_inject_paperless_ui_script_uses_original_html_indices(self):
         html = "<html><body>Turkish dotted İ</BoDy></html>"
@@ -427,7 +474,7 @@ class WebSearchTests(unittest.TestCase):
         injected = web_search.inject_paperless_ui_script(html)
 
         self.assertIn("Turkish dotted İ", injected)
-        self.assertIn(f"{web_search.PAPERLESS_UI_SCRIPT_TAG}\n</BoDy>", injected)
+        self.assertIn(f"{web_search.paperless_ui_script_tag()}\n</BoDy>", injected)
 
     def test_response_headers_from_upstream_removes_recomputed_headers(self):
         response = FakeResponse(
