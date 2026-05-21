@@ -18,9 +18,9 @@
           own instead of a monthly cloud server.
         </p>
         <div class="meta-strip">
-          <span class="pill install">Target: 6-8 minutes</span>
-          <span class="pill">Start: Pi hardware</span>
-          <span class="pill">Finish: Paperless on local network</span>
+          <span class="pill install">Target: 4-5 minutes</span>
+          <span class="pill">Start: intro card</span>
+          <span class="pill">Finish: search + MCP setup</span>
         </div>
         <p class="transcript-link">
           Plain narration:
@@ -34,16 +34,17 @@
         <h2>Before Recording</h2>
         <ul>
           <li>
-            Use a Raspberry Pi 4 with 4 GB minimum, or a Pi 5. A USB SSD is
-            strongly preferred for long-term database use.
+            Use the existing 3:04 footage as the source of truth. The final
+            narration should land around 4:15-4:45 after freeze holds.
           </li>
           <li>
-            Install Raspberry Pi Imager on the recording computer and have a
-            blank SD card or SSD ready.
+            Reuse the existing intro and outro cards. Do not add new slides for
+            the first narration pass.
           </li>
           <li>
-            Prefer Ethernet for the demo. If using Wi-Fi, rehearse the Imager
-            customization fields.
+            If the recorded narration runs long, add one optional 5-7 second
+            "What you need" card after the intro: Raspberry Pi 4/5, SD card or
+            SSD, network access, and another computer for flashing and SSH.
           </li>
           <li>
             Have the same install command ready:
@@ -52,8 +53,8 @@
             >
           </li>
           <li>
-            Plan edits for flashing, first boot, Docker pulls, and embedding
-            catch-up.
+            Preserve natural cursor movement and typing speed. Add freeze holds
+            before or after visible actions instead of slowing the footage.
           </li>
         </ul>
       </section>
@@ -69,197 +70,198 @@
         </thead>
         <tbody>
           <tr>
-            <td class="time">0:00-0:30</td>
+            <td class="time">0:00-0:04</td>
             <td class="action">
               <span class="label">Show</span>
-              Close shot of Pi, power supply, Ethernet cable, and SSD or SD
-              card.
+              Intro card. Hold if the opening line needs more breathing room.
             </td>
             <td class="narration">
-              Hey this is Brian from Fullstack Ag. If you would rather run
-              Paperless AI at home instead of renting a cloud server, a
-              Raspberry Pi is a nice little option. It is small, quiet, cheap to
-              power, and it keeps your document archive on your own network.
+              Hey, this is Brian from Fullstack Ag. In this video we are
+              installing Paperless AI on a Raspberry Pi, so you can run
+              Paperless-ngx, semantic search, and optional MCP access on
+              hardware in your own house or shop. A Pi is not the fastest server
+              in the world, but for a small farm document archive it can be a
+              really nice fit: quiet, cheap to run, and local by default.
             </td>
           </tr>
           <tr>
-            <td class="time">0:30-0:55</td>
-            <td class="action">
-              <span class="label">Show</span>
-              Point out RAM model and storage. Show SSD if available.
-            </td>
-            <td class="narration">
-              I would use a Pi 4 with at least 4 gigabytes of memory, or a Pi 5
-              if you have one. For storage, an SD card works for trying things,
-              but a USB SSD is much better for a real archive because the
-              database will be writing to disk over time.
-            </td>
-          </tr>
-          <tr>
-            <td class="time">0:55-1:35</td>
+            <td class="time">0:04-0:16</td>
             <td class="action click">
               <span class="label">Click</span>
-              Open Raspberry Pi Imager. Choose the Pi model, Raspberry Pi OS
-              Lite 64-bit, and target storage.
+              Raspberry Pi Imager: choose the Pi model and Raspberry Pi OS Lite
+              64-bit.
             </td>
             <td class="narration">
-              On your main computer, open Raspberry Pi Imager. Choose your Pi
-              model, then choose Raspberry Pi OS Lite, 64-bit. We do not need a
-              desktop environment because this Pi is going to be a small server.
-              Then choose the SD card or SSD you are flashing.
+              We start on the computer we are using to flash the card or drive.
+              Open Raspberry Pi Imager, choose your Pi model, and then choose
+              Raspberry Pi OS Lite, 64-bit. I am using Lite because this Pi is
+              going to act like a little server. We do not need a desktop
+              environment running on it all day.
             </td>
           </tr>
           <tr>
-            <td class="time">1:35-2:25</td>
+            <td class="time">0:16-0:47</td>
             <td class="action type">
               <span class="label">Type</span>
-              In Imager customization, set hostname <code>paperless</code>,
-              username, password, timezone, Wi-Fi if needed, and enable SSH.
+              Choose storage, then customize hostname, timezone, user account,
+              and Wi-Fi if needed. Freeze on clean customization screens as
+              needed.
             </td>
             <td class="narration">
-              Before writing the image, edit the settings. Set the hostname to
-              paperless so it is easy to find on the network. Pick a username
-              and a strong password. Set your timezone. If you are using Wi-Fi,
-              enter the network details here. Then go to Services and enable
-              SSH, because that is how we will log into the Pi without plugging
-              in a monitor.
+              Next choose the storage device. An SD card is fine for testing,
+              but for a real archive I would strongly prefer a USB SSD, because
+              Paperless, Postgres, and OCR work are going to write to disk over
+              time. Before writing the image, open customization. Set the
+              hostname to <code>paperless</code>; that gives us the friendly
+              address <code>paperless.local</code> on many home networks. Set
+              your timezone, create the user account, and add Wi-Fi details if
+              you are not using Ethernet.
             </td>
           </tr>
           <tr>
-            <td class="time">2:25-2:55</td>
+            <td class="time">0:47-1:00</td>
+            <td class="action type">
+              <span class="label">Click</span>
+              Enable SSH, choose authentication, add a key if using one, and
+              leave Raspberry Pi Connect off.
+            </td>
+            <td class="narration">
+              The important setting here is SSH. Enable SSH so we can log into
+              the Pi from our computer instead of plugging in a monitor and
+              keyboard. A public key is the cleanest option if you already use
+              SSH keys. Password authentication is okay for a local demo, but
+              use a strong password. I am also leaving Raspberry Pi Connect off
+              here, because this install is meant to be managed over SSH on the
+              local network.
+            </td>
+          </tr>
+          <tr>
+            <td class="time">1:00-1:15</td>
             <td class="action wait">
               <span class="label">Wait</span>
-              Write the image. Show progress briefly, then cut to finished
-              verification.
+              Review choices, write image, show progress, and skip to write
+              complete. Hold on the completed card if needed.
             </td>
             <td class="narration">
               Now write the image. This erases the card or drive, so make sure
-              you picked the right one. Flashing and verification take a few
-              minutes, so I will skip ahead to the finished card.
+              the selected storage is the one you actually mean to flash. Imager
+              will write and verify the image. In real time this takes a few
+              minutes, so in the finished edit we can hold here briefly and then
+              skip to the completed card. After this, put the card or SSD into
+              the Pi, connect Ethernet if you have it, and power it on.
             </td>
           </tr>
           <tr>
-            <td class="time">2:55-3:20</td>
-            <td class="action">
-              <span class="label">Show</span>
-              Insert storage into Pi, connect Ethernet, then power.
-            </td>
-            <td class="narration">
-              Put the card or SSD into the Pi, plug in Ethernet if you can, and
-              then connect power. The first boot can take a minute or two while
-              the system expands and starts services.
-            </td>
-          </tr>
-          <tr>
-            <td class="time">3:20-4:00</td>
+            <td class="time">1:15-1:39</td>
             <td class="action type">
               <span class="label">Type</span>
-              In Terminal, run <code>ssh YOUR_USER@paperless.local</code>. If
-              mDNS fails, use the router or IP scanner to find the Pi IP.
+              Open Terminal and SSH into <code>paperless.local</code>. Accept
+              the fingerprint and land on the Pi shell.
             </td>
             <td class="narration">
-              Back on your computer, open a terminal and SSH into
-              paperless.local with the username you created. If paperless.local
-              does not resolve on your network, check your router for connected
-              devices and use the Pi's IP address instead. Accept the
-              fingerprint, enter your password, and now we are on the Pi.
+              Once the Pi has booted, open a terminal and SSH into it. I am
+              using <code>ssh brian@paperless.local</code>. If
+              <code>paperless.local</code> does not resolve on your network,
+              look in your router for the Pi's IP address and SSH to that
+              instead. Accept the fingerprint the first time, enter your
+              password if needed, and now we are on the Raspberry Pi.
             </td>
           </tr>
           <tr>
-            <td class="time">4:00-4:30</td>
+            <td class="time">1:39-2:02</td>
+            <td class="action type">
+              <span class="label">Paste</span>
+              Run the Paperless AI installer. Hold on installer checks if the
+              narration needs extra room.
+            </td>
+            <td class="narration">
+              The install command is the same one from the Paperless AI docs:
+              <code
+                >curl -fsSL https://paperless.fullstack.ag/install.sh |
+                bash</code
+              >. The installer checks the system, verifies Docker, and then
+              walks through the Paperless AI setup. If Docker has to be
+              installed fresh, the script may ask you to log out and back in so
+              your user can run Docker commands. That is normal. Run the same
+              command again after reconnecting.
+            </td>
+          </tr>
+          <tr>
+            <td class="time">2:02-2:13</td>
             <td class="action type">
               <span class="label">Type</span>
-              Paste the Paperless AI install command and press Return.
+              Answer installer prompts, then hold on the completion summary.
             </td>
             <td class="narration">
-              The install command is the same one we used for the cloud server.
-              Paste it and press enter. The installer checks the Pi, installs
-              Docker if needed, and then sets up the Paperless stack.
+              In this recording Docker is already ready, so we go straight into
+              the setup questions. Choose the install directory, set the
+              Paperless admin username and password, pick your timezone, and for
+              a home-network install you can skip the public domain name. On a
+              Pi, pulling images and starting the stack can take a while,
+              especially the first time. When it finishes, the installer prints
+              the local Paperless URL, the search URL, the MCP URL, and the
+              commands you would use later for updates, backups, and logs.
             </td>
           </tr>
           <tr>
-            <td class="time">4:30-5:25</td>
-            <td class="action type">
-              <span class="label">Type</span>
-              Answer installer prompts. If Docker group changes require logout,
-              exit, SSH back in, and rerun the command.
-            </td>
-            <td class="narration">
-              If Docker gets installed for the first time, the script may ask
-              you to log out and back in so your user can run Docker commands.
-              That is normal. Type exit, SSH back in, and run the same command
-              again. Then answer the prompts: install directory, Paperless admin
-              user, password, timezone, and skip the domain name for a local
-              network install.
-            </td>
-          </tr>
-          <tr>
-            <td class="time">5:25-6:00</td>
-            <td class="action wait">
-              <span class="label">Wait</span>
-              Show Docker pulls briefly, then cut to the final summary.
-            </td>
-            <td class="narration">
-              On a Pi, pulling images and starting everything can take a while,
-              especially the first time. I will skip ahead. When the installer
-              finishes, it prints the local Paperless URL, the MCP URL, and the
-              token for Claude.
-            </td>
-          </tr>
-          <tr>
-            <td class="time">6:00-6:35</td>
+            <td class="time">2:13-2:35</td>
             <td class="action click">
               <span class="label">Click</span>
-              Open <code>http://paperless.local</code> or the Pi IP in Helium.
-              Log in and show Paperless.
+              Open <code>http://paperless.local</code>, log in, upload a small
+              document, and show it in Paperless.
             </td>
             <td class="narration">
-              Open a browser and go to paperless.local, or the Pi's IP address.
-              Log in with the admin account you created. Now Paperless is
-              running on the Raspberry Pi in your house.
+              Now open <code>http://paperless.local</code>, or the Pi's IP
+              address if that is what works on your network. Log in with the
+              admin account you just created. I like to upload a small document
+              right away, just to prove the pipeline works. Paperless ingests
+              the file, OCR runs in the background, and Paperless AI starts
+              indexing text so the search page can find documents by meaning,
+              not only exact keywords.
             </td>
           </tr>
           <tr>
-            <td class="time">6:35-7:05</td>
+            <td class="time">2:35-2:46</td>
             <td class="action click">
-              <span class="label">Click</span>
-              Upload the small demo PDF and show it being processed.
+              <span class="label">Search</span>
+              Search for fertilizer recommendations and show the nutrient
+              management results. Hold on results if needed.
             </td>
             <td class="narration">
-              I like to upload one small PDF right away to confirm the pipeline.
-              Paperless ingests it, OCRs it, and Paperless AI starts indexing it
-              for semantic search. A big archive will take longer on ARM
-              hardware, but it catches up in the background.
+              Here I am searching for "fertilizer recommendations," and the
+              useful result is a nutrient management plan. That is the point of
+              Paperless AI: you do not have to remember the exact title or
+              wording from the PDF. Paperless-ngx stays stock, and this
+              companion layer adds the smarter search experience beside it.
             </td>
           </tr>
           <tr>
-            <td class="time">7:05-7:45</td>
-            <td class="action">
+            <td class="time">2:46-3:01</td>
+            <td class="action click">
               <span class="label">Show</span>
-              Show router/DHCP reservation only if rehearsed; otherwise hold on
-              Paperless and mention it.
+              Open the MCP setup page. Do not read the visible token aloud. Keep
+              this to one short beat.
             </td>
             <td class="narration">
-              Two practical tips: give the Pi a DHCP reservation in your router
-              so its address does not change, and set up backups before you
-              trust it with important documents. Also remember that this is
-              local by default. If you want access away from home, use a VPN or
-              choose the cloud install instead of opening random ports to the
-              internet.
+              The MCP button opens the setup page for AI apps. This page has
+              copy-paste instructions for Claude, Codex, VS Code with Copilot,
+              and llama.cpp. The token is for read-only search access, so AI
+              tools can ask questions about the archive without direct database
+              access.
             </td>
           </tr>
           <tr>
-            <td class="time">7:45-8:05</td>
+            <td class="time">3:01-3:04</td>
             <td class="action">
               <span class="label">Show</span>
-              End on Paperless running locally, or terminal summary with token
-              hidden if needed.
+              Outro card. Extend the hold for the final practical notes.
             </td>
             <td class="narration">
-              That is the Raspberry Pi install: flash the OS, SSH in, run the
-              installer, open Paperless on your local network, and start feeding
-              it documents. No monthly server bill, and the archive lives on
-              hardware you own. Thanks for watching!
+              And that is the Raspberry Pi install: flash Raspberry Pi OS Lite,
+              enable SSH, run the Paperless AI installer, log into Paperless on
+              your local network, and test the search page. Before trusting it
+              with important documents, give the Pi a stable address in your
+              router and set up backups. Thanks for watching.
             </td>
           </tr>
         </tbody>
