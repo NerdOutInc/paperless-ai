@@ -102,21 +102,19 @@ def _topic_text_matches_query(query, result):
     if not terms:
         return False
 
-    topic_text = " ".join(
-        str(result.get(field) or "")
-        for field in ("title", "original_file_name")
-    ).lower()
-    topic_tokens = set(re.findall(r"[a-z0-9]+", topic_text))
+    topic_tokens = set(re.findall(
+        r"[a-z0-9]+",
+        " ".join(
+            str(result.get(field) or "")
+            for field in ("title", "original_file_name")
+        ).lower(),
+    ))
     if not topic_tokens:
         return False
 
     matches = 0
     for term in terms:
-        if len(term) <= 2:
-            matched = term in topic_tokens
-        else:
-            matched = any(variant in topic_text for variant in _term_variants(term))
-        if matched:
+        if _term_variants(term) & topic_tokens:
             matches += 1
 
     required_matches = 1
@@ -153,11 +151,7 @@ def _apply_semantic_cutoff(candidates):
     return candidates[:cutoff_index], cutoff_index < len(candidates)
 
 
-def get_document_metadata(doc_id):
-    resp = auth.api_request(
-        "GET", f"{config.PAPERLESS_API_URL}/api/documents/{doc_id}/",
-    )
-    doc = resp.json()
+def _metadata_payload(doc):
     return {
         "id": doc["id"],
         "title": doc.get("title", ""),
@@ -167,6 +161,40 @@ def get_document_metadata(doc_id):
         "created": doc.get("created", ""),
         "content": doc.get("content", "")[:500],
     }
+
+
+def get_document_metadata(doc_id):
+    resp = auth.api_request(
+        "GET", f"{config.PAPERLESS_API_URL}/api/documents/{doc_id}/",
+    )
+    return _metadata_payload(resp.json())
+
+
+def get_documents_metadata(doc_ids):
+    if not doc_ids:
+        return {}
+
+    documents = {}
+    for offset in range(0, len(doc_ids), PAPERLESS_DOCUMENT_BATCH_SIZE):
+        batch = doc_ids[offset:offset + PAPERLESS_DOCUMENT_BATCH_SIZE]
+        resp = auth.api_request(
+            "GET",
+            f"{config.PAPERLESS_API_URL}/api/documents/",
+            params={
+                "id__in": ",".join(str(doc_id) for doc_id in batch),
+                "page_size": len(batch),
+                "fields": (
+                    "id,title,correspondent,document_type,tags,created,content"
+                ),
+            },
+        )
+        documents.update(
+            {
+                doc["id"]: _metadata_payload(doc)
+                for doc in resp.json().get("results", [])
+            }
+        )
+    return documents
 
 
 def paperless_session_request(method, path, cookie_header, **kwargs):
@@ -253,19 +281,25 @@ def semantic_search(query, limit=10):
 
     candidates = sorted(seen.values(), key=_semantic_similarity, reverse=True)
     candidates, _cutoff_applied = _apply_semantic_cutoff(candidates)
+    candidate_doc_ids = [result["document_id"] for result in candidates]
+    metadata_by_id = get_documents_metadata(candidate_doc_ids)
+
     enriched = []
     for r in candidates:
         if len(enriched) >= limit:
             break
-        try:
-            meta = get_document_metadata(r["document_id"])
-            enriched.append({
-                **meta,
-                "similarity": round(_semantic_similarity(r), 4),
-                "matched_chunk": r["chunk_text"][:300],
-            })
-        except Exception:
+        meta = metadata_by_id.get(r["document_id"])
+        if meta is None:
+            print(
+                "Skipping semantic search candidate "
+                f"{r['document_id']}: document metadata unavailable"
+            )
             continue
+        enriched.append({
+            **meta,
+            "similarity": round(_semantic_similarity(r), 4),
+            "matched_chunk": r["chunk_text"][:300],
+        })
 
     return enriched
 

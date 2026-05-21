@@ -1016,14 +1016,14 @@ class SessionSearchTests(unittest.TestCase):
 
         self.assertEqual(results[0]["similarity"], 0.0)
 
-    @patch("search.get_document_metadata")
+    @patch("search.get_documents_metadata")
     @patch("search.embeddings.get_embedding", return_value=[0.1, 0.2])
     @patch("search.db.search_similar")
     def test_semantic_search_keeps_collecting_after_metadata_skip(
         self,
         search_similar,
         _get_embedding,
-        get_document_metadata,
+        get_documents_metadata,
     ):
         search_similar.return_value = [
             {
@@ -1040,17 +1040,15 @@ class SessionSearchTests(unittest.TestCase):
             },
         ]
 
-        def metadata_for(doc_id):
-            if doc_id == 1:
-                raise RuntimeError("stale Paperless document")
-            return {"id": 2, "title": "Viable document"}
-
-        get_document_metadata.side_effect = metadata_for
+        get_documents_metadata.return_value = {
+            2: {"id": 2, "title": "Viable document"},
+        }
 
         results = search.semantic_search("crop", limit=1)
 
         self.assertEqual([result["id"] for result in results], [2])
         self.assertEqual(results[0]["matched_chunk"], "viable chunk")
+        get_documents_metadata.assert_called_once_with([1, 2])
 
     @patch("search.keyword_search_for_session")
     @patch("search.semantic_search_for_session")
@@ -1173,6 +1171,27 @@ class SessionSearchTests(unittest.TestCase):
 
         results = search.hybrid_search_for_session(
             "AI",
+            limit=10,
+            cookie_header="sessionid=abc",
+        )
+
+        self.assertEqual(results, [])
+
+    @patch("search.keyword_search_for_session")
+    @patch("search.semantic_search_for_session", return_value=[])
+    def test_hybrid_uses_token_matches_for_keyword_topics(self, _semantic, keyword):
+        keyword.return_value = [
+            {
+                "id": 90,
+                "title": "Parent Estate Planning",
+                "original_file_name": "090_parent_estate_planning.pdf",
+                "document_url": "/documents/90",
+                "sources": ["keyword"],
+            },
+        ]
+
+        results = search.hybrid_search_for_session(
+            "rent",
             limit=10,
             cookie_header="sessionid=abc",
         )
