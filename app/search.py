@@ -282,7 +282,14 @@ def semantic_search(query, limit=10):
     candidates = sorted(seen.values(), key=_semantic_similarity, reverse=True)
     candidates, _cutoff_applied = _apply_semantic_cutoff(candidates)
     candidate_doc_ids = [result["document_id"] for result in candidates]
-    metadata_by_id = get_documents_metadata(candidate_doc_ids)
+    try:
+        metadata_by_id = get_documents_metadata(candidate_doc_ids)
+    except requests.RequestException as e:
+        print(
+            "Semantic search metadata lookup failed: "
+            f"{type(e).__name__}: {e}"
+        )
+        return []
 
     enriched = []
     for r in candidates:

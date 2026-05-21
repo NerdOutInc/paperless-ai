@@ -1083,6 +1083,31 @@ class SessionSearchTests(unittest.TestCase):
         self.assertEqual(results[0]["matched_chunk"], "viable chunk")
         get_documents_metadata.assert_called_once_with([1, 2])
 
+    @patch(
+        "search.get_documents_metadata",
+        side_effect=requests.Timeout("paperless timeout"),
+    )
+    @patch("search.embeddings.get_embedding", return_value=[0.1, 0.2])
+    @patch("search.db.search_similar")
+    def test_semantic_search_handles_metadata_batch_failure(
+        self,
+        search_similar,
+        _get_embedding,
+        _get_documents_metadata,
+    ):
+        search_similar.return_value = [
+            {
+                "document_id": 1,
+                "chunk_index": 0,
+                "chunk_text": "candidate chunk",
+                "similarity": 0.9,
+            },
+        ]
+
+        results = search.semantic_search("crop", limit=1)
+
+        self.assertEqual(results, [])
+
     @patch("search.keyword_search_for_session")
     @patch("search.semantic_search_for_session")
     def test_hybrid_search_merges_sources_and_scores(self, semantic, keyword):
