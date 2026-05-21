@@ -877,6 +877,26 @@ class SessionSearchTests(unittest.TestCase):
         self.assertEqual(params["fields"], search.PAPERLESS_KEYWORD_DOCUMENT_FIELDS)
         self.assertEqual(params["truncate_content"], "true")
 
+    @patch("search.auth.api_request")
+    def test_keyword_search_keeps_original_file_name(self, api_request):
+        api_request.return_value = FakeResponse(
+            200,
+            {
+                "results": [
+                    {
+                        "id": 8,
+                        "title": "",
+                        "original_file_name": "008_ai_search_notes.pdf",
+                        "created": "2026-01-02",
+                    },
+                ],
+            },
+        )
+
+        results = search.keyword_search("AI", limit=5)
+
+        self.assertEqual(results[0]["original_file_name"], "008_ai_search_notes.pdf")
+
     @patch("search.embeddings.get_embedding", return_value=[0.1, 0.2])
     @patch("search.db.search_similar_documents")
     @patch("search.get_documents_for_session")

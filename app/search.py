@@ -383,6 +383,7 @@ def keyword_search(query, limit=10):
         {
             "id": doc["id"],
             "title": doc.get("title", ""),
+            "original_file_name": doc.get("original_file_name", ""),
             "correspondent": doc.get("correspondent"),
             "document_type": doc.get("document_type"),
             "tags": doc.get("tags", []),
