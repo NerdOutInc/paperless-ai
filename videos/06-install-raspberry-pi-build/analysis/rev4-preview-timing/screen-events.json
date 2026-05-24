@@ -1,0 +1,2027 @@
+{
+  "schema": "nerdout.screen_events.v1",
+  "source_video": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/renders/06-install-raspberry-pi-rev4-preview.mp4",
+  "duration": 408.669002,
+  "media": {
+    "duration": 408.669002,
+    "width": 1280,
+    "height": 768,
+    "fps": 60.0,
+    "codec": "h264"
+  },
+  "analysis": {
+    "platform": "macOS",
+    "engine": "Apple Vision",
+    "ocr_level": "fast",
+    "scan_interval": 2.0,
+    "vision_interval": 10.0,
+    "refine_window": 1.5,
+    "refine_step": 1.0,
+    "min_hold_duration": 4.0,
+    "min_event_gap": 1.5,
+    "scan_width": 320,
+    "vision_width": 1920,
+    "sheet_width": 360,
+    "cols": 4,
+    "ocr_change_threshold": 0.7,
+    "scene_threshold": 0.04,
+    "stable_threshold": 0.015,
+    "max_vision_frames": 150,
+    "scan_frame_count": 204,
+    "vision_frame_count": 150
+  },
+  "artifacts": {
+    "frames_manifest": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames.jsonl",
+    "vision_frames_jsonl": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/vision-frames.jsonl",
+    "contact_sheet": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/screen-events-contact-sheet.jpg",
+    "scan_frames_dir": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/scan-frames",
+    "frames_dir": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames"
+  },
+  "events": [
+    {
+      "kind": "anchor",
+      "time": 0.0,
+      "score": 0.0,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0001_00-00-000_anchor.jpg",
+      "ocr_text": "FULLSTACKAG Paperless Al on a Raspberry Pi How to install Paperless-ngx + Paperless Al",
+      "notes": [
+        "regular Apple Vision sample for agent review"
+      ],
+      "id": "e001"
+    },
+    {
+      "kind": "ocr_change",
+      "time": 4.0,
+      "score": 0.4641,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0003_00-04-000_hold_start.jpg",
+      "ocr_text": "FULLSTACKAG Vld\u2022o \u20226 LOCAL DOCUMENT sfACK Paperless-ngx f iles it.",
+      "notes": [
+        "visible text changed between Apple Vision OCR samples"
+      ],
+      "feature_distance_from_previous": 0.8381680846214294,
+      "id": "e002"
+    },
+    {
+      "kind": "ocr_change",
+      "time": 4.5,
+      "score": 0.856,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0004_00-04-500_scene_change.jpg",
+      "ocr_text": "FULLSTACKAG LOCAL DOCUIAENT STACK Paperless-ngx Paperless-ngx f iles it. Paperless Al finds it. Documni thbox, OCR, metsd\u2022th. and arthlv\u2022 Paperless Al Embeddlngs. ywt\u2022r searcb, WKI f\u2022\u2022d4)nty MCP iool$ Keep Paperless-ngx stock for OCR, tags, and storage. Add the companion layer beside it for semantlc search and MCP access.",
+      "notes": [
+        "visible text changed between Apple Vision OCR samples"
+      ],
+      "feature_distance_from_previous": 0.5758345723152161,
+      "id": "e003"
+    },
+    {
+      "kind": "scene_change",
+      "time": 4.5,
+      "score": 0.2634,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0004_00-04-500_scene_change.jpg",
+      "ocr_text": "FULLSTACKAG LOCAL DOCUIAENT STACK Paperless-ngx Paperless-ngx f iles it. Paperless Al finds it. Documni thbox, OCR, metsd\u2022th. and arthlv\u2022 Paperless Al Embeddlngs. ywt\u2022r searcb, WKI f\u2022\u2022d4)nty MCP iool$ Keep Paperless-ngx stock for OCR, tags, and storage. Add the companion layer beside it for semantlc search and MCP access.",
+      "notes": [
+        "visual change peak",
+        "Apple Vision feature-print analyzed"
+      ],
+      "feature_distance_from_previous": 0.5758345723152161,
+      "id": "e004"
+    },
+    {
+      "kind": "ocr_change",
+      "time": 5.5,
+      "score": 0.6089,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0005_00-05-500_scene_post.jpg",
+      "ocr_text": "FULLSTACKAG V*d\u2022r* 06 LOCAL DOCUIAENT STACK Paperless-ngx Paperless-ngx f iles it. Paperless Al finds it. Document lThbox, OCR, mei\u2022d8ta, \u2022nd archlv\u2022 Paperless Al Embeddfjng8, sman\u2022r S\u2022\u2022fch. \u2022nd road.only MCP tools Keep Paperless-ngx stock for OCR, tags, and storage. Add the companion layer beside it for semantic search and MCP access. Your archlve Farm records Stsy on hardwarfj you Grmtrol",
+      "notes": [
+        "visible text changed between Apple Vision OCR samples"
+      ],
+      "feature_distance_from_previous": 0.14418616890907288,
+      "id": "e005"
+    },
+    {
+      "kind": "ocr_change",
+      "time": 11.0,
+      "score": 0.9664,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0006_00-11-000_stable_hold.jpg",
+      "ocr_text": "FULLSTACK AG LOCAL DOCUMENT STACK Paperless-ngx Paperless-ngx f iles it. Paperless Al finds it. DoctsmeTrt Inbox, OCR, meiad8t\u2022. and archlve Paperless Al Emba(Idlngs, 8m\u2022fw M\u2022fch. and r\u2022ad-only MCP tool$ Keep Paperless-ngx stock for OCR, tags, and storage. Add the companion layer beside it for semantic search and MCP access. Your archlve Faim records Stry on Mrdwara you control",
+      "notes": [
+        "visible text changed between Apple Vision OCR samples"
+      ],
+      "feature_distance_from_previous": 0.10684400051832199,
+      "id": "e006"
+    },
+    {
+      "kind": "stable_hold",
+      "time": 11.0,
+      "score": 0.8194,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0006_00-11-000_stable_hold.jpg",
+      "ocr_text": "FULLSTACK AG LOCAL DOCUMENT STACK Paperless-ngx Paperless-ngx f iles it. Paperless Al finds it. DoctsmeTrt Inbox, OCR, meiad8t\u2022. and archlve Paperless Al Emba(Idlngs, 8m\u2022fw M\u2022fch. and r\u2022ad-only MCP tool$ Keep Paperless-ngx stock for OCR, tags, and storage. Add the companion layer beside it for semantic search and MCP access. Your archlve Faim records Stry on Mrdwara you control",
+      "notes": [
+        "low visual change span",
+        "candidate loading/wait/freeze-frame region"
+      ],
+      "feature_distance_from_previous": 0.10684400051832199,
+      "end": 18.0,
+      "duration": 14.0,
+      "start": 4.0,
+      "id": "e007"
+    },
+    {
+      "kind": "ocr_change",
+      "time": 18.0,
+      "score": 0.6352,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0007_00-18-000_hold_end.jpg",
+      "ocr_text": "FULLSTACK AG V*d\u2022o LOCAL DOCUMENT STACK Paperless-ngx *toek Paperless-ngx f iles it. Paperless Al finds it. DoctsmeTri Inbox, OCR, meiad\u2022ta, \u2022nd archlve Paperless Al ory\u2022nlon Embeddlng8, sm\u2022rter M\u2022rch. and read-only MCP tools Keep Paperless-ngx stock for OCR, tags, and storage. Add the companion layer beside it for semantic search and MCP access. Your archlve Faim r&cords Stsy on hgr(hYaro you control",
+      "notes": [
+        "visible text changed between Apple Vision OCR samples"
+      ],
+      "feature_distance_from_previous": 0.06835556030273438,
+      "id": "e008"
+    },
+    {
+      "kind": "anchor",
+      "time": 20.0,
+      "score": 0.0,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0008_00-20-000_anchor.jpg",
+      "ocr_text": "FULLSTACK AG LOCAL DOCUMENT STACK Paperless-ngx *toek Paperless-ngx f iles it. Paperless Al finds it. DoctsmeTri Inbox, OCR, meiad\u2022ta, \u2022nd archlve Paperless Al ory\u2022nlon Emb8ddlng8, sm\u2022rter M\u2022rch. and r\u2022ad-only MCP tools Keep Paperless-ngx stock for OCR, tags, and storage. Add the companion layer beside it for semantic search and MCP access. Your archlve Faim r&cords Stsy on hgr(hYaro you control",
+      "notes": [
+        "regular Apple Vision sample for agent review"
+      ],
+      "feature_distance_from_previous": 0.06199430301785469,
+      "id": "e009"
+    },
+    {
+      "kind": "ocr_change",
+      "time": 20.0,
+      "score": 0.9302,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0008_00-20-000_anchor.jpg",
+      "ocr_text": "FULLSTACK AG LOCAL DOCUMENT STACK Paperless-ngx *toek Paperless-ngx f iles it. Paperless Al finds it. DoctsmeTri Inbox, OCR, meiad\u2022ta, \u2022nd archlve Paperless Al ory\u2022nlon Emb8ddlng8, sm\u2022rter M\u2022rch. and r\u2022ad-only MCP tools Keep Paperless-ngx stock for OCR, tags, and storage. Add the companion layer beside it for semantic search and MCP access. Your archlve Faim r&cords Stsy on hgr(hYaro you control",
+      "notes": [
+        "visible text changed between Apple Vision OCR samples"
+      ],
+      "feature_distance_from_previous": 0.06199430301785469,
+      "id": "e010"
+    },
+    {
+      "kind": "ocr_change",
+      "time": 21.5,
+      "score": 0.7363,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0010_00-21-500_scene_change.jpg",
+      "ocr_text": "FULLSTACKAG P* *nrt\u2022ll A quiet little server for a modest local archive. Pl 415 Use Raspberry Pl OS Llte, keep it on the network, and prefer a USB SSD when the archive becomes real work.",
+      "notes": [
+        "visible text changed between Apple Vision OCR samples"
+      ],
+      "feature_distance_from_previous": 0.7734887599945068,
+      "id": "e011"
+    },
+    {
+      "kind": "scene_change",
+      "time": 21.5,
+      "score": 0.0526,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0010_00-21-500_scene_change.jpg",
+      "ocr_text": "FULLSTACKAG P* *nrt\u2022ll A quiet little server for a modest local archive. Pl 415 Use Raspberry Pl OS Llte, keep it on the network, and prefer a USB SSD when the archive becomes real work.",
+      "notes": [
+        "visual change peak",
+        "Apple Vision feature-print analyzed"
+      ],
+      "feature_distance_from_previous": 0.7734887599945068,
+      "id": "e012"
+    },
+    {
+      "kind": "ocr_change",
+      "time": 25.0,
+      "score": 0.3053,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0013_00-25-000_stable_hold.jpg",
+      "ocr_text": "FULLSTACKAG P* *n$t\u2022ll A quiet little server for a modest local archive. Pl 415 Local by d\u2022fault PrKtr*tor \u2022 \u2022rwdlwm or rwch documwl Use Raspberry Pi OS Lite, keep it on the network, and prefer a USB SSD when the archive becomes real work. SSH m\u2022n\u2022g\u2022d SSD pr\u2022fwr\u2022d HtrDd105S Insiill, no rrwthr wd\u2022*k1 B*iier lon9.toim frf lor PMtrn OCA. \u2022nd",
+      "notes": [
+        "visible text changed between Apple Vision OCR samples"
+      ],
+      "feature_distance_from_previous": 0.0904766395688057,
+      "id": "e013"
+    },
+    {
+      "kind": "stable_hold",
+      "time": 25.0,
+      "score": 0.804,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0013_00-25-000_stable_hold.jpg",
+      "ocr_text": "FULLSTACKAG P* *n$t\u2022ll A quiet little server for a modest local archive. Pl 415 Local by d\u2022fault PrKtr*tor \u2022 \u2022rwdlwm or rwch documwl Use Raspberry Pi OS Lite, keep it on the network, and prefer a USB SSD when the archive becomes real work. SSH m\u2022n\u2022g\u2022d SSD pr\u2022fwr\u2022d HtrDd105S Insiill, no rrwthr wd\u2022*k1 B*iier lon9.toim frf lor PMtrn OCA. \u2022nd",
+      "notes": [
+        "low visual change span",
+        "candidate loading/wait/freeze-frame region"
+      ],
+      "feature_distance_from_previous": 0.0904766395688057,
+      "end": 28.0,
+      "duration": 6.0,
+      "start": 22.0,
+      "id": "e014"
+    },
+    {
+      "kind": "ocr_change",
+      "time": 30.5,
+      "score": 0.9678,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0016_00-30-500_scene_pre.jpg",
+      "ocr_text": "FULLSTA onbarry Qi ImwAt v? 0 7 Pl *nrt\u2022ll Select your Raspberry Pi device DeYlee Ra$pberry Pl 5 Raspberry Pi 5. 500 1500+. Conwle 14loddv 5 os Slor4gfr R4spbvrry Pl 4 Ra5rthrry Pt 4 Mod\u2022l B, 41X). Ctsry>ul\u2022 MothJ\u2022 4 14S Ra$pbeny Pl 3 3 Uod\u2022l A+ l B 18+ CtrDWe 3 13+ uiet little server a modest local hive. fo ar, + l Bl B+ ond CompA\u2022 I Pl 415 RaipbtryPI Zato 2 W RasplJfry W Zero 2 W Local tyd\u2022f\u2022ult No Mllc r\u2022wr\u2022d tor Iw.Nlwvrk Use R,, prefer berry Pi OS Lite, keep it o',T SB SSD when the arch es real work. SSH m\u2022nag\u2022d Shov4 4%ety pr**bl\u2022 B\u2022n\u2022r long.t\u2022rm frt OCft. APP OPTIONS xr",
+      "notes": [
+        "visible text changed between Apple Vision OCR samples"
+      ],
+      "feature_distance_from_previous": 0.5356294512748718,
+      "id": "e015"
+    },
+    {
+      "kind": "ocr_change",
+      "time": 31.5,
+      "score": 0.8325,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0017_00-31-500_scene_change.jpg",
+      "ocr_text": "P*<nh\u2022rry Pi Im4n\u2022r v? 0 7 SotUP 8teps Select your Raspberry Pi device Device Ra$pberry Pl 5 Ra5ptseriy Pi 5. 5CQ 1500+, Corwte Module 5 os Siorage Raspb\u2022ry Pl 4 R45*rry 14' 4 Model 8. 41X). CunpulO Modth 4 14S Custcffiisallon Raspbeny Pl 3 R\u20226thy h 3 M(*Jel A+ l 8 18+ Comwte Mothde 3 13+ Wrilin9 R\u2022spb\u2022ry Pl 2 Raspbtrry Pi 2 Model Done Ra$pberry Pl I Ras\u2022 Pl l Kkndel A l A+ i B l B* and Crynmrte Mcarfe I Ra8pberry Pl Z\u2022ro 2 W Re5pberry Pi Zero 2 W Ra$pb\u2022rry Pl Z\u2022ro Ra$pberry A Zwo. ZeroW. 8nd Zero l\u2022VH No fiherlng Show pDs8bbl\u2022 Im8go APP OPTIONS",
+      "notes": [
+        "visible text changed between Apple Vision OCR samples"
+      ],
+      "feature_distance_from_previous": 0.604276180267334,
+      "id": "e016"
+    },
+    {
+      "kind": "scene_change",
+      "time": 31.5,
+      "score": 0.571,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0017_00-31-500_scene_change.jpg",
+      "ocr_text": "P*<nh\u2022rry Pi Im4n\u2022r v? 0 7 SotUP 8teps Select your Raspberry Pi device Device Ra$pberry Pl 5 Ra5ptseriy Pi 5. 5CQ 1500+, Corwte Module 5 os Siorage Raspb\u2022ry Pl 4 R45*rry 14' 4 Model 8. 41X). CunpulO Modth 4 14S Custcffiisallon Raspbeny Pl 3 R\u20226thy h 3 M(*Jel A+ l 8 18+ Comwte Mothde 3 13+ Wrilin9 R\u2022spb\u2022ry Pl 2 Raspbtrry Pi 2 Model Done Ra$pberry Pl I Ras\u2022 Pl l Kkndel A l A+ i B l B* and Crynmrte Mcarfe I Ra8pberry Pl Z\u2022ro 2 W Re5pberry Pi Zero 2 W Ra$pb\u2022rry Pl Z\u2022ro Ra$pberry A Zwo. ZeroW. 8nd Zero l\u2022VH No fiherlng Show pDs8bbl\u2022 Im8go APP OPTIONS",
+      "notes": [
+        "visual change peak",
+        "Apple Vision feature-print analyzed"
+      ],
+      "feature_distance_from_previous": 0.604276180267334,
+      "id": "e017"
+    },
+    {
+      "kind": "ocr_change",
+      "time": 37.0,
+      "score": 0.5982,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0019_00-37-000_stable_hold.jpg",
+      "ocr_text": "\u2022 \u2022 Pa8pb\u2022rry Pi Imxq\u2022r v? 0.7 Setup steps Select your Raspberry Pi device Devic Ra$pberry Pl 5 Ra5pberry Pi 5. 5TrJ 1500+, **J Comwie Module 5 os Siorage R\u2022$pbery Pl 4 Rastrrry fv 4 M(xJel 8. 4W. CtyN)uie Modul\u2022 4 14S Customisaiion Ra$pbeny Pl 3 3 MwJel A+ / B l 8+ 4nd Compute Mothde 3 13+ Wriling R\u20228pb\u2022rry Pl 2 Raspberry Pi 2 Model rhJne Raspberry Pl I Raspberry Pl l Model A l A+ l B l B* ond I Raspb\u2022rry Pl Z\u2022ro 2 W Raspberry Pi Zero 2 W Ra$pbery Pl Zero Rasithrry 11 Zefo. Zero W. 8nd Zero WH No filterlng Show possbbl\u2022 Image APP OPTIONS",
+      "notes": [
+        "visible text changed between Apple Vision OCR samples"
+      ],
+      "feature_distance_from_previous": 0.09226123243570328,
+      "id": "e018"
+    },
+    {
+      "kind": "stable_hold",
+      "time": 37.0,
+      "score": 0.6359,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0019_00-37-000_stable_hold.jpg",
+      "ocr_text": "\u2022 \u2022 Pa8pb\u2022rry Pi Imxq\u2022r v? 0.7 Setup steps Select your Raspberry Pi device Devic Ra$pberry Pl 5 Ra5pberry Pi 5. 5TrJ 1500+, **J Comwie Module 5 os Siorage R\u2022$pbery Pl 4 Rastrrry fv 4 M(xJel 8. 4W. CtyN)uie Modul\u2022 4 14S Customisaiion Ra$pbeny Pl 3 3 MwJel A+ / B l 8+ 4nd Compute Mothde 3 13+ Wriling R\u20228pb\u2022rry Pl 2 Raspberry Pi 2 Model rhJne Raspberry Pl I Raspberry Pl l Model A l A+ l B l B* ond I Raspb\u2022rry Pl Z\u2022ro 2 W Raspberry Pi Zero 2 W Ra$pbery Pl Zero Rasithrry 11 Zefo. Zero W. 8nd Zero WH No filterlng Show possbbl\u2022 Image APP OPTIONS",
+      "notes": [
+        "low visual change span",
+        "candidate loading/wait/freeze-frame region"
+      ],
+      "feature_distance_from_previous": 0.09226123243570328,
+      "end": 44.0,
+      "duration": 14.0,
+      "start": 30.0,
+      "id": "e019"
+    },
+    {
+      "kind": "ocr_change",
+      "time": 44.0,
+      "score": 0.5764,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0020_00-44-000_hold_end.jpg",
+      "ocr_text": "\u2022 \u2022 Pa*pb\u2022rry Pi Imaq\u2022r y? 0.7 Setup 8teps Select your Raspberry Pi device Device Ra$pberyy Pl 5 Raspbtrry Pi 5. 5CQ/ 500+. Comwte Module 5 os Siorage Ra$pb\u2022ry Pl 4 Rostrrry A 4 Mod*l 8. 4M. CtyN)uie MothJe 4 14S Customisaiion Ra$pbeny Pl 3 Rw4Jwry fv 3 M(\u2022Jel A+ i B l 8+ 4nd Compute Mothde 3 13+ Wriling R\u2022spb\u2022rry Pl 2 Raspberry Pi 2 Model rhJne Raspberry Pl I R\u2022spberry Pl l Model A l A+ l B l B* 8nd I R\u2022$pb\u2022rry Pl Z\u2022ro 2 W Raspberry Pi Zero 2 W R\u2022$pbery Pl Z\u2022ro Ra$rthrry Il' Zero. Zero W. 8nd Zero WH No filterlng Show possbbl\u2022 Image APP OPTIONS NIXT",
+      "notes": [
+        "visible text changed between Apple Vision OCR samples"
+      ],
+      "feature_distance_from_previous": 0.23569706082344055,
+      "id": "e020"
+    },
+    {
+      "kind": "anchor",
+      "time": 50.0,
+      "score": 0.0,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0021_00-50-000_anchor.jpg",
+      "ocr_text": "Choose operating system Select w operatiNJ system to install on your Raspberry Pi Raspbffry Pi OS Lfte (64-bit) A tM ol Debian Trixie wilh no desklop environmenl (Compaiible wlth Rasthrry Th\" 31414LIU ytyJf compulef Rxpberry Pl OS Full (64-blt) A wi ol Debian Trixie viilh deskiOP envlronni Cknlrf)e 1 9 GB dowiilcJad R\u2022*\u2022wJ 21Y2M*?I Arl recornmended applkatNyis R\u2022spbffry Pl OS Lft\u2022 (32.bft) wi (\u2022l lJotsi\u2022ii IiiAw willi iiu du&klop \u2022nviroiimenl Sd\u20224 I IAIJ diiwiilts411 21126 04 21 RMpb\u2022rry Pl 08 Full (32.blt) xi liiMw willi il\u2022\u2022hlty) \u2022nvlfoiimftni OlKI Mcomnwid\u2022d \u2022ppllC\u2022IIOIII 3ts16 (14.J I A\u2022\u2022thiy Pl 01 (L\u2022u\u2022oy, J?.lill) Lll\u2022 fv\u2022l\u2022\u2022wl Illlh114 11",
+      "notes": [
+        "regular Apple Vision sample for agent review"
+      ],
+      "feature_distance_from_previous": 0.7102557420730591,
+      "id": "e021"
+    },
+    {
+      "kind": "ocr_change",
+      "time": 50.0,
+      "score": 0.9884,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0021_00-50-000_anchor.jpg",
+      "ocr_text": "Choose operating system Select w operatiNJ system to install on your Raspberry Pi Raspbffry Pi OS Lfte (64-bit) A tM ol Debian Trixie wilh no desklop environmenl (Compaiible wlth Rasthrry Th\" 31414LIU ytyJf compulef Rxpberry Pl OS Full (64-blt) A wi ol Debian Trixie viilh deskiOP envlronni Cknlrf)e 1 9 GB dowiilcJad R\u2022*\u2022wJ 21Y2M*?I Arl recornmended applkatNyis R\u2022spbffry Pl OS Lft\u2022 (32.bft) wi (\u2022l lJotsi\u2022ii IiiAw willi iiu du&klop \u2022nviroiimenl Sd\u20224 I IAIJ diiwiilts411 21126 04 21 RMpb\u2022rry Pl 08 Full (32.blt) xi liiMw willi il\u2022\u2022hlty) \u2022nvlfoiimftni OlKI Mcomnwid\u2022d \u2022ppllC\u2022IIOIII 3ts16 (14.J I A\u2022\u2022thiy Pl 01 (L\u2022u\u2022oy, J?.lill) Lll\u2022 fv\u2022l\u2022\u2022wl Illlh114 11",
+      "notes": [
+        "visible text changed between Apple Vision OCR samples"
+      ],
+      "feature_distance_from_previous": 0.7102557420730591,
+      "id": "e022"
+    },
+    {
+      "kind": "ocr_change",
+      "time": 50.5,
+      "score": 0.7497,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0022_00-50-500_scene_pre.jpg",
+      "ocr_text": "steps Choose operating system ce Select an operating system to install on your Raspberry Pi Back Go back 10 main menu ge Raspberry Pi OS Lite (64-bit) A port of Debian Trixie with no desktop en Cached on youi compuier Released: 202&0+21 omisation 'ronment (Compatible with Raspberry Pi 314140015) ing Raspberry Pl OS Full (64-bit) A port of Debian Trixie with desklop environment and recommended applicaiions Online- 1.9 GB download Released: 2026414-21 Raspberry Pi OS Llte (32-blt) A port of Debian Trixie wilh no desktop environment Online - 555.1 MB download Released: 2026Q4-21 Raspberry Pi OS Full (32-blt) A port of Debian Trixie wilh desktop environment and recommended applications Online- 1.8 GB download Released: 202&04-21 Raspberry Pl OS (Legacy, 32-bit) Lite A port of Debian Bookworm wilh security updates and no desktop environmenl Online- 496.9 MB download",
+      "notes": [
+        "visible text changed between Apple Vision OCR samples"
+      ],
+      "feature_distance_from_previous": 0.4269466996192932,
+      "id": "e023"
+    },
+    {
+      "kind": "ocr_change",
+      "time": 51.5,
+      "score": 0.9121,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0023_00-51-500_scene_change.jpg",
+      "ocr_text": "\u2022 \u2022 n4ADhftrry Pl Im40*r v?.n 7 Setup sleps Choose operating system Device Seleth an operating syslem lo insiall on your Ra$pbefry Pi os Go back to mwn menu St(IrnyE R8spberry Pl OS Llte {64.bll) A ol Detyan TiixJe w+lh nodesktw (Compatknle wth Ilttpbeiry Pl 31411001S) Caclied on yOiJi c<>(Fiputer Customisalion WrRlng Done R\u2022spbery Pl OS Full {64-blt) A of DE>biJJn Tiixie wiih deskiop envirLywnenl r8conynerwJed 4Jpk\u2022tkn Onllne. 19 GB doY4nlo\u2022d R\u2022lw\u2022O 20ZfrW21 Raspbwry Pl OS Llte132-blt) A poii ol Debian Tiix* wiih no deskTCV emilrthwnefit (Miine. 555 7 MLI aothoad ftelta$ed 2026-04.21 Raspbory Pl OS Full (32-bll) A port ol Debian TnyJe vrtlh deskiop wlrcfflieffl pffjd i\u2022c(rfTMnorthd applkai Online . 1 8 GB dowTiluad R4le4$ed. 202M4.21 Raspb\u2022rry Pi OS (L\u2022gacy. 32-bft) Llt\u2022 A poii (>l D&bi&i) Buokwtsrm wsih securily updDle8 and no desktr4) \u2022m7iroMI Onllw. 496 9 download ft\u2022lused 202&0+13 Raspbwry Pl OS (Leg\u2022cy, 32-bft) Full A poil ol Debian Bookwoivv wilh 5ecurily uJxlates. deskiop oc<Mnnxnded \u2022pplbcotion$ Onl*rx- 2.7 GB downlo\u2022d APP OPTIONS BACK",
+      "notes": [
+        "visible text changed between Apple Vision OCR samples"
+      ],
+      "feature_distance_from_previous": 0.6544307470321655,
+      "id": "e024"
+    },
+    {
+      "kind": "scene_change",
+      "time": 51.5,
+      "score": 0.3111,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0023_00-51-500_scene_change.jpg",
+      "ocr_text": "\u2022 \u2022 n4ADhftrry Pl Im40*r v?.n 7 Setup sleps Choose operating system Device Seleth an operating syslem lo insiall on your Ra$pbefry Pi os Go back to mwn menu St(IrnyE R8spberry Pl OS Llte {64.bll) A ol Detyan TiixJe w+lh nodesktw (Compatknle wth Ilttpbeiry Pl 31411001S) Caclied on yOiJi c<>(Fiputer Customisalion WrRlng Done R\u2022spbery Pl OS Full {64-blt) A of DE>biJJn Tiixie wiih deskiop envirLywnenl r8conynerwJed 4Jpk\u2022tkn Onllne. 19 GB doY4nlo\u2022d R\u2022lw\u2022O 20ZfrW21 Raspbwry Pl OS Llte132-blt) A poii ol Debian Tiix* wiih no deskTCV emilrthwnefit (Miine. 555 7 MLI aothoad ftelta$ed 2026-04.21 Raspbory Pl OS Full (32-bll) A port ol Debian TnyJe vrtlh deskiop wlrcfflieffl pffjd i\u2022c(rfTMnorthd applkai Online . 1 8 GB dowTiluad R4le4$ed. 202M4.21 Raspb\u2022rry Pi OS (L\u2022gacy. 32-bft) Llt\u2022 A poii (>l D&bi&i) Buokwtsrm wsih securily updDle8 and no desktr4) \u2022m7iroMI Onllw. 496 9 download ft\u2022lused 202&0+13 Raspbwry Pl OS (Leg\u2022cy, 32-bft) Full A poil ol Debian Bookwoivv wilh 5ecurily uJxlates. deskiop oc<Mnnxnded \u2022pplbcotion$ Onl*rx- 2.7 GB downlo\u2022d APP OPTIONS BACK",
+      "notes": [
+        "visual change peak",
+        "Apple Vision feature-print analyzed"
+      ],
+      "feature_distance_from_previous": 0.6544307470321655,
+      "id": "e025"
+    },
+    {
+      "kind": "ocr_change",
+      "time": 52.5,
+      "score": 0.8022,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0024_00-52-500_scene_post.jpg",
+      "ocr_text": "PaEpb\u2022rry Pi Imaqpr v? 0.7 Setup steps Choose operating system Devic8 Selecl an operating syslem lo inslall on your Raspberry Pi os Go back to m\u2022in mwu Siorage Ra$pb\u2022rry Pl OS Ute (64-bft) A wi ol Qebian Tiube with nodesktop envlr(mi\u2022M (Cc*npth Y*lth ll\u2022spbwry Pl 314140015) Cache(J on your compuler Customisaiion Wriling Reloued. 202H+21 Done Ra$pberry Pl OS Full {64-bll) A port of Oebian Trixie wiih dfsktop envir(xwnvll reconwnerN*ed 8ppl\u2022ralbL Onllne. 1 9 GB downlo\u2022d R4lwsed\". 202&04-21 R\u2022$pberry Pl OS Llte (32-blt) A pNI ol Debi8n Trixie wllh no dtsktop etivlrtywnth Lknline. 555 1 K48 dowrdo)d Rdeased 202&04-21 R\u2022$pb\u2022rry Pl OS Full {32-bll) A pori ol Debian Tnxi* wMh des*WP whYirtywn\u2022n reccAMIWrtled 8ppIic\u2022ibty Online . 1 8 GB oSownload Reltased. 202&0+21 Ra$pb\u2022rry Pl OS (L\u2022gacy. 32-blt) Ut\u2022 A pori ol Oebian Bookworrn wJih securiiy updates no des*top envinxwnenl Online. 496 9 MB Oownload RdwJoO\" 202fr04-13 Raspb\u2022ny Pl OS (L\u20229\u2022ey. 32-btt) Full A wri ol Debign Bookworm wiih securiiy uwlote* desktop \u2022w*or#Mnt aThl retommendod afWle4iiont (kn1kn*. 2.7 GB download APP OPTIONS BACK",
+      "notes": [
+        "visible text changed between Apple Vision OCR samples"
+      ],
+      "feature_distance_from_previous": 0.1415822058916092,
+      "id": "e026"
+    },
+    {
+      "kind": "ocr_change",
+      "time": 54.0,
+      "score": 0.5211,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0025_00-54-000_hold_start.jpg",
+      "ocr_text": "PaEpb\u2022rry Pi Imaqpr v? 0.7 Setup steps Choose operating system Devic8 Selecl an operating syslem lo inslall on your Raspberry Pi os Go back to m\u2022in mwu Siorage Ra$pb\u2022rry Pl OS Ute (64-bft) A wi ol Qebian Tiube with nodesktop envlr(mi\u2022M (Cc*npth Y*lth ll\u2022spbwry Pl 314140015) Cache(J on your compuler Customisaiion Wriling Reloued. 202H+21 Done Ra$pberry Pl OS Full {64-bll) A port of Oebian Trixie wiih dfsktop envir(xwnvll reconwnerN*ed 8pplicalbL Onllne. 1 9 GB downlo\u2022d R4lwsed\". 2021W21 R\u2022$pbeny Pl OS Ute (32-blt) A W ol Debian Trixie wMh no desktop Lknline. 555 I K48 dowrth Rd\u2022ased 202ts0*21 R\u2022$pberry Pl OS Full {32-bS1) A POfi ol Debi4n Tnx* \u2022wir(mi\u2022ll 8ppl\u2022c\u2022ib Online. 1 8 G8 download Reltased 202&0+21 Ra$pb\u2022rry Pl OS (L\u2022gacy. 32-blt) Ut\u2022 A pori of Debian Bookworm wJih securiiy upd8tes no desktq) enviroNne Online. 496 9 download Re1*49ed 202&04-13 Raspb\u2022ry Pl OS (L\u2022g\u2022ey. 32-blt) Full A PMYi of Debian 8ookworm wiih securiiy uwlot\u2022& desktop \u2022wtror#Y*t)t and rec<knrMn(5od applk\u2022iioni (knlthe. 2.7 GB th)wnload APP OPTIONS BACK",
+      "notes": [
+        "visible text changed between Apple Vision OCR samples"
+      ],
+      "feature_distance_from_previous": 0.13989867269992828,
+      "id": "e027"
+    },
+    {
+      "kind": "ocr_change",
+      "time": 63.0,
+      "score": 0.9662,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0026_01-03-000_stable_hold.jpg",
+      "ocr_text": "P48ph\u2022rry Pi Imxq\u2022r v? 0 7 Setup 8teps Select your storage device Device Apple SDXC Reader Medla 115.3GB Aounied as IV*Jknwfooorfs os Sioiage Customisaiion Lrt\u2022lls\u2022tb W&Fi Remol\u2022 \u2022cctts RJspbery Pl Conne Wrrting Done Exclude syslem drhves APP OPTIONS BACK NExr",
+      "notes": [
+        "visible text changed between Apple Vision OCR samples"
+      ],
+      "feature_distance_from_previous": 0.4078018069267273,
+      "id": "e028"
+    },
+    {
+      "kind": "stable_hold",
+      "time": 63.0,
+      "score": 0.9635,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0026_01-03-000_stable_hold.jpg",
+      "ocr_text": "P48ph\u2022rry Pi Imxq\u2022r v? 0 7 Setup 8teps Select your storage device Device Apple SDXC Reader Medla 115.3GB Aounied as IV*Jknwfooorfs os Sioiage Customisaiion Lrt\u2022lls\u2022tb W&Fi Remol\u2022 \u2022cctts RJspbery Pl Conne Wrrting Done Exclude syslem drhves APP OPTIONS BACK NExr",
+      "notes": [
+        "low visual change span",
+        "candidate loading/wait/freeze-frame region"
+      ],
+      "feature_distance_from_previous": 0.4078018069267273,
+      "end": 72.0,
+      "duration": 18.0,
+      "start": 54.0,
+      "id": "e029"
+    },
+    {
+      "kind": "anchor",
+      "time": 70.0,
+      "score": 0.0,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0027_01-10-000_anchor.jpg",
+      "ocr_text": "P48ph\u2022rry Pi Imxq\u2022r v? 0 7 Setup 8teps Select your storage device Device Apple SDXC Reader Medla 115.3GB Aounied as IV*Jknwfooorfs os Sioiage Customisaiion Lrt\u2022lls\u2022tb W&Fi Remol\u2022 \u2022cctts RJspbery Pl Conne Wrrting Done Exclude syslem drhves APP OPTIONS BACK NExr",
+      "notes": [
+        "regular Apple Vision sample for agent review"
+      ],
+      "feature_distance_from_previous": 0,
+      "id": "e030"
+    },
+    {
+      "kind": "ocr_change",
+      "time": 74.5,
+      "score": 0.6849,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0029_01-14-500_scene_pre.jpg",
+      "ocr_text": "Select your storage device SDXC Reader Media 1153G8",
+      "notes": [
+        "visible text changed between Apple Vision OCR samples"
+      ],
+      "feature_distance_from_previous": 0.6576640605926514,
+      "id": "e031"
+    },
+    {
+      "kind": "ocr_change",
+      "time": 75.5,
+      "score": 0.8147,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0030_01-15-500_scene_change.jpg",
+      "ocr_text": "\u2022 \u2022 P**ph\u2022rry Pi Im*aAr v2 0,7 Setup deps Select your storage device Apple SDXC Reader M\u2022dla 115.3GB os Sioiage Cusiomisa11on WtrFI Ra8pkrry Pl Conr*LI Writing Done Exclude system drtves APP OPTIONS BACK NIXT",
+      "notes": [
+        "visible text changed between Apple Vision OCR samples"
+      ],
+      "feature_distance_from_previous": 0.6557381749153137,
+      "id": "e032"
+    },
+    {
+      "kind": "scene_change",
+      "time": 75.5,
+      "score": 0.2865,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0030_01-15-500_scene_change.jpg",
+      "ocr_text": "\u2022 \u2022 P**ph\u2022rry Pi Im*aAr v2 0,7 Setup deps Select your storage device Apple SDXC Reader M\u2022dla 115.3GB os Sioiage Cusiomisa11on WtrFI Ra8pkrry Pl Conr*LI Writing Done Exclude system drtves APP OPTIONS BACK NIXT",
+      "notes": [
+        "visual change peak",
+        "Apple Vision feature-print analyzed"
+      ],
+      "feature_distance_from_previous": 0.6557381749153137,
+      "id": "e033"
+    },
+    {
+      "kind": "ocr_change",
+      "time": 82.0,
+      "score": 0.9766,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0033_01-22-000_stable_hold.jpg",
+      "ocr_text": "Pa%ph\u2022rry Pi Im*o\u2022r v? 0.7 SetUP 8teps Customisation: Choose hostname Devic8 os Storage Customisation VthFi paperless RJ5pbery 14 Conr*ci A IM>SinTh i$ a n4me ihw identifie5 your Raspberry Pl M the neW. M shothd cMi\u2022in onty leiier& number$, \u2022nd hypl*is Writing Done APP OPTIONS SKIP CUSTOMISAnoN BACK NEXT",
+      "notes": [
+        "visible text changed between Apple Vision OCR samples"
+      ],
+      "feature_distance_from_previous": 0.3242344856262207,
+      "id": "e034"
+    },
+    {
+      "kind": "stable_hold",
+      "time": 82.0,
+      "score": 0.8327,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0033_01-22-000_stable_hold.jpg",
+      "ocr_text": "Pa%ph\u2022rry Pi Im*o\u2022r v? 0.7 SetUP 8teps Customisation: Choose hostname Devic8 os Storage Customisation VthFi paperless RJ5pbery 14 Conr*ci A IM>SinTh i$ a n4me ihw identifie5 your Raspberry Pl M the neW. M shothd cMi\u2022in onty leiier& number$, \u2022nd hypl*is Writing Done APP OPTIONS SKIP CUSTOMISAnoN BACK NEXT",
+      "notes": [
+        "low visual change span",
+        "candidate loading/wait/freeze-frame region"
+      ],
+      "feature_distance_from_previous": 0.3242344856262207,
+      "end": 88.0,
+      "duration": 12.0,
+      "start": 76.0,
+      "id": "e035"
+    },
+    {
+      "kind": "ocr_change",
+      "time": 88.0,
+      "score": 0.7012,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0034_01-28-000_hold_end.jpg",
+      "ocr_text": "\u2022 \u2022 P48pb\u2022rry Pi Imag\u2022r v? n.7 SetUP 8teps Customisation: Localisation Device Select your l<Kation for suggesled lime zone and keyboard lay os Storage Customisation VthFi Capilal cty'. Washington. D.C. (Unlted States) ReffK)t\u2022 Kc\u202288 Ra5pberry Pl Conr*ci zone.' AmerlcalChicago Wrrting Keyboard layout.\" u$ Done APP OPTIONS SKIP CUSTOMISATION 8ACK NExr",
+      "notes": [
+        "visible text changed between Apple Vision OCR samples"
+      ],
+      "feature_distance_from_previous": 0.18456776440143585,
+      "id": "e036"
+    },
+    {
+      "kind": "ocr_change",
+      "time": 89.5,
+      "score": 0.7078,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0035_01-29-500_scene_pre.jpg",
+      "ocr_text": "\u2022 \u2022 P48pb\u2022rry Pi Imag\u2022r v? n.7 SetUP 8teps Customisation: Choose username Device Creale a user account for your Ra$pberry l*' os Storage Customisation Liull\u2022\u2022tlon .ICdr yi'ur uMm\u2022m\u2022 U$ername'. brSan VthFi ReffK)t\u2022 Kc\u202288 Password'. Saved (hidden) - leave blank io keep Ra5pberry Pl Conr*ci Wrrting Confirm p8ssword: Rtrenier ID change password Done Th\u2022 usemm ftwst be \u2022wJ &*tain only leltw$. nuthr& \u2022rnJ APP OPTIONS SKIP CUSTOMISATION 8ACK NExr",
+      "notes": [
+        "visible text changed between Apple Vision OCR samples"
+      ],
+      "feature_distance_from_previous": 0.13427603244781494,
+      "id": "e037"
+    },
+    {
+      "kind": "anchor",
+      "time": 90.0,
+      "score": 0.0,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0036_01-30-000_anchor.jpg",
+      "ocr_text": "Pa<pb\u2022rry Pi Im*g\u2022r v? 0.7 Setup steps Customisation: Choose username Device Creale a user accouni for Ra$pberry Pi os Siorage Customisat10n LoAll8\u2022don U$ername'. brlan VthFi Password'. Saved (hidden) - leaYe blank io keep RJ5pbery Pl Conr*ci Wmin9 Confirm password.' Re*nier to change password Done The uMmame be bowtrcas\u2022 \u2022)d contain orAy l\u2022tttr$. nuftknrs. \u2022NJ APP OPTIONS SKIP CUSTOMISATION BACK NEXT",
+      "notes": [
+        "regular Apple Vision sample for agent review"
+      ],
+      "feature_distance_from_previous": 0.14021122455596924,
+      "id": "e038"
+    },
+    {
+      "kind": "ocr_change",
+      "time": 90.0,
+      "score": 0.6458,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0036_01-30-000_anchor.jpg",
+      "ocr_text": "Pa<pb\u2022rry Pi Im*g\u2022r v? 0.7 Setup steps Customisation: Choose username Device Creale a user accouni for Ra$pberry Pi os Siorage Customisat10n LoAll8\u2022don U$ername'. brlan VthFi Password'. Saved (hidden) - leaYe blank io keep RJ5pbery Pl Conr*ci Wmin9 Confirm password.' Re*nier to change password Done The uMmame be bowtrcas\u2022 \u2022)d contain orAy l\u2022tttr$. nuftknrs. \u2022NJ APP OPTIONS SKIP CUSTOMISATION BACK NEXT",
+      "notes": [
+        "visible text changed between Apple Vision OCR samples"
+      ],
+      "feature_distance_from_previous": 0.14021122455596924,
+      "id": "e039"
+    },
+    {
+      "kind": "ocr_change",
+      "time": 90.5,
+      "score": 0.975,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0037_01-30-500_scene_change.jpg",
+      "ocr_text": "Enter yOllf username brian Usemame\". Password: aved (hidden) - leave blank to k( Confirm password: RtYnter to change password The usemame musi be lowercase and conlain only letters, numbers, underscores, and hyphens. TOMISATION BACK NEXT",
+      "notes": [
+        "visible text changed between Apple Vision OCR samples"
+      ],
+      "feature_distance_from_previous": 0.40066054463386536,
+      "id": "e040"
+    },
+    {
+      "kind": "scene_change",
+      "time": 90.5,
+      "score": 0.207,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0037_01-30-500_scene_change.jpg",
+      "ocr_text": "Enter yOllf username brian Usemame\". Password: aved (hidden) - leave blank to k( Confirm password: RtYnter to change password The usemame musi be lowercase and conlain only letters, numbers, underscores, and hyphens. TOMISATION BACK NEXT",
+      "notes": [
+        "visual change peak",
+        "Apple Vision feature-print analyzed"
+      ],
+      "feature_distance_from_previous": 0.40066054463386536,
+      "id": "e041"
+    },
+    {
+      "kind": "ocr_change",
+      "time": 91.5,
+      "score": 0.9417,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0038_01-31-500_scene_post.jpg",
+      "ocr_text": "Enief your usem8me brian Username: Saved {hidden) - leave blank to keep - Password'. Confirm password: Re-enter to change password The username musl be lowercase and contain only letters. numbers, underscores, and hyphens. TOMISATION BACK NEXT",
+      "notes": [
+        "visible text changed between Apple Vision OCR samples"
+      ],
+      "feature_distance_from_previous": 0.23714128136634827,
+      "id": "e042"
+    },
+    {
+      "kind": "ocr_change",
+      "time": 96.5,
+      "score": 0.5718,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0039_01-36-500_scene_pre.jpg",
+      "ocr_text": "Customisation: Choose Wi-Fi SECURE NETWORK OPEN NETWORK Network n arr,e SSlD: Network2929 Saved (hidden) - leave blank to keep Password: Reenter to change password Confirm password: El Hidden SSID",
+      "notes": [
+        "visible text changed between Apple Vision OCR samples"
+      ],
+      "feature_distance_from_previous": 0.5357668399810791,
+      "id": "e043"
+    },
+    {
+      "kind": "ocr_change",
+      "time": 97.5,
+      "score": 0.8031,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0040_01-37-500_scene_change.jpg",
+      "ocr_text": "\u2022 \u2022 P\u2022*ph\u2022rry Pi Im*q\u2022r v? 0.7 Setup steps Customisation: Choose Wi-Fi Devic8 'iECURI. NETK'ORK OPEN NETWORK os SSlD: Nelwork2929 Storage Swnd (hddwl- bknk io keep Customisation P8ssword'. efji*i 10 th4iw\u2022pus*xvd Lrt\u2022M8\u2022llon Confirm password.. Cl Hidden SSID Pl Conr)E Writing Done APP OPTIONS SKIP CUSTOMISATION BACK NExr",
+      "notes": [
+        "visible text changed between Apple Vision OCR samples"
+      ],
+      "feature_distance_from_previous": 0.5471969842910767,
+      "id": "e044"
+    },
+    {
+      "kind": "scene_change",
+      "time": 97.5,
+      "score": 0.2636,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0040_01-37-500_scene_change.jpg",
+      "ocr_text": "\u2022 \u2022 P\u2022*ph\u2022rry Pi Im*q\u2022r v? 0.7 Setup steps Customisation: Choose Wi-Fi Devic8 'iECURI. NETK'ORK OPEN NETWORK os SSlD: Nelwork2929 Storage Swnd (hddwl- bknk io keep Customisation P8ssword'. efji*i 10 th4iw\u2022pus*xvd Lrt\u2022M8\u2022llon Confirm password.. Cl Hidden SSID Pl Conr)E Writing Done APP OPTIONS SKIP CUSTOMISATION BACK NExr",
+      "notes": [
+        "visual change peak",
+        "Apple Vision feature-print analyzed"
+      ],
+      "feature_distance_from_previous": 0.5471969842910767,
+      "id": "e045"
+    },
+    {
+      "kind": "ocr_change",
+      "time": 98.0,
+      "score": 0.8009,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0041_01-38-000_hold_start.jpg",
+      "ocr_text": "\u2022 \u2022 P\u2022*ph\u2022rry Pi Im*q\u2022r v? 0.7 Setup steps Customisation: SSH authentication Devic8 Configure SSH access En\u2022ble SSH os Storage Aulhenlicglion mechanism: O Use password aulhenlicaiion Customisation O Use public key aLrtheniicailon Lrt\u2022M8\u2022llon 1 SSH key confi9ured sHow Rs5&4xrry Pl Conr)E Writing Done APP OPTIONS SKIP CUSTOMISATION BACK NExr",
+      "notes": [
+        "visible text changed between Apple Vision OCR samples"
+      ],
+      "feature_distance_from_previous": 0.22915150225162506,
+      "id": "e046"
+    },
+    {
+      "kind": "ocr_change",
+      "time": 98.5,
+      "score": 0.6171,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0042_01-38-500_scene_post.jpg",
+      "ocr_text": "\u2022 \u2022 P48ph\u2022rry Pi Imaq\u2022r v? 0.7 Setup 8teps Customisation: SSH authentication Devic8 Configuie SSH access En\u2022ble SSH os Storage Auihenlication mechani$m: O Use password aulhMtiCalion Cvslomisalion O Use public key aLrtheniicalion L4Mll8\u2022llon 1 SSH key configured sHow Ra5pbery Pl Conr*i Writin9 Done APP OPTIONS SKIP CUSTOMISAnoN BACK NEXT",
+      "notes": [
+        "visible text changed between Apple Vision OCR samples"
+      ],
+      "feature_distance_from_previous": 0.07663807272911072,
+      "id": "e047"
+    },
+    {
+      "kind": "stable_hold",
+      "time": 102.0,
+      "score": 0.9398,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0043_01-42-000_stable_hold.jpg",
+      "ocr_text": "\u2022 \u2022 P48ph\u2022rry Pi Imaq\u2022r v? 0.7 Setup 8teps Customisation: SSH authentication Devic8 Configuie SSH access En\u2022ble SSH os Storage Auihenlication mechani$m: O Use password aulhMtiCalion Cvslomisalion O Use public key aLrtheniicalion L4Mll8\u2022llon 1 SSH key configured sHow Ra5pbery Pl Conr*i Writin9 Done APP OPTIONS SKIP CUSTOMISAnoN BACK NFXT",
+      "notes": [
+        "low visual change span",
+        "candidate loading/wait/freeze-frame region"
+      ],
+      "feature_distance_from_previous": 0.15001198649406433,
+      "end": 106.0,
+      "duration": 8.0,
+      "start": 98.0,
+      "id": "e048"
+    },
+    {
+      "kind": "ocr_change",
+      "time": 108.5,
+      "score": 1.0,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0046_01-48-500_scene_change.jpg",
+      "ocr_text": "",
+      "notes": [
+        "visible text changed between Apple Vision OCR samples"
+      ],
+      "feature_distance_from_previous": 0.6675164103507996,
+      "id": "e049"
+    },
+    {
+      "kind": "scene_change",
+      "time": 108.5,
+      "score": 0.2347,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0046_01-48-500_scene_change.jpg",
+      "ocr_text": "",
+      "notes": [
+        "visual change peak",
+        "Apple Vision feature-print analyzed"
+      ],
+      "feature_distance_from_previous": 0.6675164103507996,
+      "id": "e050"
+    },
+    {
+      "kind": "ocr_change",
+      "time": 109.5,
+      "score": 1.0,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0047_01-49-500_scene_post.jpg",
+      "ocr_text": "Configure SSH access Enable SSH Learn about SSH Authentication mechanism: Use password authentication O Use public key authentication 1 SSH key configured ssh-ed25519 AAAAC3Nz...D6CM5j5x Paste key or click BROWSE to select file BROWSE",
+      "notes": [
+        "visible text changed between Apple Vision OCR samples"
+      ],
+      "feature_distance_from_previous": 0.5883903503417969,
+      "id": "e051"
+    },
+    {
+      "kind": "anchor",
+      "time": 110.0,
+      "score": 0.0,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0048_01-50-000_anchor.jpg",
+      "ocr_text": "Configure SSH access Enable SSH Learn about SSH Authentication mechanism: Use password authentication O Use public key authentication 1 SSH key configured ssh-ed25519 AAAAC3Nz...D6CM5j5x Paste key or click BROWSE to select file BROWSE",
+      "notes": [
+        "regular Apple Vision sample for agent review"
+      ],
+      "feature_distance_from_previous": 0.01093705277889967,
+      "id": "e052"
+    },
+    {
+      "kind": "ocr_change",
+      "time": 111.5,
+      "score": 0.9363,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0050_01-51-500_scene_change.jpg",
+      "ocr_text": "nts .ssh Q Search \u2022l .ssh Applications Desktop Documents agent conflg ed25519 ications id_ed25519.pub knownJosts known_hosts.old Downloads github \u2022lgo Library Movies op me... Music nloads Pictures Public res Screen Studlo Prolects d Drive Show Optlons Cancel Open",
+      "notes": [
+        "visible text changed between Apple Vision OCR samples"
+      ],
+      "feature_distance_from_previous": 0.6314684152603149,
+      "id": "e053"
+    },
+    {
+      "kind": "scene_change",
+      "time": 111.5,
+      "score": 0.5201,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0050_01-51-500_scene_change.jpg",
+      "ocr_text": "nts .ssh Q Search \u2022l .ssh Applications Desktop Documents agent conflg ed25519 ications id_ed25519.pub knownJosts known_hosts.old Downloads github \u2022lgo Library Movies op me... Music nloads Pictures Public res Screen Studlo Prolects d Drive Show Optlons Cancel Open",
+      "notes": [
+        "visual change peak",
+        "Apple Vision feature-print analyzed"
+      ],
+      "feature_distance_from_previous": 0.6314684152603149,
+      "id": "e054"
+    },
+    {
+      "kind": "ocr_change",
+      "time": 112.5,
+      "score": 0.6809,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0051_01-52-500_scene_post.jpg",
+      "ocr_text": "nts *l.ssh Q Search \u2022l .ssh Applications Desktop Documents agent conflg cations id_ed25519. knownJost knowohosts Downloads github \u2022lgo Library Movies \u2022VI top me... Music loads Pictures PublSc res Screen Studio Projects d Drive Show Options Cancel Open",
+      "notes": [
+        "visible text changed between Apple Vision OCR samples"
+      ],
+      "feature_distance_from_previous": 0.18618951737880707,
+      "id": "e055"
+    },
+    {
+      "kind": "ocr_change",
+      "time": 115.5,
+      "score": 0.6538,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0052_01-55-500_scene_pre.jpg",
+      "ocr_text": "nts \u2022l.ssh Q Search \u2022l .ssh Applications Desktop Documents agent config cations id_ed25519.pub known_hostS knownJosts.old Downloads github 111 go top a \u2022 Library Movies PUB me... Music loads Pictures id_ed25519.pub Document - 82 bytes Infom)atlon Publlc res Screen Studio Projects Created October 26. 2023 at 1:49 PM d Drive Show Options Cancel",
+      "notes": [
+        "visible text changed between Apple Vision OCR samples"
+      ],
+      "feature_distance_from_previous": 0.27008628845214844,
+      "id": "e056"
+    },
+    {
+      "kind": "ocr_change",
+      "time": 116.0,
+      "score": 0.9356,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0053_01-56-000_hold_start.jpg",
+      "ocr_text": "Configure SSH access Enable SSH Learn about SSH Authentication mechanism: Use password authentication O Use public key authentication 1 SSH key configured HIDE ssh-ed25519 AAAAC3Nz...D6CM5j5x REMOVE Paste key or click BROWSE to select file BROWSE",
+      "notes": [
+        "visible text changed between Apple Vision OCR samples"
+      ],
+      "feature_distance_from_previous": 0.534259021282196,
+      "id": "e057"
+    },
+    {
+      "kind": "ocr_change",
+      "time": 116.5,
+      "score": 0.5731,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0054_01-56-500_scene_change.jpg",
+      "ocr_text": "Customisation: SSH authentication O Use passwor(l avthenticaiion O Use publ\u2022c key athhentic8lion 1 SSH key etmfywed HIDE REMOVE P*ffle BROWSE io sekn file 8ROWSE BACK NEXT",
+      "notes": [
+        "visible text changed between Apple Vision OCR samples"
+      ],
+      "feature_distance_from_previous": 0.4867098033428192,
+      "id": "e058"
+    },
+    {
+      "kind": "scene_change",
+      "time": 116.5,
+      "score": 0.5251,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0054_01-56-500_scene_change.jpg",
+      "ocr_text": "Customisation: SSH authentication O Use passwor(l avthenticaiion O Use publ\u2022c key athhentic8lion 1 SSH key etmfywed HIDE REMOVE P*ffle BROWSE io sekn file 8ROWSE BACK NEXT",
+      "notes": [
+        "visual change peak",
+        "Apple Vision feature-print analyzed"
+      ],
+      "feature_distance_from_previous": 0.4867098033428192,
+      "id": "e059"
+    },
+    {
+      "kind": "ocr_change",
+      "time": 117.5,
+      "score": 0.8308,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0055_01-57-500_scene_post.jpg",
+      "ocr_text": "\u2022 \u2022 P\u2022*r)h\u2022rry Pi Imaq\u2022r v? 0,7 SetUP 8teps Customisation: SSH authentication Device Configure SSH access En\u2022lkn SSH os Storage AutheTrlication methani$m: O Use password authentication Customisation O Use public key athhenlicalion LoullMiion 1 SSH key confyured HIDE $sh-ed25519 AAAAC3Nz...D6CM$5x REMOVE Paste key or click BROWSE lo seleth file BROWSE R\u20225pberyy Pl Conr*ci Wming Done APP OPTIONS SKIP CUSTOMISATION 8ACK",
+      "notes": [
+        "visible text changed between Apple Vision OCR samples"
+      ],
+      "feature_distance_from_previous": 0.2588553726673126,
+      "id": "e060"
+    },
+    {
+      "kind": "ocr_change",
+      "time": 126.0,
+      "score": 0.8627,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0056_02-06-000_stable_hold.jpg",
+      "ocr_text": "P4<pb\u2022rry Pi Im8q\u2022r v? 0.7 SetUP 8teps Customisation: Raspberry Pi Connect Device Sign in to receive a token and enable Raspberry Pi Connect os Storage Customisation Loull8\u2022don R\u2022nwt\u2022 \u2022cc\u2022 Enable R&spberry Pl Connecl YrflJai Js Raspbeiry Cunneci? Wriling Done APP OPTIONS SKIP CUSTOMISAnoN BACK",
+      "notes": [
+        "visible text changed between Apple Vision OCR samples"
+      ],
+      "feature_distance_from_previous": 0.22770342230796814,
+      "id": "e061"
+    },
+    {
+      "kind": "stable_hold",
+      "time": 126.0,
+      "score": 0.7488,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0056_02-06-000_stable_hold.jpg",
+      "ocr_text": "P4<pb\u2022rry Pi Im8q\u2022r v? 0.7 SetUP 8teps Customisation: Raspberry Pi Connect Device Sign in to receive a token and enable Raspberry Pi Connect os Storage Customisation Loull8\u2022don R\u2022nwt\u2022 \u2022cc\u2022 Enable R&spberry Pl Connecl YrflJai Js Raspbeiry Cunneci? Wriling Done APP OPTIONS SKIP CUSTOMISAnoN BACK",
+      "notes": [
+        "low visual change span",
+        "candidate loading/wait/freeze-frame region"
+      ],
+      "feature_distance_from_previous": 0.22770342230796814,
+      "end": 136.0,
+      "duration": 20.0,
+      "start": 116.0,
+      "id": "e062"
+    },
+    {
+      "kind": "anchor",
+      "time": 130.0,
+      "score": 0.0,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0057_02-10-000_anchor.jpg",
+      "ocr_text": "P4<pb\u2022rry Pi Im8q\u2022r v? 0.7 SetUP 8teps Customisation: Raspberry Pi Connect Device Sign in to receive a token and enable Raspberry Pi Connect os Storage Customisation Loull8\u2022don R\u2022nwt\u2022 \u2022cc\u2022 Enable R&spberry Pl Connecl YrflJai Js Raspbeiry Cunneci? Wriling Done APP OPTIONS SKIP CUSTOMISAnoN BACK",
+      "notes": [
+        "regular Apple Vision sample for agent review"
+      ],
+      "feature_distance_from_previous": 0.019272513687610626,
+      "id": "e063"
+    },
+    {
+      "kind": "ocr_change",
+      "time": 136.0,
+      "score": 0.9513,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0058_02-16-000_hold_end.jpg",
+      "ocr_text": "Q48pb\u2022rry Pi Imaq\u2022r v? 0 7 Setup steps Write image Device Review your choices and vKite ihe image to ihe storage device os Siorage Summary Customisatlon R*4)b\u2022rry Pl S Opero1itsJ $ySiem'. R\u2022Hknry Pl OS Lft\u2022 {WbM) *4pl\u2022 SDXC R\u2022\u2022d\u2022r kl\u2022th\u2022 LK\u2022ll8\u2022tlon eA\u20229\u2022 R\u2022nwt\u2022 \u2022cc\u2022 Rasptserry fv' Conrwl Wfiling Done Cu8tomisallons lo apply: . Hostn\u2022me cMfigured . Locall3alion ctyrfiqured * Usew Kcowit confwed . Wk4i confi9wed 4 SSH enabled APP OPTIONS 8ACK",
+      "notes": [
+        "visible text changed between Apple Vision OCR samples"
+      ],
+      "feature_distance_from_previous": 0.2612529695034027,
+      "id": "e064"
+    },
+    {
+      "kind": "ocr_change",
+      "time": 140.5,
+      "score": 0.945,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0059_02-20-500_scene_pre.jpg",
+      "ocr_text": "Raspberry Pi Imager v2.0.7 Setup steps Write image Device Review your choices and wnte the image to ihe storage device os Siorage Summary Customis8ilon knryP15 OperaiiTrJ $ysiem.\" R\u2022\u2022pb\u2022rry Pl OS Llt\u2022 (Wbll) Smg\u2022: SDXC R\u2022od\u2022r M\u2022th\u2022 Ltt\u2022lls\u2022tlon You ar\u2022 about lo ERASE all dala on: l>ple SDXC R\u2022ader Medla This action is PERMANENT and CANNOT be undone. R\u2022mot\u2022 \u2022cc\u2022 RJ5pberry fv' Connect CANCEL I UNDERSTAND, ERASE AND WRITE Wriling Done . Hostn&mec4Mfigure . Lcall8alion configurtd \u2022 User eonfwed . Wb4i confywed APP OPTIONS 8ACK VklTI..",
+      "notes": [
+        "visible text changed between Apple Vision OCR samples"
+      ],
+      "feature_distance_from_previous": 0.23795340955257416,
+      "id": "e065"
+    },
+    {
+      "kind": "ocr_change",
+      "time": 141.5,
+      "score": 0.9897,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0060_02-21-500_scene_change.jpg",
+      "ocr_text": "Summary Device: Raspberry Pi 5 Operatlng system: Ra8pberry Pl OS Lite (64-blt) Storage: Apple SDXC Reader Medla Customisations to apply: . Hostname configured . Localisation configured . User account configured . Wi-Fi configured . SSH enabled",
+      "notes": [
+        "visible text changed between Apple Vision OCR samples"
+      ],
+      "feature_distance_from_previous": 0.6927040815353394,
+      "id": "e066"
+    },
+    {
+      "kind": "scene_change",
+      "time": 141.5,
+      "score": 0.372,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0060_02-21-500_scene_change.jpg",
+      "ocr_text": "Summary Device: Raspberry Pi 5 Operatlng system: Ra8pberry Pl OS Lite (64-blt) Storage: Apple SDXC Reader Medla Customisations to apply: . Hostname configured . Localisation configured . User account configured . Wi-Fi configured . SSH enabled",
+      "notes": [
+        "visual change peak",
+        "Apple Vision feature-print analyzed"
+      ],
+      "feature_distance_from_previous": 0.6927040815353394,
+      "id": "e067"
+    },
+    {
+      "kind": "ocr_change",
+      "time": 142.0,
+      "score": 1.0,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0061_02-22-000_hold_start.jpg",
+      "ocr_text": "",
+      "notes": [
+        "visible text changed between Apple Vision OCR samples"
+      ],
+      "feature_distance_from_previous": 0.7881144285202026,
+      "id": "e068"
+    },
+    {
+      "kind": "ocr_change",
+      "time": 142.5,
+      "score": 1.0,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0062_02-22-500_scene_post.jpg",
+      "ocr_text": "R\u2022\u2022pbwry W kn1g\u2022r v2.fA7 Write image WrnirKJ m progre88 - (k) Iio1 th8connerf ihe $lornge devlce Unmountlng drlve... bVriling APP OPTIONS CANC.EL WRITE",
+      "notes": [
+        "visible text changed between Apple Vision OCR samples"
+      ],
+      "feature_distance_from_previous": 0.7084656953811646,
+      "id": "e069"
+    },
+    {
+      "kind": "ocr_change",
+      "time": 146.0,
+      "score": 0.9752,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0063_02-26-000_stable_hold.jpg",
+      "ocr_text": "Pa*ph\u2022rry Pi Imaqpr v? 0 7 SetUP 8teps Write image Device WTrting in progress - do nol disconneci ihe slorage device os Siorage Customisallon Loc\u2022lls\u2022tlon R\u2022nwt\u2022 \u2022cc\u2022 R<l'.pb.pr'. b Pi r.r)D.fil'1-1 Writlng... 50% Wfiling Done APP OPTIONS ANF.I L SVRITE",
+      "notes": [
+        "visible text changed between Apple Vision OCR samples"
+      ],
+      "feature_distance_from_previous": 0.22520434856414795,
+      "id": "e070"
+    },
+    {
+      "kind": "stable_hold",
+      "time": 146.0,
+      "score": 0.7673,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0063_02-26-000_stable_hold.jpg",
+      "ocr_text": "Pa*ph\u2022rry Pi Imaqpr v? 0 7 SetUP 8teps Write image Device WTrting in progress - do nol disconneci ihe slorage device os Siorage Customisallon Loc\u2022lls\u2022tlon R\u2022nwt\u2022 \u2022cc\u2022 R<l'.pb.pr'. b Pi r.r)D.fil'1-1 Writlng... 50% Wfiling Done APP OPTIONS ANF.I L SVRITE",
+      "notes": [
+        "low visual change span",
+        "candidate loading/wait/freeze-frame region"
+      ],
+      "feature_distance_from_previous": 0.22520434856414795,
+      "end": 150.0,
+      "duration": 8.0,
+      "start": 142.0,
+      "id": "e071"
+    },
+    {
+      "kind": "ocr_change",
+      "time": 150.0,
+      "score": 0.9591,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0064_02-30-000_hold_end.jpg",
+      "ocr_text": "Pa*pb\u2022rry Pi Imaq\u2022r v? 0.7 Setup steps Write image Device Wrrting in progress - do no1 disconnecl the slorage device os Siorage Cu$tomisailon Loc\u2022ll8\u2022llon R\u2022nKt\u2022 \u2022cc\u2022M Verffying... 43% I:.phprr) Pi r.nnfipr.I Wfiling VwifybvJ %fflii\u2022n d\u2022ia (89 MBlI) Done APP OPTIONS -%KIPVIRIFILAI ION",
+      "notes": [
+        "visible text changed between Apple Vision OCR samples"
+      ],
+      "feature_distance_from_previous": 0.10139565169811249,
+      "id": "e072"
+    },
+    {
+      "kind": "ocr_change",
+      "time": 154.5,
+      "score": 0.9016,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0065_02-34-500_scene_pre.jpg",
+      "ocr_text": "Pa8ph\u2022rry Pi Imaqpr v? 0.7 Setup 8teps Write complete! Device os Siorage Customisailon L(Mll8\u2022llon Your cholc\u2022s: RMpb\u2022ffji Pl S OpeniiThJ 8yslern.' RMpb\u2022ffy PI OS Lh\u2022164.1>tt) Slorage.' *\u2022pl\u2022 SDXC R\u2022\u2022dw M\u2022dl\u2022 R\u2022nwt\u2022 \u2022cc\u2022 RJ5pbery Pl Conr*ci Cu#toml$#lk)n8 appll\u2022d: Hosiname cwfwred Localisalion cMfwred User accowti confMwfed Wi.Fi cMfiguwed SSH enabled Writino Done Th\u2022 M(w\u20229e w\u2022s womoiiully. YtyJ cw now f\u2022mo%*11 Mlety. APP OPTIONS WRITE ANOTHER",
+      "notes": [
+        "visible text changed between Apple Vision OCR samples"
+      ],
+      "feature_distance_from_previous": 0.23334872722625732,
+      "id": "e073"
+    },
+    {
+      "kind": "ocr_change",
+      "time": 155.5,
+      "score": 0.9675,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0066_02-35-500_scene_change.jpg",
+      "ocr_text": "FULLSTACK AG Aft\u2022p fl\u2022shln\u2022 Move the flashed storage to the Raspberry Pi. Then give it network and power so it can boot before we connect f rom Terminal. Ins8rt the card or SSD Use the aevlce you wrote wllh Raspbwry Pl Im\u2022ger. Connect network and power Efhprnet Is easiesl- th'i- F5 works If conli9ured11. Walt for boot. thon SSH $ll bpufftap\u2022rl\u2022sN.toc\u2022t",
+      "notes": [
+        "visible text changed between Apple Vision OCR samples"
+      ],
+      "feature_distance_from_previous": 0.8589100241661072,
+      "id": "e074"
+    },
+    {
+      "kind": "scene_change",
+      "time": 155.5,
+      "score": 0.3473,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0066_02-35-500_scene_change.jpg",
+      "ocr_text": "FULLSTACK AG Aft\u2022p fl\u2022shln\u2022 Move the flashed storage to the Raspberry Pi. Then give it network and power so it can boot before we connect f rom Terminal. Ins8rt the card or SSD Use the aevlce you wrote wllh Raspbwry Pl Im\u2022ger. Connect network and power Efhprnet Is easiesl- th'i- F5 works If conli9ured11. Walt for boot. thon SSH $ll bpufftap\u2022rl\u2022sN.toc\u2022t",
+      "notes": [
+        "visual change peak",
+        "Apple Vision feature-print analyzed"
+      ],
+      "feature_distance_from_previous": 0.8589100241661072,
+      "id": "e075"
+    },
+    {
+      "kind": "ocr_change",
+      "time": 156.0,
+      "score": 0.4027,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0067_02-36-000_hold_start.jpg",
+      "ocr_text": "FULLSTACK AG Aft\u2022p fl\u2022$hlftg PHYSICAL STEP Move the flashed storage to the Raspberry Pi. Then give it network and power so it can boot before we connect f rom Terminal. Insert the card or SSD Use the devlce you lug1 wrote wllh Raspbeiry Pl Imager. Connect network and power Elhef net Is easie51. Wi-Fi waiks if you conliguied11. Wait for boot. thon SSH J$h bp*\u2022Wap\u2022rt\u2022ss.Igc\u2022l",
+      "notes": [
+        "visible text changed between Apple Vision OCR samples"
+      ],
+      "feature_distance_from_previous": 0.21244539320468903,
+      "id": "e076"
+    },
+    {
+      "kind": "stable_hold",
+      "time": 159.0,
+      "score": 0.8525,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0069_02-39-000_stable_hold.jpg",
+      "ocr_text": "FULLSTACK AG Aft\u2022p fi\u2022$hlftg PHYSICAL STEP Move the flashed storage to the Raspberry Pi. Then give it network and power so it can boot before we connect f rom Terminal. Insert the card or SSD Use the devlce you lug1 wrote wllh Raspbeiry Pl Imager. Connect network and power Elhef net Is easie51. Wi-Fi waiks if you conliguied It. Wait for boot, thon SSH J$h bp*\u2022Wap\u2022rt\u2022ss.Igc\u2022l",
+      "notes": [
+        "low visual change span",
+        "candidate loading/wait/freeze-frame region"
+      ],
+      "feature_distance_from_previous": 0.024986542761325836,
+      "end": 162.0,
+      "duration": 6.0,
+      "start": 156.0,
+      "id": "e077"
+    },
+    {
+      "kind": "anchor",
+      "time": 160.0,
+      "score": 0.0,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0070_02-40-000_anchor.jpg",
+      "ocr_text": "FULLSTACK AG Ift\u2022p fi\u2022$hlnq Move the flashed storage to the Raspberry Pi. Then give it network and power so it can boot before we connect f rom Terminal. In8ert the card or SSD Use the flevlce you wrote wilh Raspberry Pl Imager. Connect notwork and pow\u2022r Etheinet is easiest.. Wi-Fi works If you conligufed il. Walt for l)oot, then SSH ssh bpknMlpap\u2022pl\u2022$\u2022.loc\u2022l",
+      "notes": [
+        "regular Apple Vision sample for agent review"
+      ],
+      "feature_distance_from_previous": 0.0874532088637352,
+      "id": "e078"
+    },
+    {
+      "kind": "ocr_change",
+      "time": 160.0,
+      "score": 0.8943,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0070_02-40-000_anchor.jpg",
+      "ocr_text": "FULLSTACK AG Ift\u2022p fi\u2022$hlnq Move the flashed storage to the Raspberry Pi. Then give it network and power so it can boot before we connect f rom Terminal. In8ert the card or SSD Use the flevlce you wrote wilh Raspberry Pl Imager. Connect notwork and pow\u2022r Etheinet is easiest.. Wi-Fi works If you conligufed il. Walt for l)oot, then SSH ssh bpknMlpap\u2022pl\u2022$\u2022.loc\u2022l",
+      "notes": [
+        "visible text changed between Apple Vision OCR samples"
+      ],
+      "feature_distance_from_previous": 0.0874532088637352,
+      "id": "e079"
+    },
+    {
+      "kind": "ocr_change",
+      "time": 165.5,
+      "score": 0.9593,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0073_02-45-500_scene_change.jpg",
+      "ocr_text": "\u2022 m paperless-\u2022i--bash- 126x42",
+      "notes": [
+        "visible text changed between Apple Vision OCR samples"
+      ],
+      "feature_distance_from_previous": 1.0897105932235718,
+      "id": "e080"
+    },
+    {
+      "kind": "scene_change",
+      "time": 165.5,
+      "score": 0.8057,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0073_02-45-500_scene_change.jpg",
+      "ocr_text": "\u2022 m paperless-\u2022i--bash- 126x42",
+      "notes": [
+        "visual change peak",
+        "Apple Vision feature-print analyzed"
+      ],
+      "feature_distance_from_previous": 1.0897105932235718,
+      "id": "e081"
+    },
+    {
+      "kind": "anchor",
+      "time": 180.0,
+      "score": 0.0,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0076_03-00-000_anchor.jpg",
+      "ocr_text": "\u2022 \u2022 \u2022i pap\u2022rless-ai--bash- 126x42 ) ssh brian@paporless.",
+      "notes": [
+        "regular Apple Vision sample for agent review"
+      ],
+      "feature_distance_from_previous": 0.16441567242145538,
+      "id": "e082"
+    },
+    {
+      "kind": "ocr_change",
+      "time": 187.0,
+      "score": 0.8907,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0077_03-07-000_stable_hold.jpg",
+      "ocr_text": "Q \u2022 \u2022 m pap\u2022fless-ai- s$h brian@paperfess.local- 126x42 '> ssh brian@paperless.local The authenticity of host ' paperlesg.local (192.168.68. 202)' c8n' t be established. E025519 key f ing8rprint is: SHA256: jTue3Qf CqOYYEYb+WgbbJ+XsP9tSxCoSqxp3km+f a9k This key is not known by any other naffles. Are you sure you want to continue connecting (yes/nol(fingerprintJ)?",
+      "notes": [
+        "visible text changed between Apple Vision OCR samples"
+      ],
+      "feature_distance_from_previous": 0.410732626914978,
+      "id": "e083"
+    },
+    {
+      "kind": "stable_hold",
+      "time": 187.0,
+      "score": 0.8059,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0077_03-07-000_stable_hold.jpg",
+      "ocr_text": "Q \u2022 \u2022 m pap\u2022fless-ai- s$h brian@paperfess.local- 126x42 '> ssh brian@paperless.local The authenticity of host ' paperlesg.local (192.168.68. 202)' c8n' t be established. E025519 key f ing8rprint is: SHA256: jTue3Qf CqOYYEYb+WgbbJ+XsP9tSxCoSqxp3km+f a9k This key is not known by any other naffles. Are you sure you want to continue connecting (yes/nol(fingerprintJ)?",
+      "notes": [
+        "low visual change span",
+        "candidate loading/wait/freeze-frame region"
+      ],
+      "feature_distance_from_previous": 0.410732626914978,
+      "end": 208.0,
+      "duration": 42.0,
+      "start": 166.0,
+      "id": "e084"
+    },
+    {
+      "kind": "anchor",
+      "time": 200.0,
+      "score": 0.0,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0078_03-20-000_anchor.jpg",
+      "ocr_text": "O \u2022 \u2022 m papefle$s-ai- brian@paperle$s' ssh brian@paperles$.local- 126x42 '> ssh brian@paperless.local The authenticity of host ' paperless.local (192.168.68. 202)' can' t be established. ED25519 key f ing8rprlnt is: SHA256: jTue39fCqeYYEYb+WgbbJ+XsP9tSxCoSqxp3km+f a9k This k\u2022y is not known by any other narnes. Are you sure you want to continue connecting (yes/nol(fingerprintl)7 yes Warning: P8rrnanently added 'paperless.localb (E025519) to th8 list of known hosts. Linux paperless 6. 12. 75+rpt-rpi-2712 #1 SMP PREEMPT Debian 1: 6. 12.75-l+rptl (2026-03-11) aarch64 The programs &ncluded with the Debian GNU/Linux system are free software', the exact distribution terms for each prograffl are described in the individual f iles in lusr/8hara/docl*lcopyright. Debian GNiIILinux coffles with A8SOLUTELY NO WARRANTY, to the extent permitted by 8pplic8bl8 la*. bri\u2022n@pap\u2022rle\u2022\u2022:\"",
+      "notes": [
+        "regular Apple Vision sample for agent review"
+      ],
+      "feature_distance_from_previous": 0.24000661075115204,
+      "id": "e085"
+    },
+    {
+      "kind": "ocr_change",
+      "time": 200.0,
+      "score": 0.4545,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0078_03-20-000_anchor.jpg",
+      "ocr_text": "O \u2022 \u2022 m papefle$s-ai- brian@paperle$s' ssh brian@paperles$.local- 126x42 '> ssh brian@paperless.local The authenticity of host ' paperless.local (192.168.68. 202)' can' t be established. ED25519 key f ing8rprlnt is: SHA256: jTue39fCqeYYEYb+WgbbJ+XsP9tSxCoSqxp3km+f a9k This k\u2022y is not known by any other narnes. Are you sure you want to continue connecting (yes/nol(fingerprintl)7 yes Warning: P8rrnanently added 'paperless.localb (E025519) to th8 list of known hosts. Linux paperless 6. 12. 75+rpt-rpi-2712 #1 SMP PREEMPT Debian 1: 6. 12.75-l+rptl (2026-03-11) aarch64 The programs &ncluded with the Debian GNU/Linux system are free software', the exact distribution terms for each prograffl are described in the individual f iles in lusr/8hara/docl*lcopyright. Debian GNiIILinux coffles with A8SOLUTELY NO WARRANTY, to the extent permitted by 8pplic8bl8 la*. bri\u2022n@pap\u2022rle\u2022\u2022:\"",
+      "notes": [
+        "visible text changed between Apple Vision OCR samples"
+      ],
+      "feature_distance_from_previous": 0.24000661075115204,
+      "id": "e086"
+    },
+    {
+      "kind": "ocr_change",
+      "time": 208.0,
+      "score": 0.6918,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0079_03-28-000_hold_end.jpg",
+      "ocr_text": "O \u2022 \u2022 m pap\u2022rle$s-Ji- brian@paperless' ssh brian@paperless.local- 126x42 '> ssh brian@paperless.local The authenticity of host ' paperlesg.local (192.168.68. 202)' c8n' t be establishod. E025519 key f Ing8rprint is: SHA256: JTue3QfCqOYYEYb+WgbbJ+XsP9t5xCoSqxp3km+f a9k This k\u2022y is not known by any other narnes. Are you sure you want to continue connecting (yes/nol(fingerprintJ>7 yes Warning: Perrnanently added 'paperless.loc811 (ED25519) to the list of known hosts. Linux paperless 6. 12. 75+rpt-rpi-2712 #1 SMP PREEMPT Debian 1: 6. 12.75-l+rptl (2026-03-11) aarch64 The program8 Included with the Deblan GNU/Linux system are free software,' the exact distribution terms for each program are described in the individual f ile$ in lusrl8hara/docl*/copyright. Debian GNUILinux coffles with A8SOLUTELY NO WARRANTY, to the extent permitted tsy 8pplic8ble law. IbrA\u2022n@pap\u2022rl\u2022\u2022\u2022: S curl -f sSL http$: //paperless.fullstick.ag/in$t411.$h I bash P\u2022p\u2022rl\u2022\u2022\u2022 AZ S\u2022tup So-raiii ii se3rcn I nr PtiOE.' Ch\u2022cklng your $ystem. {x l Docker is not installed. Install Docker now7 IY/nl: l...I Installing Docker (this may take a ninute). IlsudoJ password for brian: # Executing docker install script, cornmit: 2687d91ddeb3bd6aeae37a9e947761ef dee87030 + sh -c apt-oet -qq update >ldevlnull + sh ~c DEBIAN_FRONTEND=noninteractlve apt-get -y -qq Install ca-cert*f icates curl >/dev/null + sh -c install -m 0755 -d /etc/aptlkeyrinqs + sh -c curl -fsSL 'https: l/download.docker.com/linuxldabianlgpg' + sh -c chmod a+r /etc/apt/keyrin9s/docker.asc + sh -c echo 'deb larch-arm64 signed-by-/etclaptlkeyrings/docker. asc I https: /ldownload. docker. com/linuxldebian trixie stabl\u2022' > letc/8ptlsource$.li8t.d/docker. list + sh -c apt-get -qq update >/dev/null /etcl8ptlkeyrings/dockeT.aSC",
+      "notes": [
+        "visible text changed between Apple Vision OCR samples"
+      ],
+      "feature_distance_from_previous": 0.258998304605484,
+      "id": "e087"
+    },
+    {
+      "kind": "ocr_change",
+      "time": 210.5,
+      "score": 0.9373,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0081_03-30-500_scene_change.jpg",
+      "ocr_text": "O \u2022 \u2022 11 pap\u2022rl\u2022$s-ai- brian@paperless: $sh brian@paperles$.local- 126x42 Server: Dock\u2022r Engine Engine: Vers*on: API version: Go v8r5ion: Git commit: 8uilt: OS/Arch' Experimento1: containerd: Ver810ft: GitCommlt: runc: V8r8Ion: GitCommit: docker-init: Version: GItCommlt: Community 29.5.2 1.54 (minimum version 1.40) 901.26.3 568f 755 Wed May 20 14:39:20 2026 linux/arm64 fals8 v2.2.3 77c84241c7cbdd9b4eca2591793e3d4f 4317c590 1.3.6 vl. 3. 5-0-9488f c13e 0.19.0 de4eadO To run Docker as a non-prlvileged user. consider $etting up th\u2022 Docker daemon in rootl\u2022ss mode for your usor: doekerd-rootless-8etuptoal. sh install Visit httPg: /ldocg.docker.corn/go/rootless1 to learn about rootless modo. To run the DDcker daemon as 8 fully privileged service, but oranting non-root users access, refer to https:l/docs.docker.com/goldaemon-accessl WARNING: Access to the refflote API on a privileged Docker daemon is equivalent to root acce5s on the host. Refer to the 'Oock8r daemon attack surface' documentatlon for details: https: l/docs.docker.com/go/attack-surf8cel l Docker Installed. 111 You've beon added to tha *docker' group.",
+      "notes": [
+        "visible text changed between Apple Vision OCR samples"
+      ],
+      "feature_distance_from_previous": 0.22123269736766815,
+      "id": "e088"
+    },
+    {
+      "kind": "scene_change",
+      "time": 210.5,
+      "score": 0.0426,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0081_03-30-500_scene_change.jpg",
+      "ocr_text": "O \u2022 \u2022 11 pap\u2022rl\u2022$s-ai- brian@paperless: $sh brian@paperles$.local- 126x42 Server: Dock\u2022r Engine Engine: Vers*on: API version: Go v8r5ion: Git commit: 8uilt: OS/Arch' Experimento1: containerd: Ver810ft: GitCommlt: runc: V8r8Ion: GitCommit: docker-init: Version: GItCommlt: Community 29.5.2 1.54 (minimum version 1.40) 901.26.3 568f 755 Wed May 20 14:39:20 2026 linux/arm64 fals8 v2.2.3 77c84241c7cbdd9b4eca2591793e3d4f 4317c590 1.3.6 vl. 3. 5-0-9488f c13e 0.19.0 de4eadO To run Docker as a non-prlvileged user. consider $etting up th\u2022 Docker daemon in rootl\u2022ss mode for your usor: doekerd-rootless-8etuptoal. sh install Visit httPg: /ldocg.docker.corn/go/rootless1 to learn about rootless modo. To run the DDcker daemon as 8 fully privileged service, but oranting non-root users access, refer to https:l/docs.docker.com/goldaemon-accessl WARNING: Access to the refflote API on a privileged Docker daemon is equivalent to root acce5s on the host. Refer to the 'Oock8r daemon attack surface' documentatlon for details: https: l/docs.docker.com/go/attack-surf8cel l Docker Installed. 111 You've beon added to tha *docker' group.",
+      "notes": [
+        "visual change peak",
+        "Apple Vision feature-print analyzed"
+      ],
+      "feature_distance_from_previous": 0.22123269736766815,
+      "id": "e089"
+    },
+    {
+      "kind": "ocr_change",
+      "time": 211.5,
+      "score": 0.7777,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0082_03-31-500_scene_post.jpg",
+      "ocr_text": "O \u2022 \u2022 m paperless-ai - brian@paperless' _ - $sh brian@paperles$.local- 126x42 Engine: Vezsion: API version: Go version: Git commit: 8uilt: OSIArch: Experimental: containerd: Version: GitCommit: runc: Version: GitCommlt: docker-init: Version: GitCommlt: 29.5.2 1.54 (mlnimum verslon 1.40) gol.26.3 568f 755 Wed May 20 14:39:20 2026 linuxlarffl64 false v2.2.3 77c84241c7cbdd9b4eca2591793e3d4f 4317c590 1.3.6 vl. 3. 5-O-g488f c13e 0.19.0 de40adO To run Oocker as a non-privileged user. consider setting up the Doekaz da\u2022mon In TOOtl\u2022$s mode for your u$er: dockerd-rootless-setuptool.sh install Vi8it https: /ldocs. docker. coTrlgo/rootlessl to l\u2022arn about rootless mode. To run the Docker daemon as a fully privileged service, but granting non-root users access, refer to https:l/docs.docker.com/go/daemon-accessl WARNING: Access to the refflote APl on a privileged Dock\u2022r daemon is equivalent to root access on the host. Refer to tha 'Oocker daemon att8ck surfaco' documentation for details: https: Ildocs.docker.cord/go/attock-surf acel [wl Docker Installed. lii You've been added to the 'docker' group. 11] Plea$e log out and back in. then run thls $cript again. bri\u2022n@paperles8:",
+      "notes": [
+        "visible text changed between Apple Vision OCR samples"
+      ],
+      "feature_distance_from_previous": 0.08871503919363022,
+      "id": "e090"
+    },
+    {
+      "kind": "ocr_change",
+      "time": 214.0,
+      "score": 0.9128,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0083_03-34-000_hold_start.jpg",
+      "ocr_text": "O \u2022 \u2022 ill paperless-ai - brian@paperless' _ - -bash - 126x42",
+      "notes": [
+        "visible text changed between Apple Vision OCR samples"
+      ],
+      "feature_distance_from_previous": 0.6727336645126343,
+      "id": "e091"
+    },
+    {
+      "kind": "ocr_change",
+      "time": 216.0,
+      "score": 0.8748,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0084_03-36-000_stable_hold.jpg",
+      "ocr_text": "O \u2022 \u2022 * pap\u2022rl\u2022ss-ai- brian@paperless' ssh brianr@paperl8ss.local - 126x42 > ssh brian@paperle$s.local Linux paperless 6. 12. 75+rpt-rpi-2712 #1 SMP PREEMPT Debian 1:6. 12. 75-l+rptl (2026_03_11) aarch64 The programs included with the Debian GNU/Linux systern are free software,' the exact distribution terms for each program are de$cribed in the ndividual f iles in /usr/share/docl*/copyright. Debian GNUILinux comes with ABSOLUTELY NO WARRANTY, to the extent permitted by applicable law. Last login: Wed May 20 15:28:53 2026 from 192.168.68.67 brl\u2022n@pap\u2022rl\u2022*\u2022:_",
+      "notes": [
+        "visible text changed between Apple Vision OCR samples"
+      ],
+      "feature_distance_from_previous": 0.5313177704811096,
+      "id": "e092"
+    },
+    {
+      "kind": "stable_hold",
+      "time": 216.0,
+      "score": 0.2834,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0084_03-36-000_stable_hold.jpg",
+      "ocr_text": "O \u2022 \u2022 * pap\u2022rl\u2022ss-ai- brian@paperless' ssh brianr@paperl8ss.local - 126x42 > ssh brian@paperle$s.local Linux paperless 6. 12. 75+rpt-rpi-2712 #1 SMP PREEMPT Debian 1:6. 12. 75-l+rptl (2026_03_11) aarch64 The programs included with the Debian GNU/Linux systern are free software,' the exact distribution terms for each program are de$cribed in the ndividual f iles in /usr/share/docl*/copyright. Debian GNUILinux comes with ABSOLUTELY NO WARRANTY, to the extent permitted by applicable law. Last login: Wed May 20 15:28:53 2026 from 192.168.68.67 brl\u2022n@pap\u2022rl\u2022*\u2022:_",
+      "notes": [
+        "low visual change span",
+        "candidate loading/wait/freeze-frame region"
+      ],
+      "feature_distance_from_previous": 0.5313177704811096,
+      "end": 218.0,
+      "duration": 4.0,
+      "start": 214.0,
+      "id": "e093"
+    },
+    {
+      "kind": "ocr_change",
+      "time": 220.0,
+      "score": 0.5823,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0086_03-40-000_hold_start.jpg",
+      "ocr_text": "O \u2022 \u2022 ml papefl\u2022$$-ai- brian@pap\u2022rless= ssh brian@pap\u2022rl\u2022ss.local- 126x42 Debian GNUILinux comes with A8SOLirrELY NO WARRANTY, to the extent perffjitted by applicable law. L8St login: Wed May 20 15:28:53 2026 from 192.168.68.67 Ibri\u2022n@p\u2022p\u2022rl\u2022\u2022\u2022:_ S curl -f sSL https: /lpaperless.fullstack.\u2022g/install.sh I bash Pap\u2022rl\u2022s\u2022 Al S\u2022tup Checking your system. [41 Docker 29.5.2 [wl Dockar Compo$8 5.1.4 [wJ 104G8 disk 5pace avallable [4*1 8062MB RAH available No exi8ting Paperless-nox found. Settlng up a fre8h in8tall. Let'5 set up your Paperless Al instance. Admln usernamo (adrninl: adrnln l Admin password: Conf irm password: What tlm8zone 4re you In7 I) US/Central 2) USIEastern 3) US/Mountain 4) US/P8cific 6) Other Chooie IlJ:",
+      "notes": [
+        "visible text changed between Apple Vision OCR samples"
+      ],
+      "feature_distance_from_previous": 0.17975184321403503,
+      "id": "e094"
+    },
+    {
+      "kind": "ocr_change",
+      "time": 223.0,
+      "score": 0.6915,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0087_03-43-000_stable_hold.jpg",
+      "ocr_text": "O \u2022 \u2022 m papefless-ai - brian@paperless' _ - ssh brian@paperless.local- 126x42 Checking your system. [rfl Docker 29.5.2 [*rfl Docker Compose 5.1.4 [wl 104GB disk space available [wl 8062MB RAM av\u2022ilable No existing Paperless-ngx found. Setting up a fresh install. Let'8 86t up your PoPorle$s Al in$tanco. l Admin username (adminl: admin Admin password: I Confirm pas$word: What timezone are you in7 I) USICentral 2) USIEastern 3) USIMountain 4) USIPacific 5) Other I Choose 11): Do you have 8 domain naAe point8d 8t this 8orv8r7 (\u2022.g. docs. sm*thf?rn5. corn) Domain (or pro8$ Enter tO 8kip):",
+      "notes": [
+        "visible text changed between Apple Vision OCR samples"
+      ],
+      "feature_distance_from_previous": 0.16599997878074646,
+      "id": "e095"
+    },
+    {
+      "kind": "stable_hold",
+      "time": 223.0,
+      "score": 0.8705,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0087_03-43-000_stable_hold.jpg",
+      "ocr_text": "O \u2022 \u2022 m papefless-ai - brian@paperless' _ - ssh brian@paperless.local- 126x42 Checking your system. [rfl Docker 29.5.2 [*rfl Docker Compose 5.1.4 [wl 104GB disk space available [wl 8062MB RAM av\u2022ilable No existing Paperless-ngx found. Setting up a fresh install. Let'8 86t up your PoPorle$s Al in$tanco. l Admin username (adminl: admin Admin password: I Confirm pas$word: What timezone are you in7 I) USICentral 2) USIEastern 3) USIMountain 4) USIPacific 5) Other I Choose 11): Do you have 8 domain naAe point8d 8t this 8orv8r7 (\u2022.g. docs. sm*thf?rn5. corn) Domain (or pro8$ Enter tO 8kip):",
+      "notes": [
+        "low visual change span",
+        "candidate loading/wait/freeze-frame region"
+      ],
+      "feature_distance_from_previous": 0.16599997878074646,
+      "end": 226.0,
+      "duration": 6.0,
+      "start": 220.0,
+      "id": "e096"
+    },
+    {
+      "kind": "ocr_change",
+      "time": 230.0,
+      "score": 0.4938,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0089_03-50-000_hold_start.jpg",
+      "ocr_text": "O \u2022 \u2022 m paperless-ai - brian@paperless' _ - ssh brian@paperl8ss.local- 126x42 (rfJ Docker 29.5.2 {rfl Docker Compose 6.1.4 [41 104G8 disk space available [43 8062MB RAM available No exl$tlng Pap8rle8s-ngx found. Sottlng up a frosh In$tall. Let's set up your Paperless AI instance. l Admin u8ernamo (adminl: 8drnin l Admin password: I Conf irm password: Wh\u2022t timezone are you I) USICentral 2) USIEastern 3) USIMountain 4) US/Paclf ic 5) Other Choose 111: Do you have a dofflain naffle pointed at this servar7 lo.g. I doc*.smithfarn*.coml l Domain (or press Enter to skip): In8t411 diroCtory I Ihome/bri\u2022n/p8porles8~8I1 :",
+      "notes": [
+        "visible text changed between Apple Vision OCR samples"
+      ],
+      "feature_distance_from_previous": 0.10291688144207001,
+      "id": "e097"
+    },
+    {
+      "kind": "ocr_change",
+      "time": 239.0,
+      "score": 0.8792,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0090_03-59-000_stable_hold.jpg",
+      "ocr_text": "O \u2022 \u2022 m pap\u2022rle$s-ai- brian@paperless= $sh brian@paperless.local- 126x42 Let's set up your Paperless AI instance. l Admin username ladminJ: adTrin I l Admin password: I Confirffl password: What timezone ar8 you in? I) USICentral 2) US/E&stern 3) USIMountain 4) USIPacific 5) Other I Choose (lJ: I Do you h\u2022ve a domain name pointed at this $erver? l Domain (or pr\u2022ss Enter to skip): Install directory l/hoffle/brian/paperless-ai I : S\u2022ttlng thlng8 up. Thl\u2022 may tak\u2022 a few alnut\u20228 (vl Created /home/brian/paperless-ai [rfJ Generated docker-composa. yml [wl Generated .env [4*3 Generated C8ddyfile [rfl Generated helper scripts (update.sh, backup. sh, restore. $h) l.-I Pulling container iAages Ithis May take a few minute$).",
+      "notes": [
+        "visible text changed between Apple Vision OCR samples"
+      ],
+      "feature_distance_from_previous": 0.1331486999988556,
+      "id": "e098"
+    },
+    {
+      "kind": "stable_hold",
+      "time": 239.0,
+      "score": 0.9588,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0090_03-59-000_stable_hold.jpg",
+      "ocr_text": "O \u2022 \u2022 m pap\u2022rle$s-ai- brian@paperless= $sh brian@paperless.local- 126x42 Let's set up your Paperless AI instance. l Admin username ladminJ: adTrin I l Admin password: I Confirffl password: What timezone ar8 you in? I) USICentral 2) US/E&stern 3) USIMountain 4) USIPacific 5) Other I Choose (lJ: I Do you h\u2022ve a domain name pointed at this $erver? l Domain (or pr\u2022ss Enter to skip): Install directory l/hoffle/brian/paperless-ai I : S\u2022ttlng thlng8 up. Thl\u2022 may tak\u2022 a few alnut\u20228 (vl Created /home/brian/paperless-ai [rfJ Generated docker-composa. yml [wl Generated .env [4*3 Generated C8ddyfile [rfl Generated helper scripts (update.sh, backup. sh, restore. $h) l.-I Pulling container iAages Ithis May take a few minute$).",
+      "notes": [
+        "low visual change span",
+        "candidate loading/wait/freeze-frame region"
+      ],
+      "feature_distance_from_previous": 0.1331486999988556,
+      "end": 248.0,
+      "duration": 18.0,
+      "start": 230.0,
+      "id": "e099"
+    },
+    {
+      "kind": "anchor",
+      "time": 240.0,
+      "score": 0.0,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0091_04-00-000_anchor.jpg",
+      "ocr_text": "O \u2022 \u2022 m pap\u2022rle$s-ai- brian@paperless= $sh brian@paperless.local- 126x42 Let's set up your Paperless AI instance. l Admin username ladminJ: adTrin I l Admin password: I Confirffl password: What timezone ar8 you in? I) USICentral 2) US/E&stern 3) USIMountain 4) USIPacific 5) Other I Choose (lJ: I Do you h\u2022ve a domain name pointed at this $erver? l Domain (or pr\u2022ss Enter to skip): Install directory l/hoffle/brian/paperless-ai I : S\u2022ttlng thlng8 up. Thl\u2022 may tak\u2022 a few alnut\u20228 (vl Created /home/brian/paperless-ai [rfJ Generated docker-composa. yml [wl Generated .env [4*3 Generated C8ddyfile [rfl Generated helper scripts (update.sh, backup. sh, restore. $h) l.-I Pulling container iAages Ithis May take a few minute$).",
+      "notes": [
+        "regular Apple Vision sample for agent review"
+      ],
+      "feature_distance_from_previous": 0.002825172385200858,
+      "id": "e100"
+    },
+    {
+      "kind": "ocr_change",
+      "time": 256.0,
+      "score": 0.8455,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0093_04-16-000_hold_start.jpg",
+      "ocr_text": "O \u2022 \u2022 m pap\u2022fle$s-ai - brian@paperless' _ - ssh brian@paperless.local- 126x42 l Admin password: I Confirm password: What tlmezone are you in7 I) US/Central 2) USIEastern 3) USIMountain 4) US/P8cific 5) Othor I Choo8e IlJ: Do you h\u2022ve a dornain naffle pointed at this $erver7 (o.g. docs. smitht3rns. com) l Domain (or pre55 Enter to skip): I Install dlrectory l/hofflelbrlan/paperl\u2022s$-a&l : S\u2022tting thing\u2022 up. This may tak\u2022 a f\u2022w Ninut\u2022s [rfl Created Ihomelbrian/paperless-a [wl Generated docker-cofflpose.yffll [wl Generated .env [*rfl Generated Caddyf ile [wl Generated helper scripts (update.sh, backup. sh, restore. sh) l_I Pulling container iffl8ge8 (this rn8y tak8 a few minutes). Images pulled l_I Starting services. [4*3 Servic&8 St8rted l_I Waiting for Paperle$s to be ready (this c\u2022n take a mlnute on fir$t run). [*l Paperless is ready",
+      "notes": [
+        "visible text changed between Apple Vision OCR samples"
+      ],
+      "feature_distance_from_previous": 0.11836999654769897,
+      "id": "e101"
+    },
+    {
+      "kind": "anchor",
+      "time": 260.0,
+      "score": 0.0,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0094_04-20-000_anchor.jpg",
+      "ocr_text": "O \u2022 \u2022 11 pap\u2022rl\u2022ss-ai - brian@paperless' _ - ssh brian@paperless.local- 126x42 [*/l Images pulled l_I Starting services. [wl Services started l_I Waiting for Paperless to be r\u2022ady (thi$ can take a minute on first run). [wl Paperless is ready IlJ Companion service fflay still be starting. Check: docker compose logs companion [wl Daily backup $cheduled (2:00 AMI All don\u2022 I Pap\u2022rl\u2022i\u2022 W\u2022b Ul: http:11192.168.68.202 S\u2022arch Il\u2022b Ul: http:11192.168.68.2021se8rch U\u2022\u2022rnarn\u2022: admin PaAsword: {what you entered) Upload documents: Drag and drop in Paperless, then search them fro* the Seareh Web Ul. OPTIONAL: CONIIECT AI APPS 14ITH IICP: Log in to Paperles$ \u2022nd open: http:11192.168.68.2021search/rncp That page shows your MCP URL. the auth token for Paperless admins, and setup instructions for Claude, Codex, VS CodelCopilot. and Ilama. cpp. To stop: d /home/brlanlpaperless-ai && docker compose down To start: ed /home/brianlpaperless~ai && docker compose up To updata: b8sh /homelbri8n/pbperless-ai/update.sh To backup: ba$h Ihomelbrianlpaperless-ailbackup.$h Logs: cd /home/brian/paperle$s-ai && docker cofflpose logs Need help7 http$://github.coffl/NerdOutlnc/paperle$$-Jilissues brl\u2022n@pap\u2022rl\u2022$\u2022:_",
+      "notes": [
+        "regular Apple Vision sample for agent review"
+      ],
+      "feature_distance_from_previous": 0.17630380392074585,
+      "id": "e102"
+    },
+    {
+      "kind": "ocr_change",
+      "time": 260.0,
+      "score": 0.9098,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0094_04-20-000_anchor.jpg",
+      "ocr_text": "O \u2022 \u2022 11 pap\u2022rl\u2022ss-ai - brian@paperless' _ - ssh brian@paperless.local- 126x42 [*/l Images pulled l_I Starting services. [wl Services started l_I Waiting for Paperless to be r\u2022ady (thi$ can take a minute on first run). [wl Paperless is ready IlJ Companion service fflay still be starting. Check: docker compose logs companion [wl Daily backup $cheduled (2:00 AMI All don\u2022 I Pap\u2022rl\u2022i\u2022 W\u2022b Ul: http:11192.168.68.202 S\u2022arch Il\u2022b Ul: http:11192.168.68.2021se8rch U\u2022\u2022rnarn\u2022: admin PaAsword: {what you entered) Upload documents: Drag and drop in Paperless, then search them fro* the Seareh Web Ul. OPTIONAL: CONIIECT AI APPS 14ITH IICP: Log in to Paperles$ \u2022nd open: http:11192.168.68.2021search/rncp That page shows your MCP URL. the auth token for Paperless admins, and setup instructions for Claude, Codex, VS CodelCopilot. and Ilama. cpp. To stop: d /home/brlanlpaperless-ai && docker compose down To start: ed /home/brianlpaperless~ai && docker compose up To updata: b8sh /homelbri8n/pbperless-ai/update.sh To backup: ba$h Ihomelbrianlpaperless-ailbackup.$h Logs: cd /home/brian/paperle$s-ai && docker cofflpose logs Need help7 http$://github.coffl/NerdOutlnc/paperle$$-Jilissues brl\u2022n@pap\u2022rl\u2022$\u2022:_",
+      "notes": [
+        "visible text changed between Apple Vision OCR samples"
+      ],
+      "feature_distance_from_previous": 0.17630380392074585,
+      "id": "e103"
+    },
+    {
+      "kind": "stable_hold",
+      "time": 264.0,
+      "score": 0.918,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0095_04-24-000_stable_hold.jpg",
+      "ocr_text": "O \u2022 \u2022 11 pap\u2022rl\u2022ss-ai - brian@paperless' _ - ssh brian@paperless.local- 126x42 [*/l Images pulled l_I Starting services. [wl Services started l_I Waiting for Paperless to be r\u2022ady (thi$ can take a minute on first run). [wl Paperless is ready IlJ Companion service fflay still be starting. Check: docker compose logs companion [wl Daily backup $cheduled (2:00 AMI All don\u2022 I Pap\u2022rl\u2022i\u2022 W\u2022b Ul: http:11192.168.68.202 S\u2022arch Il\u2022b Ul: http:11192.168.68.2021se8rch U\u2022\u2022rnarn\u2022: admin PaAsword: {what you entered) Upload documents: Drag and drop in Paperless, then search them fro* the Seareh Web Ul. OPTIONAL: CONIIECT AI APPS 14ITH IICP: Log in to Paperles$ \u2022nd open: http:11192.168.68.2021search/rncp That page shows your MCP URL. the auth token for Paperless admins, and setup instructions for Claude, Codex, VS CodelCopilot. and Ilama. cpp. To stop: d /home/brlanlpaperless-ai && docker compose down To start: ed /home/brianlpaperless~ai && docker compose up To updata: b8sh /homelbri8n/pbperless-ai/update.sh To backup: ba$h Ihomelbrianlpaperless-ailbackup.$h Logs: cd /home/brian/paperle$s-ai && docker cofflpose logs Need help7 http$://github.coffl/NerdOutlnc/paperle$$-Jilissues brl\u2022n@pap\u2022rl\u2022$\u2022:_",
+      "notes": [
+        "low visual change span",
+        "candidate loading/wait/freeze-frame region"
+      ],
+      "feature_distance_from_previous": 0.0030377504881471395,
+      "end": 272.0,
+      "duration": 16.0,
+      "start": 256.0,
+      "id": "e104"
+    },
+    {
+      "kind": "ocr_change",
+      "time": 275.5,
+      "score": 0.8973,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0099_04-35-500_scene_change.jpg",
+      "ocr_text": "Paperknss-ngx *qn in P4ot S\u2022cw\u2022l hllpJlpaperhss.locaVaccount8logW7nextsl Paperless -ngx Please sign In. U69mame PassM>rd Sign in",
+      "notes": [
+        "visible text changed between Apple Vision OCR samples"
+      ],
+      "feature_distance_from_previous": 0.5329368710517883,
+      "id": "e105"
+    },
+    {
+      "kind": "scene_change",
+      "time": 275.5,
+      "score": 0.0717,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0099_04-35-500_scene_change.jpg",
+      "ocr_text": "Paperknss-ngx *qn in P4ot S\u2022cw\u2022l hllpJlpaperhss.locaVaccount8logW7nextsl Paperless -ngx Please sign In. U69mame PassM>rd Sign in",
+      "notes": [
+        "visual change peak",
+        "Apple Vision feature-print analyzed"
+      ],
+      "feature_distance_from_previous": 0.5329368710517883,
+      "id": "e106"
+    },
+    {
+      "kind": "stable_hold",
+      "time": 278.0,
+      "score": 0.8779,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0101_04-38-000_stable_hold.jpg",
+      "ocr_text": "P4perless-ngx sign in Not S\u2022cw\u2022l hlty:Ilpap\u2022rhss.locaVaecountsfioqlnfin\u2022tr4 *O @ Paperless -ngx Please sign in. Usemame Password Sign in",
+      "notes": [
+        "low visual change span",
+        "candidate loading/wait/freeze-frame region"
+      ],
+      "feature_distance_from_previous": 0.0033077725674957037,
+      "end": 282.0,
+      "duration": 8.0,
+      "start": 274.0,
+      "id": "e107"
+    },
+    {
+      "kind": "anchor",
+      "time": 280.0,
+      "score": 0.0,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0102_04-40-000_anchor.jpg",
+      "ocr_text": "P4perless-ngx sign in Not S\u2022cw\u2022l hlty:Ilpap\u2022rhss.locaVaecountsfioqlnfin\u2022tr4 *O @ Paperless -ngx Please sign in. Usemame Password Sign in",
+      "notes": [
+        "regular Apple Vision sample for agent review"
+      ],
+      "feature_distance_from_previous": 0,
+      "id": "e108"
+    },
+    {
+      "kind": "ocr_change",
+      "time": 285.5,
+      "score": 1.0,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0104_04-45-500_scene_pre.jpg",
+      "ocr_text": "",
+      "notes": [
+        "visible text changed between Apple Vision OCR samples"
+      ],
+      "feature_distance_from_previous": 1.0638253688812256,
+      "id": "e109"
+    },
+    {
+      "kind": "ocr_change",
+      "time": 286.5,
+      "score": 1.0,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0105_04-46-500_scene_change.jpg",
+      "ocr_text": "Oashboard . Pap\u2022fless -> C & Not Secure I http:Ilpaperf\u2022ss.locaVdashboard Paperless-ngx Q Seweh adffMn Daghbo\u2022vd Dashboard Hello admln, welcome to Paperless-ngX O Documents @Paperless -ngX O HlnE soved vlews can be crnated from Ihe O Upload documents ordrDP lile$ Corrnspond\u2022nts \u2022\u2022\u2022 < > tput >> o Tags N\u2022m\u2022 # Document Types 001Joil_tesLnortlquarterJectioo12.pdf OOLsoil_tesLs(xrth_80.pdf 003_soiLtesLwsLfield.pdf 004_soll_tesLnortLquarter_sectiorL1Lretest.pdf 005_soil_tesUKme_farm_east.pdf 006_soiLtesLriverJ)ottoo40.pdf 007_soil_tesLnwL160.pdf 008_crop_insurance_corn_revenueJrotectrf2024. 009_cropjnsurance_swbe...venueJ)rotectk>nJ024. 010_cropJnsuranceyiheat...venueJrotectionJ025. 011_cropjnsurance_cornJevenueJrotectionJ024. 012_crop_insurance_soybe...JieldJxotectiorL2025. 013xLcontracLpioneer_conL2024.pdf rnA D Storage Paths Custom Fields e S8ved Vhw8 W*xkllows Mall ADMINISTRATION O Sottlngs IT4 Corrflgurnllon 100 01100 $\u2022l\u2022ci\u2022d, 607.59 G6 \u2022w\u2022ll\u2022bl\u2022 Usets & Gr041P$",
+      "notes": [
+        "visible text changed between Apple Vision OCR samples"
+      ],
+      "feature_distance_from_previous": 1.1792148351669312,
+      "id": "e110"
+    },
+    {
+      "kind": "scene_change",
+      "time": 286.5,
+      "score": 0.1396,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0105_04-46-500_scene_change.jpg",
+      "ocr_text": "Oashboard . Pap\u2022fless -> C & Not Secure I http:Ilpaperf\u2022ss.locaVdashboard Paperless-ngx Q Seweh adffMn Daghbo\u2022vd Dashboard Hello admln, welcome to Paperless-ngX O Documents @Paperless -ngX O HlnE soved vlews can be crnated from Ihe O Upload documents ordrDP lile$ Corrnspond\u2022nts \u2022\u2022\u2022 < > tput >> o Tags N\u2022m\u2022 # Document Types 001Joil_tesLnortlquarterJectioo12.pdf OOLsoil_tesLs(xrth_80.pdf 003_soiLtesLwsLfield.pdf 004_soll_tesLnortLquarter_sectiorL1Lretest.pdf 005_soil_tesUKme_farm_east.pdf 006_soiLtesLriverJ)ottoo40.pdf 007_soil_tesLnwL160.pdf 008_crop_insurance_corn_revenueJrotectrf2024. 009_cropjnsurance_swbe...venueJ)rotectk>nJ024. 010_cropJnsuranceyiheat...venueJrotectionJ025. 011_cropjnsurance_cornJevenueJrotectionJ024. 012_crop_insurance_soybe...JieldJxotectiorL2025. 013xLcontracLpioneer_conL2024.pdf rnA D Storage Paths Custom Fields e S8ved Vhw8 W*xkllows Mall ADMINISTRATION O Sottlngs IT4 Corrflgurnllon 100 01100 $\u2022l\u2022ci\u2022d, 607.59 G6 \u2022w\u2022ll\u2022bl\u2022 Usets & Gr041P$",
+      "notes": [
+        "visual change peak",
+        "Apple Vision feature-print analyzed"
+      ],
+      "feature_distance_from_previous": 1.1792148351669312,
+      "id": "e111"
+    },
+    {
+      "kind": "ocr_change",
+      "time": 287.5,
+      "score": 0.884,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0106_04-47-500_scene_post.jpg",
+      "ocr_text": "Oashtth . Papefless Not Secure I http:Ilpaperf\u2022ss.localldashboard D'@ Dashboard Helb admkn, weleome to Paperless- aperles Ooeumonts nd\u2022ni \u2022\u2022\u2022 < > rtput >> o N\u2022fft\u2022 \u2022 Ix)1_soi t&LrKXtlquarterJecth)TL12pdfJrtlquartertsectbL12.pdf\" \u2022 IXlLsoi southJO.pdf JOLsoiLtesLs(xrth_80.pdf (N)3_soiL,. -LWeSLfleld.pdfJ03_soiLtesLKesLfield.pdf IX)4_$0ll_testJthLquartsrtsectk\u2022L1Lretest.pd!Jarter_sectloL1LTrtest.pdf 00SJol_tesUThM_fanLe8St.pdf,i_tesLhome_farm_east.pdf IX)6Joll_tesLrtverJ)otto40.pdf.il_tesLrfver_bottoo40.pdf (K17_soLtesLnortlL160.pdf J07_soil_tesLnortL160.pdf (K)Lcn>p_Insurance_c(YfU8VThJWOtectknL2024.pdf.venueJrotectW024.pi 009_wjnsurance_wbeauMiueJwotectiW24.pdf.JeJ)rotectk>nJ024. 010_cropiNffawJtwfft_ u8JrotoctbNO026.pdf anueJ)rotectlonJ025.pc 011_cropwnce_cornJevenueJwotectlonJ024.pdf.venueJrotectionJ024.pd 01LcropJnsuraru>)ybeayieldiYotstiW025.pdfJieldJotectioL2025.p( 1)13_seeLc(A)trxtJoneer_corL202&pdf actJoneer_corrL2024.pdf 014_*c(xrtracLdekalb_soybeans_202&pdf Ctsfjtom View orkllow5 Trash guTatlon \u2022l\u2022ci\u2022d. 607.58 GB \u2022v\u2022ll\u2022bi\u2022 016_seed_c(xttractJ)ionoer_cuL2025.pdl IM7_swLcontractJkxthr_cW024.pdf 018_swLMracLnLswbewJ024.r\u2022Jl. 8wLcontracLdekalb_ctyL202&pdl ,",
+      "notes": [
+        "visible text changed between Apple Vision OCR samples"
+      ],
+      "feature_distance_from_previous": 0.2720057964324951,
+      "id": "e112"
+    },
+    {
+      "kind": "ocr_change",
+      "time": 288.0,
+      "score": 0.9207,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0107_04-48-000_hold_start.jpg",
+      "ocr_text": "Not Secure I http.'Ilpaperfess.localldashboard *D'@ ashboard Helk\u20228d welcom\u2022 to Pa erless ment$ \u2022\u2022\u2022 < > thrtput testJ)ortLquarterJecUorL1Zpdf 100 >> o \u2022 001_$01 OOLsoi 003_soiL. sLfield.pdf] 00'1Joil_tssLnortlquartertsectioo12.pdf 004_soll_tesLncrtLquarterJectloL1Lretest.pdf _80.pdf tW 005_soll_tesLhome_famLeast.pdf _soiLtesL**sLfield.pdf O(i6_soll_tesLrlver_botin40.pdf _soll_tesLnortLquarter_sectioL1LTrtest.pdf IXJ7_solLtesuKxL160.p*f J 005_soil_tesLhome_farm_east.pdf 008_cropjnsurance_comJ8venuemectbi2024.pdf I40.pdf 009_cropjnsurance_wybewJevwwrntectioO024.pdf 010_cropjnsurance_wh*LrevenueJrotectlonJ025.pJf revenueJ)rotectiMJ024. 011_cropJnsurance_c(xuevenueJrotectk>nJ024.pdf')e...venueJ)rotectk>nJ024.sy 01LcropJnsurarte_soybeanJkldJrotecifionJ025.pdf t...venueJ)rotectlonJ025.pc 013_seed_contractJAoneersomJ024.pdf Jrance_corruevenueJrotectionJ024.pd 014_seed_contracLdekalbJoybeans_2024.pdf ice_soybe...JieldJotectioL2025.p( 015_seed_contractJroseedytrthL2026.pdt ractJloneer_corrL2024.pdl 016_seed_contractJ>6oneer_corL2025.pdf (n7_seeLcontractJ)ioneer_cffnJ024pdf 018_seeLcontracLnLsoybeansJ024.pdf 019_s*LcontracLdekalb_corL202&pdf 020_chwnlcaLapplkationJxe_effwge_comJntyJ024.pdf' 021_chwnlcaL4)plkatlyisLerw_soybemJrnJOXpdll to tssrom of l 00 $\u2022l\u2022ci\u2022d. 607.58 GB \u2022v&ll\u2022bi\u2022",
+      "notes": [
+        "visible text changed between Apple Vision OCR samples"
+      ],
+      "feature_distance_from_previous": 0.11880407482385635,
+      "id": "e113"
+    },
+    {
+      "kind": "ocr_change",
+      "time": 296.0,
+      "score": 0.9227,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0108_04-56-000_stable_hold.jpg",
+      "ocr_text": "\u2022 \u2022 Dashboard . Pwiles5 4 e Not S\u2022cur\u2022 | http'.Ilpaperless.localldashboard *O @ Drop files to begin upload",
+      "notes": [
+        "visible text changed between Apple Vision OCR samples"
+      ],
+      "feature_distance_from_previous": 0.45267242193222046,
+      "id": "e114"
+    },
+    {
+      "kind": "stable_hold",
+      "time": 296.0,
+      "score": 0.9998,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0108_04-56-000_stable_hold.jpg",
+      "ocr_text": "\u2022 \u2022 Dashboard . Pwiles5 4 e Not S\u2022cur\u2022 | http'.Ilpaperless.localldashboard *O @ Drop files to begin upload",
+      "notes": [
+        "low visual change span",
+        "candidate loading/wait/freeze-frame region"
+      ],
+      "feature_distance_from_previous": 0.45267242193222046,
+      "end": 304.0,
+      "duration": 16.0,
+      "start": 288.0,
+      "id": "e115"
+    },
+    {
+      "kind": "anchor",
+      "time": 300.0,
+      "score": 0.0,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0109_05-00-000_anchor.jpg",
+      "ocr_text": "\u2022 \u2022 Dashboard . Pwiles5 4 e Not S\u2022cur\u2022 | http'.Ilpaperless.localldashboard *O @ Drop files to begin upload",
+      "notes": [
+        "regular Apple Vision sample for agent review"
+      ],
+      "feature_distance_from_previous": 0,
+      "id": "e116"
+    },
+    {
+      "kind": "ocr_change",
+      "time": 306.5,
+      "score": 0.9036,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0112_05-06-500_scene_change.jpg",
+      "ocr_text": "\u2022 \u2022 Dashboard . Pwiles5 Not S\u2022cur\u2022 I http.'Ilpaperless.localldashboard *O @ P4pwless.ngx Q Search a D\u2022\u2022hbo\u2022n* Dashboard Hello 8dmSn, welcom8 to Paperfess-wx O Docurnents Opaperless -n9X O Hlnt. sav\u2022d view8 can be cmted Irom I O Upload documents ANAOE Corraspond\u2022nt8 Tags 00l_\u2022olLi\u2022\u2022LMrtLqu\u2022rt\u2022rJ\u2022thlon -12.pdl # Docurnent Typ\u2022s Uploadiry... D Storag\u2022 Paths Cuslom Fl\u2022ld8 002_\u2022911_t\u2022\u2022L\u2022oulh_8thpdl e Saved Vkn Uploading... W*Jrlrflows 003JoLt\u2022\u2022LW\u2022Ltl\u2022ld.pO1 Mdl Uplo8ding... ri Trash -ILr\u2022iMI.pdl AOMINISTrATION Uploadlng.. O Setting$ !Tl Configuratlon U8ern & Grnups I Inlrt#Alnn",
+      "notes": [
+        "visible text changed between Apple Vision OCR samples"
+      ],
+      "feature_distance_from_previous": 0.43504253029823303,
+      "id": "e117"
+    },
+    {
+      "kind": "scene_change",
+      "time": 306.5,
+      "score": 0.104,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0112_05-06-500_scene_change.jpg",
+      "ocr_text": "\u2022 \u2022 Dashboard . Pwiles5 Not S\u2022cur\u2022 I http.'Ilpaperless.localldashboard *O @ P4pwless.ngx Q Search a D\u2022\u2022hbo\u2022n* Dashboard Hello 8dmSn, welcom8 to Paperfess-wx O Docurnents Opaperless -n9X O Hlnt. sav\u2022d view8 can be cmted Irom I O Upload documents ANAOE Corraspond\u2022nt8 Tags 00l_\u2022olLi\u2022\u2022LMrtLqu\u2022rt\u2022rJ\u2022thlon -12.pdl # Docurnent Typ\u2022s Uploadiry... D Storag\u2022 Paths Cuslom Fl\u2022ld8 002_\u2022911_t\u2022\u2022L\u2022oulh_8thpdl e Saved Vkn Uploading... W*Jrlrflows 003JoLt\u2022\u2022LW\u2022Ltl\u2022ld.pO1 Mdl Uplo8ding... ri Trash -ILr\u2022iMI.pdl AOMINISTrATION Uploadlng.. O Setting$ !Tl Configuratlon U8ern & Grnups I Inlrt#Alnn",
+      "notes": [
+        "visual change peak",
+        "Apple Vision feature-print analyzed"
+      ],
+      "feature_distance_from_previous": 0.43504253029823303,
+      "id": "e118"
+    },
+    {
+      "kind": "ocr_change",
+      "time": 307.5,
+      "score": 0.5979,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0113_05-07-500_scene_post.jpg",
+      "ocr_text": "\u2022 \u2022 Dashboard . Pwiles5 Not S\u2022cur\u2022 I http.'Ilpaperless.localldashboard *O @ Payrless.ngx q Search Da\u2022hboa Dashboard Hello admin, welcome to Paperless-ngx O DoeurnMts Opaperless -n9X O Hlnt. sav\u2022d view8 can be cmted Irom Ihe O Upload documents MANAGE Correswthnt8 Tags Add\u2022d: S complet\u2022d # Document Typ\u2022s 001_\u2022olLi\u2022\u2022Lfi\u2022nh_qu\u2022n\u2022r_ oU\u2022L12.pdl D Storage Palhs Op\u2022n docum\u2022nt Custom Fl\u2022lds e Saved Vkn OOL\u2022oll_t\u2022LwulL8Qpdl GenYfaknno thumbnall.., Worlrflows Mall 003_\u20220ll_t\u2022\u2022Lw\u2022\u2022ufi\u2022ld.pdl ADMINISTRATION \u2022ctlon_12J\u2022lMt.pdl O S&tting$ !Tl Confi9uratlon U8\u2022rn & Groups 000 \u2022ol t\u2022\u2022t l*mi \u2022\u2022\u2022t",
+      "notes": [
+        "visible text changed between Apple Vision OCR samples"
+      ],
+      "feature_distance_from_previous": 0.1482088267803192,
+      "id": "e119"
+    },
+    {
+      "kind": "ocr_change",
+      "time": 311.5,
+      "score": 0.9664,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0114_05-11-500_scene_pre.jpg",
+      "ocr_text": "Documents - Paperless\" 4 C Not Secure | http:Ilpaperless.localldocurnents?sort=created&reverse=1&page=1 Paperless~ngx Q Search Srnart Search Dashboard Documents Select: All Dociivnd>nts Title & content v Tags Correspondent T Document type - Ib storage path- Date MANAGE Correspondents Loading... Tags # Document Types D storage Paths Custom Fields e Saved Views Workf lows 007_soil_test_north_160 004_soll_tesLnorth_quarter_sec tlorL12_retest 0I0_crop_Insurance_ nue_protection_2025 Mail",
+      "notes": [
+        "visible text changed between Apple Vision OCR samples"
+      ],
+      "feature_distance_from_previous": 0.3868274986743927,
+      "id": "e120"
+    },
+    {
+      "kind": "ocr_change",
+      "time": 312.5,
+      "score": 0.9681,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0115_05-12-500_scene_change.jpg",
+      "ocr_text": "\u2022*tS\u2022c\u2022p I 111",
+      "notes": [
+        "visible text changed between Apple Vision OCR samples"
+      ],
+      "feature_distance_from_previous": 0.4149615466594696,
+      "id": "e121"
+    },
+    {
+      "kind": "scene_change",
+      "time": 312.5,
+      "score": 0.0783,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0115_05-12-500_scene_change.jpg",
+      "ocr_text": "\u2022*tS\u2022c\u2022p I 111",
+      "notes": [
+        "visual change peak",
+        "Apple Vision feature-print analyzed"
+      ],
+      "feature_distance_from_previous": 0.4149615466594696,
+      "id": "e122"
+    },
+    {
+      "kind": "ocr_change",
+      "time": 313.5,
+      "score": 0.9976,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0116_05-13-500_scene_post.jpg",
+      "ocr_text": "Docwnents - Paperless fr * C & Not S\u2022cur\u2022 I http:Ilpaperftss.localldocuments7s0rt4reated&revers\u2022=1&page=1 *O @ Paperless-ngx q Search Q) Document 020_chemlcal_applicationJ>r\u2022_emerg\u2022_corwJ024p df wa$ addod to Paperless-ngx. O Dashboard Document: l Open document | ItSort- O D4ycurnnts ritle & contenl- Tags- Cwespondeni ** Document type- \u2022l Stmgo palh al Dates- \" Perml$sh>ns IAANAQE Correspondonts 19 documents t) Tags # Document Types D Storage Pathx Cuslom Flelds B Saved Vlews Workllows 007_8011_t\u20228LnortLI80 004_8oILt\u2022sLnortL(\u2022iart\u2022f_8\u2022C IItyL1Lretost 010_crop_Insur\u2022nc\u2022JhuLr\u2022 nuurot\u2022clioL2025 01Lu<>p_InsurancLsoybe\u2022yl oldJxot\u2022ctioL2025 Mail ry M\u2022r 3Q 2026 0 1p49\u2022 CJ Mar 18. 2025 D ip\u2022ge CT Maf 1S. 202S CI 2p\u2022g Mar 1& 2025 0 2 p\u2022ge$ AOK41NISTRATION O Settlngs IT4 Conflguratlon I p\u2022p\u2022rh$8.loc\u2022lldocum\u2022Dts",
+      "notes": [
+        "visible text changed between Apple Vision OCR samples"
+      ],
+      "feature_distance_from_previous": 0.4027794301509857,
+      "id": "e123"
+    },
+    {
+      "kind": "ocr_change",
+      "time": 315.5,
+      "score": 0.9258,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0117_05-15-500_scene_pre.jpg",
+      "ocr_text": "OoGuments - Pap?Tless Not Secur\u2022 I http.'Ilpaperloss.localldocuments7sort4realed&reversr1&pay= *O @ Paperless.ngx q Search D Document 11)O_famLshop_bJiklingJermitJattisoLacre8_2024.pdf was &dded io Papertess-ngx. | Open dowrnent admln O Dashl)oard Document: tSort- E Vievts \" i O Doeumonts Tltle & conlenl Tags - Corrnspondenl \u2022 l)ocument tyw \" Slorage palh Dales- & Pennlssions * \u2022AANAGE Correspondents 11XI documents Tags # Document Typos D Storaga Pat Custom Fields e Saved VloW8 Workllo 041Jr8ln_d\u2022lhery_recelpLcorn -chLt4r90 05S_spdnLv\u2022ccln\u2022tlyotoco LctywJwfd 066_nortLd\u2022kotL8tatsJwts 069_cons\u2022rw\u2022tion_frasem\u2022nttsva \u2022zinLIt43\u2022 2lnLm\u2022n\u2022g\u2022m\u2022niJl\u2022n Mall f May 20. 2028 0lpa ll May 20. 2026 02pa n May 2112026 2 p\u2022g09 144y 20. 2026 02p\u2022 AOK41NISTRATION O Setting$ !t! Configuratlon p\u2022p\u2022rl\u2022$8.loc\u2022Vdocum\u2022nts",
+      "notes": [
+        "visible text changed between Apple Vision OCR samples"
+      ],
+      "feature_distance_from_previous": 0.1330557018518448,
+      "id": "e124"
+    },
+    {
+      "kind": "ocr_change",
+      "time": 316.5,
+      "score": 0.9317,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0118_05-16-500_scene_change.jpg",
+      "ocr_text": "Documents - Paperless- -> C Not Secure | http:Ilpaperless.localldocuments?sort<reated&rever5tr1&paFI Paperless-ngx Q Seareh Dashboard Documents Docum\u2022nt\u2022 Tltle & content - Tags\" ICoi Docurrtht type - MANAGE Corre8pondents 100 document6 t> Tags # Dccum\u2022nt Typ\u2022\u2022 Cy storag8 P\u2022th\u2022 Cu\u2022tom Fl\u2022ldi E S\u2022v\u2022d Vl\u2022w\u2022 Workllow\u2022 041_aralLd\u2022llv\u2022ry_r\u2022c\u2022ipLcom 05LswlnLv\u2022cckKItskn -chLlarqo M\u2022ll l Mav 30, 2028",
+      "notes": [
+        "visible text changed between Apple Vision OCR samples"
+      ],
+      "feature_distance_from_previous": 0.4440854489803314,
+      "id": "e125"
+    },
+    {
+      "kind": "scene_change",
+      "time": 316.5,
+      "score": 0.0964,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0118_05-16-500_scene_change.jpg",
+      "ocr_text": "Documents - Paperless- -> C Not Secure | http:Ilpaperless.localldocuments?sort<reated&rever5tr1&paFI Paperless-ngx Q Seareh Dashboard Documents Docum\u2022nt\u2022 Tltle & content - Tags\" ICoi Docurrtht type - MANAGE Corre8pondents 100 document6 t> Tags # Dccum\u2022nt Typ\u2022\u2022 Cy storag8 P\u2022th\u2022 Cu\u2022tom Fl\u2022ldi E S\u2022v\u2022d Vl\u2022w\u2022 Workllow\u2022 041_aralLd\u2022llv\u2022ry_r\u2022c\u2022ipLcom 05LswlnLv\u2022cckKItskn -chLlarqo M\u2022ll l Mav 30, 2028",
+      "notes": [
+        "visual change peak",
+        "Apple Vision feature-print analyzed"
+      ],
+      "feature_distance_from_previous": 0.4440854489803314,
+      "id": "e126"
+    },
+    {
+      "kind": "ocr_change",
+      "time": 317.5,
+      "score": 0.6823,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0119_05-17-500_scene_post.jpg",
+      "ocr_text": "Documents - Paperless 4 C Not Secure | http:Ilpaperless.localldocuments?title_content=ferti&sort=created&reverse=1&page=1 Paperless-ngx Q Search Smart Search a Dashboard Documents Select: AII 00 Documents Title & content fertilized Tags- Correspondent Document type v Storage path- Dates Permis MANAGE g Correspondents 8 docurnents (filtered) x Reset filters Tags # Document Types D Storage Paths Custom Fields B Saved Views Workflows 004_soil_test_north_quarter_sec tion 12 retest 034_nutrient_management_plan -2025_crop_year 056_fallJregnancy_checLresul ts Mail",
+      "notes": [
+        "visible text changed between Apple Vision OCR samples"
+      ],
+      "feature_distance_from_previous": 0.27200502157211304,
+      "id": "e127"
+    },
+    {
+      "kind": "anchor",
+      "time": 320.0,
+      "score": 0.0,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0120_05-20-000_anchor.jpg",
+      "ocr_text": "Oocuments . Paperl\u2022$s fr 4 C th Not Securo | http.'Ilpaperfoss.localldocuments7tftle_contsntp4ertlllzef%20recommendatlons&sort-4reated&rev\u2022r$e=1&page= D @ Paperless-ngx Q Sowch adffth - O Da$hboard Documents Sdect: All e V*ws- O Oocum\u2022nts ritle & conient- fertilizer recommendatlons Tags - A Correspffldent l)ocumenl type- Storage path- Dates- x Re501 filters MANAGE Correspond0nts O dwJments (flltefed) x R8Set Illt8fS t> Tags # t)ocumont Types CJ Storage P&ths \u2022T Custom Fields E Saved Vlew8 W*JfkfkJws Mall AI)MINISTRATM)N O Sottin It4 Configurallon Us\u2022rs & Group$",
+      "notes": [
+        "regular Apple Vision sample for agent review"
+      ],
+      "feature_distance_from_previous": 0.4535328447818756,
+      "id": "e128"
+    },
+    {
+      "kind": "ocr_change",
+      "time": 320.0,
+      "score": 0.9027,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0120_05-20-000_anchor.jpg",
+      "ocr_text": "Oocuments . Paperl\u2022$s fr 4 C th Not Securo | http.'Ilpaperfoss.localldocuments7tftle_contsntp4ertlllzef%20recommendatlons&sort-4reated&rev\u2022r$e=1&page= D @ Paperless-ngx Q Sowch adffth - O Da$hboard Documents Sdect: All e V*ws- O Oocum\u2022nts ritle & conient- fertilizer recommendatlons Tags - A Correspffldent l)ocumenl type- Storage path- Dates- x Re501 filters MANAGE Correspond0nts O dwJments (flltefed) x R8Set Illt8fS t> Tags # t)ocumont Types CJ Storage P&ths \u2022T Custom Fields E Saved Vlew8 W*JfkfkJws Mall AI)MINISTRATM)N O Sottin It4 Configurallon Us\u2022rs & Group$",
+      "notes": [
+        "visible text changed between Apple Vision OCR samples"
+      ],
+      "feature_distance_from_previous": 0.4535328447818756,
+      "id": "e129"
+    },
+    {
+      "kind": "ocr_change",
+      "time": 323.5,
+      "score": 0.8375,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0121_05-23-500_scene_pre.jpg",
+      "ocr_text": "Documents - Paperless- -> C th Not Secure | http:l/paperless.localldocuments?title_content=fertilizerO/o20recomrnendations&sort=created&reverse=1&page=1 Paperless-ngx fertilizer recommendations Search rt Search Documents O Dashboard Sort Documents 033_nutrient_managementJ)lan_2024_crop_year Mar 1, 2024 037_cash_renLlease_south_80_acres Jan 3, 2024 Tags- Correspondent- Document type- Storage path- Dates- Permissions - MANAGE Correspondents O documents (f iltered) x Reset filters # Document Types D storage Paths Custom Fields e Saved Views Workflows",
+      "notes": [
+        "visible text changed between Apple Vision OCR samples"
+      ],
+      "feature_distance_from_previous": 0.454351544380188,
+      "id": "e130"
+    },
+    {
+      "kind": "ocr_change",
+      "time": 324.5,
+      "score": 0.8248,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0123_05-24-500_scene_change.jpg",
+      "ocr_text": "S\u2022an l frrttyJlpapefless.locallsearch7q=fertillzer%20rncoThr .SearLh dc)L'umL\u2022nt,s Iwfth\"/\u2022f f\u2022uMYvNnd*tlon\u2022",
+      "notes": [
+        "visible text changed between Apple Vision OCR samples"
+      ],
+      "feature_distance_from_previous": 0.6767112016677856,
+      "id": "e131"
+    },
+    {
+      "kind": "scene_change",
+      "time": 324.5,
+      "score": 0.6234,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0123_05-24-500_scene_change.jpg",
+      "ocr_text": "S\u2022an l frrttyJlpapefless.locallsearch7q=fertillzer%20rncoThr .SearLh dc)L'umL\u2022nt,s Iwfth\"/\u2022f f\u2022uMYvNnd*tlon\u2022",
+      "notes": [
+        "visual change peak",
+        "Apple Vision feature-print analyzed"
+      ],
+      "feature_distance_from_previous": 0.6767112016677856,
+      "id": "e132"
+    },
+    {
+      "kind": "ocr_change",
+      "time": 331.0,
+      "score": 0.3333,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0125_05-31-000_stable_hold.jpg",
+      "ocr_text": "+ 4 C A Mat S\u2022cwe l Mty.Ilpaperfess.locallsearch7q-fertlllzerY\u202220rocom SearLh dc)L'umL*nt fKonvn\u2022nd*iloii\u2022",
+      "notes": [
+        "visible text changed between Apple Vision OCR samples"
+      ],
+      "feature_distance_from_previous": 0.16023308038711548,
+      "id": "e133"
+    },
+    {
+      "kind": "stable_hold",
+      "time": 331.0,
+      "score": 0.9647,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0125_05-31-000_stable_hold.jpg",
+      "ocr_text": "+ 4 C A Mat S\u2022cwe l Mty.Ilpaperfess.locallsearch7q-fertlllzerY\u202220rocom SearLh dc)L'umL*nt fKonvn\u2022nd*iloii\u2022",
+      "notes": [
+        "low visual change span",
+        "candidate loading/wait/freeze-frame region"
+      ],
+      "feature_distance_from_previous": 0.16023308038711548,
+      "end": 338.0,
+      "duration": 14.0,
+      "start": 324.0,
+      "id": "e134"
+    },
+    {
+      "kind": "anchor",
+      "time": 340.0,
+      "score": 0.0,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0128_05-40-000_anchor.jpg",
+      "ocr_text": "4 C & NIX S\u2022cure I http:Ilp\u2022p\u2022rl\u2022N.l(K\u2022lls\u2022arthts-hrtllts\u2022r%2C*\u2022c4x*ik *D @ Pap8rfess-ngx Mcp Search documents fertilizer recommendations l\u2022 r*sul I b lor -f \u2022rt illzer rec\u2022wrnd\u2022t lon\u2022 nulrient mana c'ment plan 2024 crop_ Nuiiiei)I IAai)ag4mo111 Pl&i) - 2024 Ciop Yeov NDSU Soil F\u2022siiiN Lab . Morch 1, 2024 Horob Family Famis - Wesi Fargo. ND Plu InfoTrn\u2022tlDft F\u2022mi\". Horob Family Fafms Woducef.' Mich\u2022\u2022l Hoiob Plan Yoaf,' 2024 Crop Yeat Pr\u2022pared By,' NDSU Exlen$K*n - C4ss County Toial AcrK 2.400 Ctop Roi\u2022il... ear 01 5<\u2022r\u2022i \u2022. \u2022J2310 IIAT(N 5. 1\u2022?4 nutriLbnt mana ement plun 2024 crop.. Nutilenl M8n\u2022gem\u2022ni Plhn . 2024 Ciop Y\u2022ir Unlvofiily ol Mlnn\u2022wia Soll T\u2022sliiig L\u2022b . U\u2022icli 5, 2024 P\u2022lllson Aci\u2022s - IAiiwe4poli$, IJN Pl\u2022n Iilrymiliixi Fafm', P\u2022lllJon Acfe\u2022 Produc\u2022r.' Safah Patll\u2022on Pl\u2022n Yw'. 2024 Cmp YMr Pf\u2022parnd By: U of MN Exl\u2022n\u2022lon - H\u2022nn\u2022pln Cwnty TDl\u2022l Man\u2022o\u2022d Aef\u2022\u2022.' l.IN)_. ear 02 Sc\u2022r\u2022i \u2022.\u2022IM67 P I l\u2022i \u2022JJ_fiui ri\u2022fti_Mfi\u2022q\u2022MAI_pl\u2022N_1\u202214 rr\u2022\u2022_y\u2022\u2022ViMI 11A1(N",
+      "notes": [
+        "regular Apple Vision sample for agent review"
+      ],
+      "feature_distance_from_previous": 0.7294288873672485,
+      "id": "e135"
+    },
+    {
+      "kind": "ocr_change",
+      "time": 340.0,
+      "score": 0.9926,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0128_05-40-000_anchor.jpg",
+      "ocr_text": "4 C & NIX S\u2022cure I http:Ilp\u2022p\u2022rl\u2022N.l(K\u2022lls\u2022arthts-hrtllts\u2022r%2C*\u2022c4x*ik *D @ Pap8rfess-ngx Mcp Search documents fertilizer recommendations l\u2022 r*sul I b lor -f \u2022rt illzer rec\u2022wrnd\u2022t lon\u2022 nulrient mana c'ment plan 2024 crop_ Nuiiiei)I IAai)ag4mo111 Pl&i) - 2024 Ciop Yeov NDSU Soil F\u2022siiiN Lab . Morch 1, 2024 Horob Family Famis - Wesi Fargo. ND Plu InfoTrn\u2022tlDft F\u2022mi\". Horob Family Fafms Woducef.' Mich\u2022\u2022l Hoiob Plan Yoaf,' 2024 Crop Yeat Pr\u2022pared By,' NDSU Exlen$K*n - C4ss County Toial AcrK 2.400 Ctop Roi\u2022il... ear 01 5<\u2022r\u2022i \u2022. \u2022J2310 IIAT(N 5. 1\u2022?4 nutriLbnt mana ement plun 2024 crop.. Nutilenl M8n\u2022gem\u2022ni Plhn . 2024 Ciop Y\u2022ir Unlvofiily ol Mlnn\u2022wia Soll T\u2022sliiig L\u2022b . U\u2022icli 5, 2024 P\u2022lllson Aci\u2022s - IAiiwe4poli$, IJN Pl\u2022n Iilrymiliixi Fafm', P\u2022lllJon Acfe\u2022 Produc\u2022r.' Safah Patll\u2022on Pl\u2022n Yw'. 2024 Cmp YMr Pf\u2022parnd By: U of MN Exl\u2022n\u2022lon - H\u2022nn\u2022pln Cwnty TDl\u2022l Man\u2022o\u2022d Aef\u2022\u2022.' l.IN)_. ear 02 Sc\u2022r\u2022i \u2022.\u2022IM67 P I l\u2022i \u2022JJ_fiui ri\u2022fti_Mfi\u2022q\u2022MAI_pl\u2022N_1\u202214 rr\u2022\u2022_y\u2022\u2022ViMI 11A1(N",
+      "notes": [
+        "visible text changed between Apple Vision OCR samples"
+      ],
+      "feature_distance_from_previous": 0.7294288873672485,
+      "id": "e136"
+    },
+    {
+      "kind": "ocr_change",
+      "time": 340.5,
+      "score": 0.9122,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0129_05-40-500_scene_change.jpg",
+      "ocr_text": "P\u2022perless-ngx So4r fr 4 C & Not Securn I http'.Ilpawrtess.locaVwrch79-fertSllz\u2022ffA20recomm\u2022ndat5ons *O @ O Paperless-ngx MCP Search documents stAAC fertilizer recommendations S\u2022\u2022rch 10 re%ults eor *fertll12er recoMend\u2022tlon5\" IIAA 1, 2024 nutrient mana 01 ement plan 2024 crop_ Nuirient Managemeni Plan- 2024 Crop Ye4r NDSU Soil Tesiing Lab March 1. 2024 Horob Family Farm$ - We$t Fargo. ND PlJn Information Farni: Horob Family Farm$ Producef: Michael Horob Plan Year'. 2024 Crop Year Prepared By'. NDSU Extenston - Cass County Total Manag6d Acres: 2.400 Crop Rotati.. ear RESiIL T 2 pages Sc\u2022re: \u2022.932266 Flle: 033_nutrl*nt_*anageMent Jl\u2022n_2024_crop_year.pdf MATCM MAR 5. 2024 nutrient manaknement plan 2024 crop_ Nulrieni Managemeni Plan - 2024 Cfop Year University ol Minn8SOta Soil Tesling Lab . March 5. 2024 Pattison AcfeS- Minneapoli$. MN Plan Information F8rrn: Pattison Acres Produc8r.' Sar8h Pattison Plan Ye8r.' 2024 Crop Year Prepared 8y: U of MN Extension - Henn8pin County Total Managed Acfes.' 1,00... ear 02 RtSilLT 3 p\u20229es Store: \u2022.\u202216667 Fkle: \u202235 nutrl*nt_wAage*entJ*l4n_2\u202224 crop_ye\u2022r.pdl MITCII 3Q24",
+      "notes": [
+        "visible text changed between Apple Vision OCR samples"
+      ],
+      "feature_distance_from_previous": 0.19892390072345734,
+      "id": "e137"
+    },
+    {
+      "kind": "scene_change",
+      "time": 340.5,
+      "score": 0.2632,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0129_05-40-500_scene_change.jpg",
+      "ocr_text": "P\u2022perless-ngx So4r fr 4 C & Not Securn I http'.Ilpawrtess.locaVwrch79-fertSllz\u2022ffA20recomm\u2022ndat5ons *O @ O Paperless-ngx MCP Search documents stAAC fertilizer recommendations S\u2022\u2022rch 10 re%ults eor *fertll12er recoMend\u2022tlon5\" IIAA 1, 2024 nutrient mana 01 ement plan 2024 crop_ Nuirient Managemeni Plan- 2024 Crop Ye4r NDSU Soil Tesiing Lab March 1. 2024 Horob Family Farm$ - We$t Fargo. ND PlJn Information Farni: Horob Family Farm$ Producef: Michael Horob Plan Year'. 2024 Crop Year Prepared By'. NDSU Extenston - Cass County Total Manag6d Acres: 2.400 Crop Rotati.. ear RESiIL T 2 pages Sc\u2022re: \u2022.932266 Flle: 033_nutrl*nt_*anageMent Jl\u2022n_2024_crop_year.pdf MATCM MAR 5. 2024 nutrient manaknement plan 2024 crop_ Nulrieni Managemeni Plan - 2024 Cfop Year University ol Minn8SOta Soil Tesling Lab . March 5. 2024 Pattison AcfeS- Minneapoli$. MN Plan Information F8rrn: Pattison Acres Produc8r.' Sar8h Pattison Plan Ye8r.' 2024 Crop Year Prepared 8y: U of MN Extension - Henn8pin County Total Managed Acfes.' 1,00... ear 02 RtSilLT 3 p\u20229es Store: \u2022.\u202216667 Fkle: \u202235 nutrl*nt_wAage*entJ*l4n_2\u202224 crop_ye\u2022r.pdl MITCII 3Q24",
+      "notes": [
+        "visual change peak",
+        "Apple Vision feature-print analyzed"
+      ],
+      "feature_distance_from_previous": 0.19892390072345734,
+      "id": "e138"
+    },
+    {
+      "kind": "ocr_change",
+      "time": 348.5,
+      "score": 0.9062,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0131_05-48-500_scene_pre.jpg",
+      "ocr_text": "P\u2022perl\u2022sg-ngx Seafth <- 4 C Not Securn I http'.Ilpapefloss.localls\u2022afch7q-fertlllz\u2022rtA20recornmendallons Paperless-ngx MCP Search documents SIAIICII fertilizer recommendations S\u2022\u2022rch l\u2022 regults t&r \"f ert a Ilier recM\u2022tndat kons\" HAA J, 2024 nutrient manarnement plan 2024 crop_ Nulrieni Management Plan - 2024 CfOP Year NDSU Soil Testing Lab . March 1. 2024 Horob Farnily Farms - West Fargo. NO Plan Informatlon Farm; Horob Family Farm$ Prt)ducer.' Michael Horob Pl8n Year: 2024 Crop Year Pr8parod 8y'. NDSU Ext8nsion - Caw County Total Managed Acres: 2,400 Ciop Rotati... ear 01 RCSULI 2 pa9es Score: \u2022.\u202232266 Fkle: \u202233_nutr**ntwnog*MentJl\u2022n_2\u202224 crop_ye\u2022r.pdf TCH IIAR 5. 2\u202224 02 nutrient manarnement plan 2024 crop_ Nutrient Managemenl Plan - 2024 Crop Ye4r University of IAlnnesota Soil Testing Lab . March 5. 2024 Pattison Acfes - Mintieapolis. MN Plan Information Farm'. Pattison Acfes Producer.' Sarah Pattison Plan Year.' 2024 Crop Year Prepared 8y: U of IAN Exlension - Henn8pin County Total M8naged Acres'. 1,00... ear RESULI J p\u2022ges Sc\u2022re: \u2022.\u202216667 Fkle: \u202235 nutrlent wnoge*ent Jl\u2022n 2\u202224 crop_year.pdl rtATCH",
+      "notes": [
+        "visible text changed between Apple Vision OCR samples"
+      ],
+      "feature_distance_from_previous": 0.04494483023881912,
+      "id": "e139"
+    },
+    {
+      "kind": "ocr_change",
+      "time": 349.5,
+      "score": 0.9787,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0132_05-49-500_scene_change.jpg",
+      "ocr_text": ".locallsearch?q=fertilizeffh20recommendations r Dl@ MCP Search ions\" ent plan 202 024 Crop Year NDSU Soil Testing Lab . March 1, 2024 Horob Family Farms- West Fargo. ND Plan Information Farm: Horob el Horob Plan Year: 2024 Crop Year Prepared By: NDSU Extension - Cass County Total Managed Acres: 2,400 Crop Rotati... ear Flle: 033_nut rlent_Aanagenent_plan_2024_c rop_yea r. pdf MATCH",
+      "notes": [
+        "visible text changed between Apple Vision OCR samples"
+      ],
+      "feature_distance_from_previous": 0.48038312792778015,
+      "id": "e140"
+    },
+    {
+      "kind": "scene_change",
+      "time": 349.5,
+      "score": 0.2626,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0132_05-49-500_scene_change.jpg",
+      "ocr_text": ".locallsearch?q=fertilizeffh20recommendations r Dl@ MCP Search ions\" ent plan 202 024 Crop Year NDSU Soil Testing Lab . March 1, 2024 Horob Family Farms- West Fargo. ND Plan Information Farm: Horob el Horob Plan Year: 2024 Crop Year Prepared By: NDSU Extension - Cass County Total Managed Acres: 2,400 Crop Rotati... ear Flle: 033_nut rlent_Aanagenent_plan_2024_c rop_yea r. pdf MATCH",
+      "notes": [
+        "visual change peak",
+        "Apple Vision feature-print analyzed"
+      ],
+      "feature_distance_from_previous": 0.48038312792778015,
+      "id": "e141"
+    },
+    {
+      "kind": "ocr_change",
+      "time": 350.0,
+      "score": 0.8569,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0133_05-50-000_hold_start.jpg",
+      "ocr_text": ".locallsearchlmcp perless Al MCP server. Paperless admins can copy URL http: //paperless. local/mcp Copy HEADER Copy Bearer wGn689NorlIE4hHyIBpTehnpz0MHP9VB Copy",
+      "notes": [
+        "visible text changed between Apple Vision OCR samples"
+      ],
+      "feature_distance_from_previous": 0.24490264058113098,
+      "id": "e142"
+    },
+    {
+      "kind": "stable_hold",
+      "time": 362.0,
+      "score": 0.9699,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0135_06-02-000_stable_hold.jpg",
+      "ocr_text": ".locallsearchlmcp Search perless Al MCP server. Paperless admins can copy URL http: //paperless. local/mcp Copy HEADER Copy Bearer wGn689NorlIE4hHyIBpTehnpz0MHP9VB Copy",
+      "notes": [
+        "low visual change span",
+        "candidate loading/wait/freeze-frame region"
+      ],
+      "feature_distance_from_previous": 0.08823070675134659,
+      "end": 374.0,
+      "duration": 24.0,
+      "start": 350.0,
+      "id": "e143"
+    },
+    {
+      "kind": "anchor",
+      "time": 370.0,
+      "score": 0.0,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0136_06-10-000_anchor.jpg",
+      "ocr_text": ".locallsearchlmcp Search perless Al MCP server. Paperless admins can copy URL http: //paperless. local/mcp Copy HEADER Copy Bearer wGn689NorlIE4hHyIBpTehnpz0MHP9VB Copy",
+      "notes": [
+        "regular Apple Vision sample for agent review"
+      ],
+      "feature_distance_from_previous": 0,
+      "id": "e144"
+    },
+    {
+      "kind": "ocr_change",
+      "time": 376.5,
+      "score": 0.7929,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0139_06-16-500_scene_change.jpg",
+      "ocr_text": "P\u2022perleu-ngx MCP fr 4 C th Not Secur\u2022 I http.\"Ilpaperftss.locaVsearchlmcp *D @ Paperless-ngx S\u2022arch MCP setup Connect Al apps io the same read-only Paperless Al MCP server. Paperless admins can copy the token here. SEAVIR UAI paperless-al http://paperless. local/mcp Copy AUTI TOKEtI IAgEVI TAGn68WorlIE4hHy18pTehnpzWHP9VB Copy Bearer wGn689NorlIE4hHyIBpTehnpzOMHP9VB Copy IICP <onnect lon det41 Is loaded. Claude Code Run this from a terminal. Keep the header exactly as shown for Hrrp or HTTPS inslalls. claude add transport http paperless41 http: l/paperless. loc\u2022li\u2022cp header \"Authorlzat lon: Bearer ffin68*orllE4hHyIBpTehnpzW*IP9V8\" cl\u2022ude \u2022cp Ilst",
+      "notes": [
+        "visible text changed between Apple Vision OCR samples"
+      ],
+      "feature_distance_from_previous": 0.45808592438697815,
+      "id": "e145"
+    },
+    {
+      "kind": "scene_change",
+      "time": 376.5,
+      "score": 0.3466,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0139_06-16-500_scene_change.jpg",
+      "ocr_text": "P\u2022perleu-ngx MCP fr 4 C th Not Secur\u2022 I http.\"Ilpaperftss.locaVsearchlmcp *D @ Paperless-ngx S\u2022arch MCP setup Connect Al apps io the same read-only Paperless Al MCP server. Paperless admins can copy the token here. SEAVIR UAI paperless-al http://paperless. local/mcp Copy AUTI TOKEtI IAgEVI TAGn68WorlIE4hHy18pTehnpzWHP9VB Copy Bearer wGn689NorlIE4hHyIBpTehnpzOMHP9VB Copy IICP <onnect lon det41 Is loaded. Claude Code Run this from a terminal. Keep the header exactly as shown for Hrrp or HTTPS inslalls. claude add transport http paperless41 http: l/paperless. loc\u2022li\u2022cp header \"Authorlzat lon: Bearer ffin68*orllE4hHyIBpTehnpzW*IP9V8\" cl\u2022ude \u2022cp Ilst",
+      "notes": [
+        "visual change peak",
+        "Apple Vision feature-print analyzed"
+      ],
+      "feature_distance_from_previous": 0.45808592438697815,
+      "id": "e146"
+    },
+    {
+      "kind": "ocr_change",
+      "time": 377.5,
+      "score": 0.8776,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0140_06-17-500_scene_post.jpg",
+      "ocr_text": "P\u2022porle$$-ngx MCP C Nol Secure | htlp.'Ilpaperless.locallsearchlmcp <r O @ paperless-a http:/lpaperless. local/mcp Copy AIJTH TOKEII MtADefl n68%orllE4hHylBpTehnpzOMHP9V8 Copy Bearer bKn689NorlIE4hHylBpTehnpzWHP9VB Copy MCP connect lon Oet\u2022ils lo\u2022ded. Claude Code Run this Irom a termlnal. Keep the header exactly as sh<Mn lor Hrrp or HTTPS insiall$. c laude thcp add tronsport http paperless-al http: //paperless. locallmcp -header \"Authoriiat lon: Bearer h6n681*4orlIE4hHy18pTehnptth*lP9VB\" claude mcp Ilst Claude Desktop Codex CLI and Codex Desktop VS Code with GttHub Copllot Ilama.cpp built-in web Ul",
+      "notes": [
+        "visible text changed between Apple Vision OCR samples"
+      ],
+      "feature_distance_from_previous": 0.20097659528255463,
+      "id": "e147"
+    },
+    {
+      "kind": "ocr_change",
+      "time": 379.5,
+      "score": 0.8818,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0141_06-19-500_scene_pre.jpg",
+      "ocr_text": "P\u2022porlo$$-ngx hACP S*i C Not Secure | htlp.'Ilpaperless.locallsearch[mcp Claude Code Run this Irom a lerminal. Keep the header exactly as shown for HTTP or HTTPS lTrstall$. clawle thcp add transport http paperless-al http://paperless. locallthcp \u2022vheader \"Authorlz\u2022tAon: 8e\u2022rer 7An68*irllE4hHyiepTehnpzW9Vfi\" IC\u2022py claude thcp Ilst Claud\u2022 D\u2022sktop Open CSaude Deskiop. choose Claude > Seiiings > Developer > Edli Config. then add this server. Keep allow-ht tp for local HTTP installs; remove il for HTTPS. C\u2022py \"vpServers\": 'paperless-ol\": \"comffwnd\": \"npx\" 'args\": \"mcp-rernote\" \"http: l/paperless. loealithcp\"I Jllfm-http\" -theader\" \"Authorlzat lon: &earer *Gn68gllorllE4hHy18pYehnp2alHP9VB\" \"env\"; \"PATrI\": \"YOUR_NIJOE_BIN_DIR..lusr/locallbin.' lopt/hrffjebrew/bln: lusrlbln:/bln\"",
+      "notes": [
+        "visible text changed between Apple Vision OCR samples"
+      ],
+      "feature_distance_from_previous": 0.2616024315357208,
+      "id": "e148"
+    },
+    {
+      "kind": "ocr_change",
+      "time": 380.5,
+      "score": 0.8371,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0142_06-20-500_scene_change.jpg",
+      "ocr_text": "P\u2022porlo$$-ngx hACP S*i C Nol Secure | htlp.'Ilpaperless.locallsearch[mcp Claude Desktop Open Claude Oesktop. choose Claude > Setiings > Developer > Edit Conlig, Ihen add Ihis server. Keep --allo*http lor Itxal Hrrp installs.' remove it for Hrrps. Copy 'mcpServers\": 'paperless-al\": \"cornand\": 'npx\" \"args\": \"mcp-remote\". \"http: l/paperless. locallKp' I allow-http\" header\" \"AuthDrizatlon: Beorer hfjn689lorlIE4hHylBpTehnpzWP9V8\" 'env\": \"PATh\": \"YfftNODE_8IN_DIR: /usr/local/bln: lopt/hoMbrewlbln: /usrlbln:/bln\" Codex CLI and Codex Desktop VS Code with GItHub Copilot Ilama.cpp built-in web Ul",
+      "notes": [
+        "visible text changed between Apple Vision OCR samples"
+      ],
+      "feature_distance_from_previous": 0.19821132719516754,
+      "id": "e149"
+    },
+    {
+      "kind": "scene_change",
+      "time": 380.5,
+      "score": 0.3081,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0142_06-20-500_scene_change.jpg",
+      "ocr_text": "P\u2022porlo$$-ngx hACP S*i C Nol Secure | htlp.'Ilpaperless.locallsearch[mcp Claude Desktop Open Claude Oesktop. choose Claude > Setiings > Developer > Edit Conlig, Ihen add Ihis server. Keep --allo*http lor Itxal Hrrp installs.' remove it for Hrrps. Copy 'mcpServers\": 'paperless-al\": \"cornand\": 'npx\" \"args\": \"mcp-remote\". \"http: l/paperless. locallKp' I allow-http\" header\" \"AuthDrizatlon: Beorer hfjn689lorlIE4hHylBpTehnpzWP9V8\" 'env\": \"PATh\": \"YfftNODE_8IN_DIR: /usr/local/bln: lopt/hoMbrewlbln: /usrlbln:/bln\" Codex CLI and Codex Desktop VS Code with GItHub Copilot Ilama.cpp built-in web Ul",
+      "notes": [
+        "visual change peak",
+        "Apple Vision feature-print analyzed"
+      ],
+      "feature_distance_from_previous": 0.19821132719516754,
+      "id": "e150"
+    },
+    {
+      "kind": "ocr_change",
+      "time": 381.5,
+      "score": 0.3046,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0143_06-21-500_scene_post.jpg",
+      "ocr_text": "P\u2022porlo$$-ngx hACP S*i C Nol Secure | htlp.'Ilpaperless.locallsearch[mcp Claude Desktop Open Claude Oesktop. choose Claude > Setiings > Developer > Edit Conlig, then add Ihis server. Keep --allo*http lor Itxal Hrrp installs.' remove it for Hrrps. Copy 'mcpServers\": 'paperless-al\": \"cornand\": 'npx\" \"args\": \"mcp-remote\". \"http: l/paperless. locallKp\" allow-http\" header\" \"AuthDrizatlon: Beorer hfjn689lorlIE4hHylBpTehnpzWP9V8\" 'env\": \"PATh\": \"YfftNODE_8IN_DIR: /usr/local/bln: lopt/h(\u2022ebrewlbln: /usrlbln:/bln\" Codex CLI and Codex Desktop Add the HTTP MCP server with the CLI, then restart Codex Dtsktop or open a fresh Codex CLI session so it reloads ihe MCP conlig. export PAPERLESS_AI_MCP_TOK94*\"%(n689lorlIE4hHyI8pTehnpzlA\u2022IP9Vb\" codex \u2022cp add paperless-ai url http://Daotrltss. locallacp Copy |",
+      "notes": [
+        "visible text changed between Apple Vision OCR samples"
+      ],
+      "feature_distance_from_previous": 0.17005294561386108,
+      "id": "e151"
+    },
+    {
+      "kind": "ocr_change",
+      "time": 389.5,
+      "score": 0.9399,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0144_06-29-500_scene_pre.jpg",
+      "ocr_text": "P\u2022p\u2022rl*ss-nqx MCP &I Q a& Not Secur\u2022 I hnp'.Ilpaperloss.locaVsaafchlrncp *o @ \"servers\": \"paperless-al\": \"type\": \"httP' \"url' 'http: i/p\u2022perless. loc)I/*cp' \u2022 \"headers\": \"AuthorlzJtlon\": \"Be\u2022rer knGn6894orllE4MylBpTehnpzWHP9VB- Ilama.cpp built-in web Ul Use a recent Ilama-server bulld and starl it with Ihe MCP ptoxy enabled. New bulles us\u2022 still aeeept -webul-*cp-proxy. Keep that proxy on a trusted loeal nelYA)rk. Ui-llKP-proxy,' older builds may Ilama-5erver /pathlto/\u2022odel. gguf -J In Ja -ulv\u2022CP-proxy Copy , l. Open the Ilama.cpp vRb Ul in your browser. 2. Open Ihe MCP serverslseltin9s screen and add a server. 3. Set the server name to paperless-ol. 4. Set the server URL io http: Ilpaperless. local/mcp. 5. Add 8 custom header rwmed Authorizat ion with ihe value Bearer trffjn689NorlIE4hNy18pTehnpz&llHP9V8. 6. Turn on Use Ilama-server proxy. save Ihe server. arKI run Ihe heallh check. 11 Ilarna-server runs inside Docker. Ihe URL must be reachable from that container. In the older Paperle$$ Al local Al branch. thls was wlred as http: //caddy: 8088/rACP wlth proxylng enabled and Caddy Injectlng ihe token internalty.",
+      "notes": [
+        "visible text changed between Apple Vision OCR samples"
+      ],
+      "feature_distance_from_previous": 0.4190864562988281,
+      "id": "e152"
+    },
+    {
+      "kind": "ocr_change",
+      "time": 390.0,
+      "score": 0.5376,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0145_06-30-000_hold_start.jpg",
+      "ocr_text": "P\u2022p\u2022rl\u20228s-nqx IXP Sei Q a* Noi S\u2022cu httP.'Ilpapertess.localJ \"servers\": \"paperless-al\": \"type\": \"httP' * 'url\": 'http: i/paperless. locali\u2022rp\" \"headers' - ty FULLSTACKAG Ilama.cpp built-In web Ul Use a recent Ilama-5 still accept -webul-\u2022c Thanks for watchingl Il*-server 4 Ipathito/model.ggut n Ja -ul\u2022\u2022cpproxy Copy ttps:/lfullstack.ag 1. Open the Ilama.cpp web Ul in your browser. 2. Open Ihe MCP serverslseltings screen and add a server. 3. Set the server name to paperless-ai. 4. Set the server URL to http: i/paperless. locallffjcp 5. Add a custom header named Authorization with Ihe value 8earer wGn68WorlIE4hHyIBpTehnpz&YHP9VB 6. Turn on Uso Ilama-server proxy. save the server. arKI run the heallh check 11 I lama-server runs inside Docker. Ihe URL must be re8chable from ihat container. In the older P8perless Al local Al branc thls was wlred as http: //caddy.'8088/MCP wllh proxylng enabled and Caddy inj&ctlng the loken internally.",
+      "notes": [
+        "visible text changed between Apple Vision OCR samples"
+      ],
+      "feature_distance_from_previous": 0.7742041945457458,
+      "id": "e153"
+    },
+    {
+      "kind": "ocr_change",
+      "time": 390.5,
+      "score": 0.8977,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0146_06-30-500_scene_change.jpg",
+      "ocr_text": "FULLSTACK AG Thanks for watching. https://f ullstack.ag",
+      "notes": [
+        "visible text changed between Apple Vision OCR samples"
+      ],
+      "feature_distance_from_previous": 0.4982238709926605,
+      "id": "e154"
+    },
+    {
+      "kind": "scene_change",
+      "time": 390.5,
+      "score": 0.3786,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0146_06-30-500_scene_change.jpg",
+      "ocr_text": "FULLSTACK AG Thanks for watching. https://f ullstack.ag",
+      "notes": [
+        "visual change peak",
+        "Apple Vision feature-print analyzed"
+      ],
+      "feature_distance_from_previous": 0.4982238709926605,
+      "id": "e155"
+    },
+    {
+      "kind": "stable_hold",
+      "time": 398.0,
+      "score": 0.9946,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0148_06-38-000_stable_hold.jpg",
+      "ocr_text": "FULLSTACK AG Thanks for watching. https://f ullstack.ag",
+      "notes": [
+        "low visual change span",
+        "candidate loading/wait/freeze-frame region"
+      ],
+      "feature_distance_from_previous": 0.021798567846417427,
+      "end": 406.0,
+      "duration": 16.0,
+      "start": 390.0,
+      "id": "e156"
+    },
+    {
+      "kind": "anchor",
+      "time": 400.0,
+      "score": 0.0,
+      "frame": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/analysis/rev4-preview-timing/frames/frame_0149_06-40-000_anchor.jpg",
+      "ocr_text": "FULLSTACK AG Thanks for watching. https://f ullstack.ag",
+      "notes": [
+        "regular Apple Vision sample for agent review"
+      ],
+      "feature_distance_from_previous": 0.002948968205600977,
+      "id": "e157"
+    }
+  ],
+  "warnings": []
+}

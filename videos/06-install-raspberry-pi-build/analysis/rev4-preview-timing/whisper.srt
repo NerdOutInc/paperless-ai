@@ -1,0 +1,312 @@
+1
+00:00:00,000 --> 00:00:04,000
+ Hey, this is Brian from Fullstack Egg.
+
+2
+00:00:04,000 --> 00:00:09,760
+ In this video, we are installing Paperless AI on a Raspberry Pi, so you can run Paperless
+
+3
+00:00:09,760 --> 00:00:20,140
+ N GX, Semantic Search, and optional MCP access on hardware in your own house or shop.
+
+4
+00:00:20,140 --> 00:00:25,200
+ A Raspberry Pi is not the fastest server in the world, but for a small document archive,
+
+5
+00:00:25,200 --> 00:00:27,000
+ it can be a really nice fit.
+
+6
+00:00:27,000 --> 00:00:31,680
+ It's quiet, cheap to run, and it's local by default.
+
+7
+00:00:31,680 --> 00:00:35,880
+ We'll start on the computer we're using to flash our SD card.
+
+8
+00:00:35,880 --> 00:00:41,920
+ We have Raspberry Pi Imager Open, so we'll choose our model, and then we'll choose Raspberry
+
+9
+00:00:41,920 --> 00:00:46,000
+ Pi OS Lite 64-bit.
+
+10
+00:00:46,000 --> 00:00:50,840
+ I'm using Lite because this Pi is going to act like a little server.
+
+11
+00:00:50,840 --> 00:00:55,920
+ We don't need a desktop environment running on it all day.
+
+12
+00:00:55,920 --> 00:00:58,680
+ Next we'll choose our storage device.
+
+13
+00:00:58,680 --> 00:01:05,000
+ We've got an SD card here, which is fine, but for a real archive, I would strongly
+
+14
+00:01:05,000 --> 00:01:13,440
+ prefer a USB SSD drive because Paperless, Postgres, and the OCR work are going to write
+
+15
+00:01:13,440 --> 00:01:16,800
+ to the disk over time.
+
+16
+00:01:16,800 --> 00:01:24,160
+ We'll set the host name to Paperless, and that'll give us a friendly address of paperless.local
+
+17
+00:01:24,160 --> 00:01:27,320
+ on many home networks.
+
+18
+00:01:27,320 --> 00:01:33,960
+ We'll set our time zone, create the user account, and we'll add our Wi-Fi details if
+
+19
+00:01:33,960 --> 00:01:37,560
+ you're not using Ethernet.
+
+20
+00:01:37,560 --> 00:01:40,760
+ The important setting here is SSH.
+
+21
+00:01:40,760 --> 00:01:46,640
+ We want to enable SSH so we can log into the Raspberry Pi from our computer instead of
+
+22
+00:01:46,640 --> 00:01:50,440
+ plugging in a monitor and keyboard.
+
+23
+00:01:50,440 --> 00:01:54,440
+ We'll add our SSH key to authenticate with the Raspberry Pi.
+
+24
+00:01:54,440 --> 00:02:00,960
+ This is going to be more secure and more convenient than using password authentication.
+
+25
+00:02:00,960 --> 00:02:06,980
+ I'm going to leave Raspberry Pi Connect off here because this install is meant to be managed
+
+26
+00:02:06,980 --> 00:02:11,840
+ over SSH on the local network.
+
+27
+00:02:11,840 --> 00:02:13,560
+ Now we'll write the image.
+
+28
+00:02:13,560 --> 00:02:18,520
+ This erases the card or drive, so make sure the selected storage is the one you actually
+
+29
+00:02:18,520 --> 00:02:20,840
+ mean to flash.
+
+30
+00:02:20,840 --> 00:02:25,360
+ The Raspberry Pi imager will write and verify the image.
+
+31
+00:02:25,360 --> 00:02:30,800
+ In real time, this takes a few minutes, so we'll edit this so we can skip to the completed
+
+32
+00:02:30,800 --> 00:02:33,000
+ card.
+
+33
+00:02:33,000 --> 00:02:38,840
+ After this, we'll put the SSD card into the Raspberry Pi, connect Ethernet if you have
+
+34
+00:02:38,840 --> 00:02:42,080
+ it, and power it on.
+
+35
+00:02:42,080 --> 00:02:47,040
+ Once the Raspberry Pi has booted, we'll open the terminal and SSH into it.
+
+36
+00:02:47,040 --> 00:02:53,180
+ I'm using SSH Brian at paperless.local to connect.
+
+37
+00:02:53,180 --> 00:02:59,000
+ If paperless.local doesn't resolve on your network, look into your router for the Raspberry
+
+38
+00:02:59,000 --> 00:03:04,880
+ Pi's IP address and use that to SSH instead.
+
+39
+00:03:04,880 --> 00:03:09,160
+ Since this is the first time connecting to the Raspberry Pi, we'll have to accept the
+
+40
+00:03:09,160 --> 00:03:15,960
+ fingerprint, and now we're connected to the Raspberry Pi.
+
+41
+00:03:15,960 --> 00:03:22,120
+ Now I'm going to copy the install command from paperless.fullstack.ag, and I'm going
+
+42
+00:03:22,120 --> 00:03:27,580
+ to paste it in and run it to start the installer.
+
+43
+00:03:27,580 --> 00:03:35,400
+ The installer checks the system, verifies Docker, and then walks through the paperless AI setup.
+
+44
+00:03:35,400 --> 00:03:39,920
+ If Docker has to be installed fresh, the script may ask you to log out and log back in again
+
+45
+00:03:39,920 --> 00:03:42,600
+ so you can run Docker commands.
+
+46
+00:03:42,600 --> 00:03:52,080
+ This is normal, so go ahead and do that and then run the same install command from paperless.fullstack.ag.
+
+47
+00:03:52,080 --> 00:03:55,920
+ And now we'll continue to the setup questions.
+
+48
+00:03:55,920 --> 00:04:01,920
+ We'll set the paperless admin username and password, we'll pick our time zone, choose
+
+49
+00:04:01,920 --> 00:04:09,400
+ the install directory, and for a home network install, we can skip the public domain name.
+
+50
+00:04:09,400 --> 00:04:13,720
+ And now the setup script is going to pull the Docker images down.
+
+51
+00:04:13,720 --> 00:04:18,160
+ This will take a little while, so we'll fast forward that.
+
+52
+00:04:18,160 --> 00:04:24,320
+ And when this finishes, the installer is going to print the local paperless URL, the search
+
+53
+00:04:24,320 --> 00:04:32,040
+ URL, the URL for the MCP instructions, and the commands you would use later for updates,
+
+54
+00:04:32,040 --> 00:04:35,320
+ backups, and logs.
+
+55
+00:04:35,320 --> 00:04:41,640
+ Now we'll open paperless.local in our browser, or use the Raspberry Pi's IP address if that's
+
+56
+00:04:41,640 --> 00:04:48,280
+ what works on your network, and we'll log in with the admin account we just created.
+
+57
+00:04:48,280 --> 00:04:52,520
+ I've got a whole bunch of documents here that I'm going to drop right into paperless.
+
+58
+00:04:52,520 --> 00:04:59,480
+ I'm going to fast forward this, but paperless is going to take in these files, run OCR against
+
+59
+00:04:59,480 --> 00:05:05,640
+ it, and it's going to start indexing the text so the paperless AI search can find documents
+
+60
+00:05:05,640 --> 00:05:10,280
+ by meaning, not just exact keywords.
+
+61
+00:05:10,280 --> 00:05:16,040
+ Now that my documents are loaded into paperless, I'm going to search for fertilizer recommendations
+
+62
+00:05:16,040 --> 00:05:23,860
+ using the paperless NGX search, and it doesn't return any results.
+
+63
+00:05:23,860 --> 00:05:30,120
+ And if we use the paperless AI smart search add-on, we will actually find some results,
+
+64
+00:05:30,120 --> 00:05:34,120
+ including a nutrient management plan.
+
+65
+00:05:34,120 --> 00:05:36,480
+ And that's the whole point of paperless AI.
+
+66
+00:05:36,480 --> 00:05:42,280
+ You don't have to remember the exact title or wording from the PDF, and paperless NGX
+
+67
+00:05:42,280 --> 00:05:47,640
+ stays stock, and this companion layer just adds the smarter search experience beside
+
+68
+00:05:47,640 --> 00:05:49,640
+ it.
+
+69
+00:05:49,640 --> 00:05:55,720
+ And now that we're on the paperless AI search page, you can see this MCP button, which will
+
+70
+00:05:55,720 --> 00:06:00,000
+ open up the setup page for AI apps.
+
+71
+00:06:00,000 --> 00:06:08,600
+ This MCP page has instructions for connecting paperless AI to cloud, codecs, VS code with
+
+72
+00:06:08,600 --> 00:06:17,680
+ copilot, and even llama.cpp, which can be used for running local AI models.
+
+73
+00:06:17,680 --> 00:06:25,880
+ The MCP token is for read-only search access, so AI tools can ask questions about the archive
+
+74
+00:06:25,880 --> 00:06:30,520
+ without direct database access.
+
+75
+00:06:30,520 --> 00:06:33,320
+ And that's it for the Raspberry Pi install.
+
+76
+00:06:33,320 --> 00:06:41,440
+ We flash the Raspberry Pi OS Lite, enable SSH, run the paperless AI installer, log into
+
+77
+00:06:41,440 --> 00:06:47,480
+ paperless on your local network, and start using the paperless AI smart search.
+
+78
+00:06:47,480 --> 00:06:48,600
+ Thanks again for watching.
+

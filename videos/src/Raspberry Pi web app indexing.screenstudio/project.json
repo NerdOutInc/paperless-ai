@@ -1,0 +1,192 @@
+{
+  "json": {
+    "id": "UuYDkWFvIV",
+    "name": "Raspberry Pi web app indexing",
+    "createdAt": "2026-05-20T21:03:58.378Z",
+    "updatedAt": "2026-05-20T21:03:58.378Z",
+    "lastSavedAt": "2026-05-23T03:53:44.407Z",
+    "config": {
+      "backgroundGradient": {
+        "start": {
+          "x": 0,
+          "y": 0
+        },
+        "end": {
+          "x": 1,
+          "y": 1
+        },
+        "stops": [
+          {
+            "color": "#3F37C9",
+            "at": 0
+          },
+          {
+            "color": "#8C87DF",
+            "at": 1
+          }
+        ]
+      },
+      "backgroundPaddingRatio": 0,
+      "insetPadding": {
+        "bottom": 0,
+        "left": 0,
+        "right": 0,
+        "top": 0
+      },
+      "insetColor": "#000000",
+      "insetAlpha": 0.5,
+      "motionBlurAmount": 1,
+      "motionBlurCursorAmount": 1,
+      "motionBlurScreenMoveAmount": 1,
+      "motionBlurScreenZoomAmount": 1,
+      "cursorSize": 1.5,
+      "cursorSet": {
+        "id": "macos-tahoe",
+        "variants": {}
+      },
+      "cursorRotateOnXMovementRatio": 0.5,
+      "cursorBaseRotation": 0,
+      "useDefaultCursorIfAppCursorHasLowResolution": true,
+      "alwaysUseDefaultCursor": false,
+      "hideNotMovingCursorAfterMs": null,
+      "loopCursorPositionBeforeEndMs": null,
+      "removeCurshorShakeTreshold": 500,
+      "optimizeOriginalCursorTypes": true,
+      "clickEffect": null,
+      "clickSoundEffect": null,
+      "backgroundColor": "#3F37C9",
+      "backgroundImage": null,
+      "backgroundType": "system",
+      "backgroundSystemName": "macOS/tahoe-light.jpg",
+      "backgroundBlur": 0,
+      "hideCursor": false,
+      "mouseMovementSpring": {
+        "stiffness": 470,
+        "damping": 70,
+        "mass": 3
+      },
+      "screenMovementSpring": {
+        "mass": 2.25,
+        "stiffness": 200,
+        "damping": 40
+      },
+      "mouseClickSpring": {
+        "stiffness": 700,
+        "damping": 30,
+        "mass": 1
+      },
+      "defaultOutputAspectRatio": null,
+      "windowBorderRadius": 0,
+      "alwaysKeepZoomedIn": false,
+      "shadowIntensity": 0.75,
+      "shadowAngle": 90,
+      "shadowDistance": 25,
+      "shadowBlur": 20,
+      "shadowIsDirectional": false,
+      "disableMouseMovementSpring": false,
+      "hideCamera": false,
+      "mirrorCamera": false,
+      "cameraRoundness": 0.25,
+      "cameraSize": 0.35,
+      "cameraPosition": "bottom-right",
+      "cameraPositionPoint": {
+        "x": 1,
+        "y": 1
+      },
+      "cameraScaleDuringZoom": 0.7,
+      "cameraAspectRatio": "original",
+      "stopCursorMovementInLastPartMs": 0,
+      "showShortcuts": false,
+      "hiddenShortcuts": {},
+      "showShortcutsWithSingleLetters": false,
+      "showTranscript": true,
+      "transcriptSizeRatio": 1,
+      "shortcutsSizeRatio": 1,
+      "audioVolume": 1,
+      "muteMicrophone": false,
+      "muteSystemAudio": false,
+      "muteExternalDeviceAudio": false,
+      "improveMicrophoneAudio": false,
+      "backgroundAudioFileName": null,
+      "muteBackgroundAudio": false,
+      "backgroundAudioVolume": 0.05,
+      "clickSoundEffectVolume": 0.25,
+      "microphoneInStereoMode": false,
+      "deviceFrameKey": null,
+      "defaultLayout": {
+        "type": "both",
+        "cameraSize": 0.35,
+        "cameraPositionPoint": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "enableDeviceMockup": true,
+      "adjustDeviceFrameToRecordingSize": true,
+      "recordingRange": [
+        0,
+        466162.2705833288
+      ],
+      "recordingCrop": {
+        "x": 0,
+        "y": 0.02961863554035017,
+        "width": 0.9920634920634921,
+        "height": 0.9164969450101832
+      }
+    },
+    "meta": {
+      "recordingFlags": []
+    },
+    "scenes": [
+      {
+        "id": "kZsmicqwzX",
+        "name": "Default",
+        "zoomRanges": [],
+        "type": "recording",
+        "sessionIndex": 0,
+        "slices": [
+          {
+            "id": "S8JTKnfbEh",
+            "timeScale": 1,
+            "sourceStartMs": 64497.913287392556,
+            "sourceEndMs": 111576.80454538841,
+            "volume": 1,
+            "systemAudioVolume": 1,
+            "externalDeviceAudioVolume": 1,
+            "hideCursor": true,
+            "disableSmoothMouseMovement": false
+          },
+          {
+            "id": "y1c0R9y4LG",
+            "timeScale": 1,
+            "sourceStartMs": 321384.9068908042,
+            "sourceEndMs": 342919.9840163372,
+            "volume": 1,
+            "systemAudioVolume": 1,
+            "externalDeviceAudioVolume": 1,
+            "hideCursor": true,
+            "disableSmoothMouseMovement": false
+          }
+        ],
+        "layouts": [],
+        "masks": [],
+        "resolvedTypingSpeedIncreaseSuggestions": [],
+        "voiceOvers": []
+      }
+    ]
+  },
+  "meta": {
+    "values": {
+      "createdAt": [
+        "Date"
+      ],
+      "updatedAt": [
+        "Date"
+      ],
+      "lastSavedAt": [
+        "Date"
+      ]
+    },
+    "v": 1
+  }
+}

@@ -1,0 +1,485 @@
+{
+  "schema": "nerdout.transcript.v1",
+  "source_audio": "videos/src/06-install-raspberry-pi.m4a",
+  "duration": 408.717642,
+  "language": "en",
+  "engine": "whisper.cpp",
+  "model": "/Users/brian/.cache/whisper.cpp/ggml-base.en.bin",
+  "whisper_cli": "/opt/homebrew/bin/whisper-cli",
+  "raw_outputs": {
+    "text": "videos/06-install-raspberry-pi-build/analysis/rev4-transcript/whisper.txt",
+    "srt": "videos/06-install-raspberry-pi-build/analysis/rev4-transcript/whisper.srt",
+    "json": "videos/06-install-raspberry-pi-build/analysis/rev4-transcript/whisper.json"
+  },
+  "segments": [
+    {
+      "id": "n001",
+      "start": 0.0,
+      "end": 4.0,
+      "text": "Hey, this is Brian from Fullstack Egg."
+    },
+    {
+      "id": "n002",
+      "start": 4.0,
+      "end": 9.76,
+      "text": "In this video, we are installing Paperless AI on a Raspberry Pi, so you can run Paperless"
+    },
+    {
+      "id": "n003",
+      "start": 9.76,
+      "end": 20.14,
+      "text": "N GX, Semantic Search, and optional MCP access on hardware in your own house or shop."
+    },
+    {
+      "id": "n004",
+      "start": 20.14,
+      "end": 25.2,
+      "text": "A Raspberry Pi is not the fastest server in the world, but for a small document archive,"
+    },
+    {
+      "id": "n005",
+      "start": 25.2,
+      "end": 27.0,
+      "text": "it can be a really nice fit."
+    },
+    {
+      "id": "n006",
+      "start": 27.0,
+      "end": 31.68,
+      "text": "It's quiet, cheap to run, and it's local by default."
+    },
+    {
+      "id": "n007",
+      "start": 31.68,
+      "end": 35.88,
+      "text": "We'll start on the computer we're using to flash our SD card."
+    },
+    {
+      "id": "n008",
+      "start": 35.88,
+      "end": 41.92,
+      "text": "We have Raspberry Pi Imager Open, so we'll choose our model, and then we'll choose Raspberry"
+    },
+    {
+      "id": "n009",
+      "start": 41.92,
+      "end": 46.0,
+      "text": "Pi OS Lite 64-bit."
+    },
+    {
+      "id": "n010",
+      "start": 46.0,
+      "end": 50.84,
+      "text": "I'm using Lite because this Pi is going to act like a little server."
+    },
+    {
+      "id": "n011",
+      "start": 50.84,
+      "end": 55.92,
+      "text": "We don't need a desktop environment running on it all day."
+    },
+    {
+      "id": "n012",
+      "start": 55.92,
+      "end": 58.68,
+      "text": "Next we'll choose our storage device."
+    },
+    {
+      "id": "n013",
+      "start": 58.68,
+      "end": 65.0,
+      "text": "We've got an SD card here, which is fine, but for a real archive, I would strongly"
+    },
+    {
+      "id": "n014",
+      "start": 65.0,
+      "end": 73.44,
+      "text": "prefer a USB SSD drive because Paperless, Postgres, and the OCR work are going to write"
+    },
+    {
+      "id": "n015",
+      "start": 73.44,
+      "end": 76.8,
+      "text": "to the disk over time."
+    },
+    {
+      "id": "n016",
+      "start": 76.8,
+      "end": 84.16,
+      "text": "We'll set the host name to Paperless, and that'll give us a friendly address of paperless.local"
+    },
+    {
+      "id": "n017",
+      "start": 84.16,
+      "end": 87.32,
+      "text": "on many home networks."
+    },
+    {
+      "id": "n018",
+      "start": 87.32,
+      "end": 93.96,
+      "text": "We'll set our time zone, create the user account, and we'll add our Wi-Fi details if"
+    },
+    {
+      "id": "n019",
+      "start": 93.96,
+      "end": 97.56,
+      "text": "you're not using Ethernet."
+    },
+    {
+      "id": "n020",
+      "start": 97.56,
+      "end": 100.76,
+      "text": "The important setting here is SSH."
+    },
+    {
+      "id": "n021",
+      "start": 100.76,
+      "end": 106.64,
+      "text": "We want to enable SSH so we can log into the Raspberry Pi from our computer instead of"
+    },
+    {
+      "id": "n022",
+      "start": 106.64,
+      "end": 110.44,
+      "text": "plugging in a monitor and keyboard."
+    },
+    {
+      "id": "n023",
+      "start": 110.44,
+      "end": 114.44,
+      "text": "We'll add our SSH key to authenticate with the Raspberry Pi."
+    },
+    {
+      "id": "n024",
+      "start": 114.44,
+      "end": 120.96,
+      "text": "This is going to be more secure and more convenient than using password authentication."
+    },
+    {
+      "id": "n025",
+      "start": 120.96,
+      "end": 126.98,
+      "text": "I'm going to leave Raspberry Pi Connect off here because this install is meant to be managed"
+    },
+    {
+      "id": "n026",
+      "start": 126.98,
+      "end": 131.84,
+      "text": "over SSH on the local network."
+    },
+    {
+      "id": "n027",
+      "start": 131.84,
+      "end": 133.56,
+      "text": "Now we'll write the image."
+    },
+    {
+      "id": "n028",
+      "start": 133.56,
+      "end": 138.52,
+      "text": "This erases the card or drive, so make sure the selected storage is the one you actually"
+    },
+    {
+      "id": "n029",
+      "start": 138.52,
+      "end": 140.84,
+      "text": "mean to flash."
+    },
+    {
+      "id": "n030",
+      "start": 140.84,
+      "end": 145.36,
+      "text": "The Raspberry Pi imager will write and verify the image."
+    },
+    {
+      "id": "n031",
+      "start": 145.36,
+      "end": 150.8,
+      "text": "In real time, this takes a few minutes, so we'll edit this so we can skip to the completed"
+    },
+    {
+      "id": "n032",
+      "start": 150.8,
+      "end": 153.0,
+      "text": "card."
+    },
+    {
+      "id": "n033",
+      "start": 153.0,
+      "end": 158.84,
+      "text": "After this, we'll put the SSD card into the Raspberry Pi, connect Ethernet if you have"
+    },
+    {
+      "id": "n034",
+      "start": 158.84,
+      "end": 162.08,
+      "text": "it, and power it on."
+    },
+    {
+      "id": "n035",
+      "start": 162.08,
+      "end": 167.04,
+      "text": "Once the Raspberry Pi has booted, we'll open the terminal and SSH into it."
+    },
+    {
+      "id": "n036",
+      "start": 167.04,
+      "end": 173.18,
+      "text": "I'm using SSH Brian at paperless.local to connect."
+    },
+    {
+      "id": "n037",
+      "start": 173.18,
+      "end": 179.0,
+      "text": "If paperless.local doesn't resolve on your network, look into your router for the Raspberry"
+    },
+    {
+      "id": "n038",
+      "start": 179.0,
+      "end": 184.88,
+      "text": "Pi's IP address and use that to SSH instead."
+    },
+    {
+      "id": "n039",
+      "start": 184.88,
+      "end": 189.16,
+      "text": "Since this is the first time connecting to the Raspberry Pi, we'll have to accept the"
+    },
+    {
+      "id": "n040",
+      "start": 189.16,
+      "end": 195.96,
+      "text": "fingerprint, and now we're connected to the Raspberry Pi."
+    },
+    {
+      "id": "n041",
+      "start": 195.96,
+      "end": 202.12,
+      "text": "Now I'm going to copy the install command from paperless.fullstack.ag, and I'm going"
+    },
+    {
+      "id": "n042",
+      "start": 202.12,
+      "end": 207.58,
+      "text": "to paste it in and run it to start the installer."
+    },
+    {
+      "id": "n043",
+      "start": 207.58,
+      "end": 215.4,
+      "text": "The installer checks the system, verifies Docker, and then walks through the paperless AI setup."
+    },
+    {
+      "id": "n044",
+      "start": 215.4,
+      "end": 219.92,
+      "text": "If Docker has to be installed fresh, the script may ask you to log out and log back in again"
+    },
+    {
+      "id": "n045",
+      "start": 219.92,
+      "end": 222.6,
+      "text": "so you can run Docker commands."
+    },
+    {
+      "id": "n046",
+      "start": 222.6,
+      "end": 232.08,
+      "text": "This is normal, so go ahead and do that and then run the same install command from paperless.fullstack.ag."
+    },
+    {
+      "id": "n047",
+      "start": 232.08,
+      "end": 235.92,
+      "text": "And now we'll continue to the setup questions."
+    },
+    {
+      "id": "n048",
+      "start": 235.92,
+      "end": 241.92,
+      "text": "We'll set the paperless admin username and password, we'll pick our time zone, choose"
+    },
+    {
+      "id": "n049",
+      "start": 241.92,
+      "end": 249.4,
+      "text": "the install directory, and for a home network install, we can skip the public domain name."
+    },
+    {
+      "id": "n050",
+      "start": 249.4,
+      "end": 253.72,
+      "text": "And now the setup script is going to pull the Docker images down."
+    },
+    {
+      "id": "n051",
+      "start": 253.72,
+      "end": 258.16,
+      "text": "This will take a little while, so we'll fast forward that."
+    },
+    {
+      "id": "n052",
+      "start": 258.16,
+      "end": 264.32,
+      "text": "And when this finishes, the installer is going to print the local paperless URL, the search"
+    },
+    {
+      "id": "n053",
+      "start": 264.32,
+      "end": 272.04,
+      "text": "URL, the URL for the MCP instructions, and the commands you would use later for updates,"
+    },
+    {
+      "id": "n054",
+      "start": 272.04,
+      "end": 275.32,
+      "text": "backups, and logs."
+    },
+    {
+      "id": "n055",
+      "start": 275.32,
+      "end": 281.64,
+      "text": "Now we'll open paperless.local in our browser, or use the Raspberry Pi's IP address if that's"
+    },
+    {
+      "id": "n056",
+      "start": 281.64,
+      "end": 288.28,
+      "text": "what works on your network, and we'll log in with the admin account we just created."
+    },
+    {
+      "id": "n057",
+      "start": 288.28,
+      "end": 292.52,
+      "text": "I've got a whole bunch of documents here that I'm going to drop right into paperless."
+    },
+    {
+      "id": "n058",
+      "start": 292.52,
+      "end": 299.48,
+      "text": "I'm going to fast forward this, but paperless is going to take in these files, run OCR against"
+    },
+    {
+      "id": "n059",
+      "start": 299.48,
+      "end": 305.64,
+      "text": "it, and it's going to start indexing the text so the paperless AI search can find documents"
+    },
+    {
+      "id": "n060",
+      "start": 305.64,
+      "end": 310.28,
+      "text": "by meaning, not just exact keywords."
+    },
+    {
+      "id": "n061",
+      "start": 310.28,
+      "end": 316.04,
+      "text": "Now that my documents are loaded into paperless, I'm going to search for fertilizer recommendations"
+    },
+    {
+      "id": "n062",
+      "start": 316.04,
+      "end": 323.86,
+      "text": "using the paperless NGX search, and it doesn't return any results."
+    },
+    {
+      "id": "n063",
+      "start": 323.86,
+      "end": 330.12,
+      "text": "And if we use the paperless AI smart search add-on, we will actually find some results,"
+    },
+    {
+      "id": "n064",
+      "start": 330.12,
+      "end": 334.12,
+      "text": "including a nutrient management plan."
+    },
+    {
+      "id": "n065",
+      "start": 334.12,
+      "end": 336.48,
+      "text": "And that's the whole point of paperless AI."
+    },
+    {
+      "id": "n066",
+      "start": 336.48,
+      "end": 342.28,
+      "text": "You don't have to remember the exact title or wording from the PDF, and paperless NGX"
+    },
+    {
+      "id": "n067",
+      "start": 342.28,
+      "end": 347.64,
+      "text": "stays stock, and this companion layer just adds the smarter search experience beside"
+    },
+    {
+      "id": "n068",
+      "start": 347.64,
+      "end": 349.64,
+      "text": "it."
+    },
+    {
+      "id": "n069",
+      "start": 349.64,
+      "end": 355.72,
+      "text": "And now that we're on the paperless AI search page, you can see this MCP button, which will"
+    },
+    {
+      "id": "n070",
+      "start": 355.72,
+      "end": 360.0,
+      "text": "open up the setup page for AI apps."
+    },
+    {
+      "id": "n071",
+      "start": 360.0,
+      "end": 368.6,
+      "text": "This MCP page has instructions for connecting paperless AI to cloud, codecs, VS code with"
+    },
+    {
+      "id": "n072",
+      "start": 368.6,
+      "end": 377.68,
+      "text": "copilot, and even llama.cpp, which can be used for running local AI models."
+    },
+    {
+      "id": "n073",
+      "start": 377.68,
+      "end": 385.88,
+      "text": "The MCP token is for read-only search access, so AI tools can ask questions about the archive"
+    },
+    {
+      "id": "n074",
+      "start": 385.88,
+      "end": 390.52,
+      "text": "without direct database access."
+    },
+    {
+      "id": "n075",
+      "start": 390.52,
+      "end": 393.32,
+      "text": "And that's it for the Raspberry Pi install."
+    },
+    {
+      "id": "n076",
+      "start": 393.32,
+      "end": 401.44,
+      "text": "We flash the Raspberry Pi OS Lite, enable SSH, run the paperless AI installer, log into"
+    },
+    {
+      "id": "n077",
+      "start": 401.44,
+      "end": 407.48,
+      "text": "paperless on your local network, and start using the paperless AI smart search."
+    },
+    {
+      "id": "n078",
+      "start": 407.48,
+      "end": 408.6,
+      "text": "Thanks again for watching."
+    }
+  ],
+  "text": "Hey, this is Brian from Fullstack Egg.\nIn this video, we are installing Paperless AI on a Raspberry Pi, so you can run Paperless\nN GX, Semantic Search, and optional MCP access on hardware in your own house or shop.\nA Raspberry Pi is not the fastest server in the world, but for a small document archive,\nit can be a really nice fit.\nIt's quiet, cheap to run, and it's local by default.\nWe'll start on the computer we're using to flash our SD card.\nWe have Raspberry Pi Imager Open, so we'll choose our model, and then we'll choose Raspberry\nPi OS Lite 64-bit.\nI'm using Lite because this Pi is going to act like a little server.\nWe don't need a desktop environment running on it all day.\nNext we'll choose our storage device.\nWe've got an SD card here, which is fine, but for a real archive, I would strongly\nprefer a USB SSD drive because Paperless, Postgres, and the OCR work are going to write\nto the disk over time.\nWe'll set the host name to Paperless, and that'll give us a friendly address of paperless.local\non many home networks.\nWe'll set our time zone, create the user account, and we'll add our Wi-Fi details if\nyou're not using Ethernet.\nThe important setting here is SSH.\nWe want to enable SSH so we can log into the Raspberry Pi from our computer instead of\nplugging in a monitor and keyboard.\nWe'll add our SSH key to authenticate with the Raspberry Pi.\nThis is going to be more secure and more convenient than using password authentication.\nI'm going to leave Raspberry Pi Connect off here because this install is meant to be managed\nover SSH on the local network.\nNow we'll write the image.\nThis erases the card or drive, so make sure the selected storage is the one you actually\nmean to flash.\nThe Raspberry Pi imager will write and verify the image.\nIn real time, this takes a few minutes, so we'll edit this so we can skip to the completed\ncard.\nAfter this, we'll put the SSD card into the Raspberry Pi, connect Ethernet if you have\nit, and power it on.\nOnce the Raspberry Pi has booted, we'll open the terminal and SSH into it.\nI'm using SSH Brian at paperless.local to connect.\nIf paperless.local doesn't resolve on your network, look into your router for the Raspberry\nPi's IP address and use that to SSH instead.\nSince this is the first time connecting to the Raspberry Pi, we'll have to accept the\nfingerprint, and now we're connected to the Raspberry Pi.\nNow I'm going to copy the install command from paperless.fullstack.ag, and I'm going\nto paste it in and run it to start the installer.\nThe installer checks the system, verifies Docker, and then walks through the paperless AI setup.\nIf Docker has to be installed fresh, the script may ask you to log out and log back in again\nso you can run Docker commands.\nThis is normal, so go ahead and do that and then run the same install command from paperless.fullstack.ag.\nAnd now we'll continue to the setup questions.\nWe'll set the paperless admin username and password, we'll pick our time zone, choose\nthe install directory, and for a home network install, we can skip the public domain name.\nAnd now the setup script is going to pull the Docker images down.\nThis will take a little while, so we'll fast forward that.\nAnd when this finishes, the installer is going to print the local paperless URL, the search\nURL, the URL for the MCP instructions, and the commands you would use later for updates,\nbackups, and logs.\nNow we'll open paperless.local in our browser, or use the Raspberry Pi's IP address if that's\nwhat works on your network, and we'll log in with the admin account we just created.\nI've got a whole bunch of documents here that I'm going to drop right into paperless.\nI'm going to fast forward this, but paperless is going to take in these files, run OCR against\nit, and it's going to start indexing the text so the paperless AI search can find documents\nby meaning, not just exact keywords.\nNow that my documents are loaded into paperless, I'm going to search for fertilizer recommendations\nusing the paperless NGX search, and it doesn't return any results.\nAnd if we use the paperless AI smart search add-on, we will actually find some results,\nincluding a nutrient management plan.\nAnd that's the whole point of paperless AI.\nYou don't have to remember the exact title or wording from the PDF, and paperless NGX\nstays stock, and this companion layer just adds the smarter search experience beside\nit.\nAnd now that we're on the paperless AI search page, you can see this MCP button, which will\nopen up the setup page for AI apps.\nThis MCP page has instructions for connecting paperless AI to cloud, codecs, VS code with\ncopilot, and even llama.cpp, which can be used for running local AI models.\nThe MCP token is for read-only search access, so AI tools can ask questions about the archive\nwithout direct database access.\nAnd that's it for the Raspberry Pi install.\nWe flash the Raspberry Pi OS Lite, enable SSH, run the paperless AI installer, log into\npaperless on your local network, and start using the paperless AI smart search.\nThanks again for watching."
+}

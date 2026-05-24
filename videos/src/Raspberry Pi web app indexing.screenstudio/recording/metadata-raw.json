@@ -1,0 +1,76 @@
+{
+  "logFilename" : "polyrecorder.log",
+  "polyrecorderVersion" : "2.7.0",
+  "recorders" : [
+    {
+      "configuration" : {
+
+      },
+      "cursorImagesFolder" : "cursors",
+      "cursorsInfoFile" : "cursors.json",
+      "id" : "channel-0-cursor",
+      "type" : "cursor"
+    },
+    {
+      "configuration" : {
+        "captureKeyStrokes" : true
+      },
+      "id" : "channel-0-input",
+      "sessions" : [
+        {
+          "durationMs" : 466162.2705833288,
+          "keyStrokesFilename" : "keystrokes-0.json",
+          "mouseClicksFilename" : "mouseclicks-0.json",
+          "mouseMovesFilename" : "mousemoves-0.json",
+          "processTimeEndMs" : 466471.42037499,
+          "processTimeStartMs" : 309.1497916611843,
+          "unixEndMs" : 1779311036459.402,
+          "unixStartMs" : 1779310570297.1316
+        }
+      ],
+      "type" : "input"
+    },
+    {
+      "configuration" : {
+        "displayId" : 1,
+        "excludeFinderDesktopIcons" : true,
+        "excludedWindowIds" : [
+          30835,
+          30836,
+          30838,
+          30887
+        ]
+      },
+      "id" : "channel-1-display",
+      "sessions" : [
+        {
+          "bounds" : {
+            "height" : 982,
+            "width" : 1512,
+            "x" : 0,
+            "y" : 0
+          },
+          "displayRefreshRate" : 120,
+          "durationMs" : 466162.27058300003,
+          "outputFilename" : "channel-1-display-0.m3u8",
+          "processTimeEndMs" : 466471.4203746612,
+          "processTimeStartMs" : 309.1497916611843,
+          "recordingScale" : 0.5,
+          "unixEndMs" : 1779311036459.402,
+          "unixStartMs" : 1779310570297.1316
+        }
+      ],
+      "type" : "display"
+    }
+  ],
+  "sessions" : [
+    {
+      "durationMs" : 466162.2705833288,
+      "processTimeEndMs" : 466471.42037499,
+      "processTimeStartMs" : 309.1497916611843,
+      "unixEndMs" : 1779311036459.402,
+      "unixStartMs" : 1779310570297.1316
+    }
+  ],
+  "state" : "complete"
+}

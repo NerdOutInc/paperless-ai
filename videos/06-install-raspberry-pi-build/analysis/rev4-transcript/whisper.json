@@ -1,0 +1,890 @@
+{
+	"systeminfo": "WHISPER : COREML = 0 | OPENVINO = 0 | MTL : EMBED_LIBRARY = 1 | CPU : NEON = 1 | ARM_FMA = 1 | FP16_VA = 1 | MATMUL_INT8 = 1 | DOTPROD = 1 | SME = 1 | ACCELERATE = 1 | OPENMP = 1 | REPACK = 1 | ",
+	"model": {
+		"type": "base",
+		"multilingual": false,
+		"vocab": 51864,
+		"audio": {
+			"ctx": 1500,
+			"state": 512,
+			"head": 8,
+			"layer": 6
+		},
+		"text": {
+			"ctx": 448,
+			"state": 512,
+			"head": 8,
+			"layer": 6
+		},
+		"mels": 80,
+		"ftype": 1
+	},
+	"params": {
+		"model": "/Users/brian/.cache/whisper.cpp/ggml-base.en.bin",
+		"language": "en",
+		"translate": false
+	},
+	"result": {
+		"language": "en"
+	},
+	"transcription": [
+		{
+			"timestamps": {
+				"from": "00:00:00,000",
+				"to": "00:00:04,000"
+			},
+			"offsets": {
+				"from": 0,
+				"to": 4000
+			},
+			"text": " Hey, this is Brian from Fullstack Egg."
+		},
+		{
+			"timestamps": {
+				"from": "00:00:04,000",
+				"to": "00:00:09,760"
+			},
+			"offsets": {
+				"from": 4000,
+				"to": 9760
+			},
+			"text": " In this video, we are installing Paperless AI on a Raspberry Pi, so you can run Paperless"
+		},
+		{
+			"timestamps": {
+				"from": "00:00:09,760",
+				"to": "00:00:20,140"
+			},
+			"offsets": {
+				"from": 9760,
+				"to": 20140
+			},
+			"text": " N GX, Semantic Search, and optional MCP access on hardware in your own house or shop."
+		},
+		{
+			"timestamps": {
+				"from": "00:00:20,140",
+				"to": "00:00:25,200"
+			},
+			"offsets": {
+				"from": 20140,
+				"to": 25200
+			},
+			"text": " A Raspberry Pi is not the fastest server in the world, but for a small document archive,"
+		},
+		{
+			"timestamps": {
+				"from": "00:00:25,200",
+				"to": "00:00:27,000"
+			},
+			"offsets": {
+				"from": 25200,
+				"to": 27000
+			},
+			"text": " it can be a really nice fit."
+		},
+		{
+			"timestamps": {
+				"from": "00:00:27,000",
+				"to": "00:00:31,680"
+			},
+			"offsets": {
+				"from": 27000,
+				"to": 31680
+			},
+			"text": " It's quiet, cheap to run, and it's local by default."
+		},
+		{
+			"timestamps": {
+				"from": "00:00:31,680",
+				"to": "00:00:35,880"
+			},
+			"offsets": {
+				"from": 31680,
+				"to": 35880
+			},
+			"text": " We'll start on the computer we're using to flash our SD card."
+		},
+		{
+			"timestamps": {
+				"from": "00:00:35,880",
+				"to": "00:00:41,920"
+			},
+			"offsets": {
+				"from": 35880,
+				"to": 41920
+			},
+			"text": " We have Raspberry Pi Imager Open, so we'll choose our model, and then we'll choose Raspberry"
+		},
+		{
+			"timestamps": {
+				"from": "00:00:41,920",
+				"to": "00:00:46,000"
+			},
+			"offsets": {
+				"from": 41920,
+				"to": 46000
+			},
+			"text": " Pi OS Lite 64-bit."
+		},
+		{
+			"timestamps": {
+				"from": "00:00:46,000",
+				"to": "00:00:50,840"
+			},
+			"offsets": {
+				"from": 46000,
+				"to": 50840
+			},
+			"text": " I'm using Lite because this Pi is going to act like a little server."
+		},
+		{
+			"timestamps": {
+				"from": "00:00:50,840",
+				"to": "00:00:55,920"
+			},
+			"offsets": {
+				"from": 50840,
+				"to": 55920
+			},
+			"text": " We don't need a desktop environment running on it all day."
+		},
+		{
+			"timestamps": {
+				"from": "00:00:55,920",
+				"to": "00:00:58,680"
+			},
+			"offsets": {
+				"from": 55920,
+				"to": 58680
+			},
+			"text": " Next we'll choose our storage device."
+		},
+		{
+			"timestamps": {
+				"from": "00:00:58,680",
+				"to": "00:01:05,000"
+			},
+			"offsets": {
+				"from": 58680,
+				"to": 65000
+			},
+			"text": " We've got an SD card here, which is fine, but for a real archive, I would strongly"
+		},
+		{
+			"timestamps": {
+				"from": "00:01:05,000",
+				"to": "00:01:13,440"
+			},
+			"offsets": {
+				"from": 65000,
+				"to": 73440
+			},
+			"text": " prefer a USB SSD drive because Paperless, Postgres, and the OCR work are going to write"
+		},
+		{
+			"timestamps": {
+				"from": "00:01:13,440",
+				"to": "00:01:16,800"
+			},
+			"offsets": {
+				"from": 73440,
+				"to": 76800
+			},
+			"text": " to the disk over time."
+		},
+		{
+			"timestamps": {
+				"from": "00:01:16,800",
+				"to": "00:01:24,160"
+			},
+			"offsets": {
+				"from": 76800,
+				"to": 84160
+			},
+			"text": " We'll set the host name to Paperless, and that'll give us a friendly address of paperless.local"
+		},
+		{
+			"timestamps": {
+				"from": "00:01:24,160",
+				"to": "00:01:27,320"
+			},
+			"offsets": {
+				"from": 84160,
+				"to": 87320
+			},
+			"text": " on many home networks."
+		},
+		{
+			"timestamps": {
+				"from": "00:01:27,320",
+				"to": "00:01:33,960"
+			},
+			"offsets": {
+				"from": 87320,
+				"to": 93960
+			},
+			"text": " We'll set our time zone, create the user account, and we'll add our Wi-Fi details if"
+		},
+		{
+			"timestamps": {
+				"from": "00:01:33,960",
+				"to": "00:01:37,560"
+			},
+			"offsets": {
+				"from": 93960,
+				"to": 97560
+			},
+			"text": " you're not using Ethernet."
+		},
+		{
+			"timestamps": {
+				"from": "00:01:37,560",
+				"to": "00:01:40,760"
+			},
+			"offsets": {
+				"from": 97560,
+				"to": 100760
+			},
+			"text": " The important setting here is SSH."
+		},
+		{
+			"timestamps": {
+				"from": "00:01:40,760",
+				"to": "00:01:46,640"
+			},
+			"offsets": {
+				"from": 100760,
+				"to": 106640
+			},
+			"text": " We want to enable SSH so we can log into the Raspberry Pi from our computer instead of"
+		},
+		{
+			"timestamps": {
+				"from": "00:01:46,640",
+				"to": "00:01:50,440"
+			},
+			"offsets": {
+				"from": 106640,
+				"to": 110440
+			},
+			"text": " plugging in a monitor and keyboard."
+		},
+		{
+			"timestamps": {
+				"from": "00:01:50,440",
+				"to": "00:01:54,440"
+			},
+			"offsets": {
+				"from": 110440,
+				"to": 114440
+			},
+			"text": " We'll add our SSH key to authenticate with the Raspberry Pi."
+		},
+		{
+			"timestamps": {
+				"from": "00:01:54,440",
+				"to": "00:02:00,960"
+			},
+			"offsets": {
+				"from": 114440,
+				"to": 120960
+			},
+			"text": " This is going to be more secure and more convenient than using password authentication."
+		},
+		{
+			"timestamps": {
+				"from": "00:02:00,960",
+				"to": "00:02:06,980"
+			},
+			"offsets": {
+				"from": 120960,
+				"to": 126980
+			},
+			"text": " I'm going to leave Raspberry Pi Connect off here because this install is meant to be managed"
+		},
+		{
+			"timestamps": {
+				"from": "00:02:06,980",
+				"to": "00:02:11,840"
+			},
+			"offsets": {
+				"from": 126980,
+				"to": 131840
+			},
+			"text": " over SSH on the local network."
+		},
+		{
+			"timestamps": {
+				"from": "00:02:11,840",
+				"to": "00:02:13,560"
+			},
+			"offsets": {
+				"from": 131840,
+				"to": 133560
+			},
+			"text": " Now we'll write the image."
+		},
+		{
+			"timestamps": {
+				"from": "00:02:13,560",
+				"to": "00:02:18,520"
+			},
+			"offsets": {
+				"from": 133560,
+				"to": 138520
+			},
+			"text": " This erases the card or drive, so make sure the selected storage is the one you actually"
+		},
+		{
+			"timestamps": {
+				"from": "00:02:18,520",
+				"to": "00:02:20,840"
+			},
+			"offsets": {
+				"from": 138520,
+				"to": 140840
+			},
+			"text": " mean to flash."
+		},
+		{
+			"timestamps": {
+				"from": "00:02:20,840",
+				"to": "00:02:25,360"
+			},
+			"offsets": {
+				"from": 140840,
+				"to": 145360
+			},
+			"text": " The Raspberry Pi imager will write and verify the image."
+		},
+		{
+			"timestamps": {
+				"from": "00:02:25,360",
+				"to": "00:02:30,800"
+			},
+			"offsets": {
+				"from": 145360,
+				"to": 150800
+			},
+			"text": " In real time, this takes a few minutes, so we'll edit this so we can skip to the completed"
+		},
+		{
+			"timestamps": {
+				"from": "00:02:30,800",
+				"to": "00:02:33,000"
+			},
+			"offsets": {
+				"from": 150800,
+				"to": 153000
+			},
+			"text": " card."
+		},
+		{
+			"timestamps": {
+				"from": "00:02:33,000",
+				"to": "00:02:38,840"
+			},
+			"offsets": {
+				"from": 153000,
+				"to": 158840
+			},
+			"text": " After this, we'll put the SSD card into the Raspberry Pi, connect Ethernet if you have"
+		},
+		{
+			"timestamps": {
+				"from": "00:02:38,840",
+				"to": "00:02:42,080"
+			},
+			"offsets": {
+				"from": 158840,
+				"to": 162080
+			},
+			"text": " it, and power it on."
+		},
+		{
+			"timestamps": {
+				"from": "00:02:42,080",
+				"to": "00:02:47,040"
+			},
+			"offsets": {
+				"from": 162080,
+				"to": 167040
+			},
+			"text": " Once the Raspberry Pi has booted, we'll open the terminal and SSH into it."
+		},
+		{
+			"timestamps": {
+				"from": "00:02:47,040",
+				"to": "00:02:53,180"
+			},
+			"offsets": {
+				"from": 167040,
+				"to": 173180
+			},
+			"text": " I'm using SSH Brian at paperless.local to connect."
+		},
+		{
+			"timestamps": {
+				"from": "00:02:53,180",
+				"to": "00:02:59,000"
+			},
+			"offsets": {
+				"from": 173180,
+				"to": 179000
+			},
+			"text": " If paperless.local doesn't resolve on your network, look into your router for the Raspberry"
+		},
+		{
+			"timestamps": {
+				"from": "00:02:59,000",
+				"to": "00:03:04,880"
+			},
+			"offsets": {
+				"from": 179000,
+				"to": 184880
+			},
+			"text": " Pi's IP address and use that to SSH instead."
+		},
+		{
+			"timestamps": {
+				"from": "00:03:04,880",
+				"to": "00:03:09,160"
+			},
+			"offsets": {
+				"from": 184880,
+				"to": 189160
+			},
+			"text": " Since this is the first time connecting to the Raspberry Pi, we'll have to accept the"
+		},
+		{
+			"timestamps": {
+				"from": "00:03:09,160",
+				"to": "00:03:15,960"
+			},
+			"offsets": {
+				"from": 189160,
+				"to": 195960
+			},
+			"text": " fingerprint, and now we're connected to the Raspberry Pi."
+		},
+		{
+			"timestamps": {
+				"from": "00:03:15,960",
+				"to": "00:03:22,120"
+			},
+			"offsets": {
+				"from": 195960,
+				"to": 202120
+			},
+			"text": " Now I'm going to copy the install command from paperless.fullstack.ag, and I'm going"
+		},
+		{
+			"timestamps": {
+				"from": "00:03:22,120",
+				"to": "00:03:27,580"
+			},
+			"offsets": {
+				"from": 202120,
+				"to": 207580
+			},
+			"text": " to paste it in and run it to start the installer."
+		},
+		{
+			"timestamps": {
+				"from": "00:03:27,580",
+				"to": "00:03:35,400"
+			},
+			"offsets": {
+				"from": 207580,
+				"to": 215400
+			},
+			"text": " The installer checks the system, verifies Docker, and then walks through the paperless AI setup."
+		},
+		{
+			"timestamps": {
+				"from": "00:03:35,400",
+				"to": "00:03:39,920"
+			},
+			"offsets": {
+				"from": 215400,
+				"to": 219920
+			},
+			"text": " If Docker has to be installed fresh, the script may ask you to log out and log back in again"
+		},
+		{
+			"timestamps": {
+				"from": "00:03:39,920",
+				"to": "00:03:42,600"
+			},
+			"offsets": {
+				"from": 219920,
+				"to": 222600
+			},
+			"text": " so you can run Docker commands."
+		},
+		{
+			"timestamps": {
+				"from": "00:03:42,600",
+				"to": "00:03:52,080"
+			},
+			"offsets": {
+				"from": 222600,
+				"to": 232080
+			},
+			"text": " This is normal, so go ahead and do that and then run the same install command from paperless.fullstack.ag."
+		},
+		{
+			"timestamps": {
+				"from": "00:03:52,080",
+				"to": "00:03:55,920"
+			},
+			"offsets": {
+				"from": 232080,
+				"to": 235920
+			},
+			"text": " And now we'll continue to the setup questions."
+		},
+		{
+			"timestamps": {
+				"from": "00:03:55,920",
+				"to": "00:04:01,920"
+			},
+			"offsets": {
+				"from": 235920,
+				"to": 241920
+			},
+			"text": " We'll set the paperless admin username and password, we'll pick our time zone, choose"
+		},
+		{
+			"timestamps": {
+				"from": "00:04:01,920",
+				"to": "00:04:09,400"
+			},
+			"offsets": {
+				"from": 241920,
+				"to": 249400
+			},
+			"text": " the install directory, and for a home network install, we can skip the public domain name."
+		},
+		{
+			"timestamps": {
+				"from": "00:04:09,400",
+				"to": "00:04:13,720"
+			},
+			"offsets": {
+				"from": 249400,
+				"to": 253720
+			},
+			"text": " And now the setup script is going to pull the Docker images down."
+		},
+		{
+			"timestamps": {
+				"from": "00:04:13,720",
+				"to": "00:04:18,160"
+			},
+			"offsets": {
+				"from": 253720,
+				"to": 258160
+			},
+			"text": " This will take a little while, so we'll fast forward that."
+		},
+		{
+			"timestamps": {
+				"from": "00:04:18,160",
+				"to": "00:04:24,320"
+			},
+			"offsets": {
+				"from": 258160,
+				"to": 264320
+			},
+			"text": " And when this finishes, the installer is going to print the local paperless URL, the search"
+		},
+		{
+			"timestamps": {
+				"from": "00:04:24,320",
+				"to": "00:04:32,040"
+			},
+			"offsets": {
+				"from": 264320,
+				"to": 272040
+			},
+			"text": " URL, the URL for the MCP instructions, and the commands you would use later for updates,"
+		},
+		{
+			"timestamps": {
+				"from": "00:04:32,040",
+				"to": "00:04:35,320"
+			},
+			"offsets": {
+				"from": 272040,
+				"to": 275320
+			},
+			"text": " backups, and logs."
+		},
+		{
+			"timestamps": {
+				"from": "00:04:35,320",
+				"to": "00:04:41,640"
+			},
+			"offsets": {
+				"from": 275320,
+				"to": 281640
+			},
+			"text": " Now we'll open paperless.local in our browser, or use the Raspberry Pi's IP address if that's"
+		},
+		{
+			"timestamps": {
+				"from": "00:04:41,640",
+				"to": "00:04:48,280"
+			},
+			"offsets": {
+				"from": 281640,
+				"to": 288280
+			},
+			"text": " what works on your network, and we'll log in with the admin account we just created."
+		},
+		{
+			"timestamps": {
+				"from": "00:04:48,280",
+				"to": "00:04:52,520"
+			},
+			"offsets": {
+				"from": 288280,
+				"to": 292520
+			},
+			"text": " I've got a whole bunch of documents here that I'm going to drop right into paperless."
+		},
+		{
+			"timestamps": {
+				"from": "00:04:52,520",
+				"to": "00:04:59,480"
+			},
+			"offsets": {
+				"from": 292520,
+				"to": 299480
+			},
+			"text": " I'm going to fast forward this, but paperless is going to take in these files, run OCR against"
+		},
+		{
+			"timestamps": {
+				"from": "00:04:59,480",
+				"to": "00:05:05,640"
+			},
+			"offsets": {
+				"from": 299480,
+				"to": 305640
+			},
+			"text": " it, and it's going to start indexing the text so the paperless AI search can find documents"
+		},
+		{
+			"timestamps": {
+				"from": "00:05:05,640",
+				"to": "00:05:10,280"
+			},
+			"offsets": {
+				"from": 305640,
+				"to": 310280
+			},
+			"text": " by meaning, not just exact keywords."
+		},
+		{
+			"timestamps": {
+				"from": "00:05:10,280",
+				"to": "00:05:16,040"
+			},
+			"offsets": {
+				"from": 310280,
+				"to": 316040
+			},
+			"text": " Now that my documents are loaded into paperless, I'm going to search for fertilizer recommendations"
+		},
+		{
+			"timestamps": {
+				"from": "00:05:16,040",
+				"to": "00:05:23,860"
+			},
+			"offsets": {
+				"from": 316040,
+				"to": 323860
+			},
+			"text": " using the paperless NGX search, and it doesn't return any results."
+		},
+		{
+			"timestamps": {
+				"from": "00:05:23,860",
+				"to": "00:05:30,120"
+			},
+			"offsets": {
+				"from": 323860,
+				"to": 330120
+			},
+			"text": " And if we use the paperless AI smart search add-on, we will actually find some results,"
+		},
+		{
+			"timestamps": {
+				"from": "00:05:30,120",
+				"to": "00:05:34,120"
+			},
+			"offsets": {
+				"from": 330120,
+				"to": 334120
+			},
+			"text": " including a nutrient management plan."
+		},
+		{
+			"timestamps": {
+				"from": "00:05:34,120",
+				"to": "00:05:36,480"
+			},
+			"offsets": {
+				"from": 334120,
+				"to": 336480
+			},
+			"text": " And that's the whole point of paperless AI."
+		},
+		{
+			"timestamps": {
+				"from": "00:05:36,480",
+				"to": "00:05:42,280"
+			},
+			"offsets": {
+				"from": 336480,
+				"to": 342280
+			},
+			"text": " You don't have to remember the exact title or wording from the PDF, and paperless NGX"
+		},
+		{
+			"timestamps": {
+				"from": "00:05:42,280",
+				"to": "00:05:47,640"
+			},
+			"offsets": {
+				"from": 342280,
+				"to": 347640
+			},
+			"text": " stays stock, and this companion layer just adds the smarter search experience beside"
+		},
+		{
+			"timestamps": {
+				"from": "00:05:47,640",
+				"to": "00:05:49,640"
+			},
+			"offsets": {
+				"from": 347640,
+				"to": 349640
+			},
+			"text": " it."
+		},
+		{
+			"timestamps": {
+				"from": "00:05:49,640",
+				"to": "00:05:55,720"
+			},
+			"offsets": {
+				"from": 349640,
+				"to": 355720
+			},
+			"text": " And now that we're on the paperless AI search page, you can see this MCP button, which will"
+		},
+		{
+			"timestamps": {
+				"from": "00:05:55,720",
+				"to": "00:06:00,000"
+			},
+			"offsets": {
+				"from": 355720,
+				"to": 360000
+			},
+			"text": " open up the setup page for AI apps."
+		},
+		{
+			"timestamps": {
+				"from": "00:06:00,000",
+				"to": "00:06:08,600"
+			},
+			"offsets": {
+				"from": 360000,
+				"to": 368600
+			},
+			"text": " This MCP page has instructions for connecting paperless AI to cloud, codecs, VS code with"
+		},
+		{
+			"timestamps": {
+				"from": "00:06:08,600",
+				"to": "00:06:17,680"
+			},
+			"offsets": {
+				"from": 368600,
+				"to": 377680
+			},
+			"text": " copilot, and even llama.cpp, which can be used for running local AI models."
+		},
+		{
+			"timestamps": {
+				"from": "00:06:17,680",
+				"to": "00:06:25,880"
+			},
+			"offsets": {
+				"from": 377680,
+				"to": 385880
+			},
+			"text": " The MCP token is for read-only search access, so AI tools can ask questions about the archive"
+		},
+		{
+			"timestamps": {
+				"from": "00:06:25,880",
+				"to": "00:06:30,520"
+			},
+			"offsets": {
+				"from": 385880,
+				"to": 390520
+			},
+			"text": " without direct database access."
+		},
+		{
+			"timestamps": {
+				"from": "00:06:30,520",
+				"to": "00:06:33,320"
+			},
+			"offsets": {
+				"from": 390520,
+				"to": 393320
+			},
+			"text": " And that's it for the Raspberry Pi install."
+		},
+		{
+			"timestamps": {
+				"from": "00:06:33,320",
+				"to": "00:06:41,440"
+			},
+			"offsets": {
+				"from": 393320,
+				"to": 401440
+			},
+			"text": " We flash the Raspberry Pi OS Lite, enable SSH, run the paperless AI installer, log into"
+		},
+		{
+			"timestamps": {
+				"from": "00:06:41,440",
+				"to": "00:06:47,480"
+			},
+			"offsets": {
+				"from": 401440,
+				"to": 407480
+			},
+			"text": " paperless on your local network, and start using the paperless AI smart search."
+		},
+		{
+			"timestamps": {
+				"from": "00:06:47,480",
+				"to": "00:06:48,600"
+			},
+			"offsets": {
+				"from": 407480,
+				"to": 408600
+			},
+			"text": " Thanks again for watching."
+		}
+	]
+}
