@@ -1,0 +1,28 @@
+{
+  "schema": "nerdout.media_summary.v1",
+  "source_video": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/renders/06-install-raspberry-pi-rev5-preview.mp4",
+  "source_audio": "/Users/brian/github/nerdoutinc/paperless-ai/videos/src/06-install-raspberry-pi.m4a",
+  "video": {
+    "path": "/Users/brian/github/nerdoutinc/paperless-ai/videos/06-install-raspberry-pi-build/renders/06-install-raspberry-pi-rev5-preview.mp4",
+    "duration": 408.669002,
+    "width": 1280,
+    "height": 768,
+    "fps": 60.0,
+    "codec": "h264",
+    "pixel_format": "yuv420p",
+    "bit_rate": 254584.0,
+    "has_embedded_audio": true,
+    "embedded_audio_codecs": [
+      "aac"
+    ]
+  },
+  "audio": {
+    "path": "/Users/brian/github/nerdoutinc/paperless-ai/videos/src/06-install-raspberry-pi.m4a",
+    "duration": 408.717642,
+    "codec": "aac",
+    "channels": 2,
+    "sample_rate": 44100.0,
+    "bit_rate": 262887.0
+  },
+  "duration_delta": 0.04864000000003443
+}

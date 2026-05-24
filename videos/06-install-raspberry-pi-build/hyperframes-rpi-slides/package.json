@@ -1,0 +1,11 @@
+{
+  "name": "hyperframes-rpi-slides",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "npx --yes hyperframes@0.6.6 preview",
+    "check": "npx --yes hyperframes@0.6.6 lint && npx --yes hyperframes@0.6.6 inspect --samples 12",
+    "render": "npx --yes hyperframes@0.6.6 render"
+  },
+  "version": "1.0.0"
+}

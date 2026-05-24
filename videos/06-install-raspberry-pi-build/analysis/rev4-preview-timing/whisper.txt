@@ -1,0 +1,78 @@
+ Hey, this is Brian from Fullstack Egg.
+ In this video, we are installing Paperless AI on a Raspberry Pi, so you can run Paperless
+ N GX, Semantic Search, and optional MCP access on hardware in your own house or shop.
+ A Raspberry Pi is not the fastest server in the world, but for a small document archive,
+ it can be a really nice fit.
+ It's quiet, cheap to run, and it's local by default.
+ We'll start on the computer we're using to flash our SD card.
+ We have Raspberry Pi Imager Open, so we'll choose our model, and then we'll choose Raspberry
+ Pi OS Lite 64-bit.
+ I'm using Lite because this Pi is going to act like a little server.
+ We don't need a desktop environment running on it all day.
+ Next we'll choose our storage device.
+ We've got an SD card here, which is fine, but for a real archive, I would strongly
+ prefer a USB SSD drive because Paperless, Postgres, and the OCR work are going to write
+ to the disk over time.
+ We'll set the host name to Paperless, and that'll give us a friendly address of paperless.local
+ on many home networks.
+ We'll set our time zone, create the user account, and we'll add our Wi-Fi details if
+ you're not using Ethernet.
+ The important setting here is SSH.
+ We want to enable SSH so we can log into the Raspberry Pi from our computer instead of
+ plugging in a monitor and keyboard.
+ We'll add our SSH key to authenticate with the Raspberry Pi.
+ This is going to be more secure and more convenient than using password authentication.
+ I'm going to leave Raspberry Pi Connect off here because this install is meant to be managed
+ over SSH on the local network.
+ Now we'll write the image.
+ This erases the card or drive, so make sure the selected storage is the one you actually
+ mean to flash.
+ The Raspberry Pi imager will write and verify the image.
+ In real time, this takes a few minutes, so we'll edit this so we can skip to the completed
+ card.
+ After this, we'll put the SSD card into the Raspberry Pi, connect Ethernet if you have
+ it, and power it on.
+ Once the Raspberry Pi has booted, we'll open the terminal and SSH into it.
+ I'm using SSH Brian at paperless.local to connect.
+ If paperless.local doesn't resolve on your network, look into your router for the Raspberry
+ Pi's IP address and use that to SSH instead.
+ Since this is the first time connecting to the Raspberry Pi, we'll have to accept the
+ fingerprint, and now we're connected to the Raspberry Pi.
+ Now I'm going to copy the install command from paperless.fullstack.ag, and I'm going
+ to paste it in and run it to start the installer.
+ The installer checks the system, verifies Docker, and then walks through the paperless AI setup.
+ If Docker has to be installed fresh, the script may ask you to log out and log back in again
+ so you can run Docker commands.
+ This is normal, so go ahead and do that and then run the same install command from paperless.fullstack.ag.
+ And now we'll continue to the setup questions.
+ We'll set the paperless admin username and password, we'll pick our time zone, choose
+ the install directory, and for a home network install, we can skip the public domain name.
+ And now the setup script is going to pull the Docker images down.
+ This will take a little while, so we'll fast forward that.
+ And when this finishes, the installer is going to print the local paperless URL, the search
+ URL, the URL for the MCP instructions, and the commands you would use later for updates,
+ backups, and logs.
+ Now we'll open paperless.local in our browser, or use the Raspberry Pi's IP address if that's
+ what works on your network, and we'll log in with the admin account we just created.
+ I've got a whole bunch of documents here that I'm going to drop right into paperless.
+ I'm going to fast forward this, but paperless is going to take in these files, run OCR against
+ it, and it's going to start indexing the text so the paperless AI search can find documents
+ by meaning, not just exact keywords.
+ Now that my documents are loaded into paperless, I'm going to search for fertilizer recommendations
+ using the paperless NGX search, and it doesn't return any results.
+ And if we use the paperless AI smart search add-on, we will actually find some results,
+ including a nutrient management plan.
+ And that's the whole point of paperless AI.
+ You don't have to remember the exact title or wording from the PDF, and paperless NGX
+ stays stock, and this companion layer just adds the smarter search experience beside
+ it.
+ And now that we're on the paperless AI search page, you can see this MCP button, which will
+ open up the setup page for AI apps.
+ This MCP page has instructions for connecting paperless AI to cloud, codecs, VS code with
+ copilot, and even llama.cpp, which can be used for running local AI models.
+ The MCP token is for read-only search access, so AI tools can ask questions about the archive
+ without direct database access.
+ And that's it for the Raspberry Pi install.
+ We flash the Raspberry Pi OS Lite, enable SSH, run the paperless AI installer, log into
+ paperless on your local network, and start using the paperless AI smart search.
+ Thanks again for watching.

@@ -1,0 +1,1347 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=3600, height=2160" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      @font-face {
+        font-family: "Manrope";
+        src: url("assets/fonts/manrope-latin-variable.woff2") format("woff2");
+        font-style: normal;
+        font-weight: 200 800;
+      }
+
+      @font-face {
+        font-family: "Inter";
+        src: url("assets/fonts/inter-latin-variable.woff2") format("woff2");
+        font-style: normal;
+        font-weight: 100 900;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        width: 3600px;
+        height: 2160px;
+        overflow: hidden;
+        background: #17120f;
+      }
+
+      body {
+        color: #f5f1eb;
+        font-family: "Inter", system-ui, sans-serif;
+      }
+
+      #root {
+        position: relative;
+        width: 3600px;
+        height: 2160px;
+        overflow: hidden;
+        background: #17120f;
+      }
+
+      .scene {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        overflow: hidden;
+        visibility: hidden;
+      }
+
+      .scene.is-visible {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .static-card {
+        display: block;
+        width: 3600px;
+        height: 2160px;
+        object-fit: cover;
+      }
+
+      .dark-field {
+        background:
+          radial-gradient(
+            circle at 74% 30%,
+            rgba(95, 115, 88, 0.32),
+            rgba(95, 115, 88, 0) 31%
+          ),
+          radial-gradient(
+            circle at 16% 23%,
+            rgba(212, 98, 43, 0.18),
+            rgba(212, 98, 43, 0) 34%
+          ),
+          linear-gradient(135deg, #17120f 0%, #241a15 56%, #3f2f27 100%);
+      }
+
+      .warm-field {
+        background:
+          radial-gradient(
+            circle at 82% 18%,
+            rgba(212, 98, 43, 0.16),
+            rgba(212, 98, 43, 0) 32%
+          ),
+          radial-gradient(
+            circle at 14% 82%,
+            rgba(95, 115, 88, 0.22),
+            rgba(95, 115, 88, 0) 30%
+          ),
+          linear-gradient(180deg, #f5f1eb 0%, #eee5da 100%);
+        color: #17120f;
+      }
+
+      .field-lines,
+      .field-lines-soft {
+        position: absolute;
+        inset: -160px;
+        z-index: 0;
+        opacity: 0.36;
+        background-image: url("data:image/svg+xml,%3Csvg width='260' height='260' viewBox='0 0 260 260' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 130 Q65 82 130 130 T260 130' fill='none' stroke='%237a8b6a' stroke-width='2' opacity='0.32'/%3E%3Cpath d='M0 82 Q65 130 130 82 T260 82' fill='none' stroke='%235f7358' stroke-width='2' opacity='0.22'/%3E%3Cpath d='M0 178 Q65 130 130 178 T260 178' fill='none' stroke='%237a8b6a' stroke-width='2' opacity='0.2'/%3E%3C/svg%3E");
+        background-size: 470px 470px;
+      }
+
+      .field-lines-soft {
+        opacity: 0.2;
+      }
+
+      .grain {
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+        pointer-events: none;
+        opacity: 0.16;
+        background-image: url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E");
+        mix-blend-mode: soft-light;
+      }
+
+      .scene-content {
+        position: relative;
+        z-index: 5;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        padding: 230px 280px;
+        gap: 74px;
+      }
+
+      .brand {
+        position: absolute;
+        top: 92px;
+        left: 128px;
+        z-index: 20;
+        display: flex;
+        align-items: center;
+        gap: 26px;
+        color: #f5f1eb;
+        font-family: "Manrope", system-ui, sans-serif;
+        font-size: 44px;
+        font-weight: 800;
+        text-transform: uppercase;
+      }
+
+      .warm-field .brand {
+        color: #17120f;
+      }
+
+      .brand-mark {
+        display: grid;
+        width: 84px;
+        height: 84px;
+        align-items: center;
+        justify-items: center;
+        border-radius: 50%;
+        background: #d4622b;
+        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.26);
+      }
+
+      .brand-mark i {
+        grid-area: 1 / 1;
+        display: block;
+        width: 48px;
+        height: 16px;
+        border: 3px solid #f5f1eb;
+        border-radius: 50%;
+        transform: rotate(-18deg);
+      }
+
+      .brand-mark i:nth-child(2) {
+        width: 42px;
+        transform: rotate(0deg) translateY(2px);
+      }
+
+      .brand-mark i:nth-child(3) {
+        width: 48px;
+        transform: rotate(18deg) translateY(4px);
+      }
+
+      .brand span span {
+        font-size: 1.2em;
+        font-weight: 800;
+      }
+
+      .episode-mark {
+        position: absolute;
+        top: 112px;
+        right: 146px;
+        z-index: 20;
+        color: rgba(245, 241, 235, 0.5);
+        font-family: "JetBrains Mono", ui-monospace, monospace;
+        font-size: 28px;
+        font-weight: 700;
+      }
+
+      .warm-field .episode-mark {
+        color: rgba(23, 18, 15, 0.46);
+      }
+
+      .badge {
+        display: inline-flex;
+        width: fit-content;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid rgba(212, 98, 43, 0.42);
+        border-radius: 999px;
+        background: rgba(212, 98, 43, 0.15);
+        color: #ec8b58;
+        font-size: 30px;
+        font-weight: 800;
+        line-height: 1;
+        padding: 18px 30px;
+        text-transform: uppercase;
+      }
+
+      .warm-field .badge {
+        color: #9c3c18;
+      }
+
+      .headline {
+        max-width: 1620px;
+        color: #fffaf4;
+        font-family: "Manrope", system-ui, sans-serif;
+        font-size: 138px;
+        font-weight: 800;
+        line-height: 1.02;
+        letter-spacing: 0;
+      }
+
+      .warm-field .headline {
+        color: #17120f;
+      }
+
+      .orange {
+        color: #d4622b;
+      }
+
+      .support {
+        max-width: 1320px;
+        color: rgba(245, 241, 235, 0.78);
+        font-size: 48px;
+        font-weight: 420;
+        line-height: 1.34;
+      }
+
+      .warm-field .support {
+        color: rgba(23, 18, 15, 0.68);
+      }
+
+      .orange-rule {
+        width: 360px;
+        height: 10px;
+        border-radius: 99px;
+        background: #d4622b;
+        box-shadow: 0 14px 40px rgba(212, 98, 43, 0.34);
+      }
+
+      .split-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 0.94fr) minmax(0, 1.06fr);
+        align-items: center;
+        gap: 128px;
+      }
+
+      .text-stack {
+        display: flex;
+        flex-direction: column;
+        gap: 48px;
+      }
+
+      .stack-visual {
+        position: relative;
+        display: grid;
+        gap: 32px;
+        min-height: 920px;
+        align-content: center;
+      }
+
+      .system-card {
+        position: relative;
+        display: grid;
+        grid-template-columns: 110px minmax(0, 1fr) auto;
+        align-items: center;
+        min-height: 184px;
+        gap: 32px;
+        border: 1px solid rgba(245, 241, 235, 0.13);
+        border-radius: 28px;
+        background: rgba(255, 255, 255, 0.075);
+        box-shadow: 0 44px 100px rgba(0, 0, 0, 0.22);
+        padding: 36px 44px;
+      }
+
+      .system-card.highlight {
+        border-color: rgba(212, 98, 43, 0.48);
+        background: rgba(212, 98, 43, 0.14);
+      }
+
+      .system-icon {
+        display: grid;
+        width: 110px;
+        height: 110px;
+        align-items: center;
+        justify-items: center;
+        border-radius: 28px;
+        background: rgba(95, 115, 88, 0.26);
+      }
+
+      .highlight .system-icon {
+        background: rgba(212, 98, 43, 0.22);
+      }
+
+      .system-icon span {
+        width: 52px;
+        height: 52px;
+        border: 8px solid #f5f1eb;
+        border-radius: 18px;
+      }
+
+      .system-copy strong {
+        display: block;
+        color: #fffaf4;
+        font-family: "Manrope", system-ui, sans-serif;
+        font-size: 48px;
+        font-weight: 800;
+        line-height: 1.1;
+      }
+
+      .system-copy span {
+        display: block;
+        margin-top: 10px;
+        color: rgba(245, 241, 235, 0.64);
+        font-size: 31px;
+        line-height: 1.26;
+      }
+
+      .status-pill {
+        border-radius: 999px;
+        background: rgba(95, 115, 88, 0.28);
+        color: #d9dfce;
+        font-family: "JetBrains Mono", ui-monospace, monospace;
+        font-size: 26px;
+        font-weight: 800;
+        padding: 18px 22px;
+      }
+
+      .highlight .status-pill {
+        background: rgba(212, 98, 43, 0.22);
+        color: #f0b58d;
+      }
+
+      .connection-line {
+        width: 6px;
+        height: 72px;
+        margin-left: 96px;
+        border-radius: 99px;
+        background: linear-gradient(180deg, #d4622b, rgba(95, 115, 88, 0.6));
+      }
+
+      .pi-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+        align-items: center;
+        gap: 120px;
+      }
+
+      .pi-board {
+        position: relative;
+        min-height: 980px;
+      }
+
+      .board-body {
+        position: absolute;
+        right: 50px;
+        top: 108px;
+        width: 1220px;
+        height: 740px;
+        border: 3px solid rgba(245, 241, 235, 0.14);
+        border-radius: 58px;
+        background:
+          radial-gradient(
+            circle at 28% 26%,
+            rgba(245, 241, 235, 0.12),
+            rgba(245, 241, 235, 0) 23%
+          ),
+          #5f7358;
+        box-shadow: 0 70px 150px rgba(0, 0, 0, 0.32);
+      }
+
+      .cpu {
+        position: absolute;
+        left: 446px;
+        top: 252px;
+        display: grid;
+        width: 300px;
+        height: 300px;
+        place-items: center;
+        border: 2px solid rgba(245, 241, 235, 0.22);
+        border-radius: 34px;
+        background: #17120f;
+        color: #f5f1eb;
+        font-family: "JetBrains Mono", ui-monospace, monospace;
+        font-size: 38px;
+        font-weight: 800;
+      }
+
+      .port {
+        position: absolute;
+        border-radius: 18px;
+        background: #3f2f27;
+        box-shadow: inset 0 0 0 2px rgba(245, 241, 235, 0.12);
+      }
+
+      .port.usb-a {
+        right: 70px;
+        top: 140px;
+        width: 190px;
+        height: 120px;
+      }
+
+      .port.usb-b {
+        right: 70px;
+        top: 302px;
+        width: 190px;
+        height: 120px;
+      }
+
+      .port.eth {
+        right: 70px;
+        bottom: 116px;
+        width: 224px;
+        height: 146px;
+      }
+
+      .pin-row {
+        position: absolute;
+        left: 92px;
+        top: 104px;
+        display: grid;
+        grid-template-columns: repeat(10, 24px);
+        gap: 16px;
+      }
+
+      .pin-row span {
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        background: rgba(245, 241, 235, 0.76);
+      }
+
+      .feature-grid {
+        position: absolute;
+        right: 0;
+        bottom: 20px;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        width: 1320px;
+        gap: 26px;
+      }
+
+      .feature-card {
+        min-height: 158px;
+        border: 1px solid rgba(245, 241, 235, 0.13);
+        border-radius: 28px;
+        background: rgba(23, 18, 15, 0.74);
+        color: #f5f1eb;
+        padding: 30px 34px;
+        box-shadow: 0 38px 82px rgba(0, 0, 0, 0.18);
+      }
+
+      .feature-card strong {
+        display: block;
+        font-family: "Manrope", system-ui, sans-serif;
+        font-size: 35px;
+        font-weight: 800;
+      }
+
+      .feature-card span {
+        display: block;
+        margin-top: 8px;
+        color: rgba(245, 241, 235, 0.66);
+        font-size: 25px;
+        line-height: 1.24;
+      }
+
+      .sd-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+        align-items: center;
+        gap: 112px;
+      }
+
+      .device-stage {
+        position: relative;
+        min-height: 940px;
+      }
+
+      .sd-card {
+        position: absolute;
+        left: 90px;
+        top: 138px;
+        width: 440px;
+        height: 560px;
+        border-radius: 32px 32px 78px 78px;
+        background: #17120f;
+        box-shadow: 0 50px 110px rgba(0, 0, 0, 0.22);
+        transform: rotate(-8deg);
+      }
+
+      .sd-card::before {
+        position: absolute;
+        top: 38px;
+        left: 52px;
+        width: 336px;
+        height: 152px;
+        border-radius: 22px;
+        background: #d4622b;
+        content: "";
+      }
+
+      .sd-card::after {
+        position: absolute;
+        right: 54px;
+        bottom: 60px;
+        color: rgba(245, 241, 235, 0.72);
+        content: "OS Lite";
+        font-family: "JetBrains Mono", ui-monospace, monospace;
+        font-size: 44px;
+        font-weight: 800;
+      }
+
+      .pi-case {
+        position: absolute;
+        right: 40px;
+        top: 250px;
+        width: 1120px;
+        height: 580px;
+        border: 3px solid rgba(23, 18, 15, 0.14);
+        border-radius: 76px;
+        background: #5f7358;
+        box-shadow: 0 70px 150px rgba(63, 47, 39, 0.22);
+      }
+
+      .slot {
+        position: absolute;
+        left: 132px;
+        bottom: 118px;
+        width: 476px;
+        height: 48px;
+        border-radius: 999px;
+        background: #17120f;
+      }
+
+      .power-light {
+        position: absolute;
+        right: 126px;
+        top: 126px;
+        display: grid;
+        width: 88px;
+        height: 88px;
+        place-items: center;
+        border-radius: 50%;
+        background: rgba(212, 98, 43, 0.2);
+      }
+
+      .power-light span {
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        background: #d4622b;
+        box-shadow: 0 0 42px rgba(212, 98, 43, 0.7);
+      }
+
+      .arrow-path {
+        position: absolute;
+        left: 482px;
+        top: 360px;
+        width: 340px;
+        height: 16px;
+        border-radius: 99px;
+        background: #d4622b;
+        box-shadow: 0 16px 38px rgba(212, 98, 43, 0.26);
+      }
+
+      .arrow-path::after {
+        position: absolute;
+        right: -22px;
+        top: -24px;
+        width: 0;
+        height: 0;
+        border-top: 32px solid transparent;
+        border-bottom: 32px solid transparent;
+        border-left: 54px solid #d4622b;
+        content: "";
+      }
+
+      .step-list {
+        display: grid;
+        gap: 26px;
+      }
+
+      .step-card {
+        display: grid;
+        grid-template-columns: 86px minmax(0, 1fr);
+        align-items: center;
+        gap: 30px;
+        border: 1px solid rgba(23, 18, 15, 0.12);
+        border-radius: 28px;
+        background: rgba(255, 255, 255, 0.44);
+        padding: 32px 38px;
+        box-shadow: 0 30px 70px rgba(63, 47, 39, 0.1);
+      }
+
+      .step-number {
+        display: grid;
+        width: 86px;
+        height: 86px;
+        place-items: center;
+        border-radius: 50%;
+        background: #d4622b;
+        color: #f5f1eb;
+        font-family: "Manrope", system-ui, sans-serif;
+        font-size: 42px;
+        font-weight: 800;
+      }
+
+      .step-copy strong {
+        display: block;
+        color: #17120f;
+        font-family: "Manrope", system-ui, sans-serif;
+        font-size: 42px;
+        font-weight: 800;
+      }
+
+      .step-copy span {
+        display: block;
+        margin-top: 8px;
+        color: rgba(23, 18, 15, 0.64);
+        font-size: 29px;
+        line-height: 1.25;
+      }
+
+      .terminal-label {
+        display: inline-flex;
+        width: fit-content;
+        border-radius: 999px;
+        background: rgba(23, 18, 15, 0.08);
+        color: #3f2f27;
+        font-family: "JetBrains Mono", ui-monospace, monospace;
+        font-size: 30px;
+        font-weight: 800;
+        margin-top: 18px;
+        padding: 18px 26px;
+      }
+
+      .recap-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+        align-items: center;
+        gap: 120px;
+      }
+
+      .recap-panel {
+        border: 1px solid rgba(245, 241, 235, 0.13);
+        border-radius: 42px;
+        background: rgba(23, 18, 15, 0.7);
+        box-shadow: 0 70px 150px rgba(0, 0, 0, 0.26);
+        padding: 58px;
+      }
+
+      .recap-checklist {
+        display: grid;
+        gap: 24px;
+      }
+
+      .recap-item {
+        display: grid;
+        grid-template-columns: 76px minmax(0, 1fr);
+        align-items: center;
+        gap: 28px;
+        border: 1px solid rgba(245, 241, 235, 0.12);
+        border-radius: 24px;
+        background: rgba(245, 241, 235, 0.08);
+        padding: 28px 32px;
+      }
+
+      .recap-check {
+        display: grid;
+        width: 76px;
+        height: 76px;
+        place-items: center;
+        border-radius: 50%;
+        background: #d4622b;
+        color: #f5f1eb;
+        font-family: "Manrope", system-ui, sans-serif;
+        font-size: 42px;
+        font-weight: 800;
+      }
+
+      .recap-copy strong {
+        display: block;
+        color: #fffaf4;
+        font-family: "Manrope", system-ui, sans-serif;
+        font-size: 38px;
+        font-weight: 800;
+      }
+
+      .recap-copy span {
+        display: block;
+        margin-top: 8px;
+        color: rgba(245, 241, 235, 0.64);
+        font-size: 27px;
+        line-height: 1.24;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="rpi-install-slides"
+      data-start="0"
+      data-duration="58"
+      data-width="3600"
+      data-height="2160"
+    >
+      <section
+        id="scene-title"
+        class="scene clip is-visible"
+        data-start="0"
+        data-duration="4.2"
+        data-track-index="1"
+      >
+        <img
+          class="static-card title-image"
+          src="assets/original-intro-install-raspberry-pi.png"
+          alt=""
+        />
+      </section>
+
+      <section
+        id="scene-stack"
+        class="scene clip dark-field"
+        data-start="3.05"
+        data-duration="17"
+        data-track-index="2"
+      >
+        <div class="field-lines" data-layout-ignore aria-hidden="true"></div>
+        <div class="grain"></div>
+        <div class="brand stack-brand">
+          <span class="brand-mark" aria-hidden="true"
+            ><i></i><i></i><i></i
+          ></span>
+          <span>Fullstack <span>Ag</span></span>
+        </div>
+        <div class="episode-mark stack-mark">Video 06</div>
+        <div class="scene-content split-layout">
+          <div class="text-stack">
+            <div class="badge stack-badge">local document stack</div>
+            <div class="headline stack-headline">
+              Paperless-ngx files it.
+              <span class="orange">Paperless AI finds it.</span>
+            </div>
+            <div class="support stack-support">
+              Keep Paperless-ngx stock for OCR, tags, and storage. Add the
+              companion layer beside it for semantic search and MCP access.
+            </div>
+            <div class="orange-rule stack-rule"></div>
+          </div>
+          <div class="stack-visual">
+            <div class="system-card stack-card">
+              <div class="system-icon" aria-hidden="true"><span></span></div>
+              <div class="system-copy">
+                <strong>Paperless-ngx</strong>
+                <span>Document inbox, OCR, metadata, and archive</span>
+              </div>
+              <div class="status-pill">stock</div>
+            </div>
+            <div class="connection-line stack-line"></div>
+            <div class="system-card stack-card highlight">
+              <div class="system-icon" aria-hidden="true"><span></span></div>
+              <div class="system-copy">
+                <strong>Paperless AI</strong>
+                <span>Embeddings, smarter search, and read-only MCP tools</span>
+              </div>
+              <div class="status-pill">companion</div>
+            </div>
+            <div class="connection-line stack-line"></div>
+            <div class="system-card stack-card">
+              <div class="system-icon" aria-hidden="true"><span></span></div>
+              <div class="system-copy">
+                <strong>Your archive</strong>
+                <span>Farm records stay on hardware you control</span>
+              </div>
+              <div class="status-pill">local</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="scene-pi"
+        class="scene clip dark-field"
+        data-start="20"
+        data-duration="11"
+        data-track-index="3"
+      >
+        <div
+          class="field-lines field-lines-soft"
+          data-layout-ignore
+          aria-hidden="true"
+        ></div>
+        <div class="grain"></div>
+        <div class="brand pi-brand">
+          <span class="brand-mark" aria-hidden="true"
+            ><i></i><i></i><i></i
+          ></span>
+          <span>Fullstack <span>Ag</span></span>
+        </div>
+        <div class="episode-mark pi-mark">Pi install</div>
+        <div class="scene-content pi-layout">
+          <div class="text-stack">
+            <div class="badge pi-badge">why a Raspberry Pi</div>
+            <div class="headline pi-headline">
+              A quiet little server for a modest local archive.
+            </div>
+            <div class="support pi-support">
+              Use Raspberry Pi OS Lite, keep it on the network, and prefer a USB
+              SSD when the archive becomes real work.
+            </div>
+            <div class="orange-rule pi-rule"></div>
+          </div>
+          <div class="pi-board">
+            <div class="board-body pi-board-body">
+              <div class="pin-row pi-pins" aria-hidden="true">
+                <span></span><span></span><span></span><span></span><span></span
+                ><span></span><span></span><span></span><span></span
+                ><span></span>
+              </div>
+              <div class="cpu pi-cpu">Pi 4/5</div>
+              <div class="port usb-a pi-port"></div>
+              <div class="port usb-b pi-port"></div>
+              <div class="port eth pi-port"></div>
+            </div>
+            <div class="feature-grid">
+              <div class="feature-card pi-feature">
+                <strong>Local by default</strong>
+                <span
+                  >No public server required for the home-network setup.</span
+                >
+              </div>
+              <div class="feature-card pi-feature">
+                <strong>Low power</strong>
+                <span
+                  >Practical for a small farm or ranch document archive.</span
+                >
+              </div>
+              <div class="feature-card pi-feature">
+                <strong>SSH managed</strong>
+                <span
+                  >Headless install, no monitor or desktop environment.</span
+                >
+              </div>
+              <div class="feature-card pi-feature">
+                <strong>SSD preferred</strong>
+                <span
+                  >Better long-term fit for Postgres, OCR, and uploads.</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="scene-sd"
+        class="scene clip warm-field"
+        data-start="31"
+        data-duration="10"
+        data-track-index="4"
+      >
+        <div
+          class="field-lines field-lines-soft"
+          data-layout-ignore
+          aria-hidden="true"
+        ></div>
+        <div class="grain"></div>
+        <div class="brand sd-brand">
+          <span class="brand-mark" aria-hidden="true"
+            ><i></i><i></i><i></i
+          ></span>
+          <span>Fullstack <span>Ag</span></span>
+        </div>
+        <div class="episode-mark sd-mark">After flashing</div>
+        <div class="scene-content sd-layout">
+          <div class="device-stage">
+            <div class="sd-card sd-device"></div>
+            <div class="arrow-path sd-arrow"></div>
+            <div class="pi-case sd-device">
+              <div class="slot"></div>
+              <div class="power-light"><span></span></div>
+            </div>
+          </div>
+          <div class="text-stack">
+            <div class="badge sd-badge">next physical step</div>
+            <div class="headline sd-headline">
+              Move the flashed storage to the Raspberry Pi.
+            </div>
+            <div class="support sd-support">
+              Then give it network and power so it can boot before we connect
+              from Terminal.
+            </div>
+            <div class="step-list">
+              <div class="step-card sd-step">
+                <div class="step-number">1</div>
+                <div class="step-copy">
+                  <strong>Insert the card or SSD</strong>
+                  <span
+                    >Use the device you just wrote with Raspberry Pi
+                    Imager.</span
+                  >
+                </div>
+              </div>
+              <div class="step-card sd-step">
+                <div class="step-number">2</div>
+                <div class="step-copy">
+                  <strong>Connect network and power</strong>
+                  <span
+                    >Ethernet is easiest; Wi-Fi works if you configured
+                    it.</span
+                  >
+                </div>
+              </div>
+              <div class="step-card sd-step">
+                <div class="step-number">3</div>
+                <div class="step-copy">
+                  <strong>Wait for boot, then SSH</strong>
+                  <span class="terminal-label">ssh brian@paperless.local</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="scene-recap"
+        class="scene clip dark-field"
+        data-start="41"
+        data-duration="17"
+        data-track-index="5"
+      >
+        <div
+          class="field-lines field-lines-soft"
+          data-layout-ignore
+          aria-hidden="true"
+        ></div>
+        <div class="grain"></div>
+        <div class="brand recap-brand">
+          <span class="brand-mark" aria-hidden="true"
+            ><i></i><i></i><i></i
+          ></span>
+          <span>Fullstack <span>Ag</span></span>
+        </div>
+        <div class="episode-mark recap-mark">Install recap</div>
+        <div class="scene-content recap-layout">
+          <div class="text-stack">
+            <div class="badge recap-badge">what we just built</div>
+            <div class="headline recap-headline">
+              Paperless AI running locally on a Raspberry Pi.
+            </div>
+            <div class="support recap-support">
+              Keep the Pi on a stable address, back it up, and start with a few
+              test documents before trusting the archive.
+            </div>
+            <div class="orange-rule recap-rule"></div>
+          </div>
+          <div class="recap-panel">
+            <div class="recap-checklist">
+              <div class="recap-item">
+                <div class="recap-check">1</div>
+                <div class="recap-copy">
+                  <strong>Flash Raspberry Pi OS Lite</strong>
+                  <span>Server-style setup without a desktop session.</span>
+                </div>
+              </div>
+              <div class="recap-item">
+                <div class="recap-check">2</div>
+                <div class="recap-copy">
+                  <strong>Enable SSH</strong>
+                  <span>Manage the Pi from your computer on the network.</span>
+                </div>
+              </div>
+              <div class="recap-item">
+                <div class="recap-check">3</div>
+                <div class="recap-copy">
+                  <strong>Run the installer</strong>
+                  <span>Let Docker, Paperless, search, and MCP come up.</span>
+                </div>
+              </div>
+              <div class="recap-item">
+                <div class="recap-check">4</div>
+                <div class="recap-copy">
+                  <strong>Log in locally</strong>
+                  <span>Open Paperless on the Pi address.</span>
+                </div>
+              </div>
+              <div class="recap-item">
+                <div class="recap-check">5</div>
+                <div class="recap-copy">
+                  <strong>Use smart search</strong>
+                  <span
+                    >Find useful documents by meaning, not exact wording.</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+
+      const tl = gsap.timeline({ paused: true });
+      const duration = 58;
+      const driftCycle = 12;
+
+      function fadeSceneIn(scene, at, transitionDuration) {
+        tl.set(scene, { visibility: "visible", opacity: 0 }, at);
+        tl.to(
+          scene,
+          { opacity: 1, duration: transitionDuration, ease: "sine.inOut" },
+          at,
+        );
+      }
+
+      function hideScene(scene, at) {
+        tl.set(scene, { opacity: 0, visibility: "hidden" }, at);
+      }
+
+      function showScene(scene, at) {
+        tl.set(scene, { visibility: "visible", opacity: 1 }, at);
+      }
+
+      fadeSceneIn("#scene-stack", 3.05, 0.75);
+      hideScene("#scene-title", 3.9);
+      tl.from(
+        ".stack-brand",
+        { y: -30, opacity: 0, duration: 0.5, ease: "power2.out" },
+        3.42,
+      );
+      tl.from(
+        ".stack-mark",
+        { x: 30, opacity: 0, duration: 0.46, ease: "sine.out" },
+        3.5,
+      );
+      tl.from(
+        ".stack-badge",
+        { y: 34, opacity: 0, duration: 0.46, ease: "back.out(1.35)" },
+        3.68,
+      );
+      tl.from(
+        ".stack-headline",
+        { y: 78, opacity: 0, duration: 0.76, ease: "expo.out" },
+        3.94,
+      );
+      tl.from(
+        ".stack-support",
+        { y: 46, opacity: 0, duration: 0.58, ease: "power3.out" },
+        4.36,
+      );
+      tl.from(
+        ".stack-rule",
+        {
+          scaleX: 0,
+          opacity: 0,
+          transformOrigin: "left",
+          duration: 0.5,
+          ease: "power4.out",
+        },
+        4.86,
+      );
+      tl.from(
+        ".stack-card",
+        {
+          x: 82,
+          opacity: 0,
+          stagger: 0.2,
+          duration: 0.58,
+          ease: "power2.out",
+        },
+        4.08,
+      );
+      tl.from(
+        ".stack-line",
+        {
+          scaleY: 0,
+          opacity: 0,
+          transformOrigin: "top",
+          stagger: 0.18,
+          duration: 0.42,
+          ease: "power1.out",
+        },
+        4.74,
+      );
+
+      tl.to(
+        "#scene-stack",
+        { opacity: 0, duration: 0.45, ease: "sine.inOut" },
+        19.55,
+      );
+      tl.set("#scene-stack", { opacity: 0 }, 20);
+      hideScene("#scene-stack", 20.05);
+      fadeSceneIn("#scene-pi", 20, 0.45);
+      tl.from(
+        ".pi-brand",
+        { y: -30, opacity: 0, duration: 0.36, ease: "power2.out" },
+        20.1,
+      );
+      tl.from(
+        ".pi-mark",
+        { x: 30, opacity: 0, duration: 0.34, ease: "sine.out" },
+        20.16,
+      );
+      tl.from(
+        ".pi-badge",
+        { y: 34, opacity: 0, duration: 0.36, ease: "back.out(1.35)" },
+        20.22,
+      );
+      tl.from(
+        ".pi-headline",
+        { y: 58, opacity: 0, duration: 0.5, ease: "expo.out" },
+        20.28,
+      );
+      tl.from(
+        ".pi-support",
+        { y: 40, opacity: 0, duration: 0.44, ease: "power3.out" },
+        20.66,
+      );
+      tl.from(
+        ".pi-rule",
+        {
+          scaleX: 0,
+          opacity: 0,
+          transformOrigin: "left",
+          duration: 0.38,
+          ease: "power4.out",
+        },
+        21.02,
+      );
+      tl.from(
+        ".pi-board-body",
+        {
+          scale: 0.96,
+          y: 40,
+          opacity: 0,
+          duration: 0.52,
+          ease: "back.out(1.18)",
+        },
+        20.25,
+      );
+      tl.from(
+        ".pi-pins span",
+        {
+          y: -18,
+          opacity: 0,
+          stagger: 0.035,
+          duration: 0.24,
+          ease: "power1.out",
+        },
+        20.75,
+      );
+      tl.from(
+        ".pi-cpu",
+        { scale: 0.82, opacity: 0, duration: 0.44, ease: "back.out(1.4)" },
+        20.88,
+      );
+      tl.from(
+        ".pi-port",
+        {
+          x: 42,
+          opacity: 0,
+          stagger: 0.1,
+          duration: 0.38,
+          ease: "power2.out",
+        },
+        21.02,
+      );
+      tl.from(
+        ".pi-feature",
+        {
+          y: 54,
+          opacity: 0,
+          stagger: 0.12,
+          duration: 0.48,
+          ease: "power2.out",
+        },
+        21.35,
+      );
+
+      showScene("#scene-sd", 31);
+      hideScene("#scene-pi", 31);
+      tl.from(
+        ".sd-brand",
+        { y: -30, opacity: 0, duration: 0.3, ease: "power2.out" },
+        30,
+      );
+      tl.from(
+        ".sd-mark",
+        { x: 30, opacity: 0, duration: 0.3, ease: "sine.out" },
+        30.02,
+      );
+      tl.from(
+        ".sd-device",
+        {
+          y: 60,
+          opacity: 0,
+          scale: 0.96,
+          stagger: 0.16,
+          duration: 0.45,
+          ease: "back.out(1.18)",
+        },
+        30.05,
+      );
+      tl.from(
+        ".sd-arrow",
+        {
+          scaleX: 0,
+          opacity: 0,
+          transformOrigin: "left",
+          duration: 0.35,
+          ease: "power3.out",
+        },
+        30.25,
+      );
+      tl.from(
+        ".sd-badge",
+        { y: 34, opacity: 0, duration: 0.32, ease: "back.out(1.35)" },
+        30.12,
+      );
+      tl.from(
+        ".sd-headline",
+        { y: 78, opacity: 0, duration: 0.5, ease: "expo.out" },
+        30.2,
+      );
+      tl.from(
+        ".sd-support",
+        { y: 46, opacity: 0, duration: 0.38, ease: "power3.out" },
+        30.35,
+      );
+      tl.from(
+        ".sd-step",
+        {
+          x: 64,
+          opacity: 0,
+          stagger: 0.1,
+          duration: 0.35,
+          ease: "power2.out",
+        },
+        30.45,
+      );
+
+      showScene("#scene-recap", 41);
+      hideScene("#scene-sd", 41);
+      tl.from(
+        ".recap-brand",
+        { y: -30, opacity: 0, duration: 0.4, ease: "power2.out" },
+        41.1,
+      );
+      tl.from(
+        ".recap-mark",
+        { x: 30, opacity: 0, duration: 0.4, ease: "sine.out" },
+        41.16,
+      );
+      tl.from(
+        ".recap-badge",
+        { y: 34, opacity: 0, duration: 0.42, ease: "back.out(1.35)" },
+        41.25,
+      );
+      tl.from(
+        ".recap-headline",
+        { y: 78, opacity: 0, duration: 0.62, ease: "expo.out" },
+        41.46,
+      );
+      tl.from(
+        ".recap-support",
+        { y: 46, opacity: 0, duration: 0.5, ease: "power3.out" },
+        41.86,
+      );
+      tl.from(
+        ".recap-rule",
+        {
+          scaleX: 0,
+          opacity: 0,
+          transformOrigin: "left",
+          duration: 0.42,
+          ease: "power4.out",
+        },
+        42.22,
+      );
+      tl.from(
+        ".recap-panel",
+        {
+          x: 72,
+          opacity: 0,
+          duration: 0.55,
+          ease: "power2.out",
+        },
+        41.35,
+      );
+      tl.from(
+        ".recap-item",
+        {
+          x: 58,
+          opacity: 0,
+          stagger: 0.12,
+          duration: 0.42,
+          ease: "power2.out",
+        },
+        41.75,
+      );
+
+      tl.to(
+        ".field-lines, .field-lines-soft",
+        {
+          x: -128,
+          y: 66,
+          duration: driftCycle,
+          repeat: Math.floor(duration / driftCycle) - 1,
+          ease: "sine.inOut",
+          yoyo: true,
+        },
+        0,
+      );
+
+      window.__timelines["rpi-install-slides"] = tl;
+    </script>
+  </body>
+</html>
